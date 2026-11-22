@@ -6,7 +6,7 @@
 <title>지식의 대장간</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Hahmlet:wght@600;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="importmap">
 { "imports": {
@@ -71,18 +71,19 @@
 
 <div id="title-screen">
   <!-- 1단계: 타이틀 -->
-  <div class="title-inner" id="title-home">
-    <div class="sigil">⚒</div>
-    <h1>지식의 대장간</h1>
+  <div class="title-home" id="title-home">
+    <h1 class="forge-title" aria-label="지식의 대장간">
+      <span class="small" aria-hidden="true"><i>지</i><i>식</i><i>의</i></span>
+      <span class="big" aria-hidden="true"><i>대</i><i>장</i><i>간</i></span>
+    </h1>
     <p class="tagline">아는 만큼 단단해지는 검</p>
-    <p class="story">시험 전날 밤, 잠든 당신은 <b>망각의 서고</b>에서 눈을 떴다.<br>잊힌 지식을 두드려 <b>지식의 검</b>을 벼려라.</p>
-    <div class="title-btns">
-      <button id="btn-start" class="primary big">시작하기</button>
-      <div class="row">
-        <button id="btn-notes2" class="ghost small">오답 노트</button>
-        <button id="btn-howto" class="ghost small">플레이 방법</button>
-        <button id="btn-intro" class="ghost small">프롤로그</button>
-      </div>
+    <div class="home-actions">
+      <button id="btn-start" class="forge-btn">시작하기</button>
+      <nav class="home-links">
+        <button id="btn-notes2" class="link">오답 노트</button>
+        <button id="btn-howto" class="link">플레이 방법</button>
+        <button id="btn-intro" class="link">프롤로그</button>
+      </nav>
     </div>
   </div>
   <!-- 2단계: 학년·학기·과목 -->

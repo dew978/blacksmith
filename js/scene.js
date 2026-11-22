@@ -819,7 +819,7 @@ export class World {
     screen.position.z = 0.032;
     g.add(frame, screen);
     for (const sx of [-0.8, 0.8]) { const ch = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 2.0), this.mats.iron); ch.position.set(sx, 1.48, 0); g.add(ch); }
-    this.scene.add(g);
+    this.scene.add(g); this.boardGroup = g;
     // 왼쪽 벽 달력
     const cc = document.createElement('canvas'); cc.width = 768; cc.height = 512;
     this.calCtx = cc.getContext('2d');
@@ -992,7 +992,30 @@ export class World {
   }
 
   // ───────── 매 프레임 ─────────
+  // 타이틀 무대: 화로 불을 등지고 떠 있는 전설의 검. 게임이 시작되면 치운다.
+  setTitleStage(on) {
+    if (on && !this.hero) {
+      const g = new THREE.Group(), b = buildBlade(100);
+      // 화로 불빛을 등진 실루엣이 살도록 검 자체의 빛은 줄인다
+      b.traverse((o) => { const m = o.material; if (!m) return; if (m.isMeshStandardMaterial) { m.emissiveIntensity *= 0.25; m.userData.baseEI = (m.userData.baseEI || 0) * 0.25; } else if (m.color) m.color.multiplyScalar(0.45); });
+      g.add(b); g.scale.setScalar(0.85);
+      g.position.set(-2.25, 0.75, -2.05);
+      this.scene.add(g); this.hero = g;
+      // 서고 쪽에서 비추는 푸른 테두리 빛 (불빛과 대비)
+      this.heroRim = new THREE.PointLight(0x6fd6e8, 0, 3.2, 1.6); this.heroRim.position.set(-1.35, 2.0, -1.2); this.scene.add(this.heroRim);
+    }
+    if (this.hero) this.hero.visible = on;
+    if (this.heroRim) this.heroRim.intensity = on ? 1.6 : 0;
+    if (this.boardGroup) this.boardGroup.visible = !on;
+    this.titleOn = on;
+  }
+
   update(dt, gdt) {
+    if (this.titleOn && this.hero) {
+      this.hero.rotation.y += dt * 0.35;
+      this.hero.position.y = 0.75 + Math.sin(this.time * 1.1) * 0.035;
+      if (Math.random() < dt * 2.2) this.spawnSparks(new THREE.Vector3(-2.25 + (Math.random() - 0.5) * 0.3, 0.7, -2.05), 2, 0xff8a3d, { speed: 0.6, up: 1.6, life: 1.4, mul: 2 });
+    }
     this.time += dt; const t = this.time;
     // 카메라
     const k = 1 - Math.exp(-dt * this.camSpeed);

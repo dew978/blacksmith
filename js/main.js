@@ -922,6 +922,7 @@ function buyGold(k) {
 
 // ───────── 하루 / 판 ─────────
 function newGame() {
+  world.setTitleStage(false);
   if (S.cur) world.scene.remove(S.cur.car);
   $('#fever-frame').classList.remove('on'); $('#fever-bar').classList.remove('on');
   S = freshState();
@@ -1380,6 +1381,7 @@ async function csLine(who, text, hold) {
 }
 async function playIntro() {
   if (CS.on) return;
+  world.setTitleStage(false);
   CS.on = true; CS.skip = false;
   if (S.cur) { world.scene.remove(S.cur.car); S.cur = null; }
   S.mode = 'cutscene'; view = 'cine'; refresh();
@@ -1541,8 +1543,13 @@ function frame(now) {
     m.emissive.copy(col); m.emissiveIntensity = ei;
   }
   if (S.mode === 'title') {
+    // 화로 불을 등진 검을 낮은 각도에서 올려다보며 천천히 흔들린다
     const t = now / 1000;
-    world.tgtPos.set(2.4 + Math.sin(t * 0.1) * 0.8, 2.35, 3.9);
+    if (!world.titleOn) world.setTitleStage(true);
+    world.camSpeed = 1.2;
+    world.tgtPos.set(-0.5 + Math.sin(t * 0.13) * 0.1, 0.86 + Math.sin(t * 0.17) * 0.03, -0.25);
+    // 세로 화면에서는 검을 가운데 위쪽에, 가로 화면에서는 오른쪽 3분의 1에 둔다
+    if (innerWidth / innerHeight < 0.9) world.tgtLook.set(-2.3, 1.02, -1.95); else world.tgtLook.set(-2.8, 1.36, -1.6);
   }
   updateWalk(dt, now);
   world.update(dt, gdt);
