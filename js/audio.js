@@ -1,6 +1,30 @@
-// 모든 효과음은 Web Audio로 즉석 합성한다 (외부 파일 없음).
+// 효과음: audio/ 폴더의 녹음(생성) 샘플을 우선 쓰고, 아직 못 불러왔거나 없는 소리는 Web Audio로 즉석 합성한다.
+// 샘플은 Stable Audio 3로 만들어 다듬은 것(audio/raw → audio/*.mp3).
+const AUDIO_DIR = new URL('../audio/', import.meta.url);
+const FILES = ['hit_clang', 'hit_great', 'hit_dull', 'hit_crack', 'shatter', 'coin', 'correct', 'wrong', 'door_slam', 'heat', 'hiss',
+  'thunder', 'breakthrough', 'spirit', 'step', 'bell', 'fire_loop', 'music', 'intro_drone'];
+// 게임 이벤트 이름 → 샘플, 크기, 재생 속도 범위(같은 소리가 반복돼도 덜 기계적으로)
+const MAP = {
+  clang: { s: 'hit_clang', gain: 0.85, rate: [0.94, 1.08] },
+  great: { s: 'hit_great', gain: 1.0, rate: [0.97, 1.03] },
+  dull: { s: 'hit_dull', gain: 0.85, rate: [0.92, 1.06] },
+  crack: { s: 'hit_crack', gain: 0.9, rate: [0.95, 1.05] },
+  shatter: { s: 'shatter', gain: 1.0 },
+  feverHit: { s: 'hit_clang', gain: 0.55, rate: [1.12, 1.35] },
+  coin: { s: 'coin', gain: 0.65, rate: [0.95, 1.08] },
+  correct: { s: 'correct', gain: 0.55 },
+  wrong: { s: 'wrong', gain: 0.6 },
+  heat: { s: 'heat', gain: 0.55 },
+  hiss: { s: 'hiss', gain: 0.55 },
+  bell: { s: 'bell', gain: 0.55 },
+  spirit: { s: 'spirit', gain: 0.85 },
+  thunder: { s: 'thunder', gain: 1.0 },
+  milestone: { s: 'breakthrough', gain: 0.8 },
+  step: { s: 'step', gain: 0.3, rate: [0.85, 1.15] },
+  doorSlam: { s: 'door_slam', gain: 0.95 },
+};
 export class Sfx {
-  constructor() { this.ctx = null; this.muted = false; }
+  constructor() { this.ctx = null; this.muted = false; this.buf = {}; }
 
   init() {
     if (this.ctx) { if (this.ctx.state === 'suspended') this.ctx.resume(); return; }
@@ -13,7 +37,59 @@ export class Sfx {
     comp.threshold.value = -14; comp.ratio.value = 4;
     this.master.connect(comp); comp.connect(this.ctx.destination);
     this.noiseBuf = this._makeNoise(2);
+    // 음악은 따로 묶어 효과음보다 작게
+    this.musicBus = this.ctx.createGain(); this.musicBus.gain.value = 0.22; this.musicBus.connect(this.master);
     this._startAmbience();
+    this._load();
+  }
+
+  async _load() {
+    await Promise.all(FILES.map(async (n) => {
+      try {
+        const r = await fetch(new URL(n + '.mp3', AUDIO_DIR));
+        if (!r.ok) return;
+        this.buf[n] = await this.ctx.decodeAudioData(await r.arrayBuffer());
+      } catch (e) { /* 불러오지 못하면 합성음으로 */ }
+    }));
+    if (this.buf.fire_loop) this._fireLoop();
+    if (this.wantMusic) this.music(this.wantMusic);
+  }
+  // MP3 앞뒤에 붙는 짧은 무음을 피해 루프 구간을 잡는다
+  _loopRange(b) {
+    const d = b.getChannelData(0), lim = Math.min(d.length, Math.floor(b.sampleRate * 0.2));
+    let a = 0; while (a < lim && Math.abs(d[a]) < 1e-4) a++;
+    let z = d.length - 1; while (z > d.length - lim && Math.abs(d[z]) < 1e-4) z--;
+    return [a / b.sampleRate, (z + 1) / b.sampleRate];
+  }
+  _sample(name, t, { gain = 1, rate = 1, out } = {}) {
+    const b = this.buf[name]; if (!b) return null;
+    const src = this.ctx.createBufferSource(); src.buffer = b; src.playbackRate.value = rate;
+    const g = this.ctx.createGain(); g.gain.value = gain;
+    src.connect(g); g.connect(out || this.master); src.start(t);
+    return { src, g };
+  }
+  // 화로 불소리 루프: 합성 바람 소리를 천천히 줄이고 녹음 루프로 바꾼다
+  _fireLoop() {
+    const c = this.ctx, b = this.buf.fire_loop, [a, z] = this._loopRange(b);
+    const src = c.createBufferSource(); src.buffer = b; src.loop = true; src.loopStart = a; src.loopEnd = z;
+    const g = c.createGain(); g.gain.value = 0;
+    src.connect(g); g.connect(this.master); src.start(c.currentTime, a);
+    g.gain.setTargetAtTime(0.32, c.currentTime, 1.2);
+    if (this.ambGain) this.ambGain.gain.setTargetAtTime(0, c.currentTime, 0.8);
+    this.fireReal = true;
+  }
+  // 배경 음악: 'music'(반복) 또는 'intro_drone'(프롤로그 한 번). null이면 멈춤.
+  music(name) {
+    this.wantMusic = name;
+    if (!this.ctx) return;
+    const c = this.ctx, now = c.currentTime;
+    if (this.musicNode) { const old = this.musicNode; old.g.gain.setTargetAtTime(0, now, 0.6); old.src.stop(now + 3); this.musicNode = null; }
+    if (!name || !this.buf[name]) return;
+    const b = this.buf[name], src = c.createBufferSource(); src.buffer = b;
+    if (name === 'music') { const [a, z] = this._loopRange(b); src.loop = true; src.loopStart = a; src.loopEnd = z; }
+    const g = c.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(name === 'intro_drone' ? 1.6 : 1, now, 1.0);
+    src.connect(g); g.connect(this.musicBus); src.start(now);
+    this.musicNode = { src, g };
   }
 
   setMuted(m) {
@@ -56,19 +132,26 @@ export class Sfx {
   }
 
   play(name, opt = {}) {
-    if (!this.ctx || this.muted || !this[name]) return;
-    this[name](this.ctx.currentTime + 0.004, opt);
+    if (!this.ctx || this.muted) return;
+    const t = this.ctx.currentTime + 0.004, m = MAP[name];
+    if (m && this.buf[m.s]) {
+      const r = m.rate ? m.rate[0] + Math.random() * (m.rate[1] - m.rate[0]) : 1;
+      this._sample(m.s, t, { gain: m.gain, rate: opt.fast && name === 'feverHit' ? r * 1.05 : r });
+      return;
+    }
+    if (this[name]) this[name](t, opt);
   }
+  doorSlam(t) { this.dull(t); this.crack(t + 0.05); }
 
   // 불 피우는 소리: 낮게 깔리는 바람 + 장작 튀는 소리
   _startAmbience() {
     const c = this.ctx, src = c.createBufferSource();
     src.buffer = this.noiseBuf; src.loop = true;
     const f = c.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 320;
-    const g = c.createGain(); g.gain.value = 0.05;
+    const g = c.createGain(); g.gain.value = 0.05; this.ambGain = g;
     src.connect(f); f.connect(g); g.connect(this.master); src.start();
     setInterval(() => {
-      if (this.muted || c.state !== 'running') return;
+      if (this.muted || c.state !== 'running' || this.fireReal) return;
       const n = 1 + Math.floor(Math.random() * 3);
       for (let i = 0; i < n; i++) {
         this._noise(c.currentTime + Math.random() * 0.4, 0.03 + Math.random() * 0.04,

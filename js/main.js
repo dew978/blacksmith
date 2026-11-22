@@ -892,6 +892,7 @@ function newGame() {
   if (S.cur) world.scene.remove(S.cur.car);
   $('#fever-frame').classList.remove('on'); $('#fever-bar').classList.remove('on');
   S = freshState();
+  sfx.music('music');
   world.darkness = 0; world.setSpiritMood('calm');
   world.candles.forEach((_, i) => world.setCandle(i, true));
   world.setRack([]);
@@ -922,7 +923,7 @@ function summaryHTML() {
 }
 async function gameOver() {
   S.mode = 'over'; refresh(); $('#hud').classList.add('hidden');
-  sfx.play('doom'); world.goStation('altar', 1.2);
+  sfx.music(null); sfx.play('doom'); world.goStation('altar', 1.2);
   await wait(2.2, k => { world.darkness = k * 0.8; });
   openPanel(`<h2>망각에 삼켜졌다</h2><p class="sub">마지막 촛불이 꺼지자 서고지기의 눈빛만이 어둠 속에 남았다. 하지만 틀린 문제는 오답 노트에 남아 있다. 다시 익히고 돌아오자.</p>
     ${summaryHTML()}<div class="btnrow"><button id="end-notes" class="ghost">오답 노트</button><button id="end-retry" class="primary">다시 도전</button></div>`);
@@ -1258,6 +1259,7 @@ async function playIntro() {
   world.darkness = 0.85; world.setRack([]); world.setSpiritMood('sleep');
   world.candles.forEach((_, i) => world.setCandle(i, false));
   csCut([0, 1.62, 4.05], [0, 1.35, 0]);
+  sfx.music('intro_drone');
   await csSleep(700);
   await csLine('', '시험 전날 밤, 도서관 맨 구석 자리.');
   await csLine('', '펼쳐 둔 문제집 위로, 고개가 천천히 떨어졌다.');
@@ -1294,7 +1296,7 @@ async function playIntro() {
   // 등 뒤에서 문이 잠긴다
   csShot([0, 1.62, 1.6], [0, 1.4, 4.5], 2.2);
   await csSleep(1200);
-  if (!CS.skip) { sfx.play('dull'); sfx.play('crack'); world.shake(0.1); }
+  if (!CS.skip) { sfx.play('doorSlam'); world.shake(0.1); }
   await csLine('', '쿵. 등 뒤에서 문이 잠겼다.');
   await csLine('', '돌아가려면, 7일을 버텨야 한다.');
   endIntro();
@@ -1424,5 +1426,5 @@ window.__forge = {
   get S() { return S; }, world, probs, value, Q,
   // 창이 숨겨져 프레임이 멈출 때 검증용으로 시간을 직접 흘린다
   tick(sec) { for (let i = 0; i < sec * 60; i++) { hitstopUntil = 0; updateTweens(1 / 60); updateWalk(1 / 60, performance.now() + 5000); world.update(1 / 60, 1 / 60); } },
-  P, keys, interact, breakthrough, get view() { return view; }, get focus() { return focusInfo; },
+  P, keys, interact, breakthrough, sfx, get view() { return view; }, get focus() { return focusInfo; },
 };
