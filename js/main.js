@@ -630,12 +630,49 @@ async function finishBlade() {
   world.goStation('overview', 2.6);
   await wait(0.9, k => { const e = easeInOut(k); c.car.position.lerpVectors(a, b, e); c.car.position.y += Math.sin(k * Math.PI) * 0.6; c.car.rotation.z = e * 0.8; });
   world.scene.remove(c.car);
-  S.finished.push({ level: c.level });
-  S.stats.made++; S.cur = null;
+  S.finished.push(hungState(c));
+  if (!c.wasHung) S.stats.made++;
+  S.cur = null;
   world.setRack(S.finished); sfx.play('place');
   await wait(0.5);
   S.mode = 'idle'; drawBoard();
   placePlayer(2.4, 0.2, -Math.PI / 2, 0.12); enterWalk(); // 검걸이 앞에서 걸어 둔 검을 바라본다
+}
+
+// 검걸이에 걸 때 이 검의 표·유물 누적 효과도 함께 보관한다 (다시 가져와 이어서 벼릴 수 있게)
+const KEEP_FIELDS = ['deck', 'crack', 'guard', 'loser', 'stampDone', 'keepRun', 'inkKeeps', 'crown'];
+function hungState(c) {
+  const o = { level: c.level };
+  for (const k of KEEP_FIELDS) if (c[k] !== undefined) o[k] = k === 'deck' ? { ...c[k] } : c[k];
+  return o;
+}
+// 걸어 둔 검을 다시 모루로
+function openRackPicker() {
+  if (S.mode !== 'idle' || S.cur || !S.finished.length) return;
+  S.mode = 'menu'; refresh();
+  openPanel(`<h2>걸어 둔 검</h2><p class="sub">다시 모루로 가져가 이어서 벼린다. 그 검에 쌓인 표와 효과도 그대로 따라온다. 대신 부서질 수도 있다.</p>
+    <div class="offer-list">${S.finished.map((b, i) => `<div class="offer"><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b><small>${fmt(value(b.level))} G</small></span><button class="primary small" data-take="${i}">모루로</button></div>`).join('')}</div>
+    <div class="btnrow"><button id="rk-close" class="ghost">그대로 둔다</button></div>`, true);
+  document.querySelectorAll('[data-take]').forEach(b => b.onclick = () => { closeModal(); takeFromRack(+b.dataset.take); });
+  $('#rk-close').onclick = () => { closeModal(); S.mode = 'idle'; refresh(); };
+}
+async function takeFromRack(i) {
+  const b = S.finished[i]; if (!b || S.cur) { S.mode = 'idle'; refresh(); return; }
+  S.finished.splice(i, 1); world.setRack(S.finished);
+  sfx.init(); S.mode = 'moving'; view = 'cine'; refresh();
+  const holder = makeLyingBlade(b.level);
+  const car = new THREE.Group(); car.add(holder);
+  const slot = world.rackSlots[Math.min(i, 7)];
+  car.position.set(slot.x - 0.3, 2.3, slot.z); car.rotation.z = 0.8;
+  world.scene.add(car);
+  S.cur = { ...b, deck: b.deck ? { ...b.deck } : { ...ZERO }, holder, car, heat: 0.5, flash: 0, maxValue: value(b.level), wasHung: true };
+  drawBoard();
+  world.goStation('anvil', 2.6); sfx.play('whoosh');
+  const a = car.position.clone(), c = world.anvilTop.clone();
+  await wait(0.9, k => { const e = easeInOut(k); car.position.lerpVectors(a, c, e); car.position.y += Math.sin(k * Math.PI) * 0.5; car.rotation.z = 0.8 * (1 - e); });
+  sfx.play('place'); world.shake(0.012); world.spawnSparks(c, 12, 0xff9a40, { speed: 1.4, up: 1 });
+  popup(`${bladeName(S.cur.level)} +${S.cur.level} · 다시 벼린다`, world.impactPoint.clone().add(new THREE.Vector3(0, 0.45, 0)), 'mid gold');
+  S.mode = 'anvil'; view = 'anvil'; drawBoard(); refresh();
 }
 
 // ───────── 제단 ─────────
@@ -905,6 +942,7 @@ function openHowTo(back) {
     <li><b>검의 모양</b> — 초반엔 2강마다 새 모양으로 바뀌고, +62부터는 최종형이 되어 점점 더 빛난다. +25·50·75에선 번개가 친다.</li>
     <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
     <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
+    <li><b>다시 벼리기</b> — 모루가 비어 있을 때 검걸이를 바라보고 E를 누르면, 걸어 둔 검을 다시 가져와 이어서 강화할 수 있다. 그 검에 쌓인 표와 효과도 따라온다.</li>
     <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
     <li><b>떠돌이 사서 등불</b> — 매일 밤 온다. 유물은 <b>검 조각</b>으로 산다(제단에 바치지 않고 남긴 검을 투입구에 넣으면 한 자루에 조각 하나). 유물은 칸 5개까지, 표 더미를 바꾸거나 특별한 효과를 준다. 골드로는 합격 추첨표(성공 표 +1, 방문마다 한 번)·힌트·양초를 산다. HUD의 유물을 누르면 버릴 수 있다.</li>
     <li><b>오답 노트</b> — 틀린 문제와 해설이 저장되고, 다음 판에 더 자주 나온다.</li></ol>
@@ -953,7 +991,9 @@ function spotInfo(id) {
     case 'shelf': return { label: '오답 노트 펼치기', act: () => $('#btn-notes').onclick() };
     case 'rack': {
       const tot = S.finished.reduce((s, b) => s + value(b.level), 0);
-      return { label: S.finished.length ? `완성한 검 ${S.finished.length}자루 · 합계 ${fmt(tot)} G` : '아직 걸어 둔 검이 없다' };
+      if (!S.finished.length) return { label: '아직 걸어 둔 검이 없다' };
+      if (S.cur || S.mode !== 'idle') return { label: `완성한 검 ${S.finished.length}자루 · 합계 ${fmt(tot)} G · 모루를 비우면 다시 가져갈 수 있다` };
+      return { label: `걸어 둔 검 다시 벼리기 (${S.finished.length}자루 · 합계 ${fmt(tot)} G)`, act: openRackPicker };
     }
     case 'merchant': return { label: '떠돌이 사서 등불 · 제단에 바친 밤에 진열장을 연다' };
     case 'calendar': return { label: `${S.day}일째 / ${MAX_DAY}일 · 촛불 ${S.candles}개 남음` };
