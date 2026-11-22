@@ -769,14 +769,41 @@ function openAltar() {
   sfx.init(); S.feverUntil = 0;
   S.mode = 'altar'; refresh();
   world.goStation('altar', 2.4);
-  const sel = new Set(S.finished.map((_, i) => i));
-  let useScrap = S.scrap > 0;
+  // 기본 선택: 요구를 채우는 가장 값싼 조합만 고른다 (모두 골라 두면 큰 검까지 실수로 바치기 쉽다)
+  const pickNeeded = () => {
+    const vals = S.finished.map((b) => value(b.level)), need = req(), n = vals.length;
+    const scrap = S.scrap || 0;
+    let best = null;
+    if (n <= 14) {
+      for (let m = 0; m < (1 << n); m++) {
+        for (const sc of scrap ? [0, 1] : [0]) {
+          let t = sc ? scrap : 0;
+          for (let i = 0; i < n; i++) if (m & (1 << i)) t += vals[i];
+          if (t >= need && (!best || t < best.t)) best = { m, sc, t };
+        }
+      }
+    } else { // 검이 아주 많으면 싼 것부터 채운다
+      const order = vals.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]); let t = scrap, m = 0;
+      for (const [v, i] of order) { if (t >= need) break; t += v; m |= 1 << i; }
+      if (t >= need) best = { m, sc: scrap ? 1 : 0, t };
+    }
+    if (!best) return { set: new Set(vals.map((_, i) => i)), scrap: scrap > 0 }; // 다 바쳐도 모자라면 전부
+    return { set: new Set(vals.map((_, i) => i).filter((i) => best.m & (1 << i))), scrap: !!best.sc };
+  };
+  const auto = pickNeeded();
+  const sel = auto.set;
+  let useScrap = auto.scrap;
   const render = () => {
     const total = [...sel].reduce((s, i) => s + value(S.finished[i].level), 0) + (useScrap ? S.scrap : 0);
     const ok = total >= req();
     const warn = [];
     if (S.cur) warn.push(`모루 위 +${S.cur.level} 미완성`);
     if (S.blanks > 0) warn.push(`원석 ${S.blanks} → 내일로`);
+    // 빼도 요구를 채우는 검이 골라져 있으면 넘치게 바치는 것
+    if (ok) {
+      const spare = [...sel].filter((i) => total - value(S.finished[i].level) >= req());
+      if (spare.length) warn.push(`필요보다 ${fmt(total - req())} G 더 바침`);
+    }
     openPanel(`
       <h2>서고지기의 제단</h2>
       <div class="pills"><span>${S.day}일째</span><span>요구 <b>${fmt(req())} G</b></span></div>
@@ -788,7 +815,8 @@ function openAltar() {
       <div class="meter"><div class="line"><span>바칠 가치</span><b style="color:${ok ? 'var(--green)' : 'var(--red)'}">${fmt(total)} / ${fmt(req())} G</b></div>
         <div class="bar"><div class="${ok ? 'ok' : ''}" style="width:${Math.min(100, total / req() * 100)}%"></div></div>
         <div class="pills" style="margin-top:8px"><span>바친 만큼 골드</span><span>남긴 검 → 내일·상점</span>${warn.map(w => `<span class="warn">${esc(w)}</span>`).join('')}</div></div>
-      <div class="btnrow"><button id="al-back" class="ghost">돌아가기</button><button id="al-ring" class="primary">${ok ? '바치기 🔔' : '부족해도 울리기 🔔'}</button></div>`, true);
+      <div class="btnrow"><button id="al-back" class="ghost">돌아가기</button><button id="al-auto" class="ghost">필요한 만큼만</button><button id="al-ring" class="primary">${ok ? '바치기 🔔' : '부족해도 울리기 🔔'}</button></div>`, true);
+    $('#al-auto').onclick = () => { const a = pickNeeded(); sel.clear(); a.set.forEach((i) => sel.add(i)); useScrap = a.scrap; sfx.play('ui'); render(); };
     document.querySelectorAll('.offer').forEach(el => el.addEventListener('click', (e) => {
       e.preventDefault();
       if (el.dataset.scrap) useScrap = !useScrap;
@@ -884,7 +912,7 @@ function renderShop() {
   const golds = ['ticket', 'hint', 'candle'].filter((k) => !(k === 'candle' && S.candles >= 3))
     .map((k) => row(k, `${fmt(priceOf(k))} G`, `data-gold="${k}"`, S.gold < priceOf(k), k === 'ticket' && S.ticketBought)).join('');
   const feed = S.finished.length
-    ? `<div class="sec">검 넣기 <small>1자루 = 조각 1</small></div><div class="chips">${S.finished.map((b, i) => `<button class="chip" data-feed="${i}" title="${esc(bladeName(b.level))} · ${fmt(value(b.level))} G">+${b.level}</button>`).join('')}</div>`
+    ? `<div class="sec">검 넣기 <small>1자루 = 조각 1</small></div><div class="chips">${S.finished.map((b, i) => `<button class="chip" data-feed="${i}" title="${esc(bladeName(b.level))}">+${b.level} · ${fmt(value(b.level))} G</button>`).join('')}</div>`
     : '';
   openPanel(`
     <h2>떠돌이 사서 등불</h2>
@@ -904,7 +932,8 @@ function renderShop() {
   $('#sh-next').onclick = () => { closeModal(); S.day++; startDay(); };
 }
 function feedSword(i) {
-  if (!S.finished[i]) return;
+  const b = S.finished[i]; if (!b) return;
+  if (!confirm(`${bladeName(b.level)} +${b.level} (${fmt(value(b.level))} G)을(를) 녹여 검 조각 1개로 바꿀까요? 되돌릴 수 없습니다.`)) return;
   S.finished.splice(i, 1); S.tokens++; world.setRack(S.finished); sfx.play('place');
   refresh(); renderShop();
 }
@@ -1036,7 +1065,7 @@ function openHowTo(back) {
   const K = (k, t) => `<span class="key"><kbd>${k}</kbd>${t}</span>`;
   const R = (ico, h, t) => `<li><i>${ico}</i><b>${h}</b><span>${t}</span></li>`;
   openPanel(`<h2>플레이 방법</h2>
-    <div class="keys">${K('WASD', '이동')}${K('마우스', '시점')}${K('E', '상호작용')}${K('Space', '망치질')}${K('F', '완성')}${K('R', '다시 달구기')}${K('Esc', '자리 뜨기')}</div>
+    <div class="keys">${K('WASD', '이동')}${K('마우스', '시점')}${K('E', '상호작용')}${K('Space', '망치질')}${K('F', '완성')}${K('R', '다시 달구기')}${K('Esc', '자리 뜨기')}${K('P', '일시정지')}</div>
     <ul class="howto2">
       ${R('🔨', '망치질', '맞히면 1번 두드림 · 결과는 확률표대로 (파괴 · 손상 −1 · 유지 · 성공 +1 · 대성공 +2)')}
       ${R('❌', '오답', '헛손질 · 검이 식음 (3번 → R) · 수업료 5% · 영감 −3')}
@@ -1199,6 +1228,58 @@ function interact() {
 }
 $('#prompt').onclick = (e) => { e.stopPropagation(); interact(); };
 $('#act-leave').onclick = leaveAnvil;
+$('#btn-pause').onclick = () => openPause();
+// ───────── 일시정지 ─────────
+let pauseFrom = null, pausedAt = 0;
+function openPause() {
+  if (S.mode !== 'idle' && S.mode !== 'anvil') return;
+  pauseFrom = S.mode; pausedAt = performance.now();
+  S.mode = 'paused'; keys.clear();
+  if (pointerLocked()) document.exitPointerLock();
+  refresh(); sfx.play('ui');
+  const fsOn = !!(document.fullscreenElement || document.webkitFullscreenElement);
+  openPanel(`<h2>일시정지</h2>
+    <div class="pills"><span>${S.day}일째</span><span>${esc(COURSE || '내 문제')}</span><span>요구 <b>${fmt(req())} G</b></span></div>
+    <div class="pause-menu">
+      <button id="pz-resume" class="forge-btn">계속하기</button>
+      <button id="pz-howto" class="ghost">플레이 방법</button>
+      <button id="pz-notes" class="ghost">오답 노트</button>
+      <button id="pz-sound" class="ghost">소리 ${sfx.muted ? '켜기' : '끄기'}</button>
+      ${(document.fullscreenEnabled || document.webkitFullscreenEnabled) ? `<button id="pz-fs" class="ghost">${fsOn ? '창 모드로' : '전체화면'}</button>` : ''}
+      <button id="pz-title" class="ghost danger">처음 화면으로</button>
+    </div>
+    <p class="sub" style="margin-top:12px">Esc 또는 P로 계속</p>`);
+  $('#pz-resume').onclick = resumeGame;
+  $('#pz-howto').onclick = () => openHowTo(() => { S.mode = 'paused'; openPause.reopen(); });
+  $('#pz-notes').onclick = () => openNotes(() => { openPause.reopen(); });
+  $('#pz-sound').onclick = () => { $('#btn-sound').onclick(); openPause.reopen(); };
+  const fz = $('#pz-fs'); if (fz) fz.onclick = () => { $('#btn-fs').click(); setTimeout(openPause.reopen, 150); };
+  $('#pz-title').onclick = () => { if (confirm('지금 판을 그만두고 처음 화면으로 갈까요? 진행은 저장되지 않습니다 (오답 노트는 남습니다).')) goTitle(); };
+}
+// 일시정지 화면을 다시 그린다 (하위 메뉴에서 돌아올 때)
+openPause.reopen = () => { const from = pauseFrom, at = pausedAt; S.mode = from; openPause(); pausedAt = at; };
+function resumeGame() {
+  if (S.mode !== 'paused') return;
+  closeModal();
+  // 일시정지한 동안 영감 시간이 흐르지 않게
+  if (S.feverUntil > pausedAt) S.feverUntil += performance.now() - pausedAt;
+  S.mode = pauseFrom || 'idle'; pauseFrom = null;
+  refresh(); drawBoard();
+  if (view === 'walk') tryLock();
+}
+function goTitle() {
+  closeModal();
+  if (S.cur) world.scene.remove(S.cur.car);
+  $('#fever-frame').classList.remove('on'); $('#fever-bar').classList.remove('on');
+  S = freshState(); pauseFrom = null;
+  world.darkness = 0; world.setSpiritMood('calm');
+  world.candles.forEach((_, i) => world.setCandle(i, true));
+  world.setRack([]); view = 'walk';
+  $('#hud').classList.add('hidden');
+  $('#title-select').classList.add('hidden'); $('#title-home').classList.remove('hidden');
+  $('#title-screen').classList.remove('hidden');
+  refresh();
+}
 $('#act-reheat').onclick = reheat;
 // 식은 검을 화로에 다시 달군다 (시간만 든다)
 async function reheat() {
@@ -1221,7 +1302,11 @@ let dragging = null;
 function look(dx, dy, s) {
   P.yaw -= dx * s; P.pitch = Math.max(-1.25, Math.min(1.2, P.pitch - dy * s));
 }
-document.addEventListener('pointerlockchange', () => refresh());
+document.addEventListener('pointerlockchange', () => {
+  // 걸어 다니는 중에 잠금이 풀렸다면 사용자가 Esc를 누른 것이다 (게임이 일부러 풀 때는 이미 다른 모드로 바뀐 뒤)
+  if (!pointerLocked() && walkActive() && !IS_TOUCH) openPause();
+  refresh();
+});
 // 클릭 없이 마우스를 움직이는 만큼 그대로 시점이 돈다 (보간 없음)
 document.addEventListener('mousemove', (e) => {
   if (!walkActive() || IS_TOUCH) return;
@@ -1466,6 +1551,11 @@ window.addEventListener('keydown', (e) => {
     else if (k === ' ' || k === 'Enter') { if (CS.next) CS.next(); }
     e.preventDefault(); return;
   }
+  if (S.mode === 'paused') {
+    if (k === 'Escape' || k.toLowerCase() === 'p') { resumeGame(); e.preventDefault(); }
+    return;
+  }
+  if (k.toLowerCase() === 'p' && (S.mode === 'idle' || S.mode === 'anvil')) { openPause(); e.preventDefault(); return; }
   if (S.mode === 'question') {
     if (/^[1-6]$/.test(k)) { answer(+k - 1); e.preventDefault(); }
     else if ((k === 'Enter' || k === ' ') && Q.pendingWrong) { confirmWrong(); e.preventDefault(); }
@@ -1483,6 +1573,7 @@ window.addEventListener('keydown', (e) => {
   }
   if (view === 'walk') {
     if (kl === 'e' || k === 'Enter' || k === ' ') { interact(); e.preventDefault(); }
+    else if (k === 'Escape') openPause();
     return;
   }
   if (view === 'anvil') {

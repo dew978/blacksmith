@@ -401,3 +401,9 @@ body.touch #title-screen:not(.hidden) ~ #btn-fs { display: inline-flex; top: 14p
   .reqbox { top: 152px; width: min(300px, 80vw); padding: 7px 12px 8px; }
   .reqbox b { font-size: 24px; }
 }
+
+/* 일시정지 메뉴 */
+.pause-menu { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.pause-menu button { width: 100%; }
+.pause-menu .forge-btn { margin-bottom: 4px; }
+.pause-menu .danger { color: #ffb08a; border-color: rgba(255,120,60,.35); }
