@@ -484,7 +484,7 @@
     },
     {
       "t": "이름 묻기",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: What's your name?\\nB: My ___ is Ben.",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What's your name?\nB: My ___ is Ben.",
       "c": [
         "nine",
         "nose",
@@ -497,7 +497,7 @@
     },
     {
       "t": "이름 듣기",
-      "q": "대화에서 B의 이름은?\\nA: Hi, I'm Mina. What's your name?\\nB: I'm Jun.",
+      "q": "대화에서 B의 이름은?\nA: Hi, I'm Mina. What's your name?\nB: I'm Jun.",
       "c": [
         "Jun",
         "Mina",
@@ -627,7 +627,7 @@
     },
     {
       "t": "물건 이름",
-      "q": "대화에서 B가 말한 물건은?\\nA: What's this?\\nB: It's a notebook.",
+      "q": "대화에서 B가 말한 물건은?\nA: What's this?\nB: It's a notebook.",
       "c": [
         "연필",
         "공책",
@@ -757,7 +757,7 @@
     },
     {
       "t": "요청하기",
-      "q": "빈칸에 알맞은 말은?\\n___ down, please.",
+      "q": "빈칸에 알맞은 말은?\n___ down, please.",
       "c": [
         "Open",
         "Close",
@@ -874,7 +874,7 @@
     },
     {
       "t": "좋아하는 것",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: Do you like pizza?\\nB: Yes, I ___.",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do you like pizza?\nB: Yes, I ___.",
       "c": [
         "do",
         "am",
@@ -900,7 +900,7 @@
     },
     {
       "t": "좋아하는 것",
-      "q": "대화에서 B가 좋아하는 것은?\\nA: Do you like eggs?\\nB: Yes, I do. I like eggs.",
+      "q": "대화에서 B가 좋아하는 것은?\nA: Do you like eggs?\nB: Yes, I do. I like eggs.",
       "c": [
         "바나나",
         "우유",
@@ -1004,7 +1004,7 @@
     },
     {
       "t": "안부 묻기",
-      "q": "대화에서 B의 기분은?\\nA: How are you?\\nB: I'm great. Thank you.",
+      "q": "대화에서 B의 기분은?\nA: How are you?\nB: I'm great. Thank you.",
       "c": [
         "슬프다",
         "피곤하다",
@@ -1069,7 +1069,7 @@
     },
     {
       "t": "안부 묻기",
-      "q": "빈칸에 알맞은 말은?\\nA: How ___ you?\\nB: I'm fine.",
+      "q": "빈칸에 알맞은 말은?\nA: How ___ you?\nB: I'm fine.",
       "c": [
         "is",
         "am",
@@ -1147,7 +1147,7 @@
     },
     {
       "t": "할 수 있는 것",
-      "q": "대화에서 B가 할 수 있는 것은?\\nA: Can you ski?\\nB: No, I can't. But I can swim.",
+      "q": "대화에서 B가 할 수 있는 것은?\nA: Can you ski?\nB: No, I can't. But I can swim.",
       "c": [
         "스키",
         "수영",
@@ -1173,7 +1173,7 @@
     },
     {
       "t": "할 수 있는 것",
-      "q": "빈칸에 알맞은 말은?\\nA: ___ you run fast?\\nB: Yes, I can.",
+      "q": "빈칸에 알맞은 말은?\nA: ___ you run fast?\nB: Yes, I can.",
       "c": [
         "Do",
         "Can",
@@ -1277,7 +1277,7 @@
     },
     {
       "t": "수 세기",
-      "q": "대화에서 공은 몇 개인가요?\\nA: How many balls?\\nB: Three balls.",
+      "q": "대화에서 공은 몇 개인가요?\nA: How many balls?\nB: Three balls.",
       "c": [
         "3개",
         "2개",

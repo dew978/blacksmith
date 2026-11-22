@@ -315,7 +315,7 @@
     },
     {
       "t": "자기소개",
-      "q": "글에서 알 수 있는 것은?\\nHi, I'm Leo. I'm ten. I can swim.",
+      "q": "글에서 알 수 있는 것은?\nHi, I'm Leo. I'm ten. I can swim.",
       "c": [
         "Leo는 열한 살이다",
         "Leo는 축구를 좋아한다",
@@ -341,7 +341,7 @@
     },
     {
       "t": "자기소개",
-      "q": "빈칸에 알맞은 말은?\\nHello. ___ Jiho. I'm nine years old.",
+      "q": "빈칸에 알맞은 말은?\nHello. ___ Jiho. I'm nine years old.",
       "c": [
         "He's",
         "I'm",
@@ -419,7 +419,7 @@
     },
     {
       "t": "소개하기",
-      "q": "대화에서 Emma는 누구인가요?\\nA: Who is she?\\nB: She's Emma. She's my friend.",
+      "q": "대화에서 Emma는 누구인가요?\nA: Who is she?\nB: She's Emma. She's my friend.",
       "c": [
         "B의 친구",
         "B의 엄마",
@@ -432,7 +432,7 @@
     },
     {
       "t": "소개하기",
-      "q": "빈칸에 알맞은 말은?\\nA: Mom, ___ is Jisu.\\nB: Nice to meet you, Jisu.",
+      "q": "빈칸에 알맞은 말은?\nA: Mom, ___ is Jisu.\nB: Nice to meet you, Jisu.",
       "c": [
         "he",
         "she",
@@ -484,7 +484,7 @@
     },
     {
       "t": "소개하기",
-      "q": "대화에서 Ben에 대해 알 수 있는 것은?\\nA: This is Ben. He's ten.\\nB: Hi, Ben.",
+      "q": "대화에서 Ben에 대해 알 수 있는 것은?\nA: This is Ben. He's ten.\nB: Hi, Ben.",
       "c": [
         "Ben은 아홉 살이다",
         "Ben은 B의 형이다",
@@ -510,7 +510,7 @@
     },
     {
       "t": "소개하기",
-      "q": "빈칸에 알맞은 말은?\\nThis is Tom. ___ is my brother.",
+      "q": "빈칸에 알맞은 말은?\nThis is Tom. ___ is my brother.",
       "c": [
         "She",
         "I",
@@ -575,7 +575,7 @@
     },
     {
       "t": "감정",
-      "q": "대화에서 B의 상태는?\\nA: Are you okay?\\nB: No, I'm not. I'm sick.",
+      "q": "대화에서 B의 상태는?\nA: Are you okay?\nB: No, I'm not. I'm sick.",
       "c": [
         "아프다",
         "행복하다",
@@ -588,7 +588,7 @@
     },
     {
       "t": "감정",
-      "q": "빈칸에 알맞은 말은?\\nA: Are you happy?\\nB: Yes, I ___.",
+      "q": "빈칸에 알맞은 말은?\nA: Are you happy?\nB: Yes, I ___.",
       "c": [
         "do",
         "can",
@@ -718,7 +718,7 @@
     },
     {
       "t": "직업",
-      "q": "대화에서 그의 직업은?\\nA: What does he do?\\nB: He's a firefighter.",
+      "q": "대화에서 그의 직업은?\nA: What does he do?\nB: He's a firefighter.",
       "c": [
         "경찰관",
         "소방관",
@@ -757,7 +757,7 @@
     },
     {
       "t": "직업",
-      "q": "빈칸에 알맞은 말은?\\nA: What does she do?\\nB: She's a ___.",
+      "q": "빈칸에 알맞은 말은?\nA: What does she do?\nB: She's a ___.",
       "c": [
         "doctor",
         "happy",
@@ -796,7 +796,7 @@
     },
     {
       "t": "직업",
-      "q": "빈칸에 알맞은 말은?\\nA: What do you do?\\nB: I'm ___ cook.",
+      "q": "빈칸에 알맞은 말은?\nA: What do you do?\nB: I'm ___ cook.",
       "c": [
         "an",
         "is",
@@ -835,7 +835,7 @@
     },
     {
       "t": "물건의 주인",
-      "q": "빈칸에 알맞은 말은?\\nA: Is this ___ ruler?\\nB: Yes, it is.",
+      "q": "빈칸에 알맞은 말은?\nA: Is this ___ ruler?\nB: Yes, it is.",
       "c": [
         "your",
         "you",
@@ -848,7 +848,7 @@
     },
     {
       "t": "물건의 주인",
-      "q": "대화에서 알 수 있는 것은?\\nA: Is this your umbrella?\\nB: Yes, it is. Thank you.",
+      "q": "대화에서 알 수 있는 것은?\nA: Is this your umbrella?\nB: Yes, it is. Thank you.",
       "c": [
         "우산은 A의 것이다",
         "B는 우산이 없다",
@@ -900,7 +900,7 @@
     },
     {
       "t": "물건의 주인",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: Is this your book?\\nB: No, it isn't. It's ___ book.",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Is this your book?\nB: No, it isn't. It's ___ book.",
       "c": [
         "Mina",
         "Minas",
@@ -978,7 +978,7 @@
     },
     {
       "t": "위치",
-      "q": "대화에서 연필은 어디에 있나요?\\nA: Where is my pencil?\\nB: It's under the desk.",
+      "q": "대화에서 연필은 어디에 있나요?\nA: Where is my pencil?\nB: It's under the desk.",
       "c": [
         "책상 위",
         "가방 안",
@@ -991,7 +991,7 @@
     },
     {
       "t": "위치",
-      "q": "빈칸에 알맞은 말은?\\nA: ___ is my bag?\\nB: It's on the chair.",
+      "q": "빈칸에 알맞은 말은?\nA: ___ is my bag?\nB: It's on the chair.",
       "c": [
         "Where",
         "What",
@@ -1108,7 +1108,7 @@
     },
     {
       "t": "운동",
-      "q": "대화에서 두 사람이 함께 할 운동은?\\nA: Let's play basketball.\\nB: Sounds good.",
+      "q": "대화에서 두 사람이 함께 할 운동은?\nA: Let's play basketball.\nB: Sounds good.",
       "c": [
         "야구",
         "축구",
@@ -1134,7 +1134,7 @@
     },
     {
       "t": "운동",
-      "q": "빈칸에 알맞은 말은?\\nLet's ___ baseball.",
+      "q": "빈칸에 알맞은 말은?\nLet's ___ baseball.",
       "c": [
         "go",
         "swim",

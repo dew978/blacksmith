@@ -301,7 +301,7 @@
     },
     {
       "t": "시각",
-      "q": "대화에서 지금 시각은?\\nA: What time is it?\\nB: It's nine thirty.",
+      "q": "대화에서 지금 시각은?\nA: What time is it?\nB: It's nine thirty.",
       "c": [
         "9시 13분",
         "9시 30분",
@@ -327,7 +327,7 @@
     },
     {
       "t": "시각",
-      "q": "대화에서 지금 할 일은?\\nA: It's eight o'clock.\\nB: It's time for school.",
+      "q": "대화에서 지금 할 일은?\nA: It's eight o'clock.\nB: It's time for school.",
       "c": [
         "점심 먹기",
         "잠자기",
@@ -379,7 +379,7 @@
     },
     {
       "t": "시각",
-      "q": "빈칸에 알맞은 말은?\\nA: What ___ is it?\\nB: It's ten o'clock.",
+      "q": "빈칸에 알맞은 말은?\nA: What ___ is it?\nB: It's ten o'clock.",
       "c": [
         "day",
         "color",
@@ -431,7 +431,7 @@
     },
     {
       "t": "시각",
-      "q": "대화에서 B가 지금 해야 할 일은?\\nA: Wake up! It's seven.\\nB: Okay, Mom.",
+      "q": "대화에서 B가 지금 해야 할 일은?\nA: Wake up! It's seven.\nB: Okay, Mom.",
       "c": [
         "잠자기",
         "저녁 먹기",
@@ -522,7 +522,7 @@
     },
     {
       "t": "옷 입기",
-      "q": "빈칸에 알맞은 말은?\\nIt's cold. Put ___ your gloves.",
+      "q": "빈칸에 알맞은 말은?\nIt's cold. Put ___ your gloves.",
       "c": [
         "on",
         "off",
@@ -535,7 +535,7 @@
     },
     {
       "t": "옷 입기",
-      "q": "대화에서 B가 입을 옷은?\\nA: It's cold. Put on your coat.\\nB: Okay, Mom.",
+      "q": "대화에서 B가 입을 옷은?\nA: It's cold. Put on your coat.\nB: Okay, Mom.",
       "c": [
         "치마",
         "반바지",
@@ -652,7 +652,7 @@
     },
     {
       "t": "허락 구하기",
-      "q": "빈칸에 알맞은 말은?\\nA: ___ I take a picture?\\nB: Sure.",
+      "q": "빈칸에 알맞은 말은?\nA: ___ I take a picture?\nB: Sure.",
       "c": [
         "Do",
         "Can",
@@ -665,7 +665,7 @@
     },
     {
       "t": "허락 구하기",
-      "q": "대화에서 B의 대답의 뜻은?\\nA: Can I eat this cake?\\nB: Sorry, you can't.",
+      "q": "대화에서 B의 대답의 뜻은?\nA: Can I eat this cake?\nB: Sorry, you can't.",
       "c": [
         "먹어도 된다",
         "케이크가 맛있다",
@@ -730,7 +730,7 @@
     },
     {
       "t": "허락 구하기",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: Can I play outside?\\nB: ___ It's raining.",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Can I play outside?\nB: ___ It's raining.",
       "c": [
         "Sorry, you can't.",
         "Sure, go ahead.",
@@ -795,7 +795,7 @@
     },
     {
       "t": "맛",
-      "q": "대화에서 B는 음식이 어떻다고 했나요?\\nA: How is it?\\nB: It's delicious. Thank you.",
+      "q": "대화에서 B는 음식이 어떻다고 했나요?\nA: How is it?\nB: It's delicious. Thank you.",
       "c": [
         "맵다",
         "짜다",
@@ -808,7 +808,7 @@
     },
     {
       "t": "음식 권하기",
-      "q": "대화에서 B가 더 먹지 않는 이유는?\\nA: Do you want more rice?\\nB: No, thanks. I'm full.",
+      "q": "대화에서 B가 더 먹지 않는 이유는?\nA: Do you want more rice?\nB: No, thanks. I'm full.",
       "c": [
         "배가 고파서",
         "배가 불러서",
@@ -834,7 +834,7 @@
     },
     {
       "t": "음식 권하기",
-      "q": "빈칸에 알맞은 말은?\\nA: Do you want some cookies?\\nB: Yes, ___.",
+      "q": "빈칸에 알맞은 말은?\nA: Do you want some cookies?\nB: Yes, ___.",
       "c": [
         "please",
         "sorry",
@@ -925,7 +925,7 @@
     },
     {
       "t": "지금 하는 일",
-      "q": "빈칸에 알맞은 말은?\\nA: What are you doing?\\nB: I'm ___ a picture.",
+      "q": "빈칸에 알맞은 말은?\nA: What are you doing?\nB: I'm ___ a picture.",
       "c": [
         "draw",
         "drawing",
@@ -938,7 +938,7 @@
     },
     {
       "t": "지금 하는 일",
-      "q": "대화에서 B가 하고 있는 일은?\\nA: What are you doing?\\nB: I'm doing my homework.",
+      "q": "대화에서 B가 하고 있는 일은?\nA: What are you doing?\nB: I'm doing my homework.",
       "c": [
         "설거지하기",
         "청소하기",
@@ -1003,7 +1003,7 @@
     },
     {
       "t": "지금 하는 일",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: Is she reading a book?\\nB: No, ___. She's singing.",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Is she reading a book?\nB: No, ___. She's singing.",
       "c": [
         "he isn't",
         "I'm not",
@@ -1081,7 +1081,7 @@
     },
     {
       "t": "물건 값",
-      "q": "대화에서 연필의 값은?\\nA: How much is this pencil?\\nB: It's one thousand won.",
+      "q": "대화에서 연필의 값은?\nA: How much is this pencil?\nB: It's one thousand won.",
       "c": [
         "100원",
         "1,000원",
@@ -1133,7 +1133,7 @@
     },
     {
       "t": "물건 값",
-      "q": "빈칸에 알맞은 말은?\\nA: How ___ is this cap?\\nB: It's three thousand won.",
+      "q": "빈칸에 알맞은 말은?\nA: How ___ is this cap?\nB: It's three thousand won.",
       "c": [
         "many",
         "old",
@@ -1172,7 +1172,7 @@
     },
     {
       "t": "가게에서",
-      "q": "대화에서 B가 사려는 물건은?\\nA: Can I help you?\\nB: Yes, please. I want a ruler.",
+      "q": "대화에서 B가 사려는 물건은?\nA: Can I help you?\nB: Yes, please. I want a ruler.",
       "c": [
         "지우개",
         "공책",
@@ -1185,7 +1185,7 @@
     },
     {
       "t": "물건 값",
-      "q": "대화에서 양말의 값은?\\nA: How much are these socks?\\nB: They're four thousand won.",
+      "q": "대화에서 양말의 값은?\nA: How much are these socks?\nB: They're four thousand won.",
       "c": [
         "400원",
         "4,000원",
@@ -1276,7 +1276,7 @@
     },
     {
       "t": "요일",
-      "q": "대화에서 B가 화요일에 하는 일은?\\nA: What do you do on Tuesdays?\\nB: I play soccer.",
+      "q": "대화에서 B가 화요일에 하는 일은?\nA: What do you do on Tuesdays?\nB: I play soccer.",
       "c": [
         "수영을 한다",
         "축구를 한다",
@@ -1341,7 +1341,7 @@
     },
     {
       "t": "요일",
-      "q": "대화에서 오늘은 무슨 요일인가요?\\nA: What day is it today?\\nB: It's Saturday. Let's go to the park.",
+      "q": "대화에서 오늘은 무슨 요일인가요?\nA: What day is it today?\nB: It's Saturday. Let's go to the park.",
       "c": [
         "일요일",
         "토요일",

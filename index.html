@@ -87,19 +87,19 @@
     </div>
   </div>
   <!-- 2단계: 학년·학기·과목 -->
-  <div class="title-inner select hidden" id="title-select">
-    <h2>무엇을 복습할까?</h2>
+  <div class="title-select hidden" id="title-select">
+    <button id="btn-back" class="link back">← 처음 화면</button>
+    <h2 class="forge-sub">무엇을 벼릴까</h2>
     <div class="pick"><div class="lbl">학년</div><div class="seg" id="sel-grade"></div></div>
     <div class="pick"><div class="lbl">학기</div><div class="seg" id="sel-sem"></div></div>
-    <div class="pick"><div class="lbl">과목</div><div class="seg" id="sel-subj"></div></div>
+    <div class="pick"><div class="lbl">과목</div><div class="seg subj" id="sel-subj"></div></div>
     <div class="sel-info" id="sel-info"></div>
-    <label class="opt"><input type="checkbox" id="opt-timer"> 문제마다 20초 제한</label>
-    <div class="title-btns">
-      <button id="btn-go" class="primary big">대장간 문 열기</button>
-      <div class="row">
-        <button id="btn-back" class="ghost small">← 뒤로</button>
-        <button id="btn-qset" class="ghost small">내 문제 세트</button>
-      </div>
+    <div class="sel-actions">
+      <button id="btn-go" class="forge-btn">대장간 문 열기</button>
+      <nav class="home-links">
+        <label class="link check"><input type="checkbox" id="opt-timer"> 문제마다 20초</label>
+        <button id="btn-qset" class="link">내 문제 세트</button>
+      </nav>
     </div>
     <p class="qinfo" id="qinfo"></p>
   </div>

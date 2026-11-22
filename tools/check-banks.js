@@ -26,6 +26,8 @@ for (const code of expected) {
   qs.forEach((q, i) => {
     const n = i + 1;
     if (!q.q || !q.e || !q.t) errs.push(`#${n} 빈 칸`);
+    // 줄바꿈은 실제 줄바꿈이어야 한다 (문자 그대로의 "\n"이 화면에 보이면 안 됨)
+    if ([q.q, q.e, ...(q.c || [])].some((s) => /\\n/.test(String(s)))) errs.push(`#${n} 문자 그대로의 \\n`);
     if (!Array.isArray(q.c) || q.c.length !== 4) errs.push(`#${n} 보기 ${q.c && q.c.length}개`);
     else if (new Set(q.c.map((x) => String(x).trim())).size !== 4) errs.push(`#${n} 보기 중복`);
     if (!(q.a >= 0 && q.a <= 3 && Number.isInteger(q.a))) errs.push(`#${n} 정답 번호 ${q.a}`);

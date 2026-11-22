@@ -314,7 +314,7 @@
     },
     {
       "t": "지난 경험",
-      "q": "대화에서 B가 어제 한 일은?\\nA: What did you do yesterday?\\nB: I made a kite with my brother.",
+      "q": "대화에서 B가 어제 한 일은?\nA: What did you do yesterday?\nB: I made a kite with my brother.",
       "c": [
         "남자 형제와 연 만들기",
         "남자 형제와 연 날리기",
@@ -340,7 +340,7 @@
     },
     {
       "t": "과거형",
-      "q": "빈칸에 알맞은 말은?\\nI ___ a big fish last week.",
+      "q": "빈칸에 알맞은 말은?\nI ___ a big fish last week.",
       "c": [
         "caught",
         "catch",
@@ -366,7 +366,7 @@
     },
     {
       "t": "지난 경험",
-      "q": "글쓴이가 도서관에서 한 일은?\\nYesterday, I went to the library. I read three books.",
+      "q": "글쓴이가 도서관에서 한 일은?\nYesterday, I went to the library. I read three books.",
       "c": [
         "책 세 권 사기",
         "숙제하기",
@@ -418,7 +418,7 @@
     },
     {
       "t": "일기 쓰기",
-      "q": "일기의 빈칸에 알맞은 말은?\\nLast Saturday, I ___ to the zoo. I saw a tiger.",
+      "q": "일기의 빈칸에 알맞은 말은?\nLast Saturday, I ___ to the zoo. I saw a tiger.",
       "c": [
         "went",
         "go",
@@ -483,7 +483,7 @@
     },
     {
       "t": "생일",
-      "q": "대화에서 B의 생일은?\\nA: When is your birthday?\\nB: It's November 3rd.",
+      "q": "대화에서 B의 생일은?\nA: When is your birthday?\nB: It's November 3rd.",
       "c": [
         "10월 3일",
         "11월 3일",
@@ -509,7 +509,7 @@
     },
     {
       "t": "생일",
-      "q": "빈칸에 알맞은 말은?\\nA: ___ is your birthday?\\nB: It's April 9th.",
+      "q": "빈칸에 알맞은 말은?\nA: ___ is your birthday?\nB: It's April 9th.",
       "c": [
         "Where",
         "Who",
@@ -548,7 +548,7 @@
     },
     {
       "t": "생일",
-      "q": "초대장에서 알 수 있는 것은?\\nCome to my birthday party! It's on Saturday, June 10th.",
+      "q": "초대장에서 알 수 있는 것은?\nCome to my birthday party! It's on Saturday, June 10th.",
       "c": [
         "파티는 7월 10일이다",
         "파티는 일요일이다",
@@ -665,7 +665,7 @@
     },
     {
       "t": "환경 보호",
-      "q": "대화에서 B의 제안은?\\nA: How can we save energy?\\nB: We can turn off the computer.",
+      "q": "대화에서 B의 제안은?\nA: How can we save energy?\nB: We can turn off the computer.",
       "c": [
         "컴퓨터 켜기",
         "불 켜 두기",
@@ -678,7 +678,7 @@
     },
     {
       "t": "환경 보호",
-      "q": "빈칸에 알맞은 말은?\\nHow about ___ the bus to school?",
+      "q": "빈칸에 알맞은 말은?\nHow about ___ the bus to school?",
       "c": [
         "take",
         "took",
@@ -704,7 +704,7 @@
     },
     {
       "t": "환경 보호",
-      "q": "글쓴이가 하는 일이 아닌 것은?\\nI recycle cans. I turn off the water. I walk to school.",
+      "q": "글쓴이가 하는 일이 아닌 것은?\nI recycle cans. I turn off the water. I walk to school.",
       "c": [
         "캔 재활용하기",
         "물 잠그기",
@@ -808,7 +808,7 @@
     },
     {
       "t": "비교하기",
-      "q": "대화에서 더 빠른 것은?\\nA: Which is faster, a horse or a turtle?\\nB: A horse is faster.",
+      "q": "대화에서 더 빠른 것은?\nA: Which is faster, a horse or a turtle?\nB: A horse is faster.",
       "c": [
         "말",
         "거북",
@@ -821,7 +821,7 @@
     },
     {
       "t": "비교하기",
-      "q": "빈칸에 알맞은 말은?\\nMy bag is ___ than your bag.",
+      "q": "빈칸에 알맞은 말은?\nMy bag is ___ than your bag.",
       "c": [
         "heavy",
         "heaviest",
@@ -860,7 +860,7 @@
     },
     {
       "t": "비교하기",
-      "q": "가장 나이가 많은 사람은?\\nI'm 12. My sister is 15. My brother is older than my sister.",
+      "q": "가장 나이가 많은 사람은?\nI'm 12. My sister is 15. My brother is older than my sister.",
       "c": [
         "여자 형제",
         "글쓴이",
@@ -899,7 +899,7 @@
     },
     {
       "t": "비교하기",
-      "q": "빈칸에 알맞은 말은?\\nA: Who is stronger, you or your dad?\\nB: My dad is ___.",
+      "q": "빈칸에 알맞은 말은?\nA: Who is stronger, you or your dad?\nB: My dad is ___.",
       "c": [
         "strong",
         "stronger",
@@ -912,7 +912,7 @@
     },
     {
       "t": "비교하기",
-      "q": "빈칸에 알맞은 말은?\\nAn apple is ___ than a watermelon.",
+      "q": "빈칸에 알맞은 말은?\nAn apple is ___ than a watermelon.",
       "c": [
         "bigger",
         "longer",
@@ -964,7 +964,7 @@
     },
     {
       "t": "계절",
-      "q": "대화에서 B가 좋아하는 계절과 이유는?\\nA: What's your favorite season?\\nB: Spring. Because I can see many flowers.",
+      "q": "대화에서 B가 좋아하는 계절과 이유는?\nA: What's your favorite season?\nB: Spring. Because I can see many flowers.",
       "c": [
         "봄, 꽃을 많이 볼 수 있어서",
         "여름, 수영을 할 수 있어서",
@@ -977,7 +977,7 @@
     },
     {
       "t": "이유 말하기",
-      "q": "빈칸에 알맞은 말은?\\nA: Why do you like summer?\\nB: ___ I can swim in the sea.",
+      "q": "빈칸에 알맞은 말은?\nA: Why do you like summer?\nB: ___ I can swim in the sea.",
       "c": [
         "Why",
         "So",
@@ -1029,7 +1029,7 @@
     },
     {
       "t": "계절",
-      "q": "글쓴이가 겨울에 하는 일은?\\nI like winter. I go skiing with my family.",
+      "q": "글쓴이가 겨울에 하는 일은?\nI like winter. I go skiing with my family.",
       "c": [
         "가족과 수영하기",
         "혼자 눈사람 만들기",
@@ -1120,7 +1120,7 @@
     },
     {
       "t": "충고하기",
-      "q": "빈칸에 알맞은 말은?\\nYou should ___ your seat belt.",
+      "q": "빈칸에 알맞은 말은?\nYou should ___ your seat belt.",
       "c": [
         "wear",
         "wore",
@@ -1146,7 +1146,7 @@
     },
     {
       "t": "충고하기",
-      "q": "대화에서 A의 충고는?\\nA: You should not play with fire.\\nB: Okay, I see.",
+      "q": "대화에서 A의 충고는?\nA: You should not play with fire.\nB: Okay, I see.",
       "c": [
         "물을 아껴라",
         "헬멧을 써라",
@@ -1237,7 +1237,7 @@
     },
     {
       "t": "충고하기",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: I'm going to ride my bike.\\nB: ___",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I'm going to ride my bike.\nB: ___",
       "c": [
         "You should eat breakfast.",
         "Happy birthday!",
@@ -1276,7 +1276,7 @@
     },
     {
       "t": "장래 희망",
-      "q": "대화에서 B의 장래 희망은?\\nA: What do you want to be?\\nB: I want to be a police officer.",
+      "q": "대화에서 B의 장래 희망은?\nA: What do you want to be?\nB: I want to be a police officer.",
       "c": [
         "경찰관",
         "소방관",
@@ -1289,7 +1289,7 @@
     },
     {
       "t": "장래 희망",
-      "q": "빈칸에 알맞은 말은?\\nA: What do you want to be?\\nB: I want to ___ a cook.",
+      "q": "빈칸에 알맞은 말은?\nA: What do you want to be?\nB: I want to ___ a cook.",
       "c": [
         "am",
         "is",
@@ -1328,7 +1328,7 @@
     },
     {
       "t": "장래 희망",
-      "q": "글쓴이가 되고 싶은 것은?\\nI like animals. I want to be an animal doctor.",
+      "q": "글쓴이가 되고 싶은 것은?\nI like animals. I want to be an animal doctor.",
       "c": [
         "요리사",
         "과학자",

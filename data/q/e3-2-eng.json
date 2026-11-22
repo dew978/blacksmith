@@ -317,7 +317,7 @@
     },
     {
       "t": "색깔",
-      "q": "대화에서 모자의 색깔은?\\nA: What color is your cap?\\nB: It's black.",
+      "q": "대화에서 모자의 색깔은?\nA: What color is your cap?\nB: It's black.",
       "c": [
         "흰색",
         "검은색",
@@ -369,7 +369,7 @@
     },
     {
       "t": "색깔",
-      "q": "빈칸에 알맞은 말은?\\nA: What ___ is it?\\nB: It's purple.",
+      "q": "빈칸에 알맞은 말은?\nA: What ___ is it?\nB: It's purple.",
       "c": [
         "name",
         "color",
@@ -447,7 +447,7 @@
     },
     {
       "t": "감사하기",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: Here you are.\\nB: ___",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Here you are.\nB: ___",
       "c": [
         "I'm sorry.",
         "Watch out!",
@@ -538,7 +538,7 @@
     },
     {
       "t": "제안하기",
-      "q": "대화에서 두 사람이 할 일은?\\nA: Let's ride bikes.\\nB: Okay!",
+      "q": "대화에서 두 사람이 할 일은?\nA: Let's ride bikes.\nB: Okay!",
       "c": [
         "수영하기",
         "줄넘기",
@@ -551,7 +551,7 @@
     },
     {
       "t": "제안하기",
-      "q": "빈칸에 알맞은 말은?\\n___ play baseball.",
+      "q": "빈칸에 알맞은 말은?\n___ play baseball.",
       "c": [
         "Can",
         "Let's",
@@ -564,7 +564,7 @@
     },
     {
       "t": "제안 거절",
-      "q": "대화에서 B의 대답은 어떤 뜻인가요?\\nA: Let's dance.\\nB: Sorry, I can't.",
+      "q": "대화에서 B의 대답은 어떤 뜻인가요?\nA: Let's dance.\nB: Sorry, I can't.",
       "c": [
         "제안을 거절한다",
         "좋다고 한다",
@@ -642,7 +642,7 @@
     },
     {
       "t": "갖고 있기",
-      "q": "빈칸에 알맞은 말은?\\nA: Do you ___ a glue stick?\\nB: Yes, I do.",
+      "q": "빈칸에 알맞은 말은?\nA: Do you ___ a glue stick?\nB: Yes, I do.",
       "c": [
         "is",
         "are",
@@ -668,7 +668,7 @@
     },
     {
       "t": "갖고 있기",
-      "q": "대화에서 B가 가진 것은?\\nA: Do you have scissors?\\nB: No, I don't. I have a ruler.",
+      "q": "대화에서 B가 가진 것은?\nA: Do you have scissors?\nB: No, I don't. I have a ruler.",
       "c": [
         "가위",
         "풀",
@@ -733,7 +733,7 @@
     },
     {
       "t": "나이",
-      "q": "대화에서 B의 나이는?\\nA: How old are you?\\nB: I'm seven.",
+      "q": "대화에서 B의 나이는?\nA: How old are you?\nB: I'm seven.",
       "c": [
         "6살",
         "8살",
@@ -746,7 +746,7 @@
     },
     {
       "t": "나이",
-      "q": "빈칸에 알맞은 말은?\\nA: How old are you?\\nB: I'm ten ___ old.",
+      "q": "빈칸에 알맞은 말은?\nA: How old are you?\nB: I'm ten ___ old.",
       "c": [
         "apples",
         "names",
@@ -954,7 +954,7 @@
     },
     {
       "t": "가족 소개",
-      "q": "대화에서 그녀는 누구인가요?\\nA: Who is she?\\nB: She's my grandma.",
+      "q": "대화에서 그녀는 누구인가요?\nA: Who is she?\nB: She's my grandma.",
       "c": [
         "엄마",
         "이모",
@@ -967,7 +967,7 @@
     },
     {
       "t": "가족 소개",
-      "q": "빈칸에 알맞은 말은?\\nA: Who is she?\\nB: ___ my sister.",
+      "q": "빈칸에 알맞은 말은?\nA: Who is she?\nB: ___ my sister.",
       "c": [
         "She's",
         "He's",
@@ -1058,7 +1058,7 @@
     },
     {
       "t": "날씨",
-      "q": "대화에서 두 사람이 할 일은?\\nA: How's the weather?\\nB: It's snowy. Let's make a snowman.",
+      "q": "대화에서 두 사람이 할 일은?\nA: How's the weather?\nB: It's snowy. Let's make a snowman.",
       "c": [
         "수영하기",
         "우산 쓰기",
@@ -1084,7 +1084,7 @@
     },
     {
       "t": "날씨",
-      "q": "빈칸에 알맞은 말은?\\nA: How's the weather?\\nB: It's ___.",
+      "q": "빈칸에 알맞은 말은?\nA: How's the weather?\nB: It's ___.",
       "c": [
         "sunny",
         "nine",
@@ -1305,7 +1305,7 @@
     },
     {
       "t": "수 세기",
-      "q": "대화에서 연필은 몇 자루인가요?\\nA: How many pencils?\\nB: Eight pencils.",
+      "q": "대화에서 연필은 몇 자루인가요?\nA: How many pencils?\nB: Eight pencils.",
       "c": [
         "6자루",
         "8자루",

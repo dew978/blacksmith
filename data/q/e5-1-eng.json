@@ -314,7 +314,7 @@
     },
     {
       "t": "안부 묻기",
-      "q": "대화에서 B의 상태는?\\nA: How's it going, Jiho?\\nB: Not so good. I'm tired.",
+      "q": "대화에서 B의 상태는?\nA: How's it going, Jiho?\nB: Not so good. I'm tired.",
       "c": [
         "아주 좋다",
         "배고프다",
@@ -340,7 +340,7 @@
     },
     {
       "t": "안부 묻기",
-      "q": "빈칸에 알맞은 말은?\\nA: How's it ___?\\nB: Great. And you?",
+      "q": "빈칸에 알맞은 말은?\nA: How's it ___?\nB: Great. And you?",
       "c": [
         "doing",
         "coming",
@@ -470,7 +470,7 @@
     },
     {
       "t": "출신 나라",
-      "q": "대화에서 Kate의 출신 나라는?\\nA: Where are you from, Kate?\\nB: I'm from Australia.",
+      "q": "대화에서 Kate의 출신 나라는?\nA: Where are you from, Kate?\nB: I'm from Australia.",
       "c": [
         "캐나다",
         "영국",
@@ -483,7 +483,7 @@
     },
     {
       "t": "출신 나라",
-      "q": "빈칸에 알맞은 말은?\\nA: Where ___ you from?\\nB: I'm from Mexico.",
+      "q": "빈칸에 알맞은 말은?\nA: Where ___ you from?\nB: I'm from Mexico.",
       "c": [
         "are",
         "do",
@@ -535,7 +535,7 @@
     },
     {
       "t": "출신 나라",
-      "q": "글에서 알 수 있는 것은?\\nHello, I'm Maria. I'm from Spain. I'm eleven years old.",
+      "q": "글에서 알 수 있는 것은?\nHello, I'm Maria. I'm from Spain. I'm eleven years old.",
       "c": [
         "Maria는 스페인에서 왔다",
         "Maria는 열두 살이다",
@@ -613,7 +613,7 @@
     },
     {
       "t": "물건의 주인",
-      "q": "대화에서 지우개의 주인은?\\nA: Whose eraser is this?\\nB: It's Sora's.",
+      "q": "대화에서 지우개의 주인은?\nA: Whose eraser is this?\nB: It's Sora's.",
       "c": [
         "Jina",
         "Minsu",
@@ -626,7 +626,7 @@
     },
     {
       "t": "물건의 주인",
-      "q": "빈칸에 알맞은 말은?\\nA: Whose ___ is this?\\nB: It's my brother's.",
+      "q": "빈칸에 알맞은 말은?\nA: Whose ___ is this?\nB: It's my brother's.",
       "c": [
         "is",
         "who",
@@ -691,7 +691,7 @@
     },
     {
       "t": "물건의 주인",
-      "q": "분실물 쪽지의 빈칸에 알맞은 말은?\\nI found a blue umbrella. ___ is it?",
+      "q": "분실물 쪽지의 빈칸에 알맞은 말은?\nI found a blue umbrella. ___ is it?",
       "c": [
         "Whose",
         "Who",
@@ -743,7 +743,7 @@
     },
     {
       "t": "좋아하는 과목",
-      "q": "대화에서 B가 좋아하는 과목은?\\nA: What's your favorite subject?\\nB: I like music. I love singing.",
+      "q": "대화에서 B가 좋아하는 과목은?\nA: What's your favorite subject?\nB: I like music. I love singing.",
       "c": [
         "음악",
         "체육",
@@ -795,7 +795,7 @@
     },
     {
       "t": "이유 말하기",
-      "q": "빈칸에 알맞은 말은?\\nA: Why do you like science?\\nB: ___ it's fun.",
+      "q": "빈칸에 알맞은 말은?\nA: Why do you like science?\nB: ___ it's fun.",
       "c": [
         "Because",
         "Why",
@@ -834,7 +834,7 @@
     },
     {
       "t": "좋아하는 과목",
-      "q": "글에서 Jake가 좋아하는 과목과 이유는?\\nI'm Jake. My favorite subject is art. I like painting.",
+      "q": "글에서 Jake가 좋아하는 과목과 이유는?\nI'm Jake. My favorite subject is art. I like painting.",
       "c": [
         "미술, 만들기를 잘해서",
         "미술, 그림 그리기를 좋아해서",
@@ -860,7 +860,7 @@
     },
     {
       "t": "쓰기",
-      "q": "글의 빈칸에 알맞은 말은?\\nMy favorite ___ is P.E. I like sports.",
+      "q": "글의 빈칸에 알맞은 말은?\nMy favorite ___ is P.E. I like sports.",
       "c": [
         "food",
         "country",
@@ -886,7 +886,7 @@
     },
     {
       "t": "음식 주문",
-      "q": "빈칸에 알맞은 말은?\\nA: May I take your order?\\nB: I'd ___ fried rice, please.",
+      "q": "빈칸에 알맞은 말은?\nA: May I take your order?\nB: I'd ___ fried rice, please.",
       "c": [
         "likes",
         "like",
@@ -925,7 +925,7 @@
     },
     {
       "t": "음식 주문",
-      "q": "대화에서 B가 주문한 것은?\\nA: May I take your order?\\nB: I'd like a hamburger and orange juice, please.",
+      "q": "대화에서 B가 주문한 것은?\nA: May I take your order?\nB: I'd like a hamburger and orange juice, please.",
       "c": [
         "피자와 콜라",
         "햄버거와 우유",
@@ -938,7 +938,7 @@
     },
     {
       "t": "맛",
-      "q": "대화에서 B가 수프에 대해 한 말은?\\nA: How's the soup?\\nB: It's a little salty.",
+      "q": "대화에서 B가 수프에 대해 한 말은?\nA: How's the soup?\nB: It's a little salty.",
       "c": [
         "아주 맵다",
         "너무 달다",
@@ -1003,7 +1003,7 @@
     },
     {
       "t": "맛",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: How's the pizza?\\nB: ___",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How's the pizza?\nB: ___",
       "c": [
         "It's delicious.",
         "I'd like pizza.",
@@ -1081,7 +1081,7 @@
     },
     {
       "t": "물건 값",
-      "q": "대화에서 가방의 값은?\\nA: How much is this bag?\\nB: It's twenty thousand won.",
+      "q": "대화에서 가방의 값은?\nA: How much is this bag?\nB: It's twenty thousand won.",
       "c": [
         "2,000원",
         "12,000원",
@@ -1107,7 +1107,7 @@
     },
     {
       "t": "물건 값",
-      "q": "빈칸에 알맞은 말은?\\nA: How much ___ these socks?\\nB: They're three thousand won.",
+      "q": "빈칸에 알맞은 말은?\nA: How much ___ these socks?\nB: They're three thousand won.",
       "c": [
         "are",
         "is",
@@ -1159,7 +1159,7 @@
     },
     {
       "t": "물건 사기",
-      "q": "대화에서 B가 바지를 사지 않는 이유는?\\nA: How about these pants?\\nB: They're too small for me.",
+      "q": "대화에서 B가 바지를 사지 않는 이유는?\nA: How about these pants?\nB: They're too small for me.",
       "c": [
         "너무 작아서",
         "너무 비싸서",
@@ -1211,7 +1211,7 @@
     },
     {
       "t": "앞으로 할 일",
-      "q": "빈칸에 알맞은 말은?\\nA: What will you do tomorrow?\\nB: I ___ read a book.",
+      "q": "빈칸에 알맞은 말은?\nA: What will you do tomorrow?\nB: I ___ read a book.",
       "c": [
         "will",
         "did",
@@ -1224,7 +1224,7 @@
     },
     {
       "t": "앞으로 할 일",
-      "q": "대화에서 B가 이번 주말에 할 일은?\\nA: What will you do this weekend?\\nB: I will learn to swim.",
+      "q": "대화에서 B가 이번 주말에 할 일은?\nA: What will you do this weekend?\nB: I will learn to swim.",
       "c": [
         "책 읽기",
         "수영 배우기",
@@ -1302,7 +1302,7 @@
     },
     {
       "t": "일의 순서",
-      "q": "방 청소 다음에 할 일은?\\nTomorrow, I will clean my room. Then I will play badminton.",
+      "q": "방 청소 다음에 할 일은?\nTomorrow, I will clean my room. Then I will play badminton.",
       "c": [
         "방 청소하기",
         "배드민턴 치기",

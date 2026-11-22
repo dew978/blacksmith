@@ -1045,7 +1045,7 @@ function openHowTo(back) {
 }
 function updateQInfo() {
   const nw = Object.keys(WRONGS).length;
-  $('#qinfo').textContent = `문제 ${QUESTIONS.length}개 · 오답 노트 ${nw}개${settings.reviewOnly ? ' · 오답 복습 모드' : ''}`;
+  $('#qinfo').textContent = nw ? `오답 노트에 ${nw}문제${settings.reviewOnly ? ' · 오답만 복습' : ''}` : '';
 }
 
 // ───────── 1인칭 이동 ─────────
@@ -1248,7 +1248,7 @@ $('#btn-howto').onclick = () => openHowTo();
 $('#opt-timer').checked = settings.timer;
 $('#opt-timer').onchange = (e) => { settings.timer = e.target.checked; store.set('jf_settings', settings); };
 $('#btn-start').onclick = () => { sfx.init(); sfx.play('ui'); showSelect(); };
-$('#btn-back').onclick = () => { $('#title-select').classList.add('hidden'); $('#title-home').classList.remove('hidden'); };
+$('#btn-back').onclick = () => { sfx.play('ui'); $('#title-select').classList.add('hidden'); $('#title-home').classList.remove('hidden'); };
 $('#btn-go').onclick = async () => {
   sfx.init();
   const ok = await loadBank();
@@ -1260,7 +1260,8 @@ $('#btn-go').onclick = async () => {
 };
 // 학년·학기·과목 고르기
 function showSelect() {
-  $('#title-home').classList.add('hidden'); $('#title-select').classList.remove('hidden');
+  $('#title-home').classList.add('hidden');
+  const sel = $('#title-select'); sel.classList.add('hidden'); void sel.offsetWidth; sel.classList.remove('hidden');
   renderSelect();
 }
 function renderSelect() {
@@ -1312,7 +1313,9 @@ async function loadBank() {
     try {
       const code = bankCode(SEL.grade, SEL.sem, SEL.subj);
       const b = await fetchBank(code);
-      let list = b.questions.map((q) => ({ t: q.t, q: q.q, c: q.c, a: q.a, e: q.e }));
+      // 데이터에 문자 그대로의 "\n"(역슬래시+n)이 남아 있어도 실제 줄바꿈으로 보여 준다
+      const nl = (x) => String(x).replace(/\\+n/g, '\n');
+      let list = b.questions.map((q) => ({ t: q.t, q: nl(q.q), c: q.c, a: q.a, e: nl(q.e) }));
       // 수학은 문제 생성기로 판마다 새 문제를 넉넉히 섞는다
       if (SEL.subj === 'math') list = list.concat(await mathExtra(code.replace(/-math$/, ''), 150));
       QUESTIONS = withIds(list);

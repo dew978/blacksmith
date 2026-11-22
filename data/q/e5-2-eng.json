@@ -327,7 +327,7 @@
     },
     {
       "t": "지난 일",
-      "q": "대화에서 B가 지난 주말에 한 일은?\\nA: What did you do last weekend?\\nB: I went fishing with my dad.",
+      "q": "대화에서 B가 지난 주말에 한 일은?\nA: What did you do last weekend?\nB: I went fishing with my dad.",
       "c": [
         "아빠와 낚시를 갔다",
         "아빠와 캠핑을 갔다",
@@ -353,7 +353,7 @@
     },
     {
       "t": "지난 일",
-      "q": "빈칸에 알맞은 말은?\\nA: What did you do yesterday?\\nB: I ___ soccer.",
+      "q": "빈칸에 알맞은 말은?\nA: What did you do yesterday?\nB: I ___ soccer.",
       "c": [
         "play",
         "will play",
@@ -418,7 +418,7 @@
     },
     {
       "t": "일기 쓰기",
-      "q": "일기의 빈칸에 알맞은 말은?\\nSunday, June 2. Today I ___ my grandma.",
+      "q": "일기의 빈칸에 알맞은 말은?\nSunday, June 2. Today I ___ my grandma.",
       "c": [
         "visit",
         "visited",
@@ -496,7 +496,7 @@
     },
     {
       "t": "옷차림",
-      "q": "대화에서 Mina가 입고 있는 것은?\\nA: What is Mina wearing?\\nB: She's wearing a blue skirt.",
+      "q": "대화에서 Mina가 입고 있는 것은?\nA: What is Mina wearing?\nB: She's wearing a blue skirt.",
       "c": [
         "파란 바지",
         "빨간 치마",
@@ -509,7 +509,7 @@
     },
     {
       "t": "외모",
-      "q": "빈칸에 알맞은 말은?\\nShe ___ long straight hair.",
+      "q": "빈칸에 알맞은 말은?\nShe ___ long straight hair.",
       "c": [
         "have",
         "is",
@@ -548,7 +548,7 @@
     },
     {
       "t": "옷차림",
-      "q": "빈칸에 알맞은 말은?\\nHe is ___ a red cap.",
+      "q": "빈칸에 알맞은 말은?\nHe is ___ a red cap.",
       "c": [
         "wear",
         "wears",
@@ -561,7 +561,7 @@
     },
     {
       "t": "인물 묘사",
-      "q": "글 속 아빠의 모습은?\\nMy dad is wearing glasses. He has short hair.",
+      "q": "글 속 아빠의 모습은?\nMy dad is wearing glasses. He has short hair.",
       "c": [
         "안경을 쓰고 머리가 길다",
         "모자를 쓰고 머리가 짧다",
@@ -678,7 +678,7 @@
     },
     {
       "t": "길 묻기",
-      "q": "대화에서 서점의 위치는?\\nA: Where is the bookstore?\\nB: It's behind the school.",
+      "q": "대화에서 서점의 위치는?\nA: Where is the bookstore?\nB: It's behind the school.",
       "c": [
         "학교 앞",
         "학교 뒤",
@@ -691,7 +691,7 @@
     },
     {
       "t": "길 묻기",
-      "q": "빈칸에 알맞은 말은?\\nA: Excuse me. ___ is the park?\\nB: It's on your left.",
+      "q": "빈칸에 알맞은 말은?\nA: Excuse me. ___ is the park?\nB: It's on your left.",
       "c": [
         "Where",
         "What",
@@ -808,7 +808,7 @@
     },
     {
       "t": "전화하기",
-      "q": "대화에서 B는 누구인가요?\\nA: Hello. May I speak to Tom?\\nB: Speaking.",
+      "q": "대화에서 B는 누구인가요?\nA: Hello. May I speak to Tom?\nB: Speaking.",
       "c": [
         "Tom의 엄마",
         "Tom의 친구",
@@ -834,7 +834,7 @@
     },
     {
       "t": "전화하기",
-      "q": "빈칸에 알맞은 말은?\\nA: Hello. This ___ Jisu.\\nB: Hi, Jisu.",
+      "q": "빈칸에 알맞은 말은?\nA: Hello. This ___ Jisu.\nB: Hi, Jisu.",
       "c": [
         "am",
         "is",
@@ -847,7 +847,7 @@
     },
     {
       "t": "전화하기",
-      "q": "대화에서 알 수 있는 것은?\\nA: Can I speak to Ben?\\nB: Sorry, he's not here.",
+      "q": "대화에서 알 수 있는 것은?\nA: Can I speak to Ben?\nB: Sorry, he's not here.",
       "c": [
         "Ben은 지금 없다",
         "Ben이 전화를 받았다",
@@ -964,7 +964,7 @@
     },
     {
       "t": "하루 일과",
-      "q": "대화에서 B가 잠자리에 드는 시각은?\\nA: What time do you go to bed?\\nB: I go to bed at ten.",
+      "q": "대화에서 B가 잠자리에 드는 시각은?\nA: What time do you go to bed?\nB: I go to bed at ten.",
       "c": [
         "9시",
         "11시",
@@ -977,7 +977,7 @@
     },
     {
       "t": "하루 일과",
-      "q": "빈칸에 알맞은 말은?\\nA: What time ___ you go to school?\\nB: At eight thirty.",
+      "q": "빈칸에 알맞은 말은?\nA: What time ___ you go to school?\nB: At eight thirty.",
       "c": [
         "are",
         "is",
@@ -1003,7 +1003,7 @@
     },
     {
       "t": "하루 일과",
-      "q": "글쓴이가 수업이 끝난 뒤 하는 일은?\\nI go to school at 8:30. After school, I go to the swimming pool.",
+      "q": "글쓴이가 수업이 끝난 뒤 하는 일은?\nI go to school at 8:30. After school, I go to the swimming pool.",
       "c": [
         "수영장에 간다",
         "학교에 간다",
@@ -1120,7 +1120,7 @@
     },
     {
       "t": "집 안의 물건",
-      "q": "빈칸에 알맞은 말은?\\nThere ___ two beds in my room.",
+      "q": "빈칸에 알맞은 말은?\nThere ___ two beds in my room.",
       "c": [
         "is",
         "am",
@@ -1133,7 +1133,7 @@
     },
     {
       "t": "집 안의 물건",
-      "q": "대화에서 거실에 있는 것은?\\nA: What's in the living room?\\nB: There's a TV and a sofa.",
+      "q": "대화에서 거실에 있는 것은?\nA: What's in the living room?\nB: There's a TV and a sofa.",
       "c": [
         "침대와 책상",
         "식탁과 의자",
@@ -1185,7 +1185,7 @@
     },
     {
       "t": "집 안의 물건",
-      "q": "글에서 내 방에 없는 것은?\\nIn my room, there is a bed and a desk. There is a clock on the wall.",
+      "q": "글에서 내 방에 없는 것은?\nIn my room, there is a bed and a desk. There is a clock on the wall.",
       "c": [
         "침대",
         "책상",
@@ -1263,7 +1263,7 @@
     },
     {
       "t": "여가 활동",
-      "q": "대화에서 B가 여가 시간에 하는 일은?\\nA: What do you do in your free time?\\nB: I read comic books.",
+      "q": "대화에서 B가 여가 시간에 하는 일은?\nA: What do you do in your free time?\nB: I read comic books.",
       "c": [
         "만화책 읽기",
         "그림 그리기",
@@ -1276,7 +1276,7 @@
     },
     {
       "t": "여가 활동",
-      "q": "빈칸에 알맞은 말은?\\nA: What do you do in your free time?\\nB: I ___ the guitar.",
+      "q": "빈칸에 알맞은 말은?\nA: What do you do in your free time?\nB: I ___ the guitar.",
       "c": [
         "plays",
         "playing",
@@ -1354,7 +1354,7 @@
     },
     {
       "t": "여가 활동",
-      "q": "글쓴이가 주말마다 하는 일은?\\nOn weekends, I ride my bike in the park with my sister.",
+      "q": "글쓴이가 주말마다 하는 일은?\nOn weekends, I ride my bike in the park with my sister.",
       "c": [
         "공원에서 산책하기",
         "공원에서 자전거 타기",

@@ -314,7 +314,7 @@
     },
     {
       "t": "학년",
-      "q": "대화에서 B의 학년은?\\nA: What grade are you in?\\nB: I'm in the fourth grade.",
+      "q": "대화에서 B의 학년은?\nA: What grade are you in?\nB: I'm in the fourth grade.",
       "c": [
         "4학년",
         "3학년",
@@ -340,7 +340,7 @@
     },
     {
       "t": "동아리",
-      "q": "빈칸에 알맞은 말은?\\nA: What ___ are you in?\\nB: I'm in the science club.",
+      "q": "빈칸에 알맞은 말은?\nA: What ___ are you in?\nB: I'm in the science club.",
       "c": [
         "club",
         "grade",
@@ -366,7 +366,7 @@
     },
     {
       "t": "학년",
-      "q": "빈칸에 알맞은 말은?\\nI'm in the ___ grade. I'm twelve years old.",
+      "q": "빈칸에 알맞은 말은?\nI'm in the ___ grade. I'm twelve years old.",
       "c": [
         "six",
         "sixty",
@@ -379,7 +379,7 @@
     },
     {
       "t": "동아리",
-      "q": "대화에서 B가 미술 동아리에 있는 이유는?\\nA: Why are you in the art club?\\nB: Because I like painting.",
+      "q": "대화에서 B가 미술 동아리에 있는 이유는?\nA: Why are you in the art club?\nB: Because I like painting.",
       "c": [
         "춤추기를 좋아해서",
         "그림 그리기를 좋아해서",
@@ -418,7 +418,7 @@
     },
     {
       "t": "학년",
-      "q": "글에서 알 수 있는 것은?\\nI'm Hana. I'm in the sixth grade. I'm in the soccer club.",
+      "q": "글에서 알 수 있는 것은?\nI'm Hana. I'm in the sixth grade. I'm in the soccer club.",
       "c": [
         "Hana는 축구 동아리 회원이다",
         "Hana는 5학년이다",
@@ -496,7 +496,7 @@
     },
     {
       "t": "아픈 곳",
-      "q": "대화에서 B가 아픈 곳은?\\nA: What's wrong?\\nB: I have a headache.",
+      "q": "대화에서 B가 아픈 곳은?\nA: What's wrong?\nB: I have a headache.",
       "c": [
         "머리",
         "배",
@@ -509,7 +509,7 @@
     },
     {
       "t": "조언하기",
-      "q": "빈칸에 알맞은 말은?\\nYou ___ drink warm water.",
+      "q": "빈칸에 알맞은 말은?\nYou ___ drink warm water.",
       "c": [
         "are",
         "does",
@@ -561,7 +561,7 @@
     },
     {
       "t": "조언하기",
-      "q": "대화에서 A의 조언은?\\nA: You should take some medicine.\\nB: Okay, I will.",
+      "q": "대화에서 A의 조언은?\nA: You should take some medicine.\nB: Okay, I will.",
       "c": [
         "물을 마셔라",
         "푹 쉬어라",
@@ -639,7 +639,7 @@
     },
     {
       "t": "전통문화",
-      "q": "글에서 알 수 있는 것은?\\nSongpyeon is a Korean rice cake. People eat it on Chuseok.",
+      "q": "글에서 알 수 있는 것은?\nSongpyeon is a Korean rice cake. People eat it on Chuseok.",
       "c": [
         "송편은 설날에 먹는다",
         "송편은 추석에 먹는다",
@@ -678,7 +678,7 @@
     },
     {
       "t": "전통문화",
-      "q": "대화에서 B가 설명하는 것은?\\nA: What's hanbok?\\nB: It's Korean traditional clothes.",
+      "q": "대화에서 B가 설명하는 것은?\nA: What's hanbok?\nB: It's Korean traditional clothes.",
       "c": [
         "한국의 전통 음식",
         "한국의 전통 놀이",
@@ -704,7 +704,7 @@
     },
     {
       "t": "전통문화",
-      "q": "빈칸에 알맞은 말은?\\nA: Do you know ___ tteokguk?\\nB: Yes. We eat it on New Year's Day.",
+      "q": "빈칸에 알맞은 말은?\nA: Do you know ___ tteokguk?\nB: Yes. We eat it on New Year's Day.",
       "c": [
         "at",
         "to",
@@ -717,7 +717,7 @@
     },
     {
       "t": "전통문화",
-      "q": "글에서 한옥에 대해 알 수 있는 것은?\\nHanok is a Korean traditional house. It is warm in winter.",
+      "q": "글에서 한옥에 대해 알 수 있는 것은?\nHanok is a Korean traditional house. It is warm in winter.",
       "c": [
         "여름에 덥다",
         "현대식 집이다",
@@ -808,7 +808,7 @@
     },
     {
       "t": "음식 주문",
-      "q": "빈칸에 알맞은 말은?\\nA: What would you like?\\nB: I'd ___ a hamburger, please.",
+      "q": "빈칸에 알맞은 말은?\nA: What would you like?\nB: I'd ___ a hamburger, please.",
       "c": [
         "like",
         "likes",
@@ -821,7 +821,7 @@
     },
     {
       "t": "음식 주문",
-      "q": "대화에서 B가 주문한 음료는?\\nA: Would you like anything to drink?\\nB: Milk, please.",
+      "q": "대화에서 B가 주문한 음료는?\nA: Would you like anything to drink?\nB: Milk, please.",
       "c": [
         "물",
         "주스",
@@ -860,7 +860,7 @@
     },
     {
       "t": "맛",
-      "q": "대화에서 B의 생각은?\\nA: How's the ice cream?\\nB: It's too sweet for me.",
+      "q": "대화에서 B의 생각은?\nA: How's the ice cream?\nB: It's too sweet for me.",
       "c": [
         "너무 차갑다",
         "아주 맛있다",
@@ -951,7 +951,7 @@
     },
     {
       "t": "길 찾기",
-      "q": "대화에서 B가 알려 준 방법은?\\nA: How can I get to the zoo?\\nB: Take subway Line 4.",
+      "q": "대화에서 B가 알려 준 방법은?\nA: How can I get to the zoo?\nB: Take subway Line 4.",
       "c": [
         "버스 4번 타기",
         "지하철 4호선 타기",
@@ -964,7 +964,7 @@
     },
     {
       "t": "길 찾기",
-      "q": "빈칸에 알맞은 말은?\\nA: How can I ___ to the library?\\nB: Walk two blocks and turn right.",
+      "q": "빈칸에 알맞은 말은?\nA: How can I ___ to the library?\nB: Walk two blocks and turn right.",
       "c": [
         "get",
         "take",
@@ -1042,7 +1042,7 @@
     },
     {
       "t": "길 찾기",
-      "q": "대화의 빈칸에 알맞은 말은?\\nA: How can I get to the park?\\nB: ___",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How can I get to the park?\nB: ___",
       "c": [
         "Go straight and turn left.",
         "I like the park.",
@@ -1120,7 +1120,7 @@
     },
     {
       "t": "빈도",
-      "q": "대화에서 B가 수영하는 횟수는?\\nA: How often do you swim?\\nB: Twice a week.",
+      "q": "대화에서 B가 수영하는 횟수는?\nA: How often do you swim?\nB: Twice a week.",
       "c": [
         "일주일에 두 번",
         "일주일에 한 번",
@@ -1133,7 +1133,7 @@
     },
     {
       "t": "빈도",
-      "q": "빈칸에 알맞은 말은?\\nA: How ___ do you read books?\\nB: Every day.",
+      "q": "빈칸에 알맞은 말은?\nA: How ___ do you read books?\nB: Every day.",
       "c": [
         "much",
         "many",
@@ -1185,7 +1185,7 @@
     },
     {
       "t": "습관",
-      "q": "글쓴이가 매일 하는 일은?\\nI walk my dog every day. I clean my room once a week.",
+      "q": "글쓴이가 매일 하는 일은?\nI walk my dog every day. I clean my room once a week.",
       "c": [
         "방 청소하기",
         "수영하기",
@@ -1263,7 +1263,7 @@
     },
     {
       "t": "미래 계획",
-      "q": "빈칸에 알맞은 말은?\\nA: What are you going to do tomorrow?\\nB: I'm going to ___ my room.",
+      "q": "빈칸에 알맞은 말은?\nA: What are you going to do tomorrow?\nB: I'm going to ___ my room.",
       "c": [
         "cleaned",
         "clean",
@@ -1276,7 +1276,7 @@
     },
     {
       "t": "미래 계획",
-      "q": "대화에서 B가 이번 방학에 할 일은?\\nA: What are you going to do this vacation?\\nB: I'm going to take a swimming class.",
+      "q": "대화에서 B가 이번 방학에 할 일은?\nA: What are you going to do this vacation?\nB: I'm going to take a swimming class.",
       "c": [
         "수영 수업 듣기",
         "캠핑 가기",
@@ -1328,7 +1328,7 @@
     },
     {
       "t": "일의 순서",
-      "q": "글쓴이가 일요일에 할 일은?\\nOn Saturday, I'm going to see a movie. On Sunday, I'm going to go hiking.",
+      "q": "글쓴이가 일요일에 할 일은?\nOn Saturday, I'm going to see a movie. On Sunday, I'm going to go hiking.",
       "c": [
         "영화 보기",
         "수영하기",
@@ -1354,7 +1354,7 @@
     },
     {
       "t": "초대장 쓰기",
-      "q": "초대장의 빈칸에 알맞은 말은?\\nPlease come to my party ___ Saturday.",
+      "q": "초대장의 빈칸에 알맞은 말은?\nPlease come to my party ___ Saturday.",
       "c": [
         "on",
         "in",
