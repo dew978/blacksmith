@@ -840,6 +840,83 @@ export class World {
 
     this.shards = []; this.smokes = [];
     this.smokeTex = softDot('rgba(200,200,200,.6)', 'rgba(160,160,160,.25)');
+    // 돌파 연출용: 조명 수가 바뀌면 셰이더가 다시 컴파일돼 끊기므로 빛은 미리 하나 둔다
+    this.fx = []; this.dim = 0;
+    this.fxLight = new THREE.PointLight(0xffffff, 0, 10, 1.2); this.scene.add(this.fxLight);
+    this.fxLightPeak = 0; this.fxLightLife = 0; this.fxLightMax = 1;
+    // 빛기둥: 가운데가 밝고 양옆·위로 갈수록 사라지는 결
+    this.pillarTex = canvasTexture(64, 256, (g, w, h) => {
+      const img = g.createImageData(w, h);
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const u = Math.abs(x / (w - 1) * 2 - 1), v = y / (h - 1);
+        const across = Math.pow(Math.max(0, 1 - u), 2.2), core = Math.pow(Math.max(0, 1 - u * 3), 3);
+        const a = Math.min(1, (across * 0.75 + core) * Math.pow(v, 1.4));
+        const i = (y * w + x) * 4; img.data[i] = img.data[i + 1] = img.data[i + 2] = 255; img.data[i + 3] = a * 255;
+      }
+      g.putImageData(img, 0, 0);
+    });
+  }
+
+  // ───────── 돌파 연출 (5단계마다) ─────────
+  addFx(obj, life, tick) { if (obj) this.scene.add(obj); this.fx.push({ obj, life, max: life, tick }); }
+  flashLight(pos, color, peak, life = 0.5) {
+    this.fxLight.position.copy(pos); this.fxLight.color.set(color);
+    this.fxLightPeak = peak; this.fxLightLife = this.fxLightMax = life;
+  }
+  shockRing(pos, color, radius = 1.6, life = 0.7, thick = 0.08) {
+    const m = new THREE.Mesh(new THREE.RingGeometry(1 - thick, 1, 72), new THREE.MeshBasicMaterial({ color, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
+    m.rotation.x = -Math.PI / 2; m.position.copy(pos);
+    this.addFx(m, life, k => { const e = 1 - Math.pow(1 - k, 3); m.scale.setScalar(0.05 + e * radius); m.material.opacity = 1 - k; });
+  }
+  lightPillar(pos, color, life = 1.2, r = 0.3) {
+    // 카메라 쪽으로 늘 돌아서는 세로 판 (원통보다 부드럽게 보인다)
+    const g = new THREE.PlaneGeometry(r * 2 * 2.2, 5); g.translate(0, 2.5, 0);
+    const c = new THREE.Color(color).multiplyScalar(2.2);
+    const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: c, map: this.pillarTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
+    m.position.copy(pos);
+    this.addFx(m, life, k => {
+      const grow = Math.min(1, k / 0.12), w = 0.15 + grow * (1.05 - k * 0.75);
+      m.scale.set(w, 0.3 + grow * 0.7, 1);
+      m.rotation.y = Math.atan2(this.camera.position.x - pos.x, this.camera.position.z - pos.z);
+      m.material.opacity = k < 0.12 ? grow : (1 - k) / 0.88;
+    });
+  }
+  // 천장에서 target까지 내리꽂는 번개. 몇 번 모양을 바꾸며 깜빡인다.
+  lightning(target, { flicks = 3, life = 0.65, branches = 2 } = {}) {
+    const group = new THREE.Group();
+    const glow = new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 2.6, 6), transparent: true, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending });
+    const core = new THREE.MeshBasicMaterial({ color: new THREE.Color(5, 5.5, 7), transparent: true, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending });
+    const seg = new THREE.CylinderGeometry(1, 1, 1, 5, 1, true), up = new THREE.Vector3(0, 1, 0);
+    const addSeg = (a, b, r, mat) => {
+      const d = b.clone().sub(a), len = d.length();
+      const s = new THREE.Mesh(seg, mat); s.position.copy(a).addScaledVector(d, 0.5);
+      s.scale.set(r, len, r); s.quaternion.setFromUnitVectors(up, d.normalize()); group.add(s);
+    };
+    const bolt = (a, b, n, jit, r) => {
+      const pts = [a.clone()]; let prev = a.clone();
+      for (let i = 1; i <= n; i++) {
+        const t = i / n, p = a.clone().lerp(b, t);
+        if (i < n) { const j = jit * Math.sin(t * Math.PI); p.x += rand(-j, j); p.z += rand(-j, j); p.y += rand(-j, j) * 0.3; }
+        addSeg(prev, p, r * 3.5, glow); addSeg(prev, p, r, core); pts.push(p); prev = p;
+      }
+      return pts;
+    };
+    const regen = () => {
+      group.clear();
+      const top = target.clone().add(new THREE.Vector3(rand(-0.7, 0.7), 0, rand(-0.7, 0.3))); top.y = 4.55;
+      const pts = bolt(top, target, 18, 0.38, 0.009);
+      for (let b = 0; b < branches; b++) {
+        const s = pts[3 + (Math.random() * 10 | 0)];
+        bolt(s, s.clone().add(new THREE.Vector3(rand(-1, 1), -rand(0.5, 1.2), rand(-0.7, 0.7))), 7, 0.2, 0.005);
+      }
+    };
+    let next = 0, n = 0;
+    this.addFx(group, life, k => {
+      const t = k * life;
+      if (t >= next && n < flicks) { regen(); n++; next = t + rand(0.07, 0.15); }
+      const o = Math.max(0, 1 - k * 0.85) * (Math.random() < 0.8 ? 1 : 0.25);
+      glow.opacity = core.opacity = o;
+    });
   }
   resetEmber(i, init) {
     const o = this.embersOrigin, e = this.em;
@@ -916,7 +993,6 @@ export class World {
     // 화로
     const flick = Math.sin(t * 13) * 0.6 + Math.sin(t * 7.3) * 0.8 + Math.sin(t * 23.1) * 0.4;
     this.fireLight.intensity = (9 + flick * 1.4) * (1 - this.darkness);
-    for (const f of this.fills) f.intensity = 2.6 * (1 - this.darkness);
     this.flames.forEach((f, i) => {
       const ph = t * 3 + f.userData.ph;
       f.position.y = 0.55 + ((ph % 1)) * 0.28; f.scale.set(0.32 * (1 - (ph % 1) * 0.6), 0.42 * (1 - (ph % 1) * 0.4), 1);
@@ -952,8 +1028,27 @@ export class World {
     this.merchant.rotation.y = Math.sin(t * 0.5) * 0.4;
     this.wings.forEach(w => { w.rotation.y = w.userData.sx * (0.3 + Math.sin(t * 9) * 0.5); });
     // 암전
-    this.scene.fog.density = 0.05 + this.darkness * 0.25;
-    this.spot.intensity = 30 * (1 - this.darkness);
+    this.scene.fog.density = 0.03 + this.darkness * 0.25;
+    // 번개 직전 잠깐 어두워졌다가 돌아온다
+    this.dim = Math.max(0, this.dim - dt * 2.2);
+    const lit = (1 - this.darkness) * (1 - this.dim * 0.75);
+    this.spot.intensity = 38 * lit;
+    for (const f of this.fills) f.intensity = 2.6 * lit;
+    this.fireLight.intensity *= 1 - this.dim * 0.6;
+    // 돌파 연출
+    if (this.fxLightLife > 0) {
+      this.fxLightLife -= dt;
+      const k = Math.max(0, this.fxLightLife / this.fxLightMax);
+      this.fxLight.intensity = this.fxLightPeak * k * k * (0.85 + Math.random() * 0.3);
+    } else this.fxLight.intensity = 0;
+    for (let i = this.fx.length - 1; i >= 0; i--) {
+      const f = this.fx[i]; f.life -= dt;
+      if (f.tick) f.tick(Math.min(1, 1 - f.life / f.max));
+      if (f.life <= 0) {
+        if (f.obj) { this.scene.remove(f.obj); f.obj.traverse(o => { if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); }); }
+        this.fx.splice(i, 1);
+      }
+    }
 
     // 스파크 (히트 스톱 동안 멈춘다)
     const s = this.sp;

@@ -441,7 +441,9 @@ function resolveStrike(correct, fever) {
       setLyingBladeLevel(c.holder, c.level);
       const up = c.level > before, h = c.holder;
       wait(up ? 0.32 : 0.2, k => { const s = 1 + (up ? 0.22 : 0.08) * Math.sin(k * Math.PI) * (1 - k * 0.3); h.scale.setScalar(s); }).then(() => h.scale.setScalar(1));
-      if (up) {
+      const mile = up && Math.floor(c.level / 5) > Math.floor(before / 5) ? Math.floor(c.level / 5) * 5 : 0;
+      if (mile) breakthrough(mile);
+      else if (up) {
         world.spawnSparks(ip.clone().add(new THREE.Vector3(-0.1, 0.03, 0)), 30, 0xfff1c8, { speed: 1.6, up: 0.6, life: 0.7, spread: 0.45 });
         const sp = world.toScreen(ip.clone().add(new THREE.Vector3(0, -0.12, 0)));
         setTimeout(() => popup(`✦ ${bladeName(c.level)}`, sp, 'sm cyan'), 180);
@@ -468,6 +470,47 @@ function resolveStrike(correct, fever) {
     }
   }
   drawBoard(); refresh();
+}
+
+// 화면 전체를 한 번 번쩍인다
+function screenFlash(bg, dur, delay = 0) {
+  setTimeout(() => {
+    const d = document.createElement('div');
+    d.style.cssText = `position:fixed;inset:0;pointer-events:none;z-index:14;background:${bg}`;
+    document.body.appendChild(d);
+    d.animate([{ opacity: 1 }, { opacity: 0 }], { duration: dur, easing: 'cubic-bezier(.2,.7,.3,1)' }).onfinish = () => d.remove();
+  }, delay);
+}
+// +5, +10, +15 돌파. +5는 금빛 기둥과 충격파, +10부터는 번개가 내리꽂힌다.
+function breakthrough(lv) {
+  const ip = world.impactPoint, top = world.anvilTop.clone();
+  const tier = lv >= 15 ? 3 : lv >= 10 ? 2 : 1;
+  const main = tier === 1 ? 0xffc85a : 0x8fe0ff;
+  if (tier >= 2) {
+    world.dim = 1;
+    world.lightning(ip.clone().add(new THREE.Vector3(0, 0.05, 0)), { flicks: tier === 3 ? 6 : 4, life: tier === 3 ? 1.0 : 0.7, branches: tier === 3 ? 5 : 3 });
+    world.flashLight(ip.clone().add(new THREE.Vector3(0, 1.4, 0.4)), 0xa8d4ff, tier === 3 ? 110 : 80, 0.75);
+    screenFlash('radial-gradient(ellipse at 50% 60%, rgba(240,248,255,.98), rgba(150,200,255,.75))', 380);
+    screenFlash('rgba(200,230,255,.6)', 260, 150);
+    if (tier === 3) screenFlash('rgba(255,250,235,.7)', 500, 420);
+    sfx.play('thunder');
+    world.shake(tier === 3 ? 0.2 : 0.15);
+    setTimeout(() => world.shake(0.07), 200);
+    world.spawnSparks(ip, 160, 0xa8e8ff, { speed: 5.5, up: 3.2, life: 1.1, mul: 5 });
+  } else {
+    world.flashLight(ip.clone().add(new THREE.Vector3(0, 1.0, 0.4)), 0xffc870, 45, 0.8);
+    screenFlash('radial-gradient(ellipse at 50% 62%, rgba(255,236,170,.85), rgba(255,170,60,.35))', 500);
+  }
+  hitstop(tier === 1 ? 210 : tier === 2 ? 300 : 380);
+  world.shake(0.1);
+  world.shockRing(top.clone().add(new THREE.Vector3(0, 0.02, 0)), main, 1.9, 0.75);
+  world.shockRing(new THREE.Vector3(top.x, 0.03, top.z), tier === 1 ? 0xffe2a0 : 0xd8f4ff, 3.4, 1.1, 0.05);
+  if (tier >= 2) setTimeout(() => world.shockRing(new THREE.Vector3(top.x, 0.03, top.z), 0x6fc8ff, 4.2, 1.2, 0.04), 160);
+  world.lightPillar(new THREE.Vector3(top.x, 0.9, top.z), main, tier === 3 ? 1.8 : 1.3, tier === 3 ? 0.2 : 0.14);
+  world.spawnSparks(ip, 180, 0xffe08a, { speed: 4.5, up: 4.2, life: 1.4, mul: 4 });
+  world.spawnSparks(ip, 60, 0xffffff, { speed: 2.2, up: 5, life: 1.6, mul: 5, spread: 0.4 });
+  sfx.play('milestone'); setTimeout(() => sfx.play('great'), 120);
+  banner(`+${lv} 돌파!`, bladeName(lv));
 }
 
 function startFever() {
@@ -1044,5 +1087,5 @@ window.__forge = {
   get S() { return S; }, world, probs, value, Q,
   // 창이 숨겨져 프레임이 멈출 때 검증용으로 시간을 직접 흘린다
   tick(sec) { for (let i = 0; i < sec * 60; i++) { hitstopUntil = 0; updateTweens(1 / 60); updateWalk(1 / 60, performance.now() + 5000); world.update(1 / 60, 1 / 60); } },
-  P, keys, interact, get view() { return view; }, get focus() { return focusInfo; },
+  P, keys, interact, breakthrough, get view() { return view; }, get focus() { return focusInfo; },
 };

@@ -77,6 +77,19 @@ export class Sfx {
     }, 420);
   }
 
+  // 5단계 돌파: 올라가는 화음 + 낮은 쿵
+  milestone(t) {
+    [0, 4, 7, 12, 16, 19, 24].forEach((s, i) => this._tone(t + i * 0.045, 392 * Math.pow(2, s / 12), 0.9, { type: 'triangle', gain: 0.06 }));
+    this._tone(t, 70, 0.9, { gain: 0.35, freqEnd: 40 });
+    this._noise(t, 0.7, { type: 'bandpass', freq: 3000, freqEnd: 9000, gain: 0.08, attack: 0.06 });
+  }
+  // 번개: 날카로운 쩍 + 길게 우르릉
+  thunder(t) {
+    this._noise(t, 0.12, { type: 'highpass', freq: 2500, gain: 0.55, attack: 0.001 });
+    this._noise(t + 0.02, 2.4, { type: 'lowpass', freq: 900, freqEnd: 60, q: 0.7, gain: 0.7, attack: 0.01 });
+    this._tone(t, 48, 1.8, { type: 'sawtooth', gain: 0.16, freqEnd: 28 });
+    this._noise(t + 0.3, 1.8, { type: 'lowpass', freq: 320, freqEnd: 70, gain: 0.45, attack: 0.2 });
+  }
   step(t) { this._noise(t, 0.07, { type: 'lowpass', freq: 380 + Math.random() * 120, gain: 0.07, attack: 0.004 }); this._tone(t, 70 + Math.random() * 15, 0.06, { gain: 0.05, freqEnd: 45 }); }
   ui(t) { this._tone(t, 880, 0.06, { type: 'triangle', gain: 0.05 }); }
   whoosh(t, { fast } = {}) { this._noise(t, fast ? 0.1 : 0.17, { type: 'bandpass', freq: 400, freqEnd: 2400, q: 1.4, gain: 0.12, attack: 0.04 }); }
