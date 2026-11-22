@@ -423,3 +423,16 @@ body.touch #title-screen:not(.hidden) ~ #btn-fs { display: inline-flex; top: 14p
 /* 이어하기 */
 #btn-continue small { display: block; font-size: 12px; font-weight: 500; opacity: .75; margin-top: 2px; letter-spacing: 0; }
 #btn-continue:not(.hidden) + #btn-start { margin-top: 10px; transform: scale(.86); opacity: .9; }
+
+/* 오늘의 계율 */
+.rq-rule { margin-top: 5px; font-size: 12.5px; font-weight: 700; color: #ffb08a; }
+.pills .rule { color: #ffb08a; border-color: rgba(255,120,60,.4); }
+/* 서고지기의 말 */
+.keeper { position: fixed; left: 50%; bottom: 150px; transform: translateX(-50%); width: min(560px, calc(100vw - 32px)); z-index: 30; cursor: pointer;
+  padding: 14px 18px 15px; border-radius: 14px; background: linear-gradient(180deg, rgba(12,20,28,.94), rgba(8,12,18,.94)); border: 1px solid rgba(110,210,255,.45);
+  box-shadow: 0 0 28px rgba(80,190,255,.18), 0 10px 30px rgba(0,0,0,.5); opacity: 0; transition: opacity .4s, transform .4s; }
+.keeper.show { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+.keeper .kp-name { font-family: var(--serif); font-weight: 700; font-size: 13px; color: #7fd8ff; letter-spacing: .04em; margin-bottom: 5px; }
+.keeper .kp-text { font-family: var(--serif); font-size: 17px; line-height: 1.55; color: #eaf6ff; }
+.keeper .kp-rule { margin-top: 9px; display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #ffcf9a; background: rgba(255,110,50,.14); border: 1px solid rgba(255,130,70,.45); }
+@media (max-width: 720px) { .keeper { bottom: 120px; } .keeper .kp-text { font-size: 15px; } }

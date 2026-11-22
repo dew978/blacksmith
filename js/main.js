@@ -5,16 +5,65 @@ import { SAMPLE_QUESTIONS } from './questions.js';
 import { ICONS } from './icons.js';
 
 // ───────── 규칙 데이터 ─────────
-const MAX_DAY = 7;
+const MAX_DAY = 21;
 // 원작식 강화: 문제는 망치를 들기 위한 관문일 뿐이고, 결과는 단계별 확률표로만 정해진다.
 // 성공 +1, 대성공 +2, 손상 -1. 가치는 1강마다 1.5배. 최대 +100.
 const MAX_LV = 100;
-const REQ = [1000, 2500, 6000, 15000, 40000, 100000, 250000];
+// 원작처럼 21일. 하루 약 1.5배씩 오르고, 주말(7·14일)과 마지막 주에 조금 더 가파르다
+const REQ = [1000, 1500, 2500, 4000, 6000, 9000, 15000, 20000, 30000, 45000, 65000, 100000, 140000, 220000,
+  300000, 450000, 650000, 1000000, 1500000, 2200000, 3500000];
+// ───────── 서고지기의 말과 오늘의 계율 ─────────
+// 계율은 그날 하루만 적용된다. n은 계율마다 쓰는 숫자(+n 이상 등)
+const RULES = {
+  gift: { tag: '원석+2', label: '원석 2개를 더 받는다' },
+  tithe: { tag: '원석−1', label: '원석 1개를 빼앗긴다' },
+  generous: { tag: '값×1.5', label: '바친 검 값을 1.5배로 쳐준다' },
+  minLv: { tag: '+{n}↑', label: '+{n} 이상 검을 한 자루 섞어 바칠 것' },
+  single: { tag: '1자루', label: '검은 한 자루만 바칠 것 (고철 안 됨)' },
+  harsh: { tag: '오답×3', label: '틀리면 수업료 3배' },
+  mercy: { tag: '촛불', label: '요구를 채우면 꺼진 촛불 하나를 되살린다' },
+};
+const DAYS = [
+  { say: '첫날이다. 천 골드어치면 된다. …아직은.' },
+  { say: '망치 소리가 제법이군. 이 서고에서는 오랜만에 듣는 소리다.' },
+  { say: '바친 검이 어디로 가는지 궁금하겠지. 잊힌 것은 빛을 잃는다. 네 검은 서고의 등불이 된다.' },
+  { say: '오늘은 기분이 좋다. 원석 두 개를 더 얹어 주마.', rule: { k: 'gift' } },
+  { say: '서고 깊은 곳의 등불 몇 개가 꺼졌다. 오늘 바치는 검은 값을 더 쳐주지.', rule: { k: 'generous' } },
+  { say: '무딘 검 무더기는 지겹다. 오늘은 제대로 벼린 검을 하나 섞어라.', rule: { k: 'minLv', n: 8 } },
+  { say: '한 주를 버텼군. 요구를 채우면 꺼진 촛불 하나를 다시 밝혀 주마.', rule: { k: 'mercy' } },
+  { say: '서고 벽이 무너지고 있다. 원석 하나는 내가 가져가 막는 데 쓰겠다.', rule: { k: 'tithe' } },
+  { say: '오늘은 단 한 자루. 여러 자루로 메우는 꼼수는 통하지 않는다.', rule: { k: 'single' } },
+  { say: '대충 찍는 소리가 거슬린다. 오늘은 틀린 답에 값을 세 배로 받겠다.', rule: { k: 'harsh' } },
+  { say: '…나도 한때는 너처럼 책상 앞에서 졸던 학생이었다. 원석 두 개, 가져가라.', rule: { k: 'gift' } },
+  { say: '다 외웠다고 믿은 날, 나는 여기 떨어졌다. 그리고 전부 잊었다. 내 이름까지도. 오늘은 값을 더 쳐주마.', rule: { k: 'generous' } },
+  { say: '이름을 잊은 자는 서고지기가 된다. 너는 그렇게 되지 마라. 오늘은 더 단단한 검을 보여라.', rule: { k: 'minLv', n: 14 } },
+  { say: '두 주. 여기까지 온 자는 드물다. 요구를 채우면 촛불을 하나 돌려주지.', rule: { k: 'mercy' } },
+  { say: '철창 너머가 소란하다. 네 검 냄새를 맡았나 보군. 원석 하나로 달래 두겠다.', rule: { k: 'tithe' } },
+  { say: '한 자루로 증명해라. 수없이 두드려 쌓아 올린 단 한 자루로.', rule: { k: 'single' } },
+  { say: '틀린 답 하나가 무엇을 데려오는지 이제 알 텐데. 오늘도 세 배다.', rule: { k: 'harsh' } },
+  { say: '서고가 다시 밝아지고 있다. 네 검 덕분이다. 값을 더 쳐주마.', rule: { k: 'generous' } },
+  { say: '끝이 가까워지니 놈들이 더 굶주렸다. 원석 하나를 내놔라.', rule: { k: 'tithe' } },
+  { say: '내일이 마지막이다. 오늘은 네가 벼릴 수 있는 가장 단단한 검을 보여라.', rule: { k: 'minLv', n: 20 } },
+  { say: '마지막 날이다. 이것을 바치면 문을 열어 주마. …잊지 마라. 잊은 자가 어떻게 되는지, 너는 봤다.' },
+];
+function ruleOf(day) {
+  const r = DAYS[day - 1] && DAYS[day - 1].rule; if (!r) return null;
+  const R = RULES[r.k], f = (t) => t.replace('{n}', r.n);
+  return { k: r.k, n: r.n, tag: f(R.tag), label: f(R.label) };
+}
+const todayRule = () => ruleOf(S.day);
+// 바치는 검이 오늘 계율을 지키는가
+function tributeRuleOk(blades, usedScrap) {
+  const r = todayRule(); if (!r) return true;
+  if (r.k === 'minLv') return blades.some((b) => b.level >= r.n);
+  if (r.k === 'single') return blades.length === 1 && !usedScrap;
+  return true;
+}
 // 상점 가격은 날마다 커지는 수입에 맞춰 함께 오른다
 const RELIC_SLOTS = 5;
 // 오답 페널티: 틀릴 때마다 검이 식고(CHILL_MAX번이면 화로에 다시 달궈야 두드릴 수 있다), 수업료로 골드가 줄어든다
 const CHILL_MAX = 3;
-const fineOf = () => Math.round(req() * 0.05 / 10) * 10;
+const fineOf = () => Math.round(req() * 0.05 * (todayRule()?.k === 'harsh' ? 3 : 1) / 10) * 10;
 // 골드로 사는 것은 그날 요구 가치에 비례
 const priceOf = (k) => Math.max(100, Math.round(REQ[S.day - 1] * ITEMS[k].price / 10) * 10);
 // 융합: 짝이 되는 두 유물을 함께 가지면 하나로 합쳐진다(칸 하나가 빈다).
@@ -312,25 +361,27 @@ function drawCalendar() {
   g.fillStyle = bg; g.fillRect(0, 0, W, H);
   for (let i = 0; i < 2500; i++) { g.fillStyle = `rgba(90,60,30,${Math.random() * 0.08})`; g.fillRect(Math.random() * W, Math.random() * H, 2, 2); }
   g.fillStyle = '#3a2414'; g.textAlign = 'center';
-  g.font = '700 50px "Gowun Batang", serif'; g.fillText('서고지기와의 계약', W / 2, 74);
-  const x0 = 34, cw = (W - 68) / 7, y0 = 120, ch = 210;
+  g.font = '700 40px "Gowun Batang", serif'; g.fillText('서고지기와의 계약', W / 2, 52);
+  // 3주 × 7일 칸
+  const x0 = 24, cw = (W - 48) / 7, y0 = 74, ch = 118;
   for (let d = 1; d <= MAX_DAY; d++) {
-    const x = x0 + (d - 1) * cw;
-    g.strokeStyle = 'rgba(58,36,20,.6)'; g.lineWidth = 3; g.strokeRect(x + 4, y0, cw - 8, ch);
-    g.fillStyle = '#3a2414'; g.font = '700 40px "Gowun Batang", serif'; g.fillText(`${d}일`, x + cw / 2, y0 + 52);
+    const x = x0 + ((d - 1) % 7) * cw, y = y0 + Math.floor((d - 1) / 7) * ch;
+    g.strokeStyle = 'rgba(58,36,20,.55)'; g.lineWidth = 2.5; g.strokeRect(x + 3, y + 3, cw - 6, ch - 6);
+    g.fillStyle = '#3a2414'; g.font = '700 26px "Gowun Batang", serif'; g.fillText(`${d}일`, x + cw / 2, y + 32);
+    // 계율이 있는 날은 붉은 글씨로 짧게
+    const r = ruleOf(d);
+    if (r) { g.fillStyle = '#8a1e14'; g.font = '700 16px "Noto Sans KR", sans-serif'; g.fillText(r.tag, x + cw / 2, y + 56); }
     // 칸이 좁으니 만 단위로 짧게 (계약서 유물이 있으면 줄어든 값)
     const rq = Math.round(REQ[d - 1] * (S.relics.has('contract') ? 0.7 : 1) / 10) * 10;
     const short = rq >= 10000 ? `${+(rq / 10000).toFixed(1)}만` : rq.toLocaleString('ko-KR');
-    g.font = '700 26px "Noto Sans KR", sans-serif'; g.fillStyle = '#5a3a20'; g.fillText(short, x + cw / 2, y0 + 176);
-    g.font = '500 18px "Noto Sans KR", sans-serif'; g.fillText('G', x + cw / 2, y0 + 200);
+    g.font = '700 21px "Noto Sans KR", sans-serif'; g.fillStyle = '#5a3a20'; g.fillText(short + ' G', x + cw / 2, y + ch - 20);
     const hst = S.history[d];
-    if (hst === 'ok') { g.strokeStyle = '#2f5a2a'; g.lineWidth = 9; g.beginPath(); g.moveTo(x + 24, y0 + 110); g.lineTo(x + cw / 2, y0 + 140); g.lineTo(x + cw - 18, y0 + 80); g.stroke(); }
-    else if (hst === 'fail') { g.strokeStyle = '#8a1e14'; g.lineWidth = 9; g.beginPath(); g.moveTo(x + 22, y0 + 76); g.lineTo(x + cw - 22, y0 + 150); g.moveTo(x + cw - 22, y0 + 76); g.lineTo(x + 22, y0 + 150); g.stroke(); }
-    else if (d === S.day && S.mode !== 'title') { g.strokeStyle = '#8a1e14'; g.lineWidth = 6; g.beginPath(); g.ellipse(x + cw / 2, y0 + 112, cw / 2 - 14, 44, 0, 0, Math.PI * 2); g.stroke(); }
+    if (hst === 'ok') { g.strokeStyle = 'rgba(47,90,42,.9)'; g.lineWidth = 7; g.beginPath(); g.moveTo(x + 22, y + 52); g.lineTo(x + cw / 2 - 4, y + 76); g.lineTo(x + cw - 18, y + 28); g.stroke(); }
+    else if (hst === 'fail') { g.strokeStyle = 'rgba(138,30,20,.9)'; g.lineWidth = 7; g.beginPath(); g.moveTo(x + 22, y + 24); g.lineTo(x + cw - 22, y + 84); g.moveTo(x + cw - 22, y + 24); g.lineTo(x + 22, y + 84); g.stroke(); }
+    else if (d === S.day && S.mode !== 'title') { g.strokeStyle = '#8a1e14'; g.lineWidth = 4.5; g.beginPath(); g.ellipse(x + cw / 2, y + 48, cw / 2 - 10, 38, 0, 0, Math.PI * 2); g.stroke(); }
   }
-  g.fillStyle = '#4a2e18'; g.font = '500 28px "Gowun Batang", serif';
-  g.fillText('촛불 셋이 모두 꺼지면 계약은 끝난다', W / 2, 420);
-  g.fillText('— 망각의 서고지기', W / 2, 466);
+  g.fillStyle = '#4a2e18'; g.font = '500 23px "Gowun Batang", serif';
+  g.fillText('촛불 셋이 모두 꺼지면 계약은 끝난다 — 망각의 서고지기', W / 2, 462);
   world.calTex.needsUpdate = true;
 }
 
@@ -360,6 +411,7 @@ function refresh() {
   const need = req(), have = S.finished.reduce((t, b) => t + value(b.level), 0) + (S.scrap || 0), full = have >= need;
   $('#hud-req').textContent = `${fmt(need)} G`;
   $('#hud-reqbar').style.width = Math.min(100, have / need * 100) + '%';
+  const rl = todayRule(); $('#hud-rule').classList.toggle('hidden', !rl); if (rl) $('#hud-rule').textContent = `계율 · ${rl.label}`;
   $('#hud-reqsub').textContent = full ? `걸어 둔 검 ${fmt(have)} G · 채웠다! 제단으로` : `걸어 둔 검 ${fmt(have)} G · ${fmt(need - have)} G 더`;
   if (full && !$('#reqbox').classList.contains('full')) { $('#reqbox').classList.add('full'); }
   else if (!full) $('#reqbox').classList.remove('full');
@@ -794,7 +846,7 @@ function openAltar() {
         for (const sc of scrap ? [0, 1] : [0]) {
           let t = sc ? scrap : 0;
           for (let i = 0; i < n; i++) if (m & (1 << i)) t += vals[i];
-          if (t >= need && (!best || t < best.t)) best = { m, sc, t };
+          if (t >= need && (!best || t < best.t) && tributeRuleOk(vals.map((_, i) => i).filter((i) => m & (1 << i)).map((i) => S.finished[i]), !!sc)) best = { m, sc, t };
         }
       }
     } else { // 검이 아주 많으면 싼 것부터 채운다
@@ -810,27 +862,29 @@ function openAltar() {
   let useScrap = auto.scrap;
   const render = () => {
     const total = [...sel].reduce((s, i) => s + value(S.finished[i].level), 0) + (useScrap ? S.scrap : 0);
-    const ok = total >= req();
+    const ruleOk = tributeRuleOk([...sel].map((i) => S.finished[i]), useScrap), rl = todayRule();
+    const ok = total >= req() && ruleOk;
     const warn = [];
+    if (!ruleOk) warn.push(`계율 어김 · ${rl.label}`);
     if (S.cur) warn.push(`모루 위 +${S.cur.level} 미완성`);
     if (S.blanks > 0) warn.push(`원석 ${S.blanks} → 내일로`);
     // 빼도 요구를 채우는 검이 골라져 있으면 넘치게 바치는 것
     if (ok) {
       const spare = [...sel].filter((i) => total - value(S.finished[i].level) >= req());
-      if (spare.length) warn.push(`필요보다 ${fmt(total - req())} G 더 바침`);
+      if (spare.length && rl?.k !== 'single') warn.push(`필요보다 ${fmt(total - req())} G 더 바침`);
     }
     openPanel(`
       <h2>서고지기의 제단</h2>
-      <div class="pills"><span>${S.day}일째</span><span>요구 <b>${fmt(req())} G</b></span></div>
+      <div class="pills"><span>${S.day}일째</span><span>요구 <b>${fmt(req())} G</b></span>${rl ? `<span class="rule">계율 · ${esc(rl.label)}</span>` : ''}</div>
       <div class="offer-list">
         ${S.finished.length || S.scrap ? '' : '<div class="empty">바칠 검 없음 · 울리면 촛불 −1</div>'}
         ${S.finished.map((b, i) => `<label class="offer ${sel.has(i) ? 'on' : ''}" data-i="${i}"><input type="checkbox" ${sel.has(i) ? 'checked' : ''}><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b></span><span class="val">${fmt(value(b.level))} G</span></label>`).join('')}
         ${S.scrap > 0 ? `<label class="offer ${useScrap ? 'on' : ''}" data-scrap="1"><input type="checkbox" ${useScrap ? 'checked' : ''}><span class="nm">고철 더미</span><span class="val">${fmt(S.scrap)} G</span></label>` : ''}
       </div>
-      <div class="meter"><div class="line"><span>바칠 가치</span><b style="color:${ok ? 'var(--green)' : 'var(--red)'}">${fmt(total)} / ${fmt(req())} G</b></div>
-        <div class="bar"><div class="${ok ? 'ok' : ''}" style="width:${Math.min(100, total / req() * 100)}%"></div></div>
+      <div class="meter"><div class="line"><span>바칠 가치</span><b style="color:${total >= req() ? 'var(--green)' : 'var(--red)'}">${fmt(total)} / ${fmt(req())} G</b></div>
+        <div class="bar"><div class="${total >= req() ? 'ok' : ''}" style="width:${Math.min(100, total / req() * 100)}%"></div></div>
         <div class="pills" style="margin-top:8px"><span>바친 만큼 골드</span><span>남긴 검 → 내일·상점</span>${warn.map(w => `<span class="warn">${esc(w)}</span>`).join('')}</div></div>
-      <div class="btnrow"><button id="al-back" class="ghost">돌아가기</button><button id="al-auto" class="ghost">필요한 만큼만</button><button id="al-ring" class="primary">${ok ? '바치기 🔔' : '부족해도 울리기 🔔'}</button></div>`, true);
+      <div class="btnrow"><button id="al-back" class="ghost">돌아가기</button><button id="al-auto" class="ghost">필요한 만큼만</button><button id="al-ring" class="primary">${ok ? '바치기 🔔' : total >= req() ? '계율 어기고 울리기 🔔' : '부족해도 울리기 🔔'}</button></div>`, true);
     $('#al-auto').onclick = () => { const a = pickNeeded(); sel.clear(); a.set.forEach((i) => sel.add(i)); useScrap = a.scrap; sfx.play('ui'); render(); };
     document.querySelectorAll('.offer').forEach(el => el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -840,7 +894,7 @@ function openAltar() {
     }));
     $('#al-back').onclick = () => { closeModal(); S.mode = S.cur ? 'anvil' : 'idle'; enterWalk(); };
     $('#al-ring').onclick = () => {
-      if (!ok && !confirm('요구 가치에 못 미칩니다. 촛불 하나가 꺼집니다. 그래도 종을 울릴까요?')) return;
+      if (!ok && !confirm(ruleOk ? '요구 가치에 못 미칩니다. 촛불 하나가 꺼집니다. 그래도 종을 울릴까요?' : `오늘의 계율(${rl.label})을 지키지 못했습니다. 촛불 하나가 꺼집니다. 그래도 종을 울릴까요?`)) return;
       ring([...sel], useScrap);
     };
   };
@@ -849,6 +903,7 @@ function openAltar() {
 
 async function ring(sel, useScrap) {
   closeModal(); S.mode = 'ritual'; refresh();
+  const rl = todayRule(), ruleOk = tributeRuleOk(sel.map((i) => S.finished[i]), useScrap);
   const offered = sel.sort((a, b) => b - a).map(i => S.finished.splice(i, 1)[0]);
   const total = offered.reduce((s, b) => s + value(b.level), 0) + (useScrap ? S.scrap : 0);
   if (useScrap) S.scrap = 0;
@@ -860,7 +915,7 @@ async function ring(sel, useScrap) {
     world.scene.add(car); return car;
   });
   if (cars.length) sfx.play('place');
-  const ok = total >= req(), M = world.maw;
+  const ok = total >= req() && ruleOk, M = world.maw;
   world.goStation('ritual', 1.6);
   await wait(0.7);
   sfx.play('bell'); world.shake(0.02);
@@ -905,15 +960,18 @@ async function ring(sel, useScrap) {
   world.goStation('altar', 2.2);
   S.history[S.day] = ok ? 'ok' : 'fail';
   if (ok) {
-    S.gold += total; S.stats.offered += total;
+    const pay = rl?.k === 'generous' ? Math.round(total * 1.5) : total;
+    S.gold += pay; S.stats.offered += total;
     world.setSpiritMood('happy'); sfx.play('spirit'); sfx.play('coin');
-    banner('서고지기가 만족했다', `${fmt(total)} G를 받았다`);
+    let extra = rl?.k === 'generous' ? ' (값 1.5배)' : '';
+    if (rl?.k === 'mercy' && S.candles < 3) { world.setCandle(S.candles, true); S.candles++; extra += ' · 촛불 하나가 다시 켜졌다'; }
+    banner('서고지기가 만족했다', `${fmt(pay)} G를 받았다${extra}`);
   } else {
     world.setSpiritMood('angry'); sfx.play('blowout');
     S.candles--; world.setCandle(S.candles, false);
     world.spawnSmoke(world.candles[S.candles].flame.position.clone(), 10);
     world.shake(0.06); flashRed();
-    banner('서고지기가 분노했다', `요구 ${fmt(req())} G · 바친 가치 ${fmt(total)} G — 촛불 하나가 꺼졌다`);
+    banner('서고지기가 분노했다', total >= req() ? `계율을 어겼다 · ${rl.label} — 촛불 하나가 꺼졌다` : `요구 ${fmt(req())} G · 바친 가치 ${fmt(total)} G — 촛불 하나가 꺼졌다`);
   }
   drawCalendar(); refresh();
   await wait(2.8);
@@ -1016,7 +1074,9 @@ function newGame() {
   startDay();
 }
 function startDay() {
-  S.blanks += BASE_BLANKS + S.bonusBlanks;
+  const rl = todayRule();
+  S.blanks += BASE_BLANKS + S.bonusBlanks + (rl?.k === 'gift' ? 2 : rl?.k === 'tithe' ? -1 : 0);
+  S.blanks = Math.max(0, S.blanks);
   S.bonusBlanks = 0;
   let hatch = '';
   if (S.relics.has('cocoon') && S.day >= (S.rs.cocoonDay || 0)) { S.relics.delete('cocoon'); S.blanks += 3; hatch = ' · 원석 알이 깨어 원석 +3'; }
@@ -1024,6 +1084,7 @@ function startDay() {
   placePlayer(0, 3.4, 0, -0.12); enterWalk();
   drawCalendar(); drawBoard(); refresh();
   banner(`${S.day}일째`, `서고지기의 요구 · ${fmt(req())} G${hatch}`);
+  setTimeout(() => keeperSay(S.day), 1600);
 }
 function summaryHTML() {
   const acc = S.stats.answered ? Math.round(S.stats.correct / S.stats.answered * 100) : 0;
@@ -1052,7 +1113,7 @@ async function victory() {
   S.mode = 'over'; refresh(); $('#hud').classList.add('hidden');
   world.setSpiritMood('happy'); sfx.play('great'); sfx.play('bell');
   world.goStation('overview', 1.2);
-  openPanel(`<h2>계약 완수</h2><p class="sub">7일째 종소리가 울리자 서고지기가 고개를 숙였다. "이 검들에 담긴 것만큼은, 다시는 잊지 마라." 잠겼던 문이 열리고 눈부신 빛이 쏟아졌다. 눈을 뜨니 도서관 책상 위, 시험 날 아침이었다. 문제집 여백에 처음 보는 검 그림이 그려져 있었다.</p>
+  openPanel(`<h2>계약 완수</h2><p class="sub">스물한 번째 종소리가 울리자 서고지기가 고개를 숙였다. "이 검들에 담긴 것만큼은, 다시는 잊지 마라." 잠겼던 문이 열리고 눈부신 빛이 쏟아졌다. 눈을 뜨니 도서관 책상 위, 시험 날 아침이었다. 문제집 여백에 처음 보는 검 그림이 그려져 있었다.</p>
     ${summaryHTML()}<div class="btnrow"><button id="end-notes" class="ghost">오답 노트</button><button id="end-retry" class="primary">새 계약 시작</button></div>`);
   bindEnd();
 }
@@ -1119,7 +1180,7 @@ function openHowTo(back) {
       ${R('❌', '오답', '헛손질 · 검이 식음 (3번 → R) · 수업료 5% · 영감 −3')}
       ${R('✨', '영감', '정답 10번 → 6초 연타 · 파괴 0%')}
       ${R('⚔️', '완성', 'F로 걸이에 · 걸이에서 다시 가져와 이어 강화')}
-      ${R('🕯️', '제단', '요구 가치 채우면 골드 · 부족하면 촛불 −1 · 0개면 끝 · 7일 버티면 승리')}
+      ${R('🕯️', '제단', '요구 가치 채우면 골드 · 부족하면 촛불 −1 · 0개면 끝 · 21일 버티면 승리 · 날마다 계율')}
       ${R('🏮', '상인', '남은 검 → 조각 → 유물 (5칸) · 골드 → 추첨표·힌트·양초')}
       ${R('🔗', '융합', '짝 유물 2개 → 강한 유물 1개')}
       ${R('📒', '오답 노트', '틀린 문제가 더 자주 나옴')}
@@ -1589,7 +1650,7 @@ async function playIntro() {
   await csSleep(1300);
   for (let i = 0; i < 3 && !CS.skip; i++) { world.setCandle(i, true); sfx.play('place'); await csSleep(500); }
   await csDark(0.3, 0, 900);
-  await csLine('망각의 서고지기', '대가는 7일. 날마다 정해진 가치만큼의 검을 이 제단에 바쳐라.');
+  await csLine('망각의 서고지기', '대가는 21일. 날마다 정해진 가치만큼의 검을 이 제단에 바쳐라. 내 말도 잘 들어 두고.');
   world.setSpiritMood('angry'); world.shake(0.035); sfx.play('blowout');
   await csLine('망각의 서고지기', '모자라면 촛불이 하나씩 꺼진다. 셋이 모두 꺼지면… 너 역시 이곳에 잊힌다.');
   world.setSpiritMood('calm');
@@ -1598,7 +1659,7 @@ async function playIntro() {
   await csSleep(1200);
   if (!CS.skip) { sfx.play('doorSlam'); world.shake(0.1); }
   await csLine('', '쿵. 등 뒤에서 문이 잠겼다.');
-  await csLine('', '돌아가려면, 7일을 버텨야 한다.');
+  await csLine('', '돌아가려면, 21일을 버텨야 한다.');
   endIntro();
 }
 function endIntro() {
@@ -1801,7 +1862,23 @@ async function continueGame() {
     S.mode = S.cur ? 'anvil' : 'idle';
     placePlayer(0, 3.4, 0, -0.12); enterWalk(); refresh();
     banner(`${S.day}일째 · 이어서`, `서고지기의 요구 · ${fmt(req())} G`);
+    setTimeout(() => keeperSay(S.day), 1600);
   }
 }
 $('#btn-continue').onclick = () => continueGame();
 updateContinue();
+
+// ───────── 서고지기의 말 (하루 시작마다) ─────────
+let keeperTimer = 0;
+function keeperSay(day) {
+  const d = DAYS[day - 1]; if (!d || S.day !== day || S.mode === 'title' || S.mode === 'over') return;
+  const el = $('#keeper'), r = ruleOf(day);
+  el.innerHTML = `<div class="kp-name">망각의 서고지기</div><div class="kp-text">${esc(d.say)}</div>${r ? `<div class="kp-rule">오늘의 계율 · ${esc(r.label)}</div>` : ''}`;
+  el.classList.remove('hidden', 'out'); void el.offsetWidth; el.classList.add('show');
+  world.setSpiritMood(r && ['tithe', 'harsh', 'single', 'minLv'].includes(r.k) ? 'angry' : 'happy'); sfx.play('spirit', { gain: 0.6 });
+  setTimeout(() => { if (S.mode !== 'ritual') world.setSpiritMood('calm'); }, 2500);
+  clearTimeout(keeperTimer);
+  keeperTimer = setTimeout(hideKeeper, Math.min(12000, 4500 + d.say.length * 70));
+}
+function hideKeeper() { clearTimeout(keeperTimer); const el = $('#keeper'); el.classList.remove('show'); el.classList.add('hidden'); }
+$('#keeper').onclick = hideKeeper;
