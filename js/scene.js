@@ -361,8 +361,8 @@ const BLADES = [
   },
 ];
 
-// 모양이 바뀌는 단계: 초반엔 3~4강마다 자주 바뀌고, +78부터는 최종형으로 굳어 빛만 더 세진다
-export const FORM_AT = [0, 3, 6, 9, 12, 15, 19, 23, 28, 33, 39, 45, 52, 60, 68, 78];
+// 모양이 바뀌는 단계: 원작처럼 초반엔 2강마다 바뀌고, +62부터는 최종형으로 굳어 빛만 더 세진다
+export const FORM_AT = [0, 2, 4, 6, 8, 10, 12, 14, 17, 20, 24, 28, 33, 40, 50, 62];
 export function formOf(level) {
   let f = 0;
   for (let i = 0; i < FORM_AT.length; i++) if (level >= FORM_AT[i]) f = i;

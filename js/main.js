@@ -5,12 +5,12 @@ import { SAMPLE_QUESTIONS } from './questions.js';
 
 // ───────── 규칙 데이터 ─────────
 const MAX_DAY = 7;
-// 최대 +100. 맞히면 늘 오르고, 오르는 폭은 10강마다 1씩 커진다(+2 → +11). 값은 시뮬레이션으로 맞췄다.
+// 원작식 강화: 문제는 망치를 들기 위한 관문일 뿐이고, 결과는 단계별 확률표로만 정해진다.
+// 성공 +1, 대성공 +2, 손상 -1. 가치는 1강마다 1.5배. 최대 +100.
 const MAX_LV = 100;
-const REQ = [1500, 4000, 10000, 25000, 60000, 140000, 300000];
-const gainOf = (lv) => 2 + Math.floor(lv / 10);
+const REQ = [1000, 2500, 6000, 15000, 40000, 100000, 250000];
 // 상점 가격은 날마다 커지는 수입에 맞춰 함께 오른다
-const priceMul = () => Math.pow(1.9, S.day - 1) * 1.5;
+const priceMul = () => Math.pow(2, S.day - 1);
 const priceOf = (k) => Math.round(ITEMS[k].price * priceMul() / 10) * 10;
 const NAMES = ['녹슨 깃펜칼', '갈아 낸 연필검', '다듬은 잉크검', '공책 철검', '쓸 만한 문법검', '단단한 공식검', '빛나는 개념검', '원리의 장검',
   '통찰의 검', '학자의 대검', '현자의 빛검', '진리의 쌍날검', '만물박사의 검', '별을 읽는 검', '지혜의 성검', '전설의 지식검'];
@@ -59,7 +59,11 @@ const settings = store.get('jf_settings', { timer: false, reviewOnly: false });
 
 // ───────── 유틸 ─────────
 const $ = (s) => document.querySelector(s);
-const fmt = (n) => Math.round(n).toLocaleString('ko-KR');
+const UNITS = [['해', 1e20], ['경', 1e16], ['조', 1e12], ['억', 1e8]];
+const fmt = (n) => {
+  for (const [u, v] of UNITS) if (n >= v) { const x = n / v; return (x >= 1e4 ? Math.round(x).toLocaleString('ko-KR') : x >= 100 ? x.toFixed(1) : x.toFixed(2)) + u; }
+  return Math.round(n).toLocaleString('ko-KR');
+};
 const lerp = (a, b, k) => a + (b - a) * k;
 const easeOut = (k) => 1 - Math.pow(1 - k, 3);
 const easeInOut = (k) => k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
@@ -98,22 +102,23 @@ function freshState() {
 S = freshState();
 
 const feverOn = () => S.feverUntil > performance.now();
-const value = (lv) => Math.round(100 * Math.pow(1.1, Math.min(lv, MAX_LV)) * (S.relics.has('whetstone') ? 1.2 : 1) / 10) * 10;
+const value = (lv) => Math.round(100 * Math.pow(1.5, Math.min(lv, MAX_LV)) * (S.relics.has('whetstone') ? 1.2 : 1) / 10) * 10;
 const bladeName = (lv) => NAMES[formOf(lv)];
 const req = () => REQ[S.day - 1];
 
-function probs(level, correct, fever) {
-  if (fever) return { great: 30, succ: 70, keep: 0, dmg: 0, brk: 0 };
+// 원작 영상에서 읽은 값: +2 파괴 4.1·손상 3.7·성공 55.3·대성공 7.4 / +3 7.0·3.4·55.1·6.9 / +4 14.1·3.2·50.9·6.4
+// +6 21.3·3.0·45.4·6.1 / +21 파괴 14.7 / +28 11.5 / +76 6.8 / +218 6.5. 손상은 +10 이후 15% 안팎, 유지는 25% 안팎.
+const BRK_LOW = [0, 2, 4.1, 7, 14.1, 18, 21.3];
+function probs(level, fever) {
   if (level >= MAX_LV) return { great: 0, succ: 0, keep: 100, dmg: 0, brk: 0 };
-  if (correct) { // 맞히면 반드시 오른다
-    const great = 12 + (S.relics.has('glove') ? 8 : 0);
-    return { great, succ: 100 - great, keep: 0, dmg: 0, brk: 0 };
-  }
-  if (level === 0) return { great: 0, succ: 0, keep: 100, dmg: 0, brk: 0 };
-  let brk = Math.min(45, 2 + level * 0.43);
+  if (fever) return { brk: 0, dmg: 3, keep: 22, succ: 68, great: 7 }; // 영감(원작의 신들림): 파괴 없음
+  let brk = level <= 6 ? BRK_LOW[level] : Math.max(6.5, 21.3 - (level - 6) * 0.42);
   if (S.relics.has('anvil')) brk *= 0.65;
-  const dmg = Math.min(100 - brk, 22 + level * 0.2);
-  return { great: 0, succ: 0, keep: 100 - brk - dmg, dmg, brk };
+  const dmg = level === 0 ? 0 : level <= 6 ? 4 - level * 0.15 : level >= 10 ? 15 : 3 + (level - 6) * 3;
+  let great = level <= 6 ? 7.5 - level * 0.25 : level <= 40 ? 12 : Math.max(4, 12 - (level - 40) * 0.15);
+  if (S.relics.has('glove')) great += 8;
+  const keep = 25;
+  return { brk, dmg, keep, succ: 100 - brk - dmg - keep - great, great };
 }
 function roll(p) {
   let r = Math.random() * 100;
@@ -165,8 +170,7 @@ function drawBoard() {
     g.fillStyle = on ? (fever ? `hsl(${(now / 5 + i * 36) % 360},100%,62%)` : '#86e6ff') : 'rgba(134,230,255,.12)';
     g.beginPath(); g.roundRect(gx + i * gw + 3, 188, gw - 6, 34, 7); g.fill();
   }
-  const gn = gainOf(c.level);
-  const delta = (k) => k === 'succ' ? ` +${fever ? 1 : gn}` : k === 'great' ? ` +${fever ? 2 : gn * 2}` : k === 'dmg' ? ` −${gn}` : '';
+  const delta = (k) => k === 'succ' ? ' +1' : k === 'great' ? ' +2' : k === 'dmg' ? ' −1' : '';
   const row = (label, p, keys, y, note) => {
     g.textAlign = 'left'; g.font = '700 32px "Noto Sans KR", sans-serif'; g.fillStyle = '#d9c7a6'; g.fillText(label, 50, y + 46);
     const x0 = 150, bw = W - 46 - x0, bh = 66;
@@ -189,8 +193,8 @@ function drawBoard() {
     g.restore();
   };
   const maxed = c.level >= MAX_LV;
-  row('정답', probs(c.level, true, fever), ['great', 'succ', 'keep'], 262, maxed ? '최대 강화 · 더는 오르지 않는다' : null);
-  row('오답', probs(c.level, false, fever), ['keep', 'dmg', 'brk'], 362, maxed ? '검 완성(F)으로 걸어 두자' : fever ? '영감 중에는 문제 없이 · 파괴 0%' : null);
+  row('확률', probs(c.level, fever), ['brk', 'dmg', 'keep', 'succ', 'great'], 262, maxed ? '최대 강화 · 더는 오르지 않는다' : null);
+  row('', null, [], 362, maxed ? '검 완성(F)으로 걸어 두자' : fever ? '영감! 문제 없이 연타 · 파괴 0%' : '문제를 맞혀야 망치를 들 수 있다');
   world.boardTex.needsUpdate = true;
 }
 
@@ -259,7 +263,7 @@ function refresh() {
   if (walk) {
     const goal = S.cur ? '모루에 벼리던 검이 있어요' : S.blanks > 0 ? '원석 상자에서 원석을 꺼내세요' : '원석을 다 썼어요 · 검을 제단에 바치세요';
     hint = (IS_TOUCH ? '조이스틱 이동 · 끌어서 둘러보기 · 톡 상호작용' : 'WASD 이동 · 마우스로 둘러보기 · E/클릭 상호작용') + ` — ${goal}`;
-  } else if (atAnvil) hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : '망치질하면 문제가 나옵니다 · 위험해지면 검 완성으로 멈추세요';
+  } else if (atAnvil) hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : '맞히면 한 번 두드립니다 · 위험해지면 검 완성으로 멈추세요';
   $('#hud-hint').textContent = hint;
   $('#hud-hint').classList.toggle('hidden', !(walk || atAnvil));
   $('#crosshair').classList.toggle('hidden', !walk);
@@ -296,8 +300,8 @@ function openQuestion() {
   Q.correct = Q.order.indexOf(q.a);
   S.mode = 'question'; refresh();
   $('#q-tag').textContent = q.t || '문제';
-  const brk = probs(S.cur.level, false, false).brk;
-  $('#q-risk').innerHTML = `${esc(bladeName(S.cur.level))} +${S.cur.level} · 틀리면 파괴 <b>${pct(brk)}</b>`;
+  const p = probs(S.cur.level, false);
+  $('#q-risk').innerHTML = `${esc(bladeName(S.cur.level))} +${S.cur.level} · 맞히면 두드린다 (파괴 <b>${pct(p.brk)}</b> · 성공 <b>${pct(p.succ + p.great)}</b>)`;
   $('#q-text').textContent = q.q;
   const box = $('#q-choices'); box.innerHTML = '';
   Q.order.forEach((orig, i) => {
@@ -360,7 +364,7 @@ function answer(i) {
     S.gauge = Math.max(0, S.gauge - 3);
     sfx.play('wrong');
     ex.className = 'q-explain';
-    ex.innerHTML = `${i < 0 ? '<b>시간 초과!</b> ' : ''}정답은 <b>${esc(q.c[q.a])}</b>${q.e ? ` — ${esc(q.e)}` : ''}<br><small>오답 노트에 적어 두었다. 금이 간 채로 내리친다…</small>`;
+    ex.innerHTML = `${i < 0 ? '<b>시간 초과!</b> ' : ''}정답은 <b>${esc(q.c[q.a])}</b>${q.e ? ` — ${esc(q.e)}` : ''}<br><small>오답 노트에 적어 두었다. 이번엔 망치를 들지 못했다.</small>`;
     $('#q-go').classList.remove('hidden');
     Q.pendingWrong = true;
     drawBoard(); refresh();
@@ -368,7 +372,9 @@ function answer(i) {
 }
 function confirmWrong() {
   if (!Q.pendingWrong) return;
-  Q.pendingWrong = false; closeCard(); doStrike(false, false);
+  Q.pendingWrong = false; closeCard();
+  S.mode = 'anvil'; refresh(); drawBoard();
+  popup('헛손질', world.impactPoint.clone().add(new THREE.Vector3(0, 0.35, 0)), 'mid keep');
 }
 function closeCard() { $('#qcard').classList.add('hidden'); }
 
@@ -420,14 +426,13 @@ async function doStrike(correct, fever) {
 
 function resolveStrike(correct, fever) {
   const c = S.cur;
-  let out = roll(probs(c.level, correct, fever));
+  let out = roll(probs(c.level, fever));
   let charm = false;
   if (out === 'brk' && S.items.charm > 0) { S.items.charm--; out = 'keep'; charm = true; }
   const before = c.level, beforeVal = value(before);
-  const gain = gainOf(c.level);
-  if (out === 'great') c.level = Math.min(MAX_LV, c.level + (fever ? 2 : gain * 2));
-  else if (out === 'succ') c.level = Math.min(MAX_LV, c.level + (fever ? 1 : gain));
-  else if (out === 'dmg') c.level = Math.max(0, c.level - gain);
+  if (out === 'great') c.level = Math.min(MAX_LV, c.level + 2);
+  else if (out === 'succ') c.level = Math.min(MAX_LV, c.level + 1);
+  else if (out === 'dmg') c.level = Math.max(0, c.level - 1);
   const ip = world.impactPoint, fx = fever ? FX.fever : FX[out];
   hitstop(fx.stop);
   world.shake(fx.shake);
@@ -789,8 +794,8 @@ function openHowTo(back) {
     <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 마우스를 움직이는 만큼 시점이 돈다. Esc로 마우스를 풀 수 있다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
     <li><b>상호작용 (E)</b> — 원석 상자·화로·모루·제단·책장을 바라보면 안내가 뜬다. E나 클릭(휴대폰은 톡)으로 실행한다.</li>
     <li><b>원석 꺼내기</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다. 모루 앞에 서면 시점이 고정된다. Esc나 이동 키로 자리를 뜰 수 있다.</li>
-    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. <b>맞히면</b> 반드시 오른다(성공 +2부터, 10강마다 폭이 1씩 커진다. 대성공은 두 배). <b>틀리면</b> 유지·손상·파괴 중 하나가 뽑히고, 강할수록 파괴 확률이 높다. 최대 +100.</li>
-    <li><b>검의 모양</b> — 초반엔 몇 강마다 새 모양으로 바뀌고, +78부터는 최종형이 되어 점점 더 빛난다. +25·50·75에선 번개가 친다.</li>
+    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. 문제를 <b>맞혀야</b> 망치를 한 번 두드릴 수 있다. 틀리면 헛손질. 두드린 결과는 전광판의 확률표대로 파괴·손상(−1)·유지·성공(+1)·대성공(+2) 중 하나. 가치는 1강마다 1.5배. 최대 +100.</li>
+    <li><b>검의 모양</b> — 초반엔 2강마다 새 모양으로 바뀌고, +62부터는 최종형이 되어 점점 더 빛난다. +25·50·75에선 번개가 친다.</li>
     <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
     <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
     <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
