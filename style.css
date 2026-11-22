@@ -238,3 +238,25 @@ textarea { width: 100%; height: 240px; background: rgba(0,0,0,.4); color: var(--
 
 /* 식은 검일 때 망치질 버튼 흐리게 */
 #act-strike.dimmed { filter: grayscale(.8) brightness(.7); }
+
+/* 상점: 키워드 위주 간결한 목록 */
+#panel.shop2 h2 { margin-bottom: 10px; }
+.shop2 .stats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.shop2 .stats span { padding: 6px 11px; border-radius: 999px; background: rgba(0,0,0,.35); font-size: 14px; color: var(--ink-dim); }
+.shop2 .stats b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.shop2 .stats span:first-child b { color: var(--gold); }
+.shop2 .sec { font-family: var(--serif); color: var(--gold); font-size: 15px; margin: 14px 0 7px; }
+.shop2 .sec small { font-family: var(--sans); color: var(--ink-dim); font-size: 12px; margin-left: 6px; }
+.shop2 .slist { display: flex; flex-direction: column; gap: 6px; }
+.shop2 .srow { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 11px; background: rgba(50, 34, 20, .55); border: 1px solid rgba(138, 103, 64, .35); }
+.shop2 .srow.sold { opacity: .45; }
+.shop2 .srow .ico { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 15px; background: radial-gradient(circle at 35% 30%, #8a6440, #3a2414); border: 1px solid rgba(242,196,92,.5); color: #fff0d0; }
+.shop2 .srow .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.shop2 .srow .txt b { font-size: 14.5px; }
+.shop2 .srow .txt > span { font-size: 13px; color: var(--ink-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shop2 .srow .tag { align-self: flex-start; margin-top: 3px; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: rgba(134,230,255,.12); color: #9fdcef; }
+.shop2 .srow .tag.hot { background: rgba(242,196,92,.22); color: var(--gold); }
+.shop2 .srow button { flex: none; min-width: 74px; }
+.shop2 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.shop2 .chip { padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 900; background: rgba(50,34,20,.7); border: 1px solid rgba(242,196,92,.45); color: var(--gold); }
+.shop2 .btnrow { margin-top: 14px; }

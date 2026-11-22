@@ -53,36 +53,36 @@ const FEVER_MS = 6000;
 // 원작 ForgeTax 영상에서 읽은 유물·상점 효과를 그대로 옮기고, 이름만 공부 테마로 바꿨다.
 // relic: 유물 칸을 차지(검 조각으로 산다) · instant: 사는 즉시 쓰고 칸을 차지하지 않음 · gold: 골드로 사는 것
 const ITEMS = {
-  pad: { name: '손때 묻은 연습장', kind: 'relic', cost: 1, icon: '연', desc: '유지 표 2장을 성공 표로 바꾼다.' },
-  sharp: { name: '무딘 연필깎이', kind: 'relic', cost: 1, icon: '깎', desc: '손상 표 1장을 성공 표로 바꾼다.' },
-  redpen: { name: '가시 돋친 빨간펜', kind: 'relic', cost: 2, icon: '펜', desc: '유지 표 2장을 손상 표로 바꾼다. 손상과 엮이는 유물과 함께 쓴다.' },
-  sealnote: { name: '봉인된 복습 노트', kind: 'relic', cost: 1, icon: '봉', desc: '유지 표 +2장. 유지 2연속마다 +1강.' },
-  crack: { name: '금 간 책받침', kind: 'relic', cost: 2, icon: '받', desc: '손상마다 이 검의 파괴 확률 15% 감소, 최대 60%.' },
-  echo: { name: '메아리 치는 종', kind: 'relic', cost: 2, icon: '종', desc: '성공·대성공마다 30% 확률로 추가 +1강.' },
-  worm: { name: '굶주린 책벌레', kind: 'relic', cost: 1, icon: '벌', desc: '+4강 이상 검이 파괴되면 다음 +0강 검에 성공 표 +6장. 그 검에 계속 적용.' },
-  dict: { name: '묵직한 사전', kind: 'relic', cost: 1, icon: '사', desc: '유지하면 다음 타격의 파괴 확률 35% 감소.' },
-  sheet: { name: '세 번 고친 답안지', kind: 'relic', cost: 2, icon: '답', desc: '대성공 후 파괴 확률 40% 감소. 연속 대성공마다 10% 추가 감소, 최대 60%. 다른 결과가 나오면 초기화.' },
-  stamp: { name: '패자의 오답 도장', kind: 'relic', cost: 2, icon: '도', desc: '손상마다 다음 대성공의 추가 강화 +1. 모인 추가 강화가 10 이상이면 이 검의 대성공 표 +4장.' },
-  coin: { name: '양면 동전', kind: 'relic', cost: 1, icon: '동', desc: '이 유물을 버리면 다음 타격이 정해진다. 홀수 날은 대성공, 짝수 날은 파괴.' },
-  bellows: { name: '들뜬 풀무', kind: 'relic', cost: 2, icon: '풀', desc: '영감 시간 +25%.' },
-  ink: { name: '마르지 않는 잉크병', kind: 'relic', cost: 4, icon: '잉', desc: '유지 표 +2장. 유지 5회마다 다음 파괴 1회를 유지로 바꾸는 보호가 생긴다(이 검에 2회까지 저장).' },
-  contract: { name: '평생 학습 계약서', kind: 'relic', cost: 5, icon: '계', desc: '파괴 표 −1장. 서고지기의 요구 가치 30% 감소.' },
-  cocoon: { name: '부화 직전의 원석 알', kind: 'relic', cost: 1, icon: '알', desc: '2일 뒤 원석 3개를 주고 사라진다.' },
-  bookmark: { name: '새벽의 책갈피', kind: 'relic', cost: 3, icon: '갈', desc: '검이 파괴되면 그 강화의 40%를 다음 +0강 검이 물려받고, 영감 4칸이 찬다.' },
-  quill: { name: '부러진 깃펜', kind: 'relic', cost: 1, icon: '깃', desc: '검이 파괴되면 그 강화의 30%를 다음 +0강 검이 물려받고, 영감 3칸이 찬다.' },
-  weight: { name: '기다림의 추', kind: 'relic', cost: 1, icon: '기', desc: '손상 표 −2장, 유지 표 +3장.' },
-  hoop: { name: '튼튼한 책 고리', kind: 'relic', cost: 3, icon: '고', desc: '파괴 표 −2장.' },
-  twin: { name: '쌍둥이 도장', kind: 'relic', cost: 4, icon: '쌍', desc: '검을 완성해 걸 때 2% 확률로 똑같은 검이 한 자루 더 생긴다.' },
+  pad: { name: '손때 묻은 연습장', short: '유지 2 → 성공', kind: 'relic', cost: 1, icon: '연', desc: '유지 표 2장을 성공 표로 바꾼다.' },
+  sharp: { name: '무딘 연필깎이', short: '손상 1 → 성공', kind: 'relic', cost: 1, icon: '깎', desc: '손상 표 1장을 성공 표로 바꾼다.' },
+  redpen: { name: '가시 돋친 빨간펜', short: '유지 2 → 손상', kind: 'relic', cost: 2, icon: '펜', desc: '유지 표 2장을 손상 표로 바꾼다. 손상과 엮이는 유물과 함께 쓴다.' },
+  sealnote: { name: '봉인된 복습 노트', short: '유지 +2 · 유지 2연속 +1강', kind: 'relic', cost: 1, icon: '봉', desc: '유지 표 +2장. 유지 2연속마다 +1강.' },
+  crack: { name: '금 간 책받침', short: '손상마다 파괴 −15%', kind: 'relic', cost: 2, icon: '받', desc: '손상마다 이 검의 파괴 확률 15% 감소, 최대 60%.' },
+  echo: { name: '메아리 치는 종', short: '성공 시 30% 추가 +1강', kind: 'relic', cost: 2, icon: '종', desc: '성공·대성공마다 30% 확률로 추가 +1강.' },
+  worm: { name: '굶주린 책벌레', short: '+4↑ 파괴 → 다음 검 성공 +6', kind: 'relic', cost: 1, icon: '벌', desc: '+4강 이상 검이 파괴되면 다음 +0강 검에 성공 표 +6장. 그 검에 계속 적용.' },
+  dict: { name: '묵직한 사전', short: '유지 후 파괴 −35%', kind: 'relic', cost: 1, icon: '사', desc: '유지하면 다음 타격의 파괴 확률 35% 감소.' },
+  sheet: { name: '세 번 고친 답안지', short: '대성공 후 파괴 −40%', kind: 'relic', cost: 2, icon: '답', desc: '대성공 후 파괴 확률 40% 감소. 연속 대성공마다 10% 추가 감소, 최대 60%. 다른 결과가 나오면 초기화.' },
+  stamp: { name: '패자의 오답 도장', short: '손상마다 다음 대성공 +1강', kind: 'relic', cost: 2, icon: '도', desc: '손상마다 다음 대성공의 추가 강화 +1. 모인 추가 강화가 10 이상이면 이 검의 대성공 표 +4장.' },
+  coin: { name: '양면 동전', short: '버리면 다음 타격 확정', kind: 'relic', cost: 1, icon: '동', desc: '이 유물을 버리면 다음 타격이 정해진다. 홀수 날은 대성공, 짝수 날은 파괴.' },
+  bellows: { name: '들뜬 풀무', short: '영감 시간 +25%', kind: 'relic', cost: 2, icon: '풀', desc: '영감 시간 +25%.' },
+  ink: { name: '마르지 않는 잉크병', short: '유지 +2 · 유지 5번마다 보호', kind: 'relic', cost: 4, icon: '잉', desc: '유지 표 +2장. 유지 5회마다 다음 파괴 1회를 유지로 바꾸는 보호가 생긴다(이 검에 2회까지 저장).' },
+  contract: { name: '평생 학습 계약서', short: '파괴 −1 · 요구 가치 −30%', kind: 'relic', cost: 5, icon: '계', desc: '파괴 표 −1장. 서고지기의 요구 가치 30% 감소.' },
+  cocoon: { name: '부화 직전의 원석 알', short: '2일 뒤 원석 +3', kind: 'relic', cost: 1, icon: '알', desc: '2일 뒤 원석 3개를 주고 사라진다.' },
+  bookmark: { name: '새벽의 책갈피', short: '파괴 시 40% 계승', kind: 'relic', cost: 3, icon: '갈', desc: '검이 파괴되면 그 강화의 40%를 다음 +0강 검이 물려받고, 영감 4칸이 찬다.' },
+  quill: { name: '부러진 깃펜', short: '파괴 시 30% 계승', kind: 'relic', cost: 1, icon: '깃', desc: '검이 파괴되면 그 강화의 30%를 다음 +0강 검이 물려받고, 영감 3칸이 찬다.' },
+  weight: { name: '기다림의 추', short: '손상 −2 · 유지 +3', kind: 'relic', cost: 1, icon: '기', desc: '손상 표 −2장, 유지 표 +3장.' },
+  hoop: { name: '튼튼한 책 고리', short: '파괴 −2', kind: 'relic', cost: 3, icon: '고', desc: '파괴 표 −2장.' },
+  twin: { name: '쌍둥이 도장', short: '완성 시 2% 복제', kind: 'relic', cost: 4, icon: '쌍', desc: '검을 완성해 걸 때 2% 확률로 똑같은 검이 한 자루 더 생긴다.' },
   // 융합으로만 얻는 유물 (상점에 나오지 않는다)
-  dawnquill: { name: '새벽을 되찾은 깃펜', kind: 'relic', fused: true, cost: 0, icon: '새', desc: '검이 파괴되면 그 강화의 70%를 다음 +0강 검이 물려받고, 영감 7칸이 찬다. 물려받은 검의 파괴 확률은 부서진 검 1강마다 1.5% 줄어든다(최대 50%).' },
-  modelnote: { name: '모범 답안 노트', kind: 'relic', fused: true, cost: 0, icon: '모', desc: '유지 표 2장과 손상 표 1장을 성공 표로 바꾸고, 대성공 표 +1장.' },
-  redrule: { name: '빨간 줄 책받침', kind: 'relic', fused: true, cost: 0, icon: '줄', desc: '유지 표 2장을 손상 표로 바꾼다. 손상마다 이 검의 파괴 확률 20% 감소, 최대 80%.' },
-  encyclo: { name: '봉인된 백과사전', kind: 'relic', fused: true, cost: 0, icon: '백', desc: '유지 표 +2장. 유지하면 다음 타격의 파괴 확률 60% 감소. 유지 2연속마다 +1강.' },
-  glasses: { name: '지혜의 안경', kind: 'relic', cost: 2, icon: '안', desc: '문제마다 오답 보기 하나가 흐려진다.' },
-  tape: { name: '운명을 고치는 수정테이프', kind: 'instant', cost: 2, icon: '테', desc: '사는 즉시 이번 판의 손상 표 1장을 없앤다. 유물 칸을 차지하지 않는다.' },
-  ticket: { name: '합격 추첨표', kind: 'gold', price: 0.6, icon: '추', desc: '이번 판의 성공 표 +1장. 유물 칸을 차지하지 않는다. 상인 방문마다 한 번만 살 수 있다.' },
-  hint: { name: '힌트 두루마리', kind: 'gold', price: 0.25, icon: '두', desc: '문제 하나에서 오답 보기 2개를 지운다.' },
-  candle: { name: '새 양초', kind: 'gold', price: 1.5, icon: '초', desc: '꺼진 촛불 하나를 다시 켠다.' },
+  dawnquill: { name: '새벽을 되찾은 깃펜', short: '파괴 시 70% 계승 · 파괴↓', kind: 'relic', fused: true, cost: 0, icon: '새', desc: '검이 파괴되면 그 강화의 70%를 다음 +0강 검이 물려받고, 영감 7칸이 찬다. 물려받은 검의 파괴 확률은 부서진 검 1강마다 1.5% 줄어든다(최대 50%).' },
+  modelnote: { name: '모범 답안 노트', short: '유지 2·손상 1 → 성공 · 대성공 +1', kind: 'relic', fused: true, cost: 0, icon: '모', desc: '유지 표 2장과 손상 표 1장을 성공 표로 바꾸고, 대성공 표 +1장.' },
+  redrule: { name: '빨간 줄 책받침', short: '유지 2 → 손상 · 손상마다 파괴 −20%', kind: 'relic', fused: true, cost: 0, icon: '줄', desc: '유지 표 2장을 손상 표로 바꾼다. 손상마다 이 검의 파괴 확률 20% 감소, 최대 80%.' },
+  encyclo: { name: '봉인된 백과사전', short: '유지 +2 · 유지 후 파괴 −60%', kind: 'relic', fused: true, cost: 0, icon: '백', desc: '유지 표 +2장. 유지하면 다음 타격의 파괴 확률 60% 감소. 유지 2연속마다 +1강.' },
+  glasses: { name: '지혜의 안경', short: '오답 보기 1개 흐림', kind: 'relic', cost: 2, icon: '안', desc: '문제마다 오답 보기 하나가 흐려진다.' },
+  tape: { name: '운명을 고치는 수정테이프', short: '손상 −1 (즉시)', kind: 'instant', cost: 2, icon: '테', desc: '사는 즉시 이번 판의 손상 표 1장을 없앤다. 유물 칸을 차지하지 않는다.' },
+  ticket: { name: '합격 추첨표', short: '성공 +1 · 방문당 1번', kind: 'gold', price: 0.6, icon: '추', desc: '이번 판의 성공 표 +1장. 유물 칸을 차지하지 않는다. 상인 방문마다 한 번만 살 수 있다.' },
+  hint: { name: '힌트 두루마리', short: '오답 보기 2개 지우기', kind: 'gold', price: 0.25, icon: '두', desc: '문제 하나에서 오답 보기 2개를 지운다.' },
+  candle: { name: '새 양초', short: '촛불 1개 다시 켜기', kind: 'gold', price: 1.5, icon: '초', desc: '꺼진 촛불 하나를 다시 켠다.' },
 
 };
 const OUT = {
@@ -850,31 +850,39 @@ function openShop() {
 }
 function renderShop() {
   const used = S.relics.size;
-  const goldRow = ['ticket', 'hint', 'candle'].filter(k => !(k === 'candle' && S.candles >= 3)).map(k => {
-    const it = ITEMS[k], p = priceOf(k), done = k === 'ticket' && S.ticketBought;
-    return `<div class="card item"><div class="ico">${it.icon}</div><div class="body"><div class="kind">골드</div><div class="nm">${it.name}</div><div class="ds">${it.desc}</div></div>
-      <button class="${done ? 'ghost' : 'primary'} small" data-gold="${k}" ${done || S.gold < p ? 'disabled' : ''}>${done ? '구매함' : fmt(p) + ' G'}</button></div>`;
+  // 융합 짝 표시: 가진 유물 중 짝이 있으면 강조
+  const fuseTag = (k) => {
+    const r = FUSIONS.find((x) => x.a === k || x.b === k); if (!r) return '';
+    const other = r.a === k ? r.b : r.a, have = S.relics.has(other);
+    return `<span class="tag ${have ? 'hot' : ''}" title="${esc(ITEMS[other].name)}과(와) 융합 → ${esc(ITEMS[r.into].name)}">융합 · ${esc(ITEMS[other].name)}</span>`;
+  };
+  const row = (k, price, btn, dis, sold) => {
+    const it = ITEMS[k];
+    return `<div class="srow ${sold ? 'sold' : ''}" title="${esc(descOf(k))}">
+      <div class="ico">${it.icon}</div>
+      <div class="txt"><b>${it.name}</b><span>${it.short}${k === 'coin' ? ` (오늘 ${S.day % 2 ? '대성공' : '파괴'})` : ''}</span>${fuseTag(k)}</div>
+      <button class="${sold ? 'ghost' : 'primary'} small" ${btn} ${dis || sold ? 'disabled' : ''}>${sold ? '✓' : price}</button></div>`;
+  };
+  const relics = S.offers.map((o, i) => {
+    const it = ITEMS[o.k], full = it.kind === 'relic' && used >= RELIC_SLOTS && !fusesWith(o.k);
+    return row(o.k, full ? '칸 부족' : `조각 ${it.cost}`, `data-buy="${i}"`, S.tokens < it.cost || full, o.sold);
   }).join('');
+  const golds = ['ticket', 'hint', 'candle'].filter((k) => !(k === 'candle' && S.candles >= 3))
+    .map((k) => row(k, `${fmt(priceOf(k))} G`, `data-gold="${k}"`, S.gold < priceOf(k), k === 'ticket' && S.ticketBought)).join('');
+  const feed = S.finished.length
+    ? `<div class="sec">검 넣기 <small>1자루 = 조각 1</small></div><div class="chips">${S.finished.map((b, i) => `<button class="chip" data-feed="${i}" title="${esc(bladeName(b.level))} · ${fmt(value(b.level))} G">+${b.level}</button>`).join('')}</div>`
+    : '';
   openPanel(`
     <h2>떠돌이 사서 등불</h2>
-    <p class="sub">"유물 값은 검으로 받지요. 투입구에 완성한 검을 넣으면 한 자루에 검 조각 하나." 진열장 옆에는 골드로 파는 추첨표도 있다.</p>
-    <div class="meter" style="margin:0 0 12px">
-      <div class="line"><span>가진 골드</span><b style="color:var(--gold)">${fmt(S.gold)} G</b></div>
-      <div class="line"><span>검 조각</span><b>${S.tokens}개</b></div>
-      <div class="line"><span>유물 칸</span><b>${used} / ${RELIC_SLOTS}</b></div></div>
-    <h3 class="shop-h">투입구에 검 넣기</h3>
-    <div class="offer-list">${S.finished.length ? S.finished.map((b, i) => `<div class="offer"><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b><small>${fmt(value(b.level))} G어치</small></span><button class="ghost small" data-feed="${i}">넣기 · 조각 +1</button></div>`).join('') : '<div class="empty">넣을 검이 없다. 제단에 바치지 않고 남긴 검만 넣을 수 있다.</div>'}</div>
-    <h3 class="shop-h">진열장 (검 조각)</h3>
-    <div class="shop-grid">
-      ${S.offers.map((o, i) => { const it = ITEMS[o.k], full = it.kind === 'relic' && used >= RELIC_SLOTS && !fusesWith(o.k), fuse = it.kind === 'relic' && fusesWith(o.k); return `<div class="card ${o.sold ? 'sold' : ''}">
-        <div class="ico">${it.icon}</div>
-        <div class="body"><div class="kind">${fuse ? '<span style="color:var(--gold)">융합 가능!</span>' : it.kind === 'relic' ? '유물 · 칸 차지' : '즉시 사용'}</div><div class="nm">${it.name}</div><div class="ds">${descOf(o.k)}</div></div>
-        <button class="${o.sold ? 'ghost' : 'primary'} small" data-buy="${i}" ${o.sold || S.tokens < it.cost || full ? 'disabled' : ''}>${o.sold ? '구매함' : full ? '칸 부족' : '조각 ' + it.cost}</button></div>`; }).join('')}
-    </div>
-    <h3 class="shop-h">골드</h3>
-    <div class="shop-grid">${goldRow}</div>
-    <div class="btnrow"><button id="sh-reroll" class="ghost" ${S.gold < S.rerollCost ? 'disabled' : ''}>진열장 새로 고침 (${fmt(S.rerollCost)} G)</button>
-    <button id="sh-next" class="primary">다음 날 아침으로</button></div>`, true);
+    <div class="stats"><span>💰 <b>${fmt(S.gold)}</b> G</span><span>🗡 조각 <b>${S.tokens}</b></span><span>유물 <b>${used}/${RELIC_SLOTS}</b></span></div>
+    ${feed}
+    <div class="sec">유물 <small>검 조각</small></div>
+    <div class="slist">${relics}</div>
+    <div class="sec">골드</div>
+    <div class="slist">${golds}</div>
+    <div class="btnrow"><button id="sh-reroll" class="ghost small" ${S.gold < S.rerollCost ? 'disabled' : ''}>↻ ${fmt(S.rerollCost)} G</button>
+    <button id="sh-next" class="primary">다음 날 →</button></div>`, true);
+  $('#panel').classList.add('shop2');
   document.querySelectorAll('[data-buy]').forEach(b => b.onclick = () => buy(+b.dataset.buy));
   document.querySelectorAll('[data-gold]').forEach(b => b.onclick = () => buyGold(b.dataset.gold));
   document.querySelectorAll('[data-feed]').forEach(b => b.onclick = () => feedSword(+b.dataset.feed));
@@ -963,7 +971,7 @@ function bindEnd() {
 
 // ───────── 패널 ─────────
 let panelBack = null;
-function openPanel(html, side = false) { $('#panel').innerHTML = html; $('#modal').classList.toggle('side', side); $('#modal').classList.remove('hidden'); $('#panel').scrollTop = 0; }
+function openPanel(html, side = false) { $('#panel').classList.remove('shop2'); $('#panel').innerHTML = html; $('#modal').classList.toggle('side', side); $('#modal').classList.remove('hidden'); $('#panel').scrollTop = 0; }
 function closeModal() { $('#modal').classList.add('hidden'); panelBack = null; }
 function openNotes(back) {
   const list = Object.entries(WRONGS).sort((a, b) => b[1].count - a[1].count);
