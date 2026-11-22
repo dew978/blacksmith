@@ -346,9 +346,9 @@ const BLADES = [
   },
   // 15 전설의 지식검: 빛나는 수정 날, 펼친 책 가드, 룬 고리
   (root) => {
-    const mat = bladeMat(0x9ff2ff, 0.12, 0.6, 0x2aa6c8, 0.45);
+    const mat = bladeMat(0x4fb8d4, 0.12, 0.6, 0x2aa6c8, 0.25);
     root.add(flat(sym([[0.06, 0], [0.066, 0.3], [0.07, 0.7], [0.055, 0.95], [0.03, 1.12], [0, 1.2]]), mat));
-    root.add(flat(sym([[0.012, 0.04], [0.016, 0.7], [0, 1.05]]), mglow(0.45, 1.0, 1.2), 0.023, 0));
+    root.add(flat(sym([[0.012, 0.04], [0.016, 0.7], [0, 1.05]]), mglow(0.25, 0.6, 0.75), 0.023, 0));
     const rune = mglow(0.5, 1.3, 1.6);
     part(root, new THREE.TorusGeometry(0.11, 0.004, 6, 48), rune, 0, 0.35, 0);
     part(root, new THREE.TorusGeometry(0.09, 0.004, 6, 48), rune, 0, 0.8, 0);
@@ -361,11 +361,29 @@ const BLADES = [
   },
 ];
 
+// 모양이 바뀌는 단계: 초반엔 3~4강마다 자주 바뀌고, +78부터는 최종형으로 굳어 빛만 더 세진다
+export const FORM_AT = [0, 3, 6, 9, 12, 15, 19, 23, 28, 33, 39, 45, 52, 60, 68, 78];
+export function formOf(level) {
+  let f = 0;
+  for (let i = 0; i < FORM_AT.length; i++) if (level >= FORM_AT[i]) f = i;
+  return f;
+}
 export function buildBlade(level) {
-  const lv = Math.max(0, Math.min(level, 15));
+  const lv = Math.max(0, Math.min(level, 100));
+  const form = formOf(lv), last = form === FORM_AT.length - 1;
   const root = new THREE.Group();
-  const { mat, tip } = BLADES[lv](root);
-  root.userData = { mat, length: tip, tip };
+  const { mat, tip } = BLADES[form](root);
+  // 같은 모양 안에서도 단계가 오를수록 조금씩 커진다
+  const into = lv - FORM_AT[form];
+  const scale = 1 + Math.min(0.12, into * (last ? 0.005 : 0.025));
+  root.scale.setScalar(scale);
+  // 최종형은 +100에 가까울수록 더 강하게 빛난다
+  if (last) {
+    const k = into / (100 - FORM_AT[form]);
+    mat.emissiveIntensity = mat.userData.baseEI = mat.userData.baseEI + k * 0.15;
+    if (lv >= 100) { mat.emissive.setRGB(0.4, 0.75, 0.9); mat.userData.baseEmissive = mat.emissive.clone(); mat.emissiveIntensity = mat.userData.baseEI = 0.45; }
+  }
+  root.userData = { mat, length: tip * scale, tip: tip * scale };
   return root;
 }
 

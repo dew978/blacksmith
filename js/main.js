@@ -1,12 +1,17 @@
 import * as THREE from 'three';
-import { World, makeLyingBlade, setLyingBladeLevel } from './scene.js';
+import { World, makeLyingBlade, setLyingBladeLevel, formOf } from './scene.js';
 import { Sfx } from './audio.js';
 import { SAMPLE_QUESTIONS } from './questions.js';
 
 // ───────── 규칙 데이터 ─────────
 const MAX_DAY = 7;
-const REQ = [500, 1100, 2000, 3200, 4800, 6800, 9200];
-const VAL = [100, 180, 300, 480, 750, 1150, 1700, 2500, 3600, 5100, 7200, 10000, 14000, 19000, 26000, 35000];
+// 최대 +100. 맞히면 늘 오르고, 오르는 폭은 10강마다 1씩 커진다(+2 → +11). 값은 시뮬레이션으로 맞췄다.
+const MAX_LV = 100;
+const REQ = [1500, 4000, 10000, 25000, 60000, 140000, 300000];
+const gainOf = (lv) => 2 + Math.floor(lv / 10);
+// 상점 가격은 날마다 커지는 수입에 맞춰 함께 오른다
+const priceMul = () => Math.pow(1.9, S.day - 1) * 1.5;
+const priceOf = (k) => Math.round(ITEMS[k].price * priceMul() / 10) * 10;
 const NAMES = ['녹슨 깃펜칼', '갈아 낸 연필검', '다듬은 잉크검', '공책 철검', '쓸 만한 문법검', '단단한 공식검', '빛나는 개념검', '원리의 장검',
   '통찰의 검', '학자의 대검', '현자의 빛검', '진리의 쌍날검', '만물박사의 검', '별을 읽는 검', '지혜의 성검', '전설의 지식검'];
 const BASE_BLANKS = 3;
@@ -93,22 +98,21 @@ function freshState() {
 S = freshState();
 
 const feverOn = () => S.feverUntil > performance.now();
-const value = (lv) => Math.round(VAL[Math.min(lv, 15)] * (S.relics.has('whetstone') ? 1.2 : 1) / 10) * 10;
-const bladeName = (lv) => NAMES[Math.min(lv, 15)];
+const value = (lv) => Math.round(100 * Math.pow(1.1, Math.min(lv, MAX_LV)) * (S.relics.has('whetstone') ? 1.2 : 1) / 10) * 10;
+const bladeName = (lv) => NAMES[formOf(lv)];
 const req = () => REQ[S.day - 1];
 
 function probs(level, correct, fever) {
   if (fever) return { great: 30, succ: 70, keep: 0, dmg: 0, brk: 0 };
-  if (correct) {
-    let great = Math.max(5, 14 - level * 0.7);
-    if (S.relics.has('glove')) great += 8;
-    const keep = Math.min(50, level * 3.5);
-    return { great, succ: 100 - great - keep, keep, dmg: 0, brk: 0 };
+  if (level >= MAX_LV) return { great: 0, succ: 0, keep: 100, dmg: 0, brk: 0 };
+  if (correct) { // 맞히면 반드시 오른다
+    const great = 12 + (S.relics.has('glove') ? 8 : 0);
+    return { great, succ: 100 - great, keep: 0, dmg: 0, brk: 0 };
   }
   if (level === 0) return { great: 0, succ: 0, keep: 100, dmg: 0, brk: 0 };
-  let brk = Math.min(78, 6 + level * 6);
+  let brk = Math.min(45, 2 + level * 0.43);
   if (S.relics.has('anvil')) brk *= 0.65;
-  const dmg = Math.min(100 - brk, 42);
+  const dmg = Math.min(100 - brk, 22 + level * 0.2);
   return { great: 0, succ: 0, keep: 100 - brk - dmg, dmg, brk };
 }
 function roll(p) {
@@ -161,6 +165,8 @@ function drawBoard() {
     g.fillStyle = on ? (fever ? `hsl(${(now / 5 + i * 36) % 360},100%,62%)` : '#86e6ff') : 'rgba(134,230,255,.12)';
     g.beginPath(); g.roundRect(gx + i * gw + 3, 188, gw - 6, 34, 7); g.fill();
   }
+  const gn = gainOf(c.level);
+  const delta = (k) => k === 'succ' ? ` +${fever ? 1 : gn}` : k === 'great' ? ` +${fever ? 2 : gn * 2}` : k === 'dmg' ? ` −${gn}` : '';
   const row = (label, p, keys, y, note) => {
     g.textAlign = 'left'; g.font = '700 32px "Noto Sans KR", sans-serif'; g.fillStyle = '#d9c7a6'; g.fillText(label, 50, y + 46);
     const x0 = 150, bw = W - 46 - x0, bh = 66;
@@ -173,7 +179,7 @@ function drawBoard() {
       g.fillStyle = OUT[k].color; g.fillRect(x, y, w, bh);
       if (w > 120) {
         g.fillStyle = '#0b0806'; g.textAlign = 'center'; g.font = '900 28px "Noto Sans KR", sans-serif';
-        g.fillText(`${OUT[k].label} ${pct(p[k])}`, x + w / 2, y + 44);
+        g.fillText(`${OUT[k].label}${delta(k)} ${pct(p[k])}`, x + w / 2, y + 44);
       } else if (w > 56) {
         g.fillStyle = '#0b0806'; g.textAlign = 'center'; g.font = '900 24px "Noto Sans KR", sans-serif';
         g.fillText(pct(p[k]), x + w / 2, y + 42);
@@ -182,8 +188,9 @@ function drawBoard() {
     }
     g.restore();
   };
-  row('정답', probs(c.level, true, fever), ['great', 'succ', 'keep'], 262);
-  row('오답', probs(c.level, false, fever), ['keep', 'dmg', 'brk'], 362, fever ? '영감 중에는 문제 없이 · 파괴 0%' : null);
+  const maxed = c.level >= MAX_LV;
+  row('정답', probs(c.level, true, fever), ['great', 'succ', 'keep'], 262, maxed ? '최대 강화 · 더는 오르지 않는다' : null);
+  row('오답', probs(c.level, false, fever), ['keep', 'dmg', 'brk'], 362, maxed ? '검 완성(F)으로 걸어 두자' : fever ? '영감 중에는 문제 없이 · 파괴 0%' : null);
   world.boardTex.needsUpdate = true;
 }
 
@@ -391,6 +398,7 @@ async function takeBlank() {
 function strike() {
   if (S.mode !== 'anvil' || !S.cur) return;
   sfx.init();
+  if (S.cur.level >= MAX_LV) { popup('최대 강화! 검 완성(F)', world.impactPoint.clone().add(new THREE.Vector3(0, 0.4, 0)), 'mid gold'); sfx.play('ui'); return; }
   if (feverOn()) doStrike(true, true);
   else openQuestion();
 }
@@ -416,9 +424,10 @@ function resolveStrike(correct, fever) {
   let charm = false;
   if (out === 'brk' && S.items.charm > 0) { S.items.charm--; out = 'keep'; charm = true; }
   const before = c.level, beforeVal = value(before);
-  if (out === 'great') c.level = Math.min(15, c.level + 2 + (Math.random() < 0.2 ? 1 : 0));
-  else if (out === 'succ') c.level = Math.min(15, c.level + 1);
-  else if (out === 'dmg') c.level = Math.max(0, c.level - 1);
+  const gain = gainOf(c.level);
+  if (out === 'great') c.level = Math.min(MAX_LV, c.level + (fever ? 2 : gain * 2));
+  else if (out === 'succ') c.level = Math.min(MAX_LV, c.level + (fever ? 1 : gain));
+  else if (out === 'dmg') c.level = Math.max(0, c.level - gain);
   const ip = world.impactPoint, fx = fever ? FX.fever : FX[out];
   hitstop(fx.stop);
   world.shake(fx.shake);
@@ -441,8 +450,9 @@ function resolveStrike(correct, fever) {
       setLyingBladeLevel(c.holder, c.level);
       const up = c.level > before, h = c.holder;
       wait(up ? 0.32 : 0.2, k => { const s = 1 + (up ? 0.22 : 0.08) * Math.sin(k * Math.PI) * (1 - k * 0.3); h.scale.setScalar(s); }).then(() => h.scale.setScalar(1));
-      const mile = up && Math.floor(c.level / 5) > Math.floor(before / 5) ? Math.floor(c.level / 5) * 5 : 0;
-      if (mile) breakthrough(mile);
+      // 돌파: +100은 최종, +25·50·75를 넘으면 번개, 모양이 바뀌면 금빛
+      const tier = !up ? 0 : c.level >= MAX_LV ? 3 : Math.floor(c.level / 25) > Math.floor(before / 25) ? 2 : formOf(c.level) !== formOf(before) ? 1 : 0;
+      if (tier) breakthrough(c.level, tier, formOf(c.level) !== formOf(before));
       else if (up) {
         world.spawnSparks(ip.clone().add(new THREE.Vector3(-0.1, 0.03, 0)), 30, 0xfff1c8, { speed: 1.6, up: 0.6, life: 0.7, spread: 0.45 });
         const sp = world.toScreen(ip.clone().add(new THREE.Vector3(0, -0.12, 0)));
@@ -461,7 +471,7 @@ function resolveStrike(correct, fever) {
       world.spawnSparks(ip, fx.sparks, OUT[out].hex, { speed: out === 'great' ? 4.5 : 3, up: out === 'great' ? 3 : 2 });
     }
     if (out === 'great') world.spawnSparks(ip, 40, 0xffffff, { speed: 2, up: 3.5, life: 1.2, mul: 2 });
-    const label = charm ? '부적이 막았다!' : OUT[out].label + (out === 'succ' || out === 'great' ? ` +${c.level - before}` : out === 'dmg' && before > 0 ? ' −1' : '');
+    const label = charm ? '부적이 막았다!' : OUT[out].label + (out === 'succ' || out === 'great' ? ` +${c.level - before}` : out === 'dmg' && before > 0 ? ` −${before - c.level}` : '');
     popup(fever ? `+${c.level - before}` : label, above, `${fever ? 'mid' : fx.size} ${charm ? 'cyan' : out}`);
     const dv = value(c.level) - beforeVal;
     if (dv !== 0) {
@@ -481,10 +491,9 @@ function screenFlash(bg, dur, delay = 0) {
     d.animate([{ opacity: 1 }, { opacity: 0 }], { duration: dur, easing: 'cubic-bezier(.2,.7,.3,1)' }).onfinish = () => d.remove();
   }, delay);
 }
-// +5, +10, +15 돌파. +5는 금빛 기둥과 충격파, +10부터는 번개가 내리꽂힌다.
-function breakthrough(lv) {
+// 돌파 연출. tier 1: 모양이 바뀔 때 금빛 기둥과 충격파, 2: +25·50·75 번개, 3: +100 최종
+function breakthrough(lv, tier, newForm) {
   const ip = world.impactPoint, top = world.anvilTop.clone();
-  const tier = lv >= 15 ? 3 : lv >= 10 ? 2 : 1;
   const main = tier === 1 ? 0xffc85a : 0x8fe0ff;
   if (tier >= 2) {
     world.dim = 1;
@@ -510,7 +519,7 @@ function breakthrough(lv) {
   world.spawnSparks(ip, 180, 0xffe08a, { speed: 4.5, up: 4.2, life: 1.4, mul: 4 });
   world.spawnSparks(ip, 60, 0xffffff, { speed: 2.2, up: 5, life: 1.6, mul: 5, spread: 0.4 });
   sfx.play('milestone'); setTimeout(() => sfx.play('great'), 120);
-  banner(`+${lv} 돌파!`, bladeName(lv));
+  banner(tier === 3 ? '+100 완성!' : newForm ? bladeName(lv) : `+${lv} 돌파!`, tier === 3 ? bladeName(lv) + ' · 더는 오를 곳이 없다' : newForm ? `+${lv} · 새로운 모양` : bladeName(lv));
 }
 
 function startFever() {
@@ -644,7 +653,7 @@ function rollOffers() {
 function openShop() {
   S.mode = 'shop'; refresh();
   world.goStation('shop', 2.4);
-  S.rerollCost = 200; rollOffers();
+  S.rerollCost = Math.round(200 * priceMul() / 10) * 10; rollOffers();
   renderShop();
 }
 function renderShop() {
@@ -656,18 +665,18 @@ function renderShop() {
       ${S.offers.map((o, i) => { const it = ITEMS[o.k]; return `<div class="card ${it.kind === 'item' ? 'item' : ''} ${o.sold ? 'sold' : ''}">
         <div class="ico">${it.icon}</div>
         <div class="body"><div class="kind">${it.kind === 'relic' ? '유물 · 영구' : '소모품'}</div><div class="nm">${it.name}</div><div class="ds">${it.desc}</div></div>
-        <button class="${o.sold ? 'ghost' : 'primary'} small" data-buy="${i}" ${o.sold || S.gold < it.price ? 'disabled' : ''}>${o.sold ? '구매함' : fmt(it.price) + ' G'}</button></div>`; }).join('')}
+        <button class="${o.sold ? 'ghost' : 'primary'} small" data-buy="${i}" ${o.sold || S.gold < priceOf(o.k) ? 'disabled' : ''}>${o.sold ? '구매함' : fmt(priceOf(o.k)) + ' G'}</button></div>`; }).join('')}
     </div>
     <div class="btnrow"><button id="sh-reroll" class="ghost" ${S.gold < S.rerollCost ? 'disabled' : ''}>새로 진열 (${fmt(S.rerollCost)} G)</button>
     <button id="sh-next" class="primary">다음 날 아침으로</button></div>`, true);
   document.querySelectorAll('[data-buy]').forEach(b => b.onclick = () => buy(+b.dataset.buy));
-  $('#sh-reroll').onclick = () => { if (S.gold < S.rerollCost) return; S.gold -= S.rerollCost; S.rerollCost += 150; rollOffers(); sfx.play('coin'); refresh(); renderShop(); };
+  $('#sh-reroll').onclick = () => { if (S.gold < S.rerollCost) return; S.gold -= S.rerollCost; S.rerollCost = Math.round(S.rerollCost * 1.6 / 10) * 10; rollOffers(); sfx.play('coin'); refresh(); renderShop(); };
   $('#sh-next').onclick = () => { closeModal(); S.day++; startDay(); };
 }
 function buy(i) {
   const o = S.offers[i], it = ITEMS[o.k];
-  if (o.sold || S.gold < it.price) return;
-  S.gold -= it.price; o.sold = true; sfx.play('coin');
+  if (o.sold || S.gold < priceOf(o.k)) return;
+  S.gold -= priceOf(o.k); o.sold = true; sfx.play('coin');
   if (it.kind === 'relic') S.relics.add(o.k);
   else if (o.k === 'ore') S.bonusBlanks++;
   else if (o.k === 'candle') { if (S.candles < 3) { world.setCandle(S.candles, true); S.candles++; } }
@@ -780,7 +789,8 @@ function openHowTo(back) {
     <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 마우스를 움직이는 만큼 시점이 돈다. Esc로 마우스를 풀 수 있다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
     <li><b>상호작용 (E)</b> — 원석 상자·화로·모루·제단·책장을 바라보면 안내가 뜬다. E나 클릭(휴대폰은 톡)으로 실행한다.</li>
     <li><b>원석 꺼내기</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다. 모루 앞에 서면 시점이 고정된다. Esc나 이동 키로 자리를 뜰 수 있다.</li>
-    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. <b>맞히면</b> 성공·대성공으로 강해지고, <b>틀리면</b> 유지·손상·파괴 중 하나가 뽑힌다. 강할수록 틀렸을 때 파괴 확률이 높다.</li>
+    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. <b>맞히면</b> 반드시 오른다(성공 +2부터, 10강마다 폭이 1씩 커진다. 대성공은 두 배). <b>틀리면</b> 유지·손상·파괴 중 하나가 뽑히고, 강할수록 파괴 확률이 높다. 최대 +100.</li>
+    <li><b>검의 모양</b> — 초반엔 몇 강마다 새 모양으로 바뀌고, +78부터는 최종형이 되어 점점 더 빛난다. +25·50·75에선 번개가 친다.</li>
     <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
     <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
     <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
