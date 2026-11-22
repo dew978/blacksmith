@@ -408,3 +408,9 @@ body.touch #title-screen:not(.hidden) ~ #btn-fs { display: inline-flex; top: 14p
 .pause-menu .forge-btn { margin-bottom: 4px; }
 .pause-menu .danger { color: #ffb08a; border-color: rgba(255,120,60,.35); }
 #title-select .lbl small { display: block; margin-top: 2px; font-family: var(--sans); font-weight: 400; font-size: 11px; color: rgba(233,220,196,.5); }
+
+/* 모루 앞에서는 왼쪽 위 패널 아래에 작게 */
+.reqbox.dock { left: 18px; transform: none; width: 232px; padding: 7px 12px 8px; text-align: left; }
+.reqbox.dock .rq-top { justify-content: flex-start; }
+.reqbox.dock b { font-size: 22px; }
+@media (max-width: 720px) { .reqbox.dock { left: 10px; width: min(200px, 53vw); } .reqbox.dock b { font-size: 19px; } }

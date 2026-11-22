@@ -361,8 +361,13 @@ function refresh() {
   $('#hud-reqsub').textContent = full ? `걸어 둔 검 ${fmt(have)} G · 채웠다! 제단으로` : `걸어 둔 검 ${fmt(have)} G · ${fmt(need - have)} G 더`;
   if (full && !$('#reqbox').classList.contains('full')) { $('#reqbox').classList.add('full'); }
   else if (!full) $('#reqbox').classList.remove('full');
-  // 모루 앞에서는 전광판이 이 자리를 쓰므로 걸어 다닐 때만 보인다
-  $('#reqbox').classList.toggle('hidden', view !== 'walk' || !(S.mode === 'idle' || S.mode === 'anvil' || S.mode === 'menu'));
+  // 걸어 다닐 때는 위 가운데에 크게, 모루 앞(전광판이 위 가운데를 씀)에서는 왼쪽 위 패널 아래에 작게 붙인다
+  const inPlay = ['idle', 'anvil', 'menu', 'question', 'striking', 'moving', 'paused'].includes(S.mode);
+  $('#reqbox').classList.toggle('hidden', !inPlay);
+  $('#reqbox').classList.toggle('dock', view !== 'walk');
+  // 왼쪽 위 패널 높이가 상황마다 달라서 그 바로 아래에 붙인다
+  const tlEl = document.querySelector('.hud-tl');
+  $('#reqbox').style.top = view !== 'walk' && tlEl ? (tlEl.getBoundingClientRect().bottom + 8) + 'px' : '';
   $('#hud-candles').innerHTML = [0, 1, 2].map(i => `<div class="candle-ico ${i < S.candles ? '' : 'out'}"></div>`).join('');
   $('#hud-gold').textContent = fmt(S.gold);
   $('#hud-blanks').textContent = S.blanks;
@@ -1698,3 +1703,6 @@ window.__forge = {
   tick(sec) { for (let i = 0; i < sec * 60; i++) { hitstopUntil = 0; updateTweens(1 / 60); updateWalk(1 / 60, performance.now() + 5000); world.update(1 / 60, 1 / 60); } },
   P, keys, interact, breakthrough, sfx, get view() { return view; }, get focus() { return focusInfo; },
 };
+
+// 창 크기가 바뀌면 왼쪽 위 패널 높이도 바뀌므로 요구 가치 상자 위치를 다시 잡는다
+window.addEventListener('resize', () => { const tl = document.querySelector('.hud-tl'), rb = document.querySelector('#reqbox'); if (rb.classList.contains('dock') && tl) rb.style.top = (tl.getBoundingClientRect().bottom + 8) + 'px'; });
