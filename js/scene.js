@@ -179,12 +179,12 @@ export class World {
     r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     r.setSize(window.innerWidth, window.innerHeight);
     r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
-    r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.15;
+    r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.4;
     r.outputColorSpace = THREE.SRGBColorSpace;
 
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x060403);
-    this.scene.fog = new THREE.FogExp2(0x0b0705, 0.05);
+    this.scene.fog = new THREE.FogExp2(0x120c08, 0.03);
     this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.05, 60);
 
     this.composer = new EffectComposer(r);
@@ -296,8 +296,13 @@ export class World {
     }
 
     // 조명
-    S.add(new THREE.HemisphereLight(0x3a4a66, 0x1c120a, 0.32));
-    const spot = new THREE.SpotLight(0xffe0b0, 30, 9, 0.55, 0.6, 1.4);
+    S.add(new THREE.HemisphereLight(0x5a6a88, 0x3a2614, 0.75));
+    // 방 전체를 은은하게 채우는 따뜻한 빛 (그림자 없음)
+    this.fills = [];
+    for (const [x, z] of [[-2.2, -2.2], [2.2, -2.2], [-2.2, 2.0], [2.2, 2.0]]) {
+      const fill = new THREE.PointLight(0xffc48a, 2.6, 7.5, 1.3); fill.position.set(x, 3.7, z); S.add(fill); this.fills.push(fill);
+    }
+    const spot = new THREE.SpotLight(0xffe0b0, 38, 10, 0.6, 0.6, 1.3);
     spot.position.set(0.6, 4.3, 1.4); spot.target.position.set(0, 0.9, 0);
     spot.castShadow = true; spot.shadow.mapSize.set(1024, 1024); spot.shadow.bias = -0.0004;
     S.add(spot, spot.target);
@@ -687,6 +692,7 @@ export class World {
     // 화로
     const flick = Math.sin(t * 13) * 0.6 + Math.sin(t * 7.3) * 0.8 + Math.sin(t * 23.1) * 0.4;
     this.fireLight.intensity = (9 + flick * 1.4) * (1 - this.darkness);
+    for (const f of this.fills) f.intensity = 2.6 * (1 - this.darkness);
     this.flames.forEach((f, i) => {
       const ph = t * 3 + f.userData.ph;
       f.position.y = 0.55 + ((ph % 1)) * 0.28; f.scale.set(0.32 * (1 - (ph % 1) * 0.6), 0.42 * (1 - (ph % 1) * 0.4), 1);

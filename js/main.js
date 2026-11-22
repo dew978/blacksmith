@@ -251,7 +251,7 @@ function refresh() {
   let hint = '';
   if (walk) {
     const goal = S.cur ? '모루에 벼리던 검이 있어요' : S.blanks > 0 ? '원석 상자에서 원석을 꺼내세요' : '원석을 다 썼어요 · 검을 제단에 바치세요';
-    hint = (IS_TOUCH ? '조이스틱 이동 · 끌어서 둘러보기 · 톡 상호작용' : (pointerLocked() ? 'WASD 이동 · 마우스 둘러보기 · E 상호작용' : '화면을 클릭하면 마우스로 둘러볼 수 있어요 · WASD 이동')) + ` — ${goal}`;
+    hint = (IS_TOUCH ? '조이스틱 이동 · 끌어서 둘러보기 · 톡 상호작용' : 'WASD 이동 · 마우스로 둘러보기 · E/클릭 상호작용') + ` — ${goal}`;
   } else if (atAnvil) hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : '망치질하면 문제가 나옵니다 · 위험해지면 검 완성으로 멈추세요';
   $('#hud-hint').textContent = hint;
   $('#hud-hint').classList.toggle('hidden', !(walk || atAnvil));
@@ -724,7 +724,7 @@ function openQSet(back) {
 }
 function openHowTo(back) {
   openPanel(`<h2>플레이 방법</h2><ol class="howto">
-    <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 화면을 클릭한 뒤 마우스로 둘러본다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
+    <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 마우스를 움직이는 만큼 시점이 돈다. Esc로 마우스를 풀 수 있다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
     <li><b>상호작용 (E)</b> — 원석 상자·화로·모루·제단·책장을 바라보면 안내가 뜬다. E나 클릭(휴대폰은 톡)으로 실행한다.</li>
     <li><b>원석 꺼내기</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다. 모루 앞에 서면 시점이 고정된다. Esc나 이동 키로 자리를 뜰 수 있다.</li>
     <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. <b>맞히면</b> 성공·대성공으로 강해지고, <b>틀리면</b> 유지·손상·파괴 중 하나가 뽑힌다. 강할수록 틀렸을 때 파괴 확률이 높다.</li>
@@ -788,7 +788,15 @@ function spotInfo(id) {
 }
 function placePlayer(x, z, yaw, pitch) { Object.assign(P, { x, z, yaw, pitch, vx: 0, vz: 0 }); }
 let ctrlSince = 0, wasCtrl = false;
-function enterWalk() { view = 'walk'; refresh(); }
+function enterWalk() { view = 'walk'; tryLock(); refresh(); }
+// 마우스 잠금: OS 가속을 끈 원본 이동량(unadjustedMovement)을 우선 쓰고, 안 되면 일반 잠금.
+// 잠금이 거부돼도 캔버스 위 마우스 움직임만으로 둘러볼 수 있다.
+function tryLock() {
+  if (IS_TOUCH || pointerLocked()) return;
+  const plain = () => { try { const q = canvasEl.requestPointerLock(); if (q && q.catch) q.catch(() => {}); } catch (_) {} };
+  try { const p = canvasEl.requestPointerLock({ unadjustedMovement: true }); if (p && p.catch) p.catch(plain); } catch (_) { plain(); }
+}
+const SENS = 0.0022; // 1픽셀당 회전(라디안), 가로·세로 같은 비율
 function leaveAnvil() {
   if (view !== 'anvil' || (S.mode !== 'anvil' && S.mode !== 'idle')) return;
   placePlayer(0, 1.55, 0, -0.32); enterWalk();
@@ -881,8 +889,10 @@ function look(dx, dy, s) {
   P.yaw -= dx * s; P.pitch = Math.max(-1.25, Math.min(1.2, P.pitch - dy * s));
 }
 document.addEventListener('pointerlockchange', () => refresh());
+// 클릭 없이 마우스를 움직이는 만큼 그대로 시점이 돈다 (보간 없음)
 document.addEventListener('mousemove', (e) => {
-  if (walkActive() && pointerLocked()) look(e.movementX, e.movementY, 0.0022);
+  if (!walkActive() || IS_TOUCH) return;
+  if (pointerLocked() || e.target === canvasEl) look(e.movementX, e.movementY, SENS);
 });
 
 // 조이스틱 (터치)
@@ -952,10 +962,7 @@ const canvasEl = $('#scene');
 canvasEl.addEventListener('pointerdown', (e) => {
   if (view === 'walk') {
     if (!walkActive()) return;
-    if (e.pointerType === 'mouse') {
-      if (pointerLocked()) { interact(); return; }
-      try { const r = canvasEl.requestPointerLock(); if (r && r.catch) r.catch(() => {}); } catch (_) {}
-    }
+    if (e.pointerType === 'mouse') { tryLock(); interact(); return; }
     dragging = { id: e.pointerId, x: e.clientX, y: e.clientY, t: performance.now(), moved: 0 };
     capture(canvasEl, e.pointerId);
     return;
@@ -970,7 +977,7 @@ canvasEl.addEventListener('pointermove', (e) => {
     return;
   }
   if (view === 'anvil') canvasEl.style.cursor = world.pick(e.clientX, e.clientY) === 'anvil' ? 'pointer' : 'default';
-  else canvasEl.style.cursor = 'default';
+  else canvasEl.style.cursor = walkActive() ? 'none' : 'default';
 });
 const endDrag = (e) => {
   if (!dragging || e.pointerId !== dragging.id) return;
