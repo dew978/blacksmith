@@ -317,7 +317,11 @@ function drawCalendar() {
     const x = x0 + (d - 1) * cw;
     g.strokeStyle = 'rgba(58,36,20,.6)'; g.lineWidth = 3; g.strokeRect(x + 4, y0, cw - 8, ch);
     g.fillStyle = '#3a2414'; g.font = '700 40px "Gowun Batang", serif'; g.fillText(`${d}일`, x + cw / 2, y0 + 52);
-    g.font = '500 24px "Noto Sans KR", sans-serif'; g.fillStyle = '#5a3a20'; g.fillText(`${fmt(REQ[d - 1])}G`, x + cw / 2, y0 + 190);
+    // 칸이 좁으니 만 단위로 짧게 (계약서 유물이 있으면 줄어든 값)
+    const rq = Math.round(REQ[d - 1] * (S.relics.has('contract') ? 0.7 : 1) / 10) * 10;
+    const short = rq >= 10000 ? `${+(rq / 10000).toFixed(1)}만` : rq.toLocaleString('ko-KR');
+    g.font = '700 26px "Noto Sans KR", sans-serif'; g.fillStyle = '#5a3a20'; g.fillText(short, x + cw / 2, y0 + 176);
+    g.font = '500 18px "Noto Sans KR", sans-serif'; g.fillText('G', x + cw / 2, y0 + 200);
     const hst = S.history[d];
     if (hst === 'ok') { g.strokeStyle = '#2f5a2a'; g.lineWidth = 9; g.beginPath(); g.moveTo(x + 24, y0 + 110); g.lineTo(x + cw / 2, y0 + 140); g.lineTo(x + cw - 18, y0 + 80); g.stroke(); }
     else if (hst === 'fail') { g.strokeStyle = '#8a1e14'; g.lineWidth = 9; g.beginPath(); g.moveTo(x + 22, y0 + 76); g.lineTo(x + cw - 22, y0 + 150); g.moveTo(x + cw - 22, y0 + 76); g.lineTo(x + 22, y0 + 150); g.stroke(); }

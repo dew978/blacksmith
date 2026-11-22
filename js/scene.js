@@ -825,7 +825,8 @@ export class World {
     this.calCtx = cc.getContext('2d');
     this.calTex = new THREE.CanvasTexture(cc); this.calTex.colorSpace = THREE.SRGBColorSpace;
     const cal = new THREE.Mesh(new THREE.PlaneGeometry(1.35, 0.9), new THREE.MeshStandardMaterial({ map: this.calTex, roughness: 0.9, emissive: 0xffffff, emissiveMap: this.calTex, emissiveIntensity: 0.12 }));
-    cal.position.set(-4.47, 2.45, 0.55); cal.rotation.y = Math.PI / 2; this.scene.add(cal);
+    // 틀 앞면(-4.47)과 같은 깊이면 줄무늬처럼 깜빡이므로 살짝 앞으로 낸다
+    cal.position.set(-4.462, 2.45, 0.55); cal.rotation.y = Math.PI / 2; this.scene.add(cal);
     const calFrame = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.98, 1.43), this.mats.darkWood); calFrame.position.set(-4.49, 2.45, 0.55); this.scene.add(calFrame);
   }
 
