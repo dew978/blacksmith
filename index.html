@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>지식의 대장간</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div id="vignette"></div>
+<div id="flash"></div>
+<div id="fever-frame"></div>
+<div id="popups"></div>
+
+<div id="hud" class="hidden">
+  <div class="hud-tl">
+    <div class="brand">지식의 대장간</div>
+    <div class="dayline"><b id="hud-day">1</b><span>/ <i id="hud-maxday">7</i>일째</span></div>
+    <div class="candles" id="hud-candles" title="서고지기의 인내심"></div>
+    <div class="req">오늘의 요구 가치 <b id="hud-req">0 G</b></div>
+  </div>
+  <div class="hud-tr">
+    <div class="stat"><span>골드</span><b id="hud-gold">0</b></div>
+    <div class="stat"><span>원석</span><b id="hud-blanks">0</b></div>
+    <div class="stat"><span>완성한 검</span><b id="hud-fin">0</b></div>
+    <div class="stat"><span>정답률</span><b id="hud-acc">-</b></div>
+    <div class="tr-btns">
+      <button id="btn-notes" class="ghost small">오답 노트</button>
+      <button id="btn-sound" class="ghost small">소리 켬</button>
+    </div>
+  </div>
+  <div class="hud-bl" id="hud-relics"></div>
+  <div class="hint" id="hud-hint"></div>
+  <div class="actions" id="actions">
+    <button id="act-take"><kbd>E</kbd>원석 꺼내기</button>
+    <button id="act-strike" class="primary"><kbd>Space</kbd>망치질</button>
+    <button id="act-finish"><kbd>F</kbd>검 완성</button>
+    <button id="act-altar"><kbd>Q</kbd>제단으로</button>
+  </div>
+  <div id="fever-bar"><div class="fill"></div><span>영감 — 문제 없이 마구 두드려라!</span></div>
+</div>
+
+<div id="qcard" class="hidden">
+  <div class="q-meta"><span id="q-tag"></span><span id="q-risk"></span></div>
+  <div class="q-text" id="q-text"></div>
+  <div class="q-choices" id="q-choices"></div>
+  <div class="q-timer hidden" id="q-timer"><div></div></div>
+  <div class="q-explain hidden" id="q-explain"></div>
+  <div class="q-foot">
+    <button id="q-hint" class="ghost small">힌트 두루마리</button>
+    <button id="q-go" class="primary hidden">망치 내리치기 <kbd>Enter</kbd></button>
+  </div>
+</div>
+
+<div id="banner"><div class="b-title"></div><div class="b-sub"></div></div>
+
+<div id="modal" class="hidden"><div class="panel" id="panel"></div></div>
+
+<div id="title-screen">
+  <div class="title-inner">
+    <div class="sigil">⚒</div>
+    <h1>지식의 대장간</h1>
+    <p class="tagline">아는 만큼 단단해지는 검</p>
+    <p class="story">
+      망각의 서고지기가 꺼져 가던 대장간에 불씨를 빌려주었다.<br>
+      대가는 7일 동안 매일 정해진 가치만큼의 <b>지식의 검</b>.<br>
+      문제를 맞히면 검이 강해지고, 틀리면 금이 간다.<br>
+      제단의 촛불 세 개가 모두 꺼지면 대장간은 망각에 삼켜진다.
+    </p>
+    <div class="title-btns">
+      <button id="btn-start" class="primary big">대장간 문 열기</button>
+      <div class="row">
+        <button id="btn-qset" class="ghost">문제 세트</button>
+        <button id="btn-notes2" class="ghost">오답 노트</button>
+        <button id="btn-howto" class="ghost">플레이 방법</button>
+      </div>
+      <label class="opt"><input type="checkbox" id="opt-timer"> 문제마다 20초 제한 시간</label>
+    </div>
+    <p class="qinfo" id="qinfo"></p>
+  </div>
+</div>
+
+<div id="loading">불씨를 지피는 중…</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
