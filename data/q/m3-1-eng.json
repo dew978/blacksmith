@@ -272,6 +272,1137 @@
       "a": 2,
       "e": "오래 연습해 1등을 했으므로 자랑스러운 심정이다.",
       "std": "[9영01-05]"
+    },
+    {
+      "t": "현재완료 계속",
+      "q": "빈칸에 알맞은 말은?\nWe ___ each other since we were kids.",
+      "c": [
+        "have known",
+        "know",
+        "knew",
+        "are knowing"
+      ],
+      "a": 0,
+      "e": "과거부터 지금까지 계속되는 일은 현재완료로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 완료",
+      "q": "빈칸에 알맞은 말은?\nThe train has ___ left. We missed it.",
+      "c": [
+        "already",
+        "yet",
+        "ever",
+        "since"
+      ],
+      "a": 0,
+      "e": "긍정문에서 '이미'는 already이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "yet",
+      "q": "빈칸에 알맞은 말은?\nI haven't finished my project ___.",
+      "c": [
+        "already",
+        "ever",
+        "just",
+        "yet"
+      ],
+      "a": 3,
+      "e": "부정문 끝의 '아직'은 yet이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "How long",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How long have you lived here?\nB: ___",
+      "c": [
+        "Three years ago.",
+        "Next year.",
+        "For three years.",
+        "In three years."
+      ],
+      "a": 2,
+      "e": "How long ~?에는 for+기간으로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 용법",
+      "q": "밑줄 친 현재완료의 쓰임이 나머지와 다른 것은?",
+      "c": [
+        "She has lived here for ten years.",
+        "I have been to Rome twice.",
+        "He has worked here since 2019.",
+        "We have known him for a long time."
+      ],
+      "a": 1,
+      "e": "첫 문장은 경험, 나머지는 계속 용법이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 vs 과거",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "I lost my key two days ago.",
+        "I have lost my key two days ago.",
+        "When have you lost your key?",
+        "I have lose my key."
+      ],
+      "a": 0,
+      "e": "ago는 과거시제와 함께 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 결과",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nShe has lost her bag.",
+      "c": [
+        "그녀는 가방을 잃어버린 적이 있다.",
+        "그녀는 가방을 찾았다.",
+        "그녀는 가방을 잃어버릴 것이다.",
+        "그녀는 가방을 잃어버려서 지금 없다."
+      ],
+      "a": 3,
+      "e": "현재완료 결과 용법은 지금까지 영향이 남아 있다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "현재완료 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ you done your homework yet?\nB: Yes, I just finished it.",
+      "c": [
+        "Did",
+        "Do",
+        "Have",
+        "Are"
+      ],
+      "a": 2,
+      "e": "done(과거분사)이 있으므로 Have로 묻는다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "for vs since",
+      "q": "빈칸에 들어갈 말이 나머지와 다른 것은?",
+      "c": [
+        "He has played the piano ___ ten years.",
+        "I have been sick ___ last Friday.",
+        "They have waited ___ two hours.",
+        "She has studied here ___ a month."
+      ],
+      "a": 1,
+      "e": "시작 시점 앞은 since, 나머지 기간 앞은 for이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "문장 전환",
+      "q": "두 문장을 한 문장으로 바르게 바꾼 것은?\nI started to learn Chinese in 2022. I still learn it.",
+      "c": [
+        "I have learned Chinese since 2022.",
+        "I learned Chinese for 2022.",
+        "I have learned Chinese for 2022.",
+        "I learn Chinese since 2022."
+      ],
+      "a": 0,
+      "e": "과거부터 지금까지 계속이므로 have learned since이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 진행",
+      "q": "빈칸에 알맞은 말은?\nIt has ___ raining since this morning.",
+      "c": [
+        "be",
+        "being",
+        "was",
+        "been"
+      ],
+      "a": 3,
+      "e": "현재완료진행은 have been -ing이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "목적격 관계사",
+      "q": "빈칸에 알맞은 말은?\nShe is the teacher ___ I respect the most.",
+      "c": [
+        "which",
+        "what",
+        "whom",
+        "whose"
+      ],
+      "a": 2,
+      "e": "사람 선행사의 목적격 관계대명사는 whom(who)이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "목적격 관계사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "The bike which I bought is red.",
+        "The bike which I bought it is red.",
+        "The bike I bought is red.",
+        "The bike that I bought is red."
+      ],
+      "a": 1,
+      "e": "관계사절 안에 목적어 it을 또 쓰지 않는다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계사 생략",
+      "q": "[ ] 안의 말을 생략할 수 없는 문장은?",
+      "c": [
+        "The girl [who] lives next door is kind.",
+        "The song [that] I like is old.",
+        "The man [whom] we met was tall.",
+        "The cake [which] she made was sweet."
+      ],
+      "a": 0,
+      "e": "주격 관계대명사는 생략할 수 없다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계대명사 what",
+      "q": "빈칸에 알맞은 말은?\nThis is not ___ I ordered.",
+      "c": [
+        "that",
+        "which",
+        "who",
+        "what"
+      ],
+      "a": 3,
+      "e": "선행사가 없으므로 '~하는 것'인 what을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "what vs that",
+      "q": "빈칸에 들어갈 말이 나머지와 다른 것은?",
+      "c": [
+        "This is the movie ___ I saw.",
+        "He is the boy ___ I like.",
+        "Show me ___ you have in your hand.",
+        "I lost the pen ___ you gave me."
+      ],
+      "a": 2,
+      "e": "첫 문장은 선행사가 없어 what, 나머지는 that 등이 온다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "what 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nWhat he said was true.",
+      "c": [
+        "그는 무엇이 사실인지 말했다.",
+        "그가 말한 것은 사실이었다.",
+        "그가 사실을 말했는가?",
+        "그는 사실을 말하지 않았다."
+      ],
+      "a": 1,
+      "e": "관계대명사 what은 '~하는 것'이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "문장 연결",
+      "q": "두 문장을 관계대명사로 바르게 연결한 것은?\nThis is the cake. My mom made it.",
+      "c": [
+        "This is the cake which my mom made.",
+        "This is the cake which my mom made it.",
+        "This is the cake who my mom made.",
+        "This is the cake what my mom made."
+      ],
+      "a": 0,
+      "e": "it을 목적격 which로 바꾸고 it은 지운다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "관계대명사",
+      "q": "빈칸에 공통으로 알맞은 말은?\n• The book ___ I read was fun.\n• The man ___ I saw was a doctor.",
+      "c": [
+        "what",
+        "who",
+        "which",
+        "that"
+      ],
+      "a": 3,
+      "e": "사람·사물 선행사에 모두 쓰이는 것은 that이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "what",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "I can't believe that I saw it what.",
+        "I can't believe which I saw.",
+        "I can't believe what I saw.",
+        "I can't believe the thing what I saw."
+      ],
+      "a": 2,
+      "e": "선행사 없이 '~한 것'은 what으로 나타낸다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "현재분사",
+      "q": "빈칸에 알맞은 말은?\nThe man ___ a blue hat is my uncle.",
+      "c": [
+        "worn",
+        "wearing",
+        "wears",
+        "wore"
+      ],
+      "a": 1,
+      "e": "'~을 쓰고 있는'은 능동의 현재분사 wearing이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "과거분사",
+      "q": "빈칸에 알맞은 말은?\nI found a ___ window in the classroom.",
+      "c": [
+        "broken",
+        "breaking",
+        "broke",
+        "break"
+      ],
+      "a": 0,
+      "e": "'깨진' 창문은 수동의 과거분사 broken이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "과거분사",
+      "q": "빈칸에 알맞은 말은?\nThis is a letter ___ in English.",
+      "c": [
+        "writing",
+        "wrote",
+        "writes",
+        "written"
+      ],
+      "a": 3,
+      "e": "'영어로 쓰인'은 과거분사 written이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "분사 위치",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "Look at the falling from the tree leaves.",
+        "Look at the leaves fallen from the tree are.",
+        "Look at the leaves falling from the tree.",
+        "Look at the leaves fell from the tree."
+      ],
+      "a": 2,
+      "e": "분사가 수식어를 동반하면 명사 뒤에 온다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "감정 분사",
+      "q": "빈칸에 알맞은 말은?\nI was ___ at the news.",
+      "c": [
+        "surprising",
+        "surprised",
+        "surprise",
+        "to surprise"
+      ],
+      "a": 1,
+      "e": "사람이 놀란 감정을 느끼면 과거분사를 쓴다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "감정 분사",
+      "q": "빈칸에 알맞은 말은?\nThe game was very ___. Everyone cheered.",
+      "c": [
+        "exciting",
+        "excited",
+        "excite",
+        "excitement"
+      ],
+      "a": 0,
+      "e": "흥미를 주는 대상이므로 현재분사를 쓴다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "감정 분사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "The story was interesting.",
+        "She was bored in class.",
+        "The movie was boring.",
+        "I'm interesting in history."
+      ],
+      "a": 3,
+      "e": "사람이 흥미를 느끼면 interested를 쓴다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "분사 의미",
+      "q": "'공원에서 뛰고 있는 소년'을 바르게 옮긴 것은?",
+      "c": [
+        "the boy ran in the park",
+        "the running boy in the park is",
+        "the boy running in the park",
+        "the boy run in the park"
+      ],
+      "a": 2,
+      "e": "명사 뒤에서 현재분사구가 꾸민다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "분사 vs 동명사",
+      "q": "밑줄 친 -ing의 쓰임이 나머지와 다른 것은?",
+      "c": [
+        "The crying baby is my sister.",
+        "My hobby is collecting coins.",
+        "Look at the dancing girl.",
+        "I saw a sleeping cat."
+      ],
+      "a": 1,
+      "e": "첫 문장은 동명사, 나머지는 명사를 꾸미는 현재분사이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "과거분사",
+      "q": "빈칸에 알맞은 말은?\nKimchi is a food ___ by many people.",
+      "c": [
+        "loved",
+        "loving",
+        "loves",
+        "love"
+      ],
+      "a": 0,
+      "e": "많은 사람에게 사랑받는 음식이므로 수동의 loved이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "간접의문문",
+      "q": "빈칸에 알맞은 말은?\nCan you tell me ___?",
+      "c": [
+        "what time is it",
+        "what is it time",
+        "it is what time",
+        "what time it is"
+      ],
+      "a": 3,
+      "e": "간접의문문은 '의문사+주어+동사' 순서이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "간접의문문",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I know who he is.",
+        "Tell me where you live.",
+        "I wonder who is he.",
+        "I don't know why she cried."
+      ],
+      "a": 2,
+      "e": "간접의문문은 who he is 순서여야 한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "간접의문문 do",
+      "q": "두 문장을 바르게 연결한 것은?\nDo you know? + Where does he work?",
+      "c": [
+        "Do you know where does he work?",
+        "Do you know where he works?",
+        "Do you know where he does work?",
+        "Do you know where works he?"
+      ],
+      "a": 1,
+      "e": "does를 없애고 동사에 -s를 붙인다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "간접의문문 과거",
+      "q": "두 문장을 바르게 연결한 것은?\nI don't know. + What did she buy?",
+      "c": [
+        "I don't know what she bought.",
+        "I don't know what did she buy.",
+        "I don't know what she buy.",
+        "I don't know what bought she."
+      ],
+      "a": 0,
+      "e": "did를 없애고 동사를 과거형으로 바꾼다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "if 간접의문문",
+      "q": "두 문장을 바르게 연결한 것은?\nI'm not sure. + Is he at home?",
+      "c": [
+        "I'm not sure is he at home.",
+        "I'm not sure that is he at home.",
+        "I'm not sure what he is at home.",
+        "I'm not sure if he is at home."
+      ],
+      "a": 3,
+      "e": "의문사 없는 의문문은 if+주어+동사로 바꾼다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "의문사 주어",
+      "q": "빈칸에 알맞은 말은?\nDo you know who ___ the window?",
+      "c": [
+        "did break",
+        "broken",
+        "broke",
+        "does break"
+      ],
+      "a": 2,
+      "e": "의문사가 주어면 의문사+동사 순서이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "간접의문문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Excuse me. Could you tell me ___?\nB: It's on the second floor.",
+      "c": [
+        "where is the restroom",
+        "where the restroom is",
+        "the restroom where is",
+        "is where the restroom"
+      ],
+      "a": 1,
+      "e": "간접의문문은 의문사+주어+동사 순서이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "think 간접의문",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "What do you think he wants?",
+        "Do you think what he wants?",
+        "What do you think does he want?",
+        "Do you think what does he want?"
+      ],
+      "a": 0,
+      "e": "think가 있으면 의문사를 문장 맨 앞에 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "가주어 It",
+      "q": "다음 문장과 뜻이 같은 것은?\nTo swim in this river is dangerous.",
+      "c": [
+        "That is dangerous swim in this river.",
+        "It is dangerous swim in this river.",
+        "This is dangerous to swimming in this river.",
+        "It is dangerous to swim in this river."
+      ],
+      "a": 3,
+      "e": "to부정사 주어는 가주어 It으로 바꿔 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "의미상 주어",
+      "q": "빈칸에 알맞은 말은?\nIt is easy ___ me to solve this problem.",
+      "c": [
+        "of",
+        "to",
+        "for",
+        "with"
+      ],
+      "a": 2,
+      "e": "to부정사의 의미상 주어는 보통 for+목적격이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "의미상 주어 of",
+      "q": "빈칸에 알맞은 말은?\nIt is very kind ___ you to help me.",
+      "c": [
+        "for",
+        "of",
+        "to",
+        "by"
+      ],
+      "a": 1,
+      "e": "사람의 성격 형용사 뒤에는 of+목적격을 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가주어 It",
+      "q": "밑줄 친 It의 쓰임이 나머지와 다른 것은?",
+      "c": [
+        "It is my new phone.",
+        "It is fun to play soccer.",
+        "It is hard to learn Chinese.",
+        "It is important to sleep well."
+      ],
+      "a": 0,
+      "e": "첫 문장의 It은 대명사, 나머지는 가주어이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가주어 It",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "It is necessary for us to save water.",
+        "It is good to eat vegetables.",
+        "It is exciting to travel.",
+        "It is necessary for us save water."
+      ],
+      "a": 3,
+      "e": "진주어는 to+동사원형 to save로 써야 한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가주어 that절",
+      "q": "빈칸에 알맞은 말은?\nIt is true ___ he won the race.",
+      "c": [
+        "what",
+        "which",
+        "that",
+        "to"
+      ],
+      "a": 2,
+      "e": "절이 진주어일 때는 It ~ that 구문을 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가주어 It",
+      "q": "'외국어를 배우는 것은 쉽지 않다.'를 바르게 옮긴 것은?",
+      "c": [
+        "It is not easy learn a foreign language.",
+        "It is not easy to learn a foreign language.",
+        "That is not easy to learn a foreign language.",
+        "It is not easy for learn a foreign language."
+      ],
+      "a": 1,
+      "e": "가주어 It, 진주어 to부정사 구조이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "too~to",
+      "q": "빈칸에 알맞은 말은?\nI am too tired ___ my homework.",
+      "c": [
+        "to do",
+        "doing",
+        "do",
+        "that do"
+      ],
+      "a": 0,
+      "e": "too+형용사+to부정사 구조이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "too~to 전환",
+      "q": "다음 문장과 뜻이 같은 것은?\nThe soup is too hot to eat.",
+      "c": [
+        "The soup is so hot that I can eat it.",
+        "The soup is hot enough to eat.",
+        "The soup isn't hot, so I eat it.",
+        "The soup is so hot that I can't eat it."
+      ],
+      "a": 3,
+      "e": "too ~ to는 so ~ that+주어+can't로 바꿀 수 있다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "enough to",
+      "q": "빈칸에 알맞은 말은?\nHe is tall ___ to reach the shelf.",
+      "c": [
+        "too",
+        "so",
+        "enough",
+        "very"
+      ],
+      "a": 2,
+      "e": "형용사+enough to는 '~할 만큼 충분히 …한'이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "enough 전환",
+      "q": "다음 문장과 뜻이 같은 것은?\nShe is old enough to drive.",
+      "c": [
+        "She is so old that she can't drive.",
+        "She is so old that she can drive.",
+        "She is too old to drive.",
+        "She isn't old, so she can't drive."
+      ],
+      "a": 1,
+      "e": "enough to는 so ~ that+주어+can으로 바꿀 수 있다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "so~that",
+      "q": "빈칸에 알맞은 말은?\nThe movie was so funny ___ we laughed a lot.",
+      "c": [
+        "that",
+        "what",
+        "to",
+        "as"
+      ],
+      "a": 0,
+      "e": "so+형용사+that은 '너무 ~해서 …하다'이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "so~that 뜻",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nIt was so dark that I couldn't see anything.",
+      "c": [
+        "어두웠지만 모든 것을 볼 수 있었다.",
+        "아무것도 보지 않으려고 어둡게 했다.",
+        "어둡지 않아서 잘 보였다.",
+        "너무 어두워서 아무것도 볼 수 없었다."
+      ],
+      "a": 3,
+      "e": "so ~ that은 원인과 결과를 나타낸다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "too~to",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "The bag is too heavy to carry.",
+        "The bag is too heavy for me to carry.",
+        "The bag is too heavy to carry it.",
+        "The bag is so heavy that I can't carry it."
+      ],
+      "a": 2,
+      "e": "too ~ to 구문에서 문장 주어와 같은 목적어는 쓰지 않는다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "so that 목적",
+      "q": "빈칸에 알맞은 말은?\nI got up early so ___ I could catch the first bus.",
+      "c": [
+        "to",
+        "that",
+        "as",
+        "what"
+      ],
+      "a": 1,
+      "e": "so that+주어+can은 '~하기 위해'라는 목적이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "기대 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: The school trip is next week.\nB: I know. ___",
+      "c": [
+        "I'm looking forward to it.",
+        "I'm tired of it.",
+        "I'm afraid of it.",
+        "I'm sorry about it."
+      ],
+      "a": 0,
+      "e": "기다려지는 일에는 look forward to를 쓴다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "기대 표현",
+      "q": "빈칸에 알맞은 말은?\nI'm looking forward to ___ my cousins.",
+      "c": [
+        "see",
+        "saw",
+        "be seen",
+        "seeing"
+      ],
+      "a": 3,
+      "e": "look forward to의 to는 전치사라 동명사가 온다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "동의 표현",
+      "q": "동의를 나타내는 말이 아닌 것은?",
+      "c": [
+        "You can say that again.",
+        "I'm with you.",
+        "I don't agree.",
+        "That's what I think."
+      ],
+      "a": 2,
+      "e": "I don't agree는 반대의 표현이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "반대 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I think homework is useless.\nB: ___ It helps us review lessons.",
+      "c": [
+        "I think so, too.",
+        "I don't think so.",
+        "You're right.",
+        "Exactly."
+      ],
+      "a": 1,
+      "e": "숙제가 도움이 된다고 말하므로 반대한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "동의 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I don't like spicy food.\nB: ___ It hurts my stomach.",
+      "c": [
+        "Me, neither.",
+        "Me, too.",
+        "So do I.",
+        "I love it."
+      ],
+      "a": 0,
+      "e": "부정문에 동의할 때는 Me, neither를 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "So do I",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I love hiking.\nB: ___ Let's go together.",
+      "c": [
+        "Neither do I.",
+        "So am I.",
+        "I don't.",
+        "So do I."
+      ],
+      "a": 3,
+      "e": "일반동사 긍정문에 동의할 때는 So do I를 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "확신 표현",
+      "q": "확신을 나타내는 말은?",
+      "c": [
+        "I'm not sure if we will win.",
+        "I doubt that we will win.",
+        "I'm sure that we will win.",
+        "I wonder if we will win."
+      ],
+      "a": 2,
+      "e": "I'm sure that ~은 확신의 표현이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "희망 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I have a big test tomorrow.\nB: ___",
+      "c": [
+        "I hope you fail.",
+        "I hope you do well.",
+        "I did well, too.",
+        "That's too easy."
+      ],
+      "a": 1,
+      "e": "시험을 앞둔 친구의 좋은 결과를 바란다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "의견 이유",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I think we should walk to school.\nB: Why do you think so?\nA: ___",
+      "c": [
+        "Because it's good for our health.",
+        "Because I like the bus.",
+        "I walked yesterday.",
+        "Yes, I do."
+      ],
+      "a": 0,
+      "e": "의견의 이유를 Because로 답한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "어휘: 환경",
+      "q": "'pollution'의 뜻으로 알맞은 것은?",
+      "c": [
+        "인구",
+        "해결책",
+        "자원",
+        "오염"
+      ],
+      "a": 3,
+      "e": "pollution은 '오염'이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻풀이",
+      "q": "'to make something stay safe from harm'에 해당하는 것은?",
+      "c": [
+        "destroy",
+        "pollute",
+        "protect",
+        "waste"
+      ],
+      "a": 2,
+      "e": "해로움으로부터 지키는 것은 protect(보호하다)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 반의어",
+      "q": "'increase'의 반대말은?",
+      "c": [
+        "include",
+        "decrease",
+        "improve",
+        "invite"
+      ],
+      "a": 1,
+      "e": "increase(증가하다)의 반대말은 decrease이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 품사",
+      "q": "'decide'의 명사형은?",
+      "c": [
+        "decision",
+        "decider",
+        "decidement",
+        "decisive"
+      ],
+      "a": 0,
+      "e": "decide의 명사형은 decision(결정)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 연어",
+      "q": "빈칸에 알맞은 말은?\nPlease ___ attention to the teacher.",
+      "c": [
+        "make",
+        "take",
+        "give up",
+        "pay"
+      ],
+      "a": 3,
+      "e": "pay attention to는 '~에 주의를 기울이다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻",
+      "q": "'volunteer'의 뜻으로 알맞은 것은?",
+      "c": [
+        "방문객",
+        "참가비",
+        "자원봉사자",
+        "지도자"
+      ],
+      "a": 2,
+      "e": "volunteer는 '자원봉사자, 자원하다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 감정",
+      "q": "'embarrassed'의 뜻으로 알맞은 것은?",
+      "c": [
+        "자랑스러운",
+        "당황한",
+        "실망한",
+        "감동한"
+      ],
+      "a": 1,
+      "e": "embarrassed는 '당황한, 창피한'이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nPlastic bags take hundreds of years to break down. They also hurt sea animals. Let's use cloth bags instead.",
+      "c": [
+        "비닐봉지 사용을 줄이자",
+        "바다 동물의 종류",
+        "천 가방 만드는 법",
+        "쓰레기 분리 방법"
+      ],
+      "a": 0,
+      "e": "비닐봉지 대신 천 가방을 쓰자는 내용이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "글을 읽고 알 수 있는 것은?\nI have played the violin since I was seven. Now I play in the school orchestra.",
+      "c": [
+        "바이올린 가격",
+        "오케스트라 단원 수",
+        "좋아하는 작곡가",
+        "바이올린을 배운 시작 시기"
+      ],
+      "a": 3,
+      "e": "7살 때부터 바이올린을 연주했다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "심정 변화",
+      "q": "글쓴이의 심정 변화로 알맞은 것은?\nI was nervous before the speech. But when people clapped at the end, I felt really proud.",
+      "c": [
+        "기쁜 → 슬픈",
+        "지루한 → 화난",
+        "긴장한 → 자랑스러운",
+        "자랑스러운 → 긴장한"
+      ],
+      "a": 2,
+      "e": "연설 전 긴장했다가 끝나고 뿌듯해했다.",
+      "std": "[9영01-05]"
+    },
+    {
+      "t": "요지",
+      "q": "글의 요지로 알맞은 것은?\nIt is important to listen to others. When you listen carefully, you can understand them better.",
+      "c": [
+        "말을 많이 하자.",
+        "남의 말을 잘 듣자.",
+        "조용히 공부하자.",
+        "음악을 자주 듣자."
+      ],
+      "a": 1,
+      "e": "경청의 중요성을 말하는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "내용 일치",
+      "q": "글의 내용과 일치하지 않는 것은?\nThe café that opened last month is popular. The cake which they sell is famous, but it's too expensive for students to buy.",
+      "c": [
+        "그 카페는 학생들에게 가격이 저렴하다.",
+        "그 카페는 지난달 문을 열었다.",
+        "그 카페는 인기가 있다.",
+        "그 카페의 케이크는 유명하다."
+      ],
+      "a": 0,
+      "e": "케이크가 학생들이 사기에는 너무 비싸다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "원인과 결과",
+      "q": "글을 읽고 Yujin이 우산을 산 이유는?\nYujin left her umbrella at home. It started to rain so hard that she had to buy a new one.",
+      "c": [
+        "우산이 고장 나서",
+        "선물하려고",
+        "할인 중이라서",
+        "비가 너무 많이 와서"
+      ],
+      "a": 3,
+      "e": "비가 심하게 와서 우산을 새로 사야 했다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nWe are looking for volunteers who can teach children English. If you are interested, please email us.",
+      "c": [
+        "영어 수업을 홍보하려고",
+        "이메일 주소를 바꾸려고",
+        "자원봉사자를 모집하려고",
+        "아이들에게 감사하려고"
+      ],
+      "a": 2,
+      "e": "아이들을 가르칠 자원봉사자를 모집하는 글이다.",
+      "std": "[9영01-06]"
+    },
+    {
+      "t": "연결어",
+      "q": "빈칸에 알맞은 연결어는?\nRecycling is good for the earth. ___, it saves energy and resources.",
+      "c": [
+        "However",
+        "In addition",
+        "Instead",
+        "In contrast"
+      ],
+      "a": 1,
+      "e": "앞 내용에 장점을 덧붙이므로 In addition이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "요약",
+      "q": "글의 내용을 한 문장으로 요약할 때 빈칸에 알맞은 말은?\nTom wanted to join the basketball team, but he was not tall enough.\n→ Tom was ___ short to join the team.",
+      "c": [
+        "too",
+        "so",
+        "enough",
+        "very"
+      ],
+      "a": 0,
+      "e": "too ~ to는 '너무 ~해서 …할 수 없다'이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "글쓰기",
+      "q": "자신의 의견을 쓴 글의 빈칸에 알맞은 말은?\n___ is important to read books every day.",
+      "c": [
+        "That",
+        "This",
+        "What",
+        "It"
+      ],
+      "a": 3,
+      "e": "진주어 to부정사를 대신해 가주어 It을 쓴다.",
+      "std": "[9영02-07]"
+    },
+    {
+      "t": "질문 만들기",
+      "q": "인터뷰 질문의 빈칸에 알맞은 말은?\nCan you tell us how ___ became a writer?",
+      "c": [
+        "did you",
+        "do you",
+        "you",
+        "are you"
+      ],
+      "a": 2,
+      "e": "간접의문문은 의문사+주어+동사 순서이다.",
+      "std": "[9영02-09]"
+    },
+    {
+      "t": "현재완료 대화",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Have you finished the book yet?\nB: No, not yet. ___",
+      "c": [
+        "I read it last year.",
+        "I've read only half of it.",
+        "I'll never read books.",
+        "I've finished it already."
+      ],
+      "a": 1,
+      "e": "아직 다 못 읽었으므로 절반만 읽었다고 한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 완료",
+      "q": "빈칸에 알맞은 말은?\nI have just ___ my lunch.",
+      "c": [
+        "eaten",
+        "ate",
+        "eat",
+        "eating"
+      ],
+      "a": 0,
+      "e": "have just+과거분사는 '막 ~했다'이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "관계대명사 what",
+      "q": "빈칸에 알맞은 말은?\nTell me ___ you want for your birthday.",
+      "c": [
+        "that",
+        "which",
+        "who",
+        "what"
+      ],
+      "a": 3,
+      "e": "선행사 없이 '~하는 것'은 what으로 나타낸다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "과거분사 수식",
+      "q": "빈칸에 알맞은 말은?\nThe boy ___ Minsu is my classmate.",
+      "c": [
+        "naming",
+        "names",
+        "named",
+        "name"
+      ],
+      "a": 2,
+      "e": "'민수라고 이름 지어진'은 과거분사 named이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "간접의문문",
+      "q": "두 문장을 바르게 연결한 것은?\nPlease tell me. + How old is your sister?",
+      "c": [
+        "Please tell me how old is your sister.",
+        "Please tell me how old your sister is.",
+        "Please tell me your sister how old is.",
+        "Please tell me how is your sister old."
+      ],
+      "a": 1,
+      "e": "의문사구 how old 뒤에 주어+동사를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "so~that",
+      "q": "'그는 너무 바빠서 점심을 먹을 수 없었다.'를 바르게 옮긴 것은?",
+      "c": [
+        "He was so busy that he couldn't eat lunch.",
+        "He was so busy that he could eat lunch.",
+        "He was too busy that he ate lunch.",
+        "He was busy enough that he couldn't eat lunch."
+      ],
+      "a": 0,
+      "e": "so+형용사+that+주어+couldn't로 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "기대 표현",
+      "q": "기대를 나타내는 말이 아닌 것은?",
+      "c": [
+        "I can't wait.",
+        "I'm looking forward to it.",
+        "I'm really excited about it.",
+        "I'm worried about it."
+      ],
+      "a": 3,
+      "e": "I'm worried about은 걱정을 나타낸다.",
+      "std": "[9영02-02]"
     }
   ]
 }

@@ -272,6 +272,1098 @@
       "a": 1,
       "e": "Thank you for ~.로 감사를 전해요.",
       "std": "[6영02-08]"
+    },
+    {
+      "t": "과거형",
+      "q": "'ride'의 과거형은?",
+      "c": [
+        "rided",
+        "rode",
+        "rides",
+        "ridden"
+      ],
+      "a": 1,
+      "e": "ride의 과거형은 rode예요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과거형",
+      "q": "'buy'의 과거형은?",
+      "c": [
+        "buyed",
+        "buys",
+        "bought",
+        "brought"
+      ],
+      "a": 2,
+      "e": "buy의 과거형은 bought예요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "'Where did you go last summer?'에 알맞은 대답은?",
+      "c": [
+        "I will go to Busan.",
+        "I go to Busan every day.",
+        "Busan is big.",
+        "I went to Busan."
+      ],
+      "a": 3,
+      "e": "지난 일은 과거형으로 답해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "대화에서 B가 어제 한 일은?\\nA: What did you do yesterday?\\nB: I made a kite with my brother.",
+      "c": [
+        "남자 형제와 연 만들기",
+        "남자 형제와 연 날리기",
+        "여자 형제와 연 만들기",
+        "친구와 쿠키 만들기"
+      ],
+      "a": 0,
+      "e": "made는 make의 과거형, kite는 연이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "'How was it?'에 알맞은 대답은?",
+      "c": [
+        "It's March.",
+        "It was exciting.",
+        "I'll go there.",
+        "You should go."
+      ],
+      "a": 1,
+      "e": "How was it?에는 It was ~.로 답해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과거형",
+      "q": "빈칸에 알맞은 말은?\\nI ___ a big fish last week.",
+      "c": [
+        "caught",
+        "catch",
+        "catches",
+        "catching"
+      ],
+      "a": 0,
+      "e": "last week는 지난주라서 과거형을 써요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "반응하기",
+      "q": "'I won the race.'에 알맞은 반응은?",
+      "c": [
+        "That's too bad.",
+        "Get well soon.",
+        "Watch out!",
+        "Congratulations!"
+      ],
+      "a": 3,
+      "e": "좋은 일에는 Congratulations!라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "글쓴이가 도서관에서 한 일은?\\nYesterday, I went to the library. I read three books.",
+      "c": [
+        "책 세 권 사기",
+        "숙제하기",
+        "책 세 권 읽기",
+        "친구 만나기"
+      ],
+      "a": 2,
+      "e": "read는 과거형도 read예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "'Did you have fun?'에 알맞은 대답은?",
+      "c": [
+        "Yes, I do.",
+        "Yes, I did.",
+        "Yes, I am.",
+        "Yes, I will."
+      ],
+      "a": 1,
+      "e": "Did you ~?에는 Yes, I did.로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "과거형",
+      "q": "'write'의 과거형은?",
+      "c": [
+        "writed",
+        "writes",
+        "written",
+        "wrote"
+      ],
+      "a": 3,
+      "e": "write의 과거형은 wrote예요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "'a week ago'의 뜻은?",
+      "c": [
+        "일주일 후에",
+        "일주일 동안",
+        "일주일 전에",
+        "매주"
+      ],
+      "a": 2,
+      "e": "ago는 ~ 전에예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "일기 쓰기",
+      "q": "일기의 빈칸에 알맞은 말은?\\nLast Saturday, I ___ to the zoo. I saw a tiger.",
+      "c": [
+        "went",
+        "go",
+        "will go",
+        "going"
+      ],
+      "a": 0,
+      "e": "지난 일은 과거형 went로 써요.",
+      "std": "[6영02-08]"
+    },
+    {
+      "t": "반응하기",
+      "q": "'I lost my bag.'에 알맞은 반응은?",
+      "c": [
+        "Congratulations!",
+        "Oh, that's too bad.",
+        "Sounds great!",
+        "Happy birthday!"
+      ],
+      "a": 1,
+      "e": "안 좋은 일에는 That's too bad.라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "달 이름",
+      "q": "'1월'을 뜻하는 낱말은?",
+      "c": [
+        "June",
+        "July",
+        "January",
+        "February"
+      ],
+      "a": 2,
+      "e": "January는 1월이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "달 이름",
+      "q": "'December'의 뜻은?",
+      "c": [
+        "11월",
+        "10월",
+        "9월",
+        "12월"
+      ],
+      "a": 3,
+      "e": "December는 12월이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "날짜",
+      "q": "'July 4th'를 우리말로 바르게 나타낸 것은?",
+      "c": [
+        "7월 4일",
+        "6월 4일",
+        "7월 14일",
+        "4월 7일"
+      ],
+      "a": 0,
+      "e": "July는 7월이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "생일",
+      "q": "대화에서 B의 생일은?\\nA: When is your birthday?\\nB: It's November 3rd.",
+      "c": [
+        "10월 3일",
+        "11월 3일",
+        "11월 13일",
+        "3월 11일"
+      ],
+      "a": 1,
+      "e": "November는 11월이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "서수",
+      "q": "'21st'를 바르게 읽은 것은?",
+      "c": [
+        "twenty-first",
+        "twenty-one",
+        "twentieth",
+        "twelfth"
+      ],
+      "a": 0,
+      "e": "21번째는 twenty-first예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "생일",
+      "q": "빈칸에 알맞은 말은?\\nA: ___ is your birthday?\\nB: It's April 9th.",
+      "c": [
+        "Where",
+        "Who",
+        "How",
+        "When"
+      ],
+      "a": 3,
+      "e": "날짜는 When으로 물어요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "생일",
+      "q": "생일인 친구에게 하는 말은?",
+      "c": [
+        "Get well soon!",
+        "Good luck!",
+        "Happy birthday!",
+        "That's too bad!"
+      ],
+      "a": 2,
+      "e": "생일에는 Happy birthday!라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "특별한 날",
+      "q": "'Children's Day is May 5th.'의 뜻은?",
+      "c": [
+        "어버이날은 5월 5일이다.",
+        "어린이날은 5월 5일이다.",
+        "어린이날은 5월 8일이다.",
+        "어린이날은 3월 5일이다."
+      ],
+      "a": 1,
+      "e": "Children's Day는 어린이날이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "생일",
+      "q": "초대장에서 알 수 있는 것은?\\nCome to my birthday party! It's on Saturday, June 10th.",
+      "c": [
+        "파티는 7월 10일이다",
+        "파티는 일요일이다",
+        "파티는 6월 1일이다",
+        "파티는 6월 10일 토요일이다"
+      ],
+      "a": 3,
+      "e": "June은 6월, Saturday는 토요일이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "달 이름",
+      "q": "'9월'을 뜻하는 낱말의 철자로 바른 것은?",
+      "c": [
+        "Setember",
+        "Septembar",
+        "September",
+        "Siptember"
+      ],
+      "a": 2,
+      "e": "9월은 S-e-p-t-e-m-b-e-r예요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "특별한 날",
+      "q": "'present'의 뜻은?",
+      "c": [
+        "선물",
+        "파티",
+        "카드",
+        "케이크"
+      ],
+      "a": 0,
+      "e": "present는 선물이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "달 이름",
+      "q": "'March' 바로 다음 달은?",
+      "c": [
+        "May",
+        "April",
+        "February",
+        "June"
+      ],
+      "a": 1,
+      "e": "3월 다음은 4월, April이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "생일",
+      "q": "'This is for you.'에 알맞은 대답은?",
+      "c": [
+        "You're welcome.",
+        "That's too bad.",
+        "Thank you so much.",
+        "Get well soon."
+      ],
+      "a": 2,
+      "e": "선물을 받으면 고맙다고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'recycle'의 뜻은?",
+      "c": [
+        "버리다",
+        "사다",
+        "만들다",
+        "재활용하다"
+      ],
+      "a": 3,
+      "e": "recycle은 재활용하다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'save water'의 뜻은?",
+      "c": [
+        "물을 아끼다",
+        "물을 마시다",
+        "물을 버리다",
+        "물을 사다"
+      ],
+      "a": 0,
+      "e": "save는 아끼다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "환경을 지키자는 제안으로 알맞은 것은?",
+      "c": [
+        "Let's use more plastic bags.",
+        "Let's use our own cups.",
+        "Let's waste water.",
+        "Let's leave the lights on."
+      ],
+      "a": 1,
+      "e": "자기 컵을 쓰면 쓰레기가 줄어요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'We should not waste food.'의 뜻은?",
+      "c": [
+        "우리는 음식을 낭비하면 안 된다.",
+        "우리는 음식을 많이 사야 한다.",
+        "우리는 음식을 나눠 먹어야 한다.",
+        "우리는 음식을 만들어야 한다."
+      ],
+      "a": 0,
+      "e": "waste는 낭비하다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "대화에서 B의 제안은?\\nA: How can we save energy?\\nB: We can turn off the computer.",
+      "c": [
+        "컴퓨터 켜기",
+        "불 켜 두기",
+        "물 아끼기",
+        "컴퓨터 끄기"
+      ],
+      "a": 3,
+      "e": "turn off는 끄다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "빈칸에 알맞은 말은?\\nHow about ___ the bus to school?",
+      "c": [
+        "take",
+        "took",
+        "taking",
+        "takes"
+      ],
+      "a": 2,
+      "e": "How about 다음에는 ~ing를 써요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'trash'의 뜻은?",
+      "c": [
+        "종이",
+        "쓰레기",
+        "병",
+        "가방"
+      ],
+      "a": 1,
+      "e": "trash는 쓰레기예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "글쓴이가 하는 일이 아닌 것은?\\nI recycle cans. I turn off the water. I walk to school.",
+      "c": [
+        "캔 재활용하기",
+        "물 잠그기",
+        "걸어서 학교 가기",
+        "버스 타고 학교 가기"
+      ],
+      "a": 3,
+      "e": "글쓴이는 걸어서 학교에 가요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'earth'의 뜻은?",
+      "c": [
+        "하늘",
+        "바다",
+        "지구",
+        "나무"
+      ],
+      "a": 2,
+      "e": "earth는 지구예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'Don't use paper cups.'에 동의하는 말은?",
+      "c": [
+        "You're right.",
+        "That's too bad.",
+        "Congratulations!",
+        "I'm full."
+      ],
+      "a": 0,
+      "e": "You're right.는 네 말이 맞다는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'plant trees'의 뜻은?",
+      "c": [
+        "나무를 베다",
+        "나무를 심다",
+        "나무에 오르다",
+        "나무를 그리다"
+      ],
+      "a": 1,
+      "e": "plant는 심다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'How about ~ing?'는 어떤 말인가요?",
+      "c": [
+        "사과하는 말",
+        "칭찬하는 말",
+        "제안하는 말",
+        "날짜를 묻는 말"
+      ],
+      "a": 2,
+      "e": "How about ~ing?는 ~하는 게 어떠냐는 제안이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'smaller'의 뜻은?",
+      "c": [
+        "가장 작은",
+        "작은",
+        "더 큰",
+        "더 작은"
+      ],
+      "a": 3,
+      "e": "-er은 '더 ~한'이라는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'tall'의 비교급은?",
+      "c": [
+        "taller",
+        "tallest",
+        "more tall",
+        "talles"
+      ],
+      "a": 0,
+      "e": "tall에 -er을 붙여 taller예요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'The giraffe is taller than the horse.'의 뜻은?",
+      "c": [
+        "말은 기린보다 키가 크다.",
+        "기린은 말보다 키가 크다.",
+        "기린과 말은 키가 같다.",
+        "기린은 말보다 키가 작다."
+      ],
+      "a": 1,
+      "e": "A is taller than B.는 A가 B보다 크다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "비교하기",
+      "q": "대화에서 더 빠른 것은?\\nA: Which is faster, a horse or a turtle?\\nB: A horse is faster.",
+      "c": [
+        "말",
+        "거북",
+        "둘이 같다",
+        "알 수 없다"
+      ],
+      "a": 0,
+      "e": "B는 A horse is faster.라고 했어요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "빈칸에 알맞은 말은?\\nMy bag is ___ than your bag.",
+      "c": [
+        "heavy",
+        "heaviest",
+        "more heavy",
+        "heavier"
+      ],
+      "a": 3,
+      "e": "heavy는 y를 i로 바꿔 heavier예요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "비교하는 질문으로 알맞은 것은?",
+      "c": [
+        "What is the sun?",
+        "Where is the moon?",
+        "Which is bigger, the sun or the moon?",
+        "Do you like the moon?"
+      ],
+      "a": 2,
+      "e": "Which is ~er, A or B?로 비교해 물어요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'Seoul is bigger than Busan.'의 뜻은?",
+      "c": [
+        "부산은 서울보다 크다.",
+        "서울은 부산보다 크다.",
+        "서울과 부산은 크기가 같다.",
+        "서울은 부산보다 작다."
+      ],
+      "a": 1,
+      "e": "bigger than은 ~보다 더 큰이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "비교하기",
+      "q": "가장 나이가 많은 사람은?\\nI'm 12. My sister is 15. My brother is older than my sister.",
+      "c": [
+        "여자 형제",
+        "글쓴이",
+        "모두 같다",
+        "남자 형제"
+      ],
+      "a": 3,
+      "e": "남자 형제가 15살인 누나보다 나이가 많아요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'big'의 비교급은?",
+      "c": [
+        "biger",
+        "biggest",
+        "bigger",
+        "more big"
+      ],
+      "a": 2,
+      "e": "big은 g를 하나 더 써서 bigger예요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'cheaper'의 뜻은?",
+      "c": [
+        "더 싼",
+        "더 비싼",
+        "가장 싼",
+        "싼"
+      ],
+      "a": 0,
+      "e": "cheap(싼)+-er은 더 싼이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "비교하기",
+      "q": "빈칸에 알맞은 말은?\\nA: Who is stronger, you or your dad?\\nB: My dad is ___.",
+      "c": [
+        "strong",
+        "stronger",
+        "strongest",
+        "more strong"
+      ],
+      "a": 1,
+      "e": "비교하는 물음에는 비교급으로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "비교하기",
+      "q": "빈칸에 알맞은 말은?\\nAn apple is ___ than a watermelon.",
+      "c": [
+        "bigger",
+        "longer",
+        "smaller",
+        "heavier"
+      ],
+      "a": 2,
+      "e": "사과는 수박보다 작아요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'older'의 뜻은?",
+      "c": [
+        "나이가 더 적은",
+        "나이가 가장 많은",
+        "더 새로운",
+        "나이가 더 많은"
+      ],
+      "a": 3,
+      "e": "old(나이 든)+-er은 나이가 더 많은이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "계절",
+      "q": "'spring'의 뜻은?",
+      "c": [
+        "봄",
+        "여름",
+        "가을",
+        "겨울"
+      ],
+      "a": 0,
+      "e": "spring은 봄이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "계절",
+      "q": "'여름'을 뜻하는 낱말은?",
+      "c": [
+        "winter",
+        "summer",
+        "spring",
+        "fall"
+      ],
+      "a": 1,
+      "e": "summer는 여름이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "계절",
+      "q": "대화에서 B가 좋아하는 계절과 이유는?\\nA: What's your favorite season?\\nB: Spring. Because I can see many flowers.",
+      "c": [
+        "봄, 꽃을 많이 볼 수 있어서",
+        "여름, 수영을 할 수 있어서",
+        "가을, 날씨가 시원해서",
+        "겨울, 눈사람을 만들 수 있어서"
+      ],
+      "a": 0,
+      "e": "flowers는 꽃이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "이유 말하기",
+      "q": "빈칸에 알맞은 말은?\\nA: Why do you like summer?\\nB: ___ I can swim in the sea.",
+      "c": [
+        "Why",
+        "So",
+        "When",
+        "Because"
+      ],
+      "a": 3,
+      "e": "이유는 Because로 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "계절",
+      "q": "가을을 좋아하는 이유로 알맞은 것은?",
+      "c": [
+        "It snows a lot.",
+        "I can swim in the sea.",
+        "The leaves are red and yellow.",
+        "I can make a snowman."
+      ],
+      "a": 2,
+      "e": "가을에는 나뭇잎이 빨갛고 노래져요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "계절",
+      "q": "'It's cool in fall.'의 뜻은?",
+      "c": [
+        "가을에는 춥다.",
+        "가을에는 시원하다.",
+        "가을에는 덥다.",
+        "가을에는 비가 온다."
+      ],
+      "a": 1,
+      "e": "cool은 시원한, fall은 가을이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "계절",
+      "q": "'겨울'을 뜻하는 낱말의 철자로 바른 것은?",
+      "c": [
+        "wintor",
+        "wenter",
+        "winterr",
+        "winter"
+      ],
+      "a": 3,
+      "e": "겨울은 w-i-n-t-e-r예요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "계절",
+      "q": "글쓴이가 겨울에 하는 일은?\\nI like winter. I go skiing with my family.",
+      "c": [
+        "가족과 수영하기",
+        "혼자 눈사람 만들기",
+        "가족과 스키 타기",
+        "친구와 스케이트 타기"
+      ],
+      "a": 2,
+      "e": "go skiing은 스키 타러 가다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "계절",
+      "q": "'season'의 뜻은?",
+      "c": [
+        "계절",
+        "날씨",
+        "휴일",
+        "방학"
+      ],
+      "a": 0,
+      "e": "season은 계절이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "계절",
+      "q": "'I like fall because it's not too hot.'에서 가을을 좋아하는 이유는?",
+      "c": [
+        "눈이 와서",
+        "너무 덥지 않아서",
+        "꽃이 피어서",
+        "방학이 있어서"
+      ],
+      "a": 1,
+      "e": "not too hot은 너무 덥지 않다는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "계절",
+      "q": "좋아하는 계절을 묻는 말은?",
+      "c": [
+        "How's the weather?",
+        "When is your birthday?",
+        "Which season do you like?",
+        "What do you want to be?"
+      ],
+      "a": 2,
+      "e": "Which season ~?으로 계절을 물어요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "계절",
+      "q": "'The weather is warm in spring.'의 뜻은?",
+      "c": [
+        "봄에는 날씨가 춥다.",
+        "여름에는 날씨가 따뜻하다.",
+        "봄에는 비가 많이 온다.",
+        "봄에는 날씨가 따뜻하다."
+      ],
+      "a": 3,
+      "e": "warm은 따뜻한이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "안전",
+      "q": "'Be careful.'의 뜻은?",
+      "c": [
+        "조심해.",
+        "서둘러.",
+        "천천히 먹어.",
+        "걱정하지 마."
+      ],
+      "a": 0,
+      "e": "careful은 조심하는이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "충고하기",
+      "q": "'You shouldn't run in the classroom.'의 뜻은?",
+      "c": [
+        "교실에서 뛰어야 해.",
+        "교실에서 뛰면 안 돼.",
+        "교실에서 걸으면 안 돼.",
+        "교실은 어디에 있니?"
+      ],
+      "a": 1,
+      "e": "shouldn't는 ~하면 안 된다는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "충고하기",
+      "q": "빈칸에 알맞은 말은?\\nYou should ___ your seat belt.",
+      "c": [
+        "wear",
+        "wore",
+        "wearing",
+        "wears"
+      ],
+      "a": 0,
+      "e": "should 다음에는 동사원형을 써요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "교통안전",
+      "q": "길을 건널 때 알맞은 충고는?",
+      "c": [
+        "You should run fast.",
+        "You should play on the road.",
+        "You should close your eyes.",
+        "You should look left and right."
+      ],
+      "a": 3,
+      "e": "길을 건널 때는 좌우를 살펴요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "충고하기",
+      "q": "대화에서 A의 충고는?\\nA: You should not play with fire.\\nB: Okay, I see.",
+      "c": [
+        "물을 아껴라",
+        "헬멧을 써라",
+        "불장난을 하지 마라",
+        "천천히 걸어라"
+      ],
+      "a": 2,
+      "e": "play with fire는 불장난하다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "안전",
+      "q": "'helmet'의 뜻은?",
+      "c": [
+        "장갑",
+        "안전모(헬멧)",
+        "안경",
+        "우산"
+      ],
+      "a": 1,
+      "e": "helmet은 머리를 보호하는 안전모예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "충고하기",
+      "q": "'What should I do?'의 뜻은?",
+      "c": [
+        "너는 무엇을 하니?",
+        "나는 무엇을 했니?",
+        "너는 무엇을 원하니?",
+        "나는 무엇을 해야 하니?"
+      ],
+      "a": 3,
+      "e": "should는 ~해야 한다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "안전",
+      "q": "'dangerous'의 뜻은?",
+      "c": [
+        "안전한",
+        "조용한",
+        "위험한",
+        "시끄러운"
+      ],
+      "a": 2,
+      "e": "dangerous는 위험한이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "충고하기",
+      "q": "'Slow down!'의 뜻은?",
+      "c": [
+        "속도를 줄여!",
+        "서둘러!",
+        "내려와!",
+        "멈추지 마!"
+      ],
+      "a": 0,
+      "e": "slow down은 속도를 줄이다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "충고하기",
+      "q": "'The floor is wet.'라고 할 때 알맞은 충고는?",
+      "c": [
+        "You should run fast.",
+        "You should walk slowly.",
+        "You should jump on it.",
+        "You should dance on it."
+      ],
+      "a": 1,
+      "e": "바닥이 젖으면 천천히 걸어야 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "안전",
+      "q": "'safe'의 뜻은?",
+      "c": [
+        "위험한",
+        "빠른",
+        "안전한",
+        "느린"
+      ],
+      "a": 2,
+      "e": "safe는 안전한이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "충고하기",
+      "q": "대화의 빈칸에 알맞은 말은?\\nA: I'm going to ride my bike.\\nB: ___",
+      "c": [
+        "You should eat breakfast.",
+        "Happy birthday!",
+        "It's August.",
+        "You should wear a helmet."
+      ],
+      "a": 3,
+      "e": "자전거를 탈 때는 헬멧을 써야 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "'I want to be a scientist.'의 뜻은?",
+      "c": [
+        "나는 과학자가 되고 싶어.",
+        "나는 과학자야.",
+        "나는 과학을 좋아해.",
+        "나는 과학자를 만나고 싶어."
+      ],
+      "a": 0,
+      "e": "want to be는 ~이 되고 싶다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "'writer'의 뜻은?",
+      "c": [
+        "화가",
+        "작가",
+        "가수",
+        "배우"
+      ],
+      "a": 1,
+      "e": "writer는 글을 쓰는 작가예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "대화에서 B의 장래 희망은?\\nA: What do you want to be?\\nB: I want to be a police officer.",
+      "c": [
+        "경찰관",
+        "소방관",
+        "의사",
+        "선생님"
+      ],
+      "a": 0,
+      "e": "police officer는 경찰관이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "빈칸에 알맞은 말은?\\nA: What do you want to be?\\nB: I want to ___ a cook.",
+      "c": [
+        "am",
+        "is",
+        "do",
+        "be"
+      ],
+      "a": 3,
+      "e": "want to 다음에는 be를 써요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "'Why do you want to be a doctor?'에 알맞은 대답은?",
+      "c": [
+        "Because I'm sick.",
+        "I'm a doctor.",
+        "Because I want to help sick people.",
+        "Because I like spicy food."
+      ],
+      "a": 2,
+      "e": "의사는 아픈 사람을 도와요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "'꿈'을 뜻하는 낱말은?",
+      "c": [
+        "job",
+        "dream",
+        "hobby",
+        "plan"
+      ],
+      "a": 1,
+      "e": "dream은 꿈이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "글쓴이가 되고 싶은 것은?\\nI like animals. I want to be an animal doctor.",
+      "c": [
+        "요리사",
+        "과학자",
+        "가수",
+        "동물 의사"
+      ],
+      "a": 3,
+      "e": "animal doctor는 동물 의사예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "장래 희망을 묻는 말은?",
+      "c": [
+        "What do you want to eat?",
+        "What do you do?",
+        "What do you want to be?",
+        "What did you do?"
+      ],
+      "a": 2,
+      "e": "What do you want to be?는 꿈을 묻는 말이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "'I want to be a soccer player.'에서 'player'의 뜻은?",
+      "c": [
+        "선수",
+        "감독",
+        "경기장",
+        "팬"
+      ],
+      "a": 0,
+      "e": "player는 선수예요.",
+      "std": "[6영01-03]"
     }
   ]
 }

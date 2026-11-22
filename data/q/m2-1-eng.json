@@ -271,6 +271,1124 @@
       "a": 3,
       "e": "버스를 놓친 것이 지각의 원인이다.",
       "std": "[9영01-04]"
+    },
+    {
+      "t": "to부정사 목적어",
+      "q": "빈칸에 알맞은 말은?\nWe decided ___ a trip to Jeju.",
+      "c": [
+        "to take",
+        "taking",
+        "take",
+        "took"
+      ],
+      "a": 0,
+      "e": "decide는 to부정사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "to부정사 목적어",
+      "q": "빈칸에 알맞은 말은?\nHe hopes ___ the contest.",
+      "c": [
+        "to win",
+        "winning",
+        "win",
+        "wins"
+      ],
+      "a": 0,
+      "e": "hope는 to부정사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "to부정사 주어",
+      "q": "빈칸에 알맞은 말은?\n___ English every day is important.",
+      "c": [
+        "Study",
+        "Studies",
+        "To study",
+        "Studied"
+      ],
+      "a": 2,
+      "e": "주어 자리에 to부정사를 쓸 수 있다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "to부정사 보어",
+      "q": "빈칸에 알맞은 말은?\nMy dream is ___ a famous chef.",
+      "c": [
+        "become",
+        "becomes",
+        "to become",
+        "became"
+      ],
+      "a": 2,
+      "e": "be동사 뒤 보어 자리에 to부정사를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "형용사적 용법",
+      "q": "빈칸에 알맞은 말은?\nI have a lot of homework ___ today.",
+      "c": [
+        "to do",
+        "do",
+        "doing",
+        "did"
+      ],
+      "a": 0,
+      "e": "to부정사가 homework를 꾸며 '할 숙제'가 된다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "형용사적 용법",
+      "q": "'읽을 책'을 영어로 바르게 옮긴 것은?",
+      "c": [
+        "a book to read",
+        "a read book",
+        "a book reads",
+        "to a book read"
+      ],
+      "a": 0,
+      "e": "명사 뒤에 to부정사를 써서 꾸민다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "부사적 용법",
+      "q": "밑줄 친 to부정사의 쓰임이 나머지와 다른 것은?",
+      "c": [
+        "I went out to buy bread.",
+        "She studies hard to pass the test.",
+        "He came here to see you.",
+        "I want to drink water."
+      ],
+      "a": 3,
+      "e": "첫 문장은 목적어, 나머지는 목적(~하기 위해)이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "감정 원인",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nI'm glad to see you again.",
+      "c": [
+        "너를 다시 보고 싶다.",
+        "너를 다시 볼 것이다.",
+        "너를 다시 보게 되어 기쁘다.",
+        "너를 다시 봐야 한다."
+      ],
+      "a": 2,
+      "e": "감정 뒤 to부정사는 감정의 원인을 나타낸다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "to부정사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I need to buy a pen.",
+        "She planned to visiting Paris.",
+        "They want to play outside.",
+        "He learned to swim."
+      ],
+      "a": 1,
+      "e": "plan 뒤에는 to+동사원형 to visit이 와야 한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "to부정사 부정",
+      "q": "'늦지 않기 위해 일찍 일어났다.'를 바르게 옮긴 것은?",
+      "c": [
+        "I got up early not to be late.",
+        "I got up early to not being late.",
+        "I got up early to be not late.",
+        "I got up early don't be late."
+      ],
+      "a": 0,
+      "e": "to부정사의 부정은 to 앞에 not을 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "형용사적 용법",
+      "q": "빈칸에 알맞은 말은?\nI need a chair ___ on.",
+      "c": [
+        "to sit in",
+        "sit",
+        "sitting at",
+        "to sit"
+      ],
+      "a": 3,
+      "e": "sit on a chair이므로 a chair to sit on이 된다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "동명사 목적어",
+      "q": "빈칸에 알맞은 말은?\nHe finished ___ the dishes.",
+      "c": [
+        "to wash",
+        "wash",
+        "washing",
+        "washed"
+      ],
+      "a": 2,
+      "e": "finish는 동명사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "동명사 목적어",
+      "q": "빈칸에 알맞은 말은?\nWould you mind ___ the door?",
+      "c": [
+        "to close",
+        "closing",
+        "close",
+        "closed"
+      ],
+      "a": 1,
+      "e": "mind는 동명사를 목적어로 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "동명사 vs 부정사",
+      "q": "빈칸에 들어갈 말로 알맞지 않은 것은?\nI ___ playing the drums.",
+      "c": [
+        "want",
+        "enjoy",
+        "like",
+        "practice"
+      ],
+      "a": 0,
+      "e": "want는 동명사가 아니라 to부정사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "동명사 vs 부정사",
+      "q": "빈칸에 들어갈 말로 알맞지 않은 것은?\nShe ___ to learn Chinese.",
+      "c": [
+        "wanted",
+        "decided",
+        "planned",
+        "gave up"
+      ],
+      "a": 3,
+      "e": "give up은 동명사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "전치사+동명사",
+      "q": "빈칸에 알맞은 말은?\nThank you for ___ me.",
+      "c": [
+        "help",
+        "to help",
+        "helping",
+        "helped"
+      ],
+      "a": 2,
+      "e": "전치사 뒤에는 동명사를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "전치사+동명사",
+      "q": "빈칸에 알맞은 말은?\nI'm good at ___ pictures.",
+      "c": [
+        "draw",
+        "drawing",
+        "to draw",
+        "drew"
+      ],
+      "a": 1,
+      "e": "be good at 뒤에는 동명사를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "동명사 관용",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nI'm looking forward to seeing you.",
+      "c": [
+        "너를 만나기를 고대한다.",
+        "너를 찾고 있다.",
+        "너를 본 적이 있다.",
+        "너를 보러 갈 것이다."
+      ],
+      "a": 0,
+      "e": "look forward to -ing는 '~을 고대하다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "동명사 관용",
+      "q": "빈칸에 알맞은 말은?\nHow about ___ for a walk?",
+      "c": [
+        "go",
+        "to go",
+        "went",
+        "going"
+      ],
+      "a": 3,
+      "e": "How about 뒤에는 동명사가 온다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "동명사 주어",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "Playing games too much are bad.",
+        "Play games too much is bad.",
+        "Playing games too much is bad.",
+        "Played games too much is bad."
+      ],
+      "a": 2,
+      "e": "동명사 주어는 단수 취급한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "동명사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "He stopped eating snacks.",
+        "I enjoy to watch movies.",
+        "Swimming is good exercise.",
+        "She is interested in cooking."
+      ],
+      "a": 1,
+      "e": "enjoy는 동명사 watching을 목적어로 써야 한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "go -ing",
+      "q": "'우리는 주말에 낚시하러 갔다.'를 바르게 옮긴 것은?",
+      "c": [
+        "We went fishing on the weekend.",
+        "We went to fishing on the weekend.",
+        "We went fish on the weekend.",
+        "We went to fish on the weekend."
+      ],
+      "a": 0,
+      "e": "'~하러 가다'는 go -ing로 나타낸다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "비교급",
+      "q": "빈칸에 알맞은 말은?\nA cheetah is ___ than a horse.",
+      "c": [
+        "fast",
+        "fastest",
+        "more fast",
+        "faster"
+      ],
+      "a": 3,
+      "e": "fast의 비교급은 faster이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "비교급",
+      "q": "빈칸에 알맞은 말은?\nToday is ___ than yesterday.",
+      "c": [
+        "hoter",
+        "more hot",
+        "hotter",
+        "hottest"
+      ],
+      "a": 2,
+      "e": "hot은 자음을 겹쳐 hotter가 된다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "비교급 강조",
+      "q": "빈칸에 들어갈 수 없는 말은?\nThis bag is ___ bigger than that one.",
+      "c": [
+        "much",
+        "very",
+        "even",
+        "a lot"
+      ],
+      "a": 1,
+      "e": "very는 비교급을 강조할 수 없다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "최상급",
+      "q": "빈칸에 알맞은 말은?\nThis is the ___ building in the city.",
+      "c": [
+        "oldest",
+        "older",
+        "old",
+        "most old"
+      ],
+      "a": 0,
+      "e": "the+최상급 oldest를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "최상급",
+      "q": "빈칸에 알맞은 말은?\nShe is the most ___ singer in Korea.",
+      "c": [
+        "famouser",
+        "famousest",
+        "more famous",
+        "famous"
+      ],
+      "a": 3,
+      "e": "긴 형용사는 most를 앞에 붙여 최상급을 만든다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "불규칙 비교",
+      "q": "형용사와 비교급이 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "many – more",
+        "little – less",
+        "bad – badder",
+        "good – better"
+      ],
+      "a": 2,
+      "e": "bad의 비교급은 worse이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "최상급 표현",
+      "q": "빈칸에 알맞은 말은?\nSeoul is the largest city ___ Korea.",
+      "c": [
+        "of",
+        "in",
+        "than",
+        "at"
+      ],
+      "a": 1,
+      "e": "장소·범위 앞에는 in을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "최상급 표현",
+      "q": "빈칸에 알맞은 말은?\nHe is the tallest ___ the five boys.",
+      "c": [
+        "of",
+        "in",
+        "than",
+        "to"
+      ],
+      "a": 0,
+      "e": "복수 명사 무리 앞에는 of를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "원급 비교",
+      "q": "빈칸에 알맞은 말은?\nMy bag is not as ___ as yours.",
+      "c": [
+        "heavier",
+        "heaviest",
+        "more heavy",
+        "heavy"
+      ],
+      "a": 3,
+      "e": "as와 as 사이에는 원급을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "비교 의미",
+      "q": "다음 문장과 뜻이 같은 것은?\nTom is taller than Jim.",
+      "c": [
+        "Jim is taller than Tom.",
+        "Tom is shorter than Jim.",
+        "Jim is shorter than Tom.",
+        "Tom is as tall as Jim."
+      ],
+      "a": 2,
+      "e": "Tom이 더 크면 Jim이 더 작다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "비교 내용",
+      "q": "글을 읽고 가장 나이가 많은 사람은?\nMina is 15. Jisu is older than Mina. Hana is older than Jisu.",
+      "c": [
+        "Jisu",
+        "Hana",
+        "Mina",
+        "알 수 없음"
+      ],
+      "a": 1,
+      "e": "Hana > Jisu > Mina 순으로 나이가 많다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "비교급",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "This test is more easier than that one.",
+        "My room is bigger than yours.",
+        "Gold is more expensive than silver.",
+        "He runs faster than me."
+      ],
+      "a": 0,
+      "e": "easy의 비교급은 easier이며 more를 겹쳐 쓰지 않는다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "최상급",
+      "q": "'이것이 가게에서 가장 좋은 컴퓨터이다.'를 바르게 옮긴 것은?",
+      "c": [
+        "This is the better computer in the store.",
+        "This is the goodest computer in the store.",
+        "This is best the computer in the store.",
+        "This is the best computer in the store."
+      ],
+      "a": 3,
+      "e": "good의 최상급은 the best이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "because",
+      "q": "빈칸에 알맞은 말은?\nI was happy ___ I got a good grade.",
+      "c": [
+        "but",
+        "or",
+        "because",
+        "if"
+      ],
+      "a": 2,
+      "e": "좋은 성적을 받은 것이 기쁜 이유이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "so",
+      "q": "빈칸에 알맞은 말은?\nIt was very cold, ___ I wore a thick coat.",
+      "c": [
+        "because",
+        "so",
+        "but",
+        "or"
+      ],
+      "a": 1,
+      "e": "앞이 원인, 뒤가 결과이므로 so를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "because of",
+      "q": "빈칸에 알맞은 말은?\nThe game was canceled because ___ the rain.",
+      "c": [
+        "of",
+        "for",
+        "to",
+        "with"
+      ],
+      "a": 0,
+      "e": "명사 앞에는 because of를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "because of 2",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I stayed home because I was sick.",
+        "I stayed home because of my cold.",
+        "I was sick, so I stayed home.",
+        "I stayed home because of I was sick."
+      ],
+      "a": 3,
+      "e": "절 앞에는 because of가 아니라 because를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "if 조건",
+      "q": "빈칸에 알맞은 말은?\nIf you ___ tired, take a rest.",
+      "c": [
+        "will be",
+        "were",
+        "are",
+        "be"
+      ],
+      "a": 2,
+      "e": "조건의 if절에는 현재시제를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "if 조건",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nIf you hurry, you will catch the bus.",
+      "c": [
+        "서둘렀지만 버스를 놓쳤다.",
+        "서두르면 버스를 탈 것이다.",
+        "버스를 타려고 서둘렀다.",
+        "서두르지 않아도 버스를 탄다."
+      ],
+      "a": 1,
+      "e": "If는 '만약 ~하면'이라는 조건이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "if 조건",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "If it will snow, we will make a snowman.",
+        "If it snows, we will make a snowman.",
+        "If you are hungry, eat this.",
+        "If I see him, I will tell him."
+      ],
+      "a": 0,
+      "e": "조건의 if절에서는 미래 대신 현재시제를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "when",
+      "q": "빈칸에 알맞은 말은?\n___ I was young, I lived in Daejeon.",
+      "c": [
+        "Because",
+        "If",
+        "But",
+        "When"
+      ],
+      "a": 3,
+      "e": "'~할 때'는 When으로 나타낸다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "접속사",
+      "q": "빈칸에 공통으로 알맞은 말은?\n• Call me ___ you need help.\n• ___ you study hard, you will do well.",
+      "c": [
+        "but",
+        "so",
+        "if",
+        "or"
+      ],
+      "a": 2,
+      "e": "두 문장 모두 '만약 ~하면'이라는 조건이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "that 접속사",
+      "q": "빈칸에 알맞은 말은?\nI think ___ he is honest.",
+      "c": [
+        "what",
+        "that",
+        "if",
+        "because"
+      ],
+      "a": 1,
+      "e": "think의 목적어가 되는 절은 that으로 이끈다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "연결 의미",
+      "q": "두 문장을 because로 바르게 연결한 것은?\nI couldn't sleep. I drank too much coffee.",
+      "c": [
+        "I couldn't sleep because I drank too much coffee.",
+        "I drank too much coffee because I couldn't sleep.",
+        "Because I couldn't sleep, I drank too much coffee.",
+        "I couldn't sleep, because of coffee I drank."
+      ],
+      "a": 0,
+      "e": "커피를 많이 마신 것이 잠 못 잔 이유이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "감각동사",
+      "q": "빈칸에 알맞은 말은?\nYour idea sounds ___.",
+      "c": [
+        "greatly",
+        "to great",
+        "greatness",
+        "great"
+      ],
+      "a": 3,
+      "e": "감각동사 sound 뒤에는 형용사가 온다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "감각동사",
+      "q": "빈칸에 알맞은 말은?\nThe flowers smell ___.",
+      "c": [
+        "sweetly",
+        "sweetness",
+        "sweet",
+        "to sweet"
+      ],
+      "a": 2,
+      "e": "감각동사 smell 뒤에는 형용사가 온다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "감각동사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "This blanket feels soft.",
+        "You look happily today.",
+        "The cake tastes good.",
+        "That sounds strange."
+      ],
+      "a": 1,
+      "e": "look 뒤에는 형용사 happy를 써야 한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "look like",
+      "q": "빈칸에 알맞은 말은?\nThat cloud looks ___ a rabbit.",
+      "c": [
+        "like",
+        "as",
+        "to",
+        "for"
+      ],
+      "a": 0,
+      "e": "감각동사 뒤에 명사가 오면 like를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "감각동사",
+      "q": "'너 피곤해 보인다.'를 바르게 옮긴 것은?",
+      "c": [
+        "You look tiredly.",
+        "You look like tired.",
+        "You see tired.",
+        "You look tired."
+      ],
+      "a": 3,
+      "e": "look+형용사는 '~해 보이다'이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "감각동사",
+      "q": "빈칸에 들어갈 말로 알맞지 않은 것은?\nThe music sounds ___.",
+      "c": [
+        "beautiful",
+        "nice",
+        "beautifully",
+        "loud"
+      ],
+      "a": 2,
+      "e": "감각동사 뒤에는 부사가 아니라 형용사가 온다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "기쁨 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I passed the audition!\nB: ___",
+      "c": [
+        "That's too bad.",
+        "That's great! I'm happy for you.",
+        "Cheer up.",
+        "Don't worry."
+      ],
+      "a": 1,
+      "e": "좋은 소식에는 함께 기뻐하는 말을 한다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "걱정 표현",
+      "q": "걱정을 나타내는 말은?",
+      "c": [
+        "I'm worried about the test.",
+        "I'm excited about the test.",
+        "I'm sure about the test.",
+        "I'm ready for the test."
+      ],
+      "a": 0,
+      "e": "be worried about은 '~이 걱정되다'이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "안심시키기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I'm nervous about my speech.\nB: ___ You'll do well.",
+      "c": [
+        "Congratulations.",
+        "Good job.",
+        "No problem.",
+        "Don't worry."
+      ],
+      "a": 3,
+      "e": "긴장한 친구를 안심시키는 말이 알맞다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "의견 묻기",
+      "q": "의견을 묻는 말이 아닌 것은?",
+      "c": [
+        "What do you think about it?",
+        "How do you like it?",
+        "Where did you buy it?",
+        "How do you feel about it?"
+      ],
+      "a": 2,
+      "e": "Where did you buy it?은 구입 장소를 묻는다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "의견 말하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How do you like the new library?\nB: ___",
+      "c": [
+        "It opens at nine.",
+        "I love it. It's big and quiet.",
+        "It's next to the gym.",
+        "I went there yesterday."
+      ],
+      "a": 1,
+      "e": "How do you like ~?는 의견을 묻는 말이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "반대 의견",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I think soccer is the most exciting sport.\nB: ___ I think baseball is more exciting.",
+      "c": [
+        "I don't think so.",
+        "I agree with you.",
+        "You can say that again.",
+        "Me, too."
+      ],
+      "a": 0,
+      "e": "뒤에서 다른 의견을 말하므로 반대한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "좋아하는 이유",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Why are you so happy?\nB: ___",
+      "c": [
+        "Because I lost my phone.",
+        "I was sick yesterday.",
+        "Yes, I am happy.",
+        "Because my best friend is coming to visit."
+      ],
+      "a": 3,
+      "e": "기쁜 이유를 Because로 말한다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "실망 표현",
+      "q": "실망을 나타내는 말은?",
+      "c": [
+        "How wonderful!",
+        "Good for you!",
+        "What a pity!",
+        "Sounds fun!"
+      ],
+      "a": 2,
+      "e": "What a pity!는 '정말 안됐다, 아쉽다'이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "칭찬 응답",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Your drawing is really nice.\nB: ___",
+      "c": [
+        "I'm sorry.",
+        "Thank you. I worked hard on it.",
+        "That's too bad.",
+        "You must be tired."
+      ],
+      "a": 1,
+      "e": "칭찬을 들으면 감사로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "감정 어휘",
+      "q": "나머지 셋과 성격이 다른 감정은?",
+      "c": [
+        "angry",
+        "happy",
+        "glad",
+        "pleased"
+      ],
+      "a": 0,
+      "e": "angry만 부정적인 감정이고 나머지는 기쁨이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻",
+      "q": "'decide'의 뜻으로 알맞은 것은?",
+      "c": [
+        "설명하다",
+        "발견하다",
+        "거절하다",
+        "결정하다"
+      ],
+      "a": 3,
+      "e": "decide는 '결정하다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻풀이",
+      "q": "'to keep doing something again and again to get better'에 해당하는 것은?",
+      "c": [
+        "forget",
+        "finish",
+        "practice",
+        "borrow"
+      ],
+      "a": 2,
+      "e": "잘하려고 반복하는 것은 practice(연습하다)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 반의어",
+      "q": "반의어끼리 짝지어지지 않은 것은?",
+      "c": [
+        "heavy – light",
+        "brave – strong",
+        "easy – difficult",
+        "win – lose"
+      ],
+      "a": 1,
+      "e": "brave(용감한)와 strong(강한)은 반대말이 아니다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 감정",
+      "q": "'lonely'의 뜻으로 알맞은 것은?",
+      "c": [
+        "외로운",
+        "사랑스러운",
+        "시끄러운",
+        "게으른"
+      ],
+      "a": 0,
+      "e": "lonely는 '외로운'이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 건강",
+      "q": "빈칸에 알맞은 말은?\nEating vegetables is good for your ___.",
+      "c": [
+        "hobby",
+        "habit",
+        "homework",
+        "health"
+      ],
+      "a": 3,
+      "e": "채소는 건강(health)에 좋다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 맛",
+      "q": "'달콤한'을 뜻하는 단어는?",
+      "c": [
+        "salty",
+        "sour",
+        "sweet",
+        "bitter"
+      ],
+      "a": 2,
+      "e": "salty 짠, sour 신, bitter 쓴이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 품사",
+      "q": "단어의 관계가 나머지와 다른 것은?",
+      "c": [
+        "kind – kindness",
+        "happy – sad",
+        "sad – sadness",
+        "dark – darkness"
+      ],
+      "a": 1,
+      "e": "happy – sad만 반의어이고 나머지는 형용사 – 명사이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nWalking is easy and free. It makes your heart strong. It also helps you feel less stressed.",
+      "c": [
+        "걷기의 좋은 점",
+        "심장의 구조",
+        "스트레스의 원인",
+        "운동화 고르는 법"
+      ],
+      "a": 0,
+      "e": "걷기가 주는 여러 이점을 말하는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "글을 읽고 Sam이 수영을 배우려는 이유는?\nSam wants to learn to swim because he is going to visit the beach this summer.",
+      "c": [
+        "수영 대회에 나가려고",
+        "건강이 나빠서",
+        "친구가 권해서",
+        "여름에 해변에 가서"
+      ],
+      "a": 3,
+      "e": "여름에 해변에 갈 예정이라 수영을 배우려 한다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "심정 추론",
+      "q": "글쓴이의 심정으로 알맞은 것은?\nTomorrow I'm going to an amusement park with my friends. I can't wait!",
+      "c": [
+        "bored",
+        "sad",
+        "excited",
+        "angry"
+      ],
+      "a": 2,
+      "e": "내일이 몹시 기다려지는 신난 심정이다.",
+      "std": "[9영01-05]"
+    },
+    {
+      "t": "내용 일치",
+      "q": "글의 내용과 일치하는 것은?\nJiwon is taller than her brother, but her brother is older than her.",
+      "c": [
+        "Jiwon이 오빠보다 나이가 많다.",
+        "Jiwon이 오빠보다 키가 크다.",
+        "오빠가 Jiwon보다 키가 크다.",
+        "두 사람은 키가 같다."
+      ],
+      "a": 1,
+      "e": "Jiwon이 더 크고, 오빠가 나이가 더 많다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nAre you good at singing? Join our school choir! Practice is every Tuesday after school.",
+      "c": [
+        "합창단 가입을 권하려고",
+        "노래 대회 결과를 알리려고",
+        "연습 시간을 바꾸려고",
+        "음악 선생님을 소개하려고"
+      ],
+      "a": 0,
+      "e": "합창단 가입을 권하는 글이다.",
+      "std": "[9영01-06]"
+    },
+    {
+      "t": "원인과 결과",
+      "q": "글을 읽고 Minho가 피곤한 이유는?\nMinho is very tired today because he played computer games until 2 a.m.",
+      "c": [
+        "운동을 많이 해서",
+        "아침을 걸러서",
+        "감기에 걸려서",
+        "늦게까지 게임을 해서"
+      ],
+      "a": 3,
+      "e": "새벽 2시까지 게임을 해서 피곤하다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "요지",
+      "q": "글의 요지로 알맞은 것은?\nEveryone makes mistakes. Don't be afraid of them. You can learn a lot from your mistakes.",
+      "c": [
+        "실수를 하지 말자.",
+        "남의 실수를 탓하지 말자.",
+        "실수를 두려워하지 말자.",
+        "실수를 숨기자."
+      ],
+      "a": 2,
+      "e": "실수에서 배울 수 있으니 두려워 말라는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "연결어",
+      "q": "빈칸에 알맞은 연결어는?\nI wanted to buy the shoes. ___, they were too expensive.",
+      "c": [
+        "So",
+        "However",
+        "For example",
+        "Also"
+      ],
+      "a": 1,
+      "e": "사고 싶었지만 비쌌으므로 역접이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "의견 글쓰기",
+      "q": "의견을 밝히는 글의 첫 문장으로 알맞은 것은?",
+      "c": [
+        "I think students should read more books.",
+        "I read a book yesterday.",
+        "The library has many books.",
+        "Books are made of paper."
+      ],
+      "a": 0,
+      "e": "I think ~는 자신의 의견을 밝히는 표현이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "to부정사 글쓰기",
+      "q": "빈칸에 알맞은 말은?\nMy goal this year is ___ ten books.",
+      "c": [
+        "read",
+        "reads",
+        "readed",
+        "to read"
+      ],
+      "a": 3,
+      "e": "be동사 뒤 보어로 to부정사를 쓴다.",
+      "std": "[9영02-07]"
+    },
+    {
+      "t": "비교 묘사",
+      "q": "정보를 바르게 나타낸 문장은?\n(Sora: 160cm, Yena: 155cm)",
+      "c": [
+        "Yena is taller than Sora.",
+        "Sora is shorter than Yena.",
+        "Sora is taller than Yena.",
+        "Sora is as tall as Yena."
+      ],
+      "a": 2,
+      "e": "160cm인 Sora가 155cm인 Yena보다 크다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "to부정사 목적어",
+      "q": "빈칸에 알맞은 말은?\nI promise ___ my room every day.",
+      "c": [
+        "cleaning",
+        "to clean",
+        "clean",
+        "cleaned"
+      ],
+      "a": 1,
+      "e": "promise는 to부정사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "동명사 목적어",
+      "q": "빈칸에 알맞은 말은?\nPlease stop ___ so loudly. The baby is sleeping.",
+      "c": [
+        "talking",
+        "to talking",
+        "talk",
+        "talked"
+      ],
+      "a": 0,
+      "e": "'~하는 것을 멈추다'는 stop+동명사이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "최상급 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What is the ___ river in the world?\nB: I think it's the Nile.",
+      "c": [
+        "longer",
+        "long",
+        "most long",
+        "longest"
+      ],
+      "a": 3,
+      "e": "세계에서 가장 긴 강이므로 최상급을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "감각동사",
+      "q": "빈칸에 알맞은 말은?\nThis milk smells ___. Don't drink it.",
+      "c": [
+        "badly",
+        "well",
+        "bad",
+        "nicely"
+      ],
+      "a": 2,
+      "e": "감각동사 뒤에는 형용사가 오며, 마시지 말라고 했으므로 bad이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "if 대화",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What will you do if it rains tomorrow?\nB: ___",
+      "c": [
+        "I stayed home.",
+        "I will stay home and read.",
+        "It rained yesterday.",
+        "Yes, I will."
+      ],
+      "a": 1,
+      "e": "비가 오면 할 일을 will로 답한다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "의견 동의",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I think this movie is boring.\nB: ___ Let's watch something else.",
+      "c": [
+        "I think so, too.",
+        "I don't think so.",
+        "I love it.",
+        "It's very exciting."
+      ],
+      "a": 0,
+      "e": "다른 것을 보자고 하므로 동의한다.",
+      "std": "[9영02-06]"
     }
   ]
 }

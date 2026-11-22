@@ -272,6 +272,1098 @@
       "a": 2,
       "e": "Sounds great!는 좋겠다는 반응이에요.",
       "std": "[6영02-07]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "'How are you doing?'에 알맞은 대답은?",
+      "c": [
+        "Pretty good.",
+        "I'm from Japan.",
+        "It's mine.",
+        "I'd like pizza."
+      ],
+      "a": 0,
+      "e": "안부를 물으면 지내는 상태로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "'What's up?'의 뜻으로 알맞은 것은?",
+      "c": [
+        "위에 뭐가 있어?",
+        "잘 지내?(무슨 일 있어?)",
+        "몇 시야?",
+        "어디 가?"
+      ],
+      "a": 1,
+      "e": "What's up?은 가볍게 안부를 묻는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "친구가 'I'm not happy today.'라고 할 때 알맞은 반응은?",
+      "c": [
+        "That's great!",
+        "Sounds good.",
+        "You're welcome.",
+        "That's too bad."
+      ],
+      "a": 3,
+      "e": "안 좋은 일에는 That's too bad.라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "대화에서 B의 상태는?\\nA: How's it going, Jiho?\\nB: Not so good. I'm tired.",
+      "c": [
+        "아주 좋다",
+        "배고프다",
+        "피곤하다",
+        "신이 난다"
+      ],
+      "a": 2,
+      "e": "tired는 피곤한이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "'Same here.'의 뜻은?",
+      "c": [
+        "나도 마찬가지야.",
+        "여기 있어.",
+        "여기로 와.",
+        "똑같은 거 주세요."
+      ],
+      "a": 0,
+      "e": "Same here.는 나도 그렇다는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "빈칸에 알맞은 말은?\\nA: How's it ___?\\nB: Great. And you?",
+      "c": [
+        "doing",
+        "coming",
+        "going",
+        "being"
+      ],
+      "a": 2,
+      "e": "How's it going?은 안부를 묻는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "오랜만에 만난 친구에게 하는 말로 알맞은 것은?",
+      "c": [
+        "Nice to meet you.",
+        "Good night.",
+        "Take care.",
+        "Long time no see."
+      ],
+      "a": 3,
+      "e": "Long time no see.는 오랜만이라는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "'I'm great. How about you?'에 알맞은 대답은?",
+      "c": [
+        "I'm from Korea.",
+        "I'm good, too.",
+        "It's Tom's.",
+        "Yes, I will."
+      ],
+      "a": 1,
+      "e": "How about you?는 너는 어떠냐고 묻는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "감정",
+      "q": "'excited'의 뜻은?",
+      "c": [
+        "신이 난",
+        "지루한",
+        "화가 난",
+        "걱정하는"
+      ],
+      "a": 0,
+      "e": "excited는 신이 난이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "'Good to see you again.'의 뜻은?",
+      "c": [
+        "처음 만나서 반가워.",
+        "다음에 또 봐.",
+        "잘 가, 안녕.",
+        "다시 만나서 반가워."
+      ],
+      "a": 3,
+      "e": "again은 다시라는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "감정",
+      "q": "'걱정하는'을 뜻하는 낱말은?",
+      "c": [
+        "bored",
+        "excited",
+        "worried",
+        "happy"
+      ],
+      "a": 2,
+      "e": "worried는 걱정하는이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "'How are you today?'에 '그저 그래.'라고 할 때 알맞은 말은?",
+      "c": [
+        "Very good.",
+        "So-so.",
+        "Great!",
+        "I'm happy."
+      ],
+      "a": 1,
+      "e": "So-so.는 그저 그렇다는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'I'm from China.'의 뜻은?",
+      "c": [
+        "나는 중국에서 왔어.",
+        "나는 중국에 갈 거야.",
+        "나는 중국을 좋아해.",
+        "나는 중국에 살아."
+      ],
+      "a": 0,
+      "e": "be from은 ~ 출신이라는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'France'는 어느 나라인가요?",
+      "c": [
+        "독일",
+        "프랑스",
+        "스페인",
+        "이탈리아"
+      ],
+      "a": 1,
+      "e": "France는 프랑스예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'미국'을 나타내는 말은?",
+      "c": [
+        "the U.K.",
+        "Canada",
+        "Australia",
+        "the U.S."
+      ],
+      "a": 3,
+      "e": "the U.S.는 미국, the U.K.는 영국이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "대화에서 Kate의 출신 나라는?\\nA: Where are you from, Kate?\\nB: I'm from Australia.",
+      "c": [
+        "캐나다",
+        "영국",
+        "호주",
+        "미국"
+      ],
+      "a": 2,
+      "e": "Australia는 호주예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "빈칸에 알맞은 말은?\\nA: Where ___ you from?\\nB: I'm from Mexico.",
+      "c": [
+        "are",
+        "do",
+        "is",
+        "am"
+      ],
+      "a": 0,
+      "e": "you와 함께 Where are you from?이라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'Where is he from?'에 알맞은 대답은?",
+      "c": [
+        "She's from Brazil.",
+        "I'm from Brazil.",
+        "He's from Brazil.",
+        "He likes Brazil."
+      ],
+      "a": 2,
+      "e": "he에 대한 물음에는 He's from ~.으로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "출신 나라를 묻는 말은?",
+      "c": [
+        "Where are you going?",
+        "Where is it?",
+        "What's your name?",
+        "Where are you from?"
+      ],
+      "a": 3,
+      "e": "Where are you from?은 출신을 묻는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'일본'을 뜻하는 낱말의 철자로 바른 것은?",
+      "c": [
+        "Japen",
+        "Japan",
+        "Jappan",
+        "Jepan"
+      ],
+      "a": 1,
+      "e": "일본은 J-a-p-a-n이에요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "글에서 알 수 있는 것은?\\nHello, I'm Maria. I'm from Spain. I'm eleven years old.",
+      "c": [
+        "Maria는 스페인에서 왔다",
+        "Maria는 열두 살이다",
+        "Maria는 미국에서 왔다",
+        "Maria는 축구를 좋아한다"
+      ],
+      "a": 0,
+      "e": "Maria는 I'm from Spain.이라고 했어요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "대문자",
+      "q": "나라 이름을 바르게 쓴 것은?",
+      "c": [
+        "korea",
+        "kOREA",
+        "koREA",
+        "Korea"
+      ],
+      "a": 3,
+      "e": "나라 이름은 대문자로 시작해요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'country'의 뜻은?",
+      "c": [
+        "도시",
+        "마을",
+        "나라",
+        "학교"
+      ],
+      "a": 2,
+      "e": "country는 나라예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'Whose cap is this?'에 알맞은 대답은?",
+      "c": [
+        "It's a cap.",
+        "It's Jimin's.",
+        "It's red.",
+        "It's ten dollars."
+      ],
+      "a": 1,
+      "e": "Whose ~?에는 주인을 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'It's yours.'의 뜻은?",
+      "c": [
+        "그것은 네 거야.",
+        "그것은 내 거야.",
+        "그것은 그의 거야.",
+        "그것은 우리 거야."
+      ],
+      "a": 0,
+      "e": "yours는 너의 것이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'his'의 뜻은?",
+      "c": [
+        "그녀의",
+        "그의, 그의 것",
+        "나의",
+        "너의"
+      ],
+      "a": 1,
+      "e": "his는 그의, 그의 것이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "대화에서 지우개의 주인은?\\nA: Whose eraser is this?\\nB: It's Sora's.",
+      "c": [
+        "Jina",
+        "Minsu",
+        "Tom",
+        "Sora"
+      ],
+      "a": 3,
+      "e": "Sora's는 Sora의 것이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "빈칸에 알맞은 말은?\\nA: Whose ___ is this?\\nB: It's my brother's.",
+      "c": [
+        "is",
+        "who",
+        "bag",
+        "he"
+      ],
+      "a": 2,
+      "e": "Whose 다음에는 물건 이름이 와요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "주인을 묻는 말은?",
+      "c": [
+        "Whose watch is this?",
+        "What time is it?",
+        "Where is my watch?",
+        "How much is the watch?"
+      ],
+      "a": 0,
+      "e": "Whose ~?는 누구의 것인지 묻는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'Is this hers?'의 뜻은?",
+      "c": [
+        "이것은 그의 것이니?",
+        "이것은 너의 것이니?",
+        "이것은 그녀의 것이니?",
+        "그녀는 여기 있니?"
+      ],
+      "a": 2,
+      "e": "hers는 그녀의 것이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'Whose shoes are these?'에 알맞은 대답은?",
+      "c": [
+        "It's Ben.",
+        "They're new.",
+        "Ben is my friend.",
+        "They're Ben's."
+      ],
+      "a": 3,
+      "e": "여러 개는 They're ~'s.로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'This is not mine.'의 뜻은?",
+      "c": [
+        "이것은 네 것이 아니야.",
+        "이것은 내 것이 아니야.",
+        "이것은 내 것이야.",
+        "이것은 어디 있니?"
+      ],
+      "a": 1,
+      "e": "mine은 내 것이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "분실물 쪽지의 빈칸에 알맞은 말은?\\nI found a blue umbrella. ___ is it?",
+      "c": [
+        "Whose",
+        "Who",
+        "Where",
+        "What"
+      ],
+      "a": 0,
+      "e": "주인을 찾을 때 Whose is it?이라고 해요.",
+      "std": "[6영02-08]"
+    },
+    {
+      "t": "과목",
+      "q": "'math'의 뜻은?",
+      "c": [
+        "과학",
+        "음악",
+        "미술",
+        "수학"
+      ],
+      "a": 3,
+      "e": "math는 수학이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "과목",
+      "q": "'P.E.'의 뜻은?",
+      "c": [
+        "영어",
+        "미술",
+        "체육",
+        "사회"
+      ],
+      "a": 2,
+      "e": "P.E.는 체육이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "과목",
+      "q": "'과학' 과목을 뜻하는 말은?",
+      "c": [
+        "music",
+        "science",
+        "art",
+        "English"
+      ],
+      "a": 1,
+      "e": "science는 과학이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "좋아하는 과목",
+      "q": "대화에서 B가 좋아하는 과목은?\\nA: What's your favorite subject?\\nB: I like music. I love singing.",
+      "c": [
+        "음악",
+        "체육",
+        "미술",
+        "수학"
+      ],
+      "a": 0,
+      "e": "music은 음악이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "좋아하는 과목",
+      "q": "좋아하는 과목을 묻는 말은?",
+      "c": [
+        "What's your favorite color?",
+        "What's your favorite subject?",
+        "Where are you from?",
+        "Whose book is this?"
+      ],
+      "a": 1,
+      "e": "subject는 과목이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "이유 말하기",
+      "q": "'Why do you like P.E.?'에 알맞은 대답은?",
+      "c": [
+        "Because it's on Monday.",
+        "I'm good, thanks.",
+        "It's mine.",
+        "Because I like sports."
+      ],
+      "a": 3,
+      "e": "Why ~?에는 Because ~.로 이유를 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과목",
+      "q": "'subject'의 뜻은?",
+      "c": [
+        "숙제",
+        "시험",
+        "과목",
+        "교실"
+      ],
+      "a": 2,
+      "e": "subject는 과목이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "이유 말하기",
+      "q": "빈칸에 알맞은 말은?\\nA: Why do you like science?\\nB: ___ it's fun.",
+      "c": [
+        "Because",
+        "Why",
+        "But",
+        "What"
+      ],
+      "a": 0,
+      "e": "이유는 Because로 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "좋아하는 과목",
+      "q": "'favorite'의 뜻은?",
+      "c": [
+        "가장 싫어하는",
+        "가장 어려운",
+        "가장 좋아하는",
+        "가장 쉬운"
+      ],
+      "a": 2,
+      "e": "favorite은 가장 좋아하는이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "과목",
+      "q": "'영어'를 뜻하는 낱말의 철자로 바른 것은?",
+      "c": [
+        "Inglish",
+        "Englesh",
+        "Engrish",
+        "English"
+      ],
+      "a": 3,
+      "e": "영어는 E-n-g-l-i-s-h예요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "좋아하는 과목",
+      "q": "글에서 Jake가 좋아하는 과목과 이유는?\\nI'm Jake. My favorite subject is art. I like painting.",
+      "c": [
+        "미술, 만들기를 잘해서",
+        "미술, 그림 그리기를 좋아해서",
+        "음악, 노래를 좋아해서",
+        "체육, 운동을 좋아해서"
+      ],
+      "a": 1,
+      "e": "art는 미술, painting은 그림 그리기예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "좋아하는 과목",
+      "q": "'I'm good at math.'의 뜻은?",
+      "c": [
+        "나는 수학을 잘해.",
+        "나는 수학을 좋아해.",
+        "나는 수학 선생님이야.",
+        "나는 수학이 어려워."
+      ],
+      "a": 0,
+      "e": "be good at은 ~을 잘하다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "쓰기",
+      "q": "글의 빈칸에 알맞은 말은?\\nMy favorite ___ is P.E. I like sports.",
+      "c": [
+        "food",
+        "country",
+        "color",
+        "subject"
+      ],
+      "a": 3,
+      "e": "P.E.는 과목이에요.",
+      "std": "[6영02-08]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'I'd like a sandwich, please.'의 뜻은?",
+      "c": [
+        "샌드위치를 좋아해요.",
+        "샌드위치가 있어요.",
+        "샌드위치 주세요.",
+        "샌드위치를 만들 거예요."
+      ],
+      "a": 2,
+      "e": "I'd like ~.는 원하는 것을 주문하는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "빈칸에 알맞은 말은?\\nA: May I take your order?\\nB: I'd ___ fried rice, please.",
+      "c": [
+        "likes",
+        "like",
+        "liking",
+        "liked"
+      ],
+      "a": 1,
+      "e": "I'd like ~.로 주문해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "맛",
+      "q": "'sweet'의 뜻은?",
+      "c": [
+        "단",
+        "짠",
+        "매운",
+        "신"
+      ],
+      "a": 0,
+      "e": "sweet는 단이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "맛",
+      "q": "'매운'을 뜻하는 낱말은?",
+      "c": [
+        "sweet",
+        "spicy",
+        "salty",
+        "sour"
+      ],
+      "a": 1,
+      "e": "spicy는 매운이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "대화에서 B가 주문한 것은?\\nA: May I take your order?\\nB: I'd like a hamburger and orange juice, please.",
+      "c": [
+        "피자와 콜라",
+        "햄버거와 우유",
+        "샌드위치와 오렌지 주스",
+        "햄버거와 오렌지 주스"
+      ],
+      "a": 3,
+      "e": "B는 햄버거와 오렌지 주스를 주문했어요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "맛",
+      "q": "대화에서 B가 수프에 대해 한 말은?\\nA: How's the soup?\\nB: It's a little salty.",
+      "c": [
+        "아주 맵다",
+        "너무 달다",
+        "조금 짜다",
+        "맛이 없다"
+      ],
+      "a": 2,
+      "e": "a little salty는 조금 짜다는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "식당 점원이 주문을 받을 때 하는 말은?",
+      "c": [
+        "May I take your order?",
+        "Where are you from?",
+        "Whose food is this?",
+        "What's your favorite subject?"
+      ],
+      "a": 0,
+      "e": "May I take your order?는 주문을 받는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "맛",
+      "q": "'It's delicious.'와 비슷한 뜻의 말은?",
+      "c": [
+        "It's too salty.",
+        "It's too sweet.",
+        "It's very good.",
+        "It's not good."
+      ],
+      "a": 2,
+      "e": "delicious는 아주 맛있다는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'Anything else?'에 '그게 다예요.'라고 답하는 말은?",
+      "c": [
+        "Yes, please.",
+        "Here you are.",
+        "Same here.",
+        "That's all."
+      ],
+      "a": 3,
+      "e": "That's all.은 그게 다라는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "음식",
+      "q": "'noodles'의 뜻은?",
+      "c": [
+        "밥",
+        "국수",
+        "빵",
+        "수프"
+      ],
+      "a": 1,
+      "e": "noodles는 국수예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "맛",
+      "q": "대화의 빈칸에 알맞은 말은?\\nA: How's the pizza?\\nB: ___",
+      "c": [
+        "It's delicious.",
+        "I'd like pizza.",
+        "It's ten o'clock.",
+        "I'm from Italy."
+      ],
+      "a": 0,
+      "e": "맛을 물으면 맛으로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'I'd like ~, please.'는 어떤 말인가요?",
+      "c": [
+        "좋아하는 과목을 말하는 말",
+        "출신 나라를 말하는 말",
+        "지난 일을 말하는 말",
+        "원하는 것을 주문하는 말"
+      ],
+      "a": 3,
+      "e": "I'd like ~.는 주문할 때 써요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "'I'm looking for a cap.'의 뜻은?",
+      "c": [
+        "모자를 쓰고 있어요.",
+        "모자가 마음에 들어요.",
+        "모자를 찾고 있어요.",
+        "모자를 샀어요."
+      ],
+      "a": 2,
+      "e": "look for는 찾다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 값",
+      "q": "'How much is this T-shirt?'에 알맞은 대답은?",
+      "c": [
+        "It's blue.",
+        "It's fifteen thousand won.",
+        "It's Mina's.",
+        "It's too big."
+      ],
+      "a": 1,
+      "e": "How much ~?에는 값으로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "'cheap'의 뜻은?",
+      "c": [
+        "값이 싼",
+        "값이 비싼",
+        "새로운",
+        "오래된"
+      ],
+      "a": 0,
+      "e": "cheap은 값이 싼이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "'expensive'의 뜻은?",
+      "c": [
+        "값이 싼",
+        "값이 비싼",
+        "크기가 큰",
+        "크기가 작은"
+      ],
+      "a": 1,
+      "e": "expensive는 값이 비싼이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 값",
+      "q": "대화에서 가방의 값은?\\nA: How much is this bag?\\nB: It's twenty thousand won.",
+      "c": [
+        "2,000원",
+        "12,000원",
+        "200,000원",
+        "20,000원"
+      ],
+      "a": 3,
+      "e": "twenty thousand는 20,000이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "물건을 사겠다고 할 때 알맞은 말은?",
+      "c": [
+        "I'm just looking.",
+        "Can I help you?",
+        "I'll take it.",
+        "It's too expensive."
+      ],
+      "a": 2,
+      "e": "I'll take it.은 사겠다는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건 값",
+      "q": "빈칸에 알맞은 말은?\\nA: How much ___ these socks?\\nB: They're three thousand won.",
+      "c": [
+        "are",
+        "is",
+        "am",
+        "do"
+      ],
+      "a": 0,
+      "e": "these socks는 여러 개라 are를 써요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "그냥 구경하는 중이라고 할 때 알맞은 말은?",
+      "c": [
+        "I'll take it.",
+        "That's all.",
+        "I'm just looking.",
+        "Here you are."
+      ],
+      "a": 2,
+      "e": "just looking은 그냥 보는 중이라는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "'too big'의 뜻은?",
+      "c": [
+        "너무 작은",
+        "아주 싼",
+        "아주 비싼",
+        "너무 큰"
+      ],
+      "a": 3,
+      "e": "too는 너무, big은 큰이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "숫자",
+      "q": "'sixty'가 나타내는 수는?",
+      "c": [
+        "16",
+        "60",
+        "600",
+        "6"
+      ],
+      "a": 1,
+      "e": "sixty는 60, sixteen은 16이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "대화에서 B가 바지를 사지 않는 이유는?\\nA: How about these pants?\\nB: They're too small for me.",
+      "c": [
+        "너무 작아서",
+        "너무 비싸서",
+        "색이 마음에 안 들어서",
+        "너무 커서"
+      ],
+      "a": 0,
+      "e": "too small은 너무 작다는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "'How about this one?'의 뜻은?",
+      "c": [
+        "이것은 얼마예요?",
+        "이것은 누구 거예요?",
+        "이것은 무엇이에요?",
+        "이것은 어때요?"
+      ],
+      "a": 3,
+      "e": "How about ~?은 ~은 어떠냐는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "가게 점원이 손님에게 하는 말로 알맞은 것은?",
+      "c": [
+        "I'm just looking.",
+        "I'll take it.",
+        "May I help you?",
+        "It's too expensive."
+      ],
+      "a": 2,
+      "e": "May I help you?는 점원이 하는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'I will go camping.'의 뜻은?",
+      "c": [
+        "나는 캠핑을 갔어.",
+        "나는 캠핑을 갈 거야.",
+        "나는 캠핑을 좋아해.",
+        "나는 캠핑을 하고 있어."
+      ],
+      "a": 1,
+      "e": "will은 앞으로 할 일을 말해요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "빈칸에 알맞은 말은?\\nA: What will you do tomorrow?\\nB: I ___ read a book.",
+      "c": [
+        "will",
+        "did",
+        "am",
+        "was"
+      ],
+      "a": 0,
+      "e": "앞으로 할 일은 will로 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "대화에서 B가 이번 주말에 할 일은?\\nA: What will you do this weekend?\\nB: I will learn to swim.",
+      "c": [
+        "책 읽기",
+        "수영 배우기",
+        "캠핑 가기",
+        "쿠키 만들기"
+      ],
+      "a": 1,
+      "e": "learn to swim은 수영을 배우다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "앞으로 할 일을 묻는 말은?",
+      "c": [
+        "What did you do last weekend?",
+        "What do you do?",
+        "What are you doing?",
+        "What will you do this weekend?"
+      ],
+      "a": 3,
+      "e": "What will you do?는 할 일을 묻는 말이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'tomorrow'의 뜻은?",
+      "c": [
+        "어제",
+        "오늘",
+        "내일",
+        "주말"
+      ],
+      "a": 2,
+      "e": "tomorrow는 내일이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'weekend'의 뜻은?",
+      "c": [
+        "주말",
+        "평일",
+        "방학",
+        "내일"
+      ],
+      "a": 0,
+      "e": "weekend는 주말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'I will visit my aunt this Sunday.'에서 글쓴이가 할 일은?",
+      "c": [
+        "이모와 영화 보기",
+        "삼촌 댁 방문하기",
+        "이모 댁 방문하기",
+        "이모에게 전화하기"
+      ],
+      "a": 2,
+      "e": "visit은 방문하다, aunt는 이모, 고모예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "반응하기",
+      "q": "'I will go to Jeju-do this summer.'에 알맞은 반응은?",
+      "c": [
+        "I'm sorry.",
+        "No, thanks.",
+        "It's mine.",
+        "That sounds fun!"
+      ],
+      "a": 3,
+      "e": "계획을 들으면 That sounds fun!이라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "일의 순서",
+      "q": "방 청소 다음에 할 일은?\\nTomorrow, I will clean my room. Then I will play badminton.",
+      "c": [
+        "방 청소하기",
+        "배드민턴 치기",
+        "수영하기",
+        "숙제하기"
+      ],
+      "a": 1,
+      "e": "Then 다음에 오는 일이 그다음 일이에요.",
+      "std": "[6영01-06]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'this summer'의 뜻은?",
+      "c": [
+        "올여름",
+        "지난여름",
+        "다음 겨울",
+        "올겨울"
+      ],
+      "a": 0,
+      "e": "this summer는 올여름이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'I will ~.'로 말하는 내용은?",
+      "c": [
+        "지난 일",
+        "지금 하는 일",
+        "좋아하는 것",
+        "앞으로 할 일"
+      ],
+      "a": 3,
+      "e": "will은 미래의 일을 말해요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "대문자",
+      "q": "대문자를 바르게 쓴 문장은?",
+      "c": [
+        "my friend tom is from canada.",
+        "My friend tom is from Canada.",
+        "My friend Tom is from Canada.",
+        "My friend Tom is from canada."
+      ],
+      "a": 2,
+      "e": "문장 첫 글자, 이름, 나라는 대문자로 써요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "문장 부호",
+      "q": "끝에 마침표(.)를 써야 하는 문장은?",
+      "c": [
+        "What's your favorite subject",
+        "I like science",
+        "Where are you from",
+        "Whose bag is this"
+      ],
+      "a": 1,
+      "e": "묻는 문장은 ?, 말하는 문장은 .을 써요.",
+      "std": "[6영02-03]"
     }
   ]
 }

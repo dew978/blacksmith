@@ -272,6 +272,1150 @@
       "a": 3,
       "e": "벌이 꽃가루를 옮겨 작물이 자란다는 내용이다.",
       "std": "[9영01-03]"
+    },
+    {
+      "t": "가정법 과거",
+      "q": "빈칸에 알맞은 말은?\nIf I ___ rich, I would buy a big house.",
+      "c": [
+        "am",
+        "were",
+        "will be",
+        "have been"
+      ],
+      "a": 1,
+      "e": "가정법 과거의 if절에는 were를 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가정법 과거",
+      "q": "빈칸에 알맞은 말은?\nIf she studied harder, she ___ pass the exam.",
+      "c": [
+        "can",
+        "will",
+        "has",
+        "could"
+      ],
+      "a": 3,
+      "e": "가정법 과거 주절에는 조동사 과거형을 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가정법 과거",
+      "q": "빈칸에 알맞은 말은?\nIf I ___ a car, I would drive you home.",
+      "c": [
+        "have",
+        "has",
+        "having",
+        "had"
+      ],
+      "a": 3,
+      "e": "가정법 과거의 if절에는 동사의 과거형을 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가정법 전환",
+      "q": "다음 문장과 뜻이 같은 것은?\nAs I am not tall, I can't be a model.",
+      "c": [
+        "If I am tall, I can be a model.",
+        "If I were not tall, I couldn't be a model.",
+        "If I were tall, I could be a model.",
+        "If I was tall, I can be a model."
+      ],
+      "a": 2,
+      "e": "현재 사실의 반대는 가정법 과거로 나타낸다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가정법 전환",
+      "q": "다음 문장과 뜻이 같은 것은?\nIf it were sunny, we would go on a picnic.",
+      "c": [
+        "As it is sunny, we will go on a picnic.",
+        "As it isn't sunny, we won't go on a picnic.",
+        "As it wasn't sunny, we didn't go.",
+        "It is sunny, so we go on a picnic."
+      ],
+      "a": 1,
+      "e": "가정법 과거는 현재 사실의 반대이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "가정법",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "If I knew the answer, I would tell you.",
+        "If I were you, I would apologize.",
+        "If he had time, he could help us.",
+        "If I knew the answer, I will tell you."
+      ],
+      "a": 3,
+      "e": "가정법 과거 주절에는 would를 써야 한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "충고 가정법",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I can't decide which club to join.\nB: ___ I would join the art club.",
+      "c": [
+        "If I am you,",
+        "If you were me,",
+        "If I will be you,",
+        "If I were you,"
+      ],
+      "a": 3,
+      "e": "If I were you는 충고할 때 쓰는 표현이다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "I wish",
+      "q": "빈칸에 알맞은 말은?\nI wish I ___ speak French.",
+      "c": [
+        "can",
+        "will",
+        "could",
+        "am"
+      ],
+      "a": 2,
+      "e": "I wish+가정법 과거로 현재 이루기 힘든 소망을 나타낸다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "I wish 전환",
+      "q": "다음 문장과 뜻이 같은 것은?\nI'm sorry I don't have a pet.",
+      "c": [
+        "I wish I have a pet.",
+        "I wish I had a pet.",
+        "I wish I didn't have a pet.",
+        "I wished I had a pet."
+      ],
+      "a": 1,
+      "e": "현재 사실에 대한 아쉬움은 I wish+과거형이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "가정법 vs 조건",
+      "q": "빈칸에 알맞은 말은?\nIf it rains tomorrow, I ___ stay home.",
+      "c": [
+        "will",
+        "did",
+        "were",
+        "had"
+      ],
+      "a": 0,
+      "e": "실제 일어날 수 있는 조건은 현재·미래로 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "as if",
+      "q": "빈칸에 알맞은 말은?\nHe talks as if he ___ everything.",
+      "c": [
+        "know",
+        "knowing",
+        "to know",
+        "knew"
+      ],
+      "a": 3,
+      "e": "as if+가정법 과거는 '마치 ~인 것처럼'이다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "관계부사 why",
+      "q": "빈칸에 알맞은 말은?\nTell me the reason ___ you were late.",
+      "c": [
+        "where",
+        "when",
+        "why",
+        "how"
+      ],
+      "a": 2,
+      "e": "이유 선행사 뒤에는 관계부사 why를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "관계부사 where",
+      "q": "빈칸에 알맞은 말은?\nThis is the park ___ we often play badminton.",
+      "c": [
+        "which",
+        "where",
+        "when",
+        "what"
+      ],
+      "a": 1,
+      "e": "장소 선행사 뒤 완전한 절에는 where를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사 when",
+      "q": "빈칸에 알맞은 말은?\nSpring is the season ___ flowers bloom.",
+      "c": [
+        "when",
+        "where",
+        "why",
+        "which"
+      ],
+      "a": 0,
+      "e": "시간 선행사 뒤에는 관계부사 when을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사 how",
+      "q": "빈칸에 알맞은 말은?\nThis is ___ I made the cookies.",
+      "c": [
+        "the way how",
+        "which",
+        "what way",
+        "how"
+      ],
+      "a": 3,
+      "e": "방법은 how 또는 the way로 나타낸다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사 전환",
+      "q": "빈칸에 알맞은 말은?\nThis is the town where I grew up.\n= This is the town ___ which I grew up.",
+      "c": [
+        "on",
+        "at",
+        "in",
+        "to"
+      ],
+      "a": 2,
+      "e": "where는 in which로 바꿔 쓸 수 있다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사·관계사",
+      "q": "빈칸에 들어갈 말이 나머지와 다른 것은?",
+      "c": [
+        "This is the city ___ I was born.",
+        "This is the museum ___ I visited last year.",
+        "I know a café ___ we can study.",
+        "That is the room ___ he sleeps."
+      ],
+      "a": 1,
+      "e": "첫 문장은 visited의 목적어가 없어 which, 나머지는 where이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I visited the house where Mozart lived in.",
+        "I visited the house where Mozart lived.",
+        "I visited the house in which Mozart lived.",
+        "I visited the house which Mozart lived in."
+      ],
+      "a": 0,
+      "e": "where 뒤에는 전치사 in을 다시 쓰지 않는다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nI'll never forget the day when I met you.",
+      "c": [
+        "너를 만날 날을 잊어버렸다.",
+        "언제 너를 만났는지 모른다.",
+        "너를 만난 곳을 잊지 않겠다.",
+        "너를 만난 날을 절대 잊지 않을 것이다."
+      ],
+      "a": 3,
+      "e": "when I met you가 the day를 꾸민다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "사역동사 have",
+      "q": "빈칸에 알맞은 말은?\nI had my brother ___ the dishes.",
+      "c": [
+        "to wash",
+        "washed",
+        "wash",
+        "washes"
+      ],
+      "a": 2,
+      "e": "사역동사 have+사람+동사원형 구조이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "사역동사 let",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "My dad let me to use his laptop.",
+        "My dad let me use his laptop.",
+        "My dad let me using his laptop.",
+        "My dad let me used his laptop."
+      ],
+      "a": 1,
+      "e": "let+목적어+동사원형 구조이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "help",
+      "q": "빈칸에 들어갈 수 없는 말은?\nShe helped me ___ my bag.",
+      "c": [
+        "packing",
+        "pack",
+        "to pack",
+        "carry"
+      ],
+      "a": 0,
+      "e": "help의 목적격보어는 동사원형이나 to부정사이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "지각동사",
+      "q": "빈칸에 알맞은 말은?\nI heard someone ___ my name.",
+      "c": [
+        "to call",
+        "called",
+        "calls",
+        "call"
+      ],
+      "a": 3,
+      "e": "지각동사 hear+목적어+동사원형(-ing) 구조이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "지각동사 -ing",
+      "q": "빈칸에 들어갈 수 있는 말은?\nWe watched the children ___ in the yard.",
+      "c": [
+        "to play",
+        "played",
+        "playing",
+        "plays"
+      ],
+      "a": 2,
+      "e": "지각동사의 목적격보어로 -ing를 쓸 수 있다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "지각동사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I felt the ground shake.",
+        "I felt the ground to shake.",
+        "I saw her dance.",
+        "He heard the baby crying."
+      ],
+      "a": 1,
+      "e": "지각동사 feel의 목적격보어로 to부정사는 쓰지 않는다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "사역 vs want",
+      "q": "빈칸에 들어갈 말이 나머지와 다른 것은?",
+      "c": [
+        "She wanted me ___ (go) early.",
+        "She made me ___ (go) early.",
+        "She let me ___ (go) early.",
+        "She had me ___ (go) early."
+      ],
+      "a": 0,
+      "e": "want 뒤는 to go, 사역동사 뒤는 go를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "사역동사 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nThe teacher made us write an essay.",
+      "c": [
+        "선생님이 우리 에세이를 써 주었다.",
+        "우리가 선생님을 위해 에세이를 만들었다.",
+        "선생님이 에세이를 쓰는 것을 보았다.",
+        "선생님이 우리에게 에세이를 쓰게 했다."
+      ],
+      "a": 3,
+      "e": "make+목적어+동사원형은 '~에게 …하게 하다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "사역 과거분사",
+      "q": "빈칸에 알맞은 말은?\nI had my hair ___ yesterday.",
+      "c": [
+        "cutting",
+        "to cut",
+        "cut",
+        "cuts"
+      ],
+      "a": 2,
+      "e": "머리가 잘리는 것이므로 과거분사 cut을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "분사구문",
+      "q": "빈칸에 알맞은 말은?\n___ the news, she started to cry.",
+      "c": [
+        "Heard",
+        "Hearing",
+        "Hear",
+        "To hearing"
+      ],
+      "a": 1,
+      "e": "능동의 분사구문은 -ing로 시작한다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "분사구문 전환",
+      "q": "'When I opened the door, I saw a cat.'을 분사구문으로 바꾼 것은?",
+      "c": [
+        "Opening the door, I saw a cat.",
+        "Opened the door, I saw a cat.",
+        "Open the door, I saw a cat.",
+        "I opening the door, I saw a cat."
+      ],
+      "a": 0,
+      "e": "접속사와 주어를 없애고 동사를 -ing로 바꾼다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "분사구문 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nFeeling tired, I went to bed early.",
+      "c": [
+        "피곤했지만 늦게 잤다.",
+        "일찍 자서 피곤하지 않았다.",
+        "피곤할 때마다 일찍 잔다.",
+        "피곤해서 나는 일찍 잤다."
+      ],
+      "a": 3,
+      "e": "분사구문이 이유를 나타낸다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "분사구문 부정",
+      "q": "빈칸에 알맞은 말은?\n___ what to say, I kept silent.",
+      "c": [
+        "Knowing not",
+        "Don't knowing",
+        "Not knowing",
+        "Not know"
+      ],
+      "a": 2,
+      "e": "분사구문의 부정은 분사 앞에 not을 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "분사구문 동시",
+      "q": "다음 문장의 밑줄 친 부분과 뜻이 같은 것은?\nListening to music, he did his homework.",
+      "c": [
+        "Because he listened to music",
+        "While he listened to music",
+        "Although he listened to music",
+        "If he listens to music"
+      ],
+      "a": 1,
+      "e": "동시 동작은 while로 바꿔 쓸 수 있다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "분사구문",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "Finished my work, I went out.",
+        "Finishing my work, I went out.",
+        "After finishing my work, I went out.",
+        "After I finished my work, I went out."
+      ],
+      "a": 0,
+      "e": "능동이므로 Finishing을 써야 한다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "수동 분사구문",
+      "q": "빈칸에 알맞은 말은?\n___ in simple English, the book is easy to read.",
+      "c": [
+        "Writing",
+        "Write",
+        "To writing",
+        "Written"
+      ],
+      "a": 3,
+      "e": "책이 '쓰인' 것이므로 수동의 과거분사를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "분사구문 전환",
+      "q": "'Turning left, you will find the bank.'의 뜻에 가장 가까운 것은?",
+      "c": [
+        "Though you turn left, you won't find it.",
+        "Because you turned left, you found it.",
+        "If you turn left, you will find the bank.",
+        "Turn left and you lost the bank."
+      ],
+      "a": 2,
+      "e": "분사구문이 조건(~하면)을 나타낸다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료",
+      "q": "빈칸에 알맞은 말은?\nI lost the watch that my dad ___ me.",
+      "c": [
+        "has given",
+        "had given",
+        "gives",
+        "is giving"
+      ],
+      "a": 1,
+      "e": "잃어버린 것보다 먼저 받았으므로 과거완료를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료",
+      "q": "빈칸에 알맞은 말은?\nWhen we got to the station, the train had already ___.",
+      "c": [
+        "left",
+        "leave",
+        "leaving",
+        "leaves"
+      ],
+      "a": 0,
+      "e": "had+과거분사이며 leave의 과거분사는 left이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료 경험",
+      "q": "빈칸에 알맞은 말은?\nShe ___ never seen the sea before she was ten.",
+      "c": [
+        "has",
+        "have",
+        "was",
+        "had"
+      ],
+      "a": 3,
+      "e": "과거 시점 이전까지의 경험은 과거완료로 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료 순서",
+      "q": "두 일 중 먼저 일어난 것은?\nWhen Mom came home, I had finished dinner.",
+      "c": [
+        "엄마가 집에 왔다.",
+        "두 일이 동시에 일어났다.",
+        "내가 저녁을 다 먹었다.",
+        "알 수 없다."
+      ],
+      "a": 2,
+      "e": "had finished가 먼저 일어난 일이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "과거완료",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "When I arrived, the bus had already left.",
+        "When I arrived, the bus has already left.",
+        "I knew that she had left.",
+        "They had eaten when I arrived."
+      ],
+      "a": 1,
+      "e": "과거 시점보다 먼저 일어난 일은 had left로 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료",
+      "q": "'내가 깨어났을 때 눈이 그쳐 있었다.'를 바르게 옮긴 것은?",
+      "c": [
+        "When I woke up, the snow had stopped.",
+        "When I woke up, the snow has stopped.",
+        "When I had woken up, the snow stops.",
+        "When I wake up, the snow had stopped."
+      ],
+      "a": 0,
+      "e": "깨어난 시점보다 먼저 그쳤으므로 had stopped이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료",
+      "q": "빈칸에 알맞은 말은?\nI didn't go to the movie because I ___ it already.",
+      "c": [
+        "have seen",
+        "see",
+        "am seeing",
+        "had seen"
+      ],
+      "a": 3,
+      "e": "영화에 가지 않은 시점 전에 이미 봤다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "what to",
+      "q": "빈칸에 알맞은 말은?\nI can't decide ___ to wear to the party.",
+      "c": [
+        "why",
+        "whose",
+        "what",
+        "where"
+      ],
+      "a": 2,
+      "e": "'무엇을 입을지'는 what to wear이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "where to",
+      "q": "빈칸에 알맞은 말은?\nCould you tell me ___ to buy tickets?",
+      "c": [
+        "what",
+        "where",
+        "why",
+        "who"
+      ],
+      "a": 1,
+      "e": "'어디서 살지'는 where to buy이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "when to",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nPlease tell me when to start.",
+      "c": [
+        "언제 시작할지 알려 주세요.",
+        "왜 시작했는지 말해 주세요.",
+        "어떻게 시작할지 보여 주세요.",
+        "시작했을 때 말해 주세요."
+      ],
+      "a": 0,
+      "e": "when to ~는 '언제 ~할지'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "의문사+to부정사",
+      "q": "다음 문장과 뜻이 같은 것은?\nI don't know what to say.",
+      "c": [
+        "I don't know what I said.",
+        "I don't know what should I say.",
+        "I don't know what did I say.",
+        "I don't know what I should say."
+      ],
+      "a": 3,
+      "e": "의문사+to부정사는 의문사+주어+should로 바꾼다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "how to",
+      "q": "빈칸에 알맞은 말은?\nMy grandma taught me how ___ kimchi.",
+      "c": [
+        "make",
+        "making",
+        "to make",
+        "made"
+      ],
+      "a": 2,
+      "e": "how+to부정사는 '~하는 방법'이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "의문사+to부정사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I know where to go.",
+        "I learned how swim.",
+        "He asked me what to do.",
+        "Tell me which to choose."
+      ],
+      "a": 1,
+      "e": "how 뒤에는 to부정사 to swim이 와야 한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "which to",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: These shoes are all nice. I don't know ___.\nB: How about the white ones?",
+      "c": [
+        "which to buy",
+        "which buy",
+        "to which buy",
+        "buying which"
+      ],
+      "a": 0,
+      "e": "'어느 것을 살지'는 which to buy이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "놀람 표현",
+      "q": "놀람을 나타내는 말이 아닌 것은?",
+      "c": [
+        "What a surprise!",
+        "I can't believe it!",
+        "No way!",
+        "I see. Thank you."
+      ],
+      "a": 3,
+      "e": "I see. Thank you는 이해와 감사의 표현이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "놀람 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Did you know Jimin moved to London?\nB: ___ I didn't know that.",
+      "c": [
+        "Yes, I knew it.",
+        "I'm sorry, but I can't.",
+        "Really? That's surprising.",
+        "Good luck."
+      ],
+      "a": 2,
+      "e": "몰랐던 소식에 놀람을 표현한다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "감탄문",
+      "q": "빈칸에 알맞은 말은?\n___ a beautiful view it is!",
+      "c": [
+        "How",
+        "What",
+        "Which",
+        "So"
+      ],
+      "a": 1,
+      "e": "What+a+형용사+명사 순서의 감탄문이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "감탄문",
+      "q": "빈칸에 알맞은 말은?\n___ fast he runs!",
+      "c": [
+        "How",
+        "What",
+        "What a",
+        "So a"
+      ],
+      "a": 0,
+      "e": "How+형용사/부사+주어+동사 순서의 감탄문이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "제안하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I'm bored.\nB: ___",
+      "c": [
+        "I watched a movie.",
+        "Movies are long.",
+        "I'm busy, too.",
+        "Why don't we watch a movie?"
+      ],
+      "a": 3,
+      "e": "Why don't we ~?로 함께 하자고 제안한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "제안 표현",
+      "q": "제안하는 표현이 아닌 것은?",
+      "c": [
+        "What about going to the beach?",
+        "Shall we go to the beach?",
+        "Did you go to the beach?",
+        "Let's go to the beach."
+      ],
+      "a": 2,
+      "e": "Did you ~?는 과거의 일을 묻는다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "제안 응답",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Shall we take a taxi?\nB: ___ The bus stop is far.",
+      "c": [
+        "No, let's not.",
+        "Yes, let's.",
+        "I took a bus.",
+        "Not at all."
+      ],
+      "a": 1,
+      "e": "정류장이 멀다고 했으므로 택시 제안에 찬성한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "권유하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I want to stay healthy.\nB: ___",
+      "c": [
+        "I suggest you exercise regularly.",
+        "I suggest you eat more fast food.",
+        "You should sleep less.",
+        "Stay up late every night."
+      ],
+      "a": 0,
+      "e": "I suggest ~는 무언가를 권하는 표현이다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "가정 대화",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What would you do if you won the lottery?\nB: ___",
+      "c": [
+        "I will travel around the world.",
+        "I traveled around the world.",
+        "I travel around the world.",
+        "I would travel around the world."
+      ],
+      "a": 3,
+      "e": "가정법 질문에는 would+동사원형으로 답한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "어휘: 뜻",
+      "q": "'disappear'의 뜻으로 알맞은 것은?",
+      "c": [
+        "나타나다",
+        "실망하다",
+        "사라지다",
+        "동의하지 않다"
+      ],
+      "a": 2,
+      "e": "disappear는 '사라지다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 반의어",
+      "q": "'ancient'의 반대말은?",
+      "c": [
+        "old",
+        "modern",
+        "famous",
+        "huge"
+      ],
+      "a": 1,
+      "e": "ancient(고대의)의 반대말은 modern(현대의)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻풀이",
+      "q": "'a person who travels to unknown places to learn about them'에 해당하는 것은?",
+      "c": [
+        "explorer",
+        "inventor",
+        "designer",
+        "director"
+      ],
+      "a": 0,
+      "e": "알려지지 않은 곳을 탐험하는 사람은 explorer이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 접두사",
+      "q": "'possible'에 붙여 반대말을 만드는 접두사는?",
+      "c": [
+        "un-",
+        "dis-",
+        "in-",
+        "im-"
+      ],
+      "a": 3,
+      "e": "possible의 반대말은 impossible이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 품사",
+      "q": "'imagine'의 명사형은?",
+      "c": [
+        "imaginary",
+        "imaginative",
+        "imagination",
+        "imaginer"
+      ],
+      "a": 2,
+      "e": "imagine의 명사형은 imagination(상상)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 관용",
+      "q": "'come up with'의 뜻으로 알맞은 것은?",
+      "c": [
+        "~와 함께 오다",
+        "(생각을) 떠올리다",
+        "위로 올라가다",
+        "~을 따라잡다"
+      ],
+      "a": 1,
+      "e": "come up with an idea는 '생각을 떠올리다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 감정",
+      "q": "빈칸에 알맞은 말은?\nShe was ___ when she saw a snake in her bag.",
+      "c": [
+        "shocked",
+        "pleased",
+        "relaxed",
+        "bored"
+      ],
+      "a": 0,
+      "e": "가방에서 뱀을 보면 깜짝 놀란다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nIf there were no trees, we could not breathe clean air. Trees give us oxygen and homes for animals.",
+      "c": [
+        "공기 오염의 원인",
+        "동물의 집 짓기",
+        "나무 심는 방법",
+        "나무의 소중함"
+      ],
+      "a": 3,
+      "e": "나무가 주는 혜택을 말하는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "글을 읽고 알 수 없는 것은?\nThis is the village where my grandfather was born. He lived here until he was twenty. He was a fisherman.",
+      "c": [
+        "할아버지가 태어난 곳",
+        "할아버지가 산 기간",
+        "할아버지의 결혼 시기",
+        "할아버지의 직업"
+      ],
+      "a": 2,
+      "e": "결혼 시기는 글에 나오지 않는다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "심정 추론",
+      "q": "글쓴이의 심정으로 알맞은 것은?\nWhen I arrived at the concert hall, the show had already ended. I had waited for this day for months.",
+      "c": [
+        "excited",
+        "disappointed",
+        "proud",
+        "relieved"
+      ],
+      "a": 1,
+      "e": "기다린 공연을 놓쳐 실망한 심정이다.",
+      "std": "[9영01-05]"
+    },
+    {
+      "t": "요지",
+      "q": "글의 요지로 알맞은 것은?\nYou don't have to know what to do in the future right now. Try many things and find what you love.",
+      "c": [
+        "여러 경험으로 좋아하는 것을 찾자.",
+        "미래 계획을 빨리 세우자.",
+        "한 가지만 열심히 하자.",
+        "남의 조언을 따르자."
+      ],
+      "a": 0,
+      "e": "다양하게 시도해 좋아하는 일을 찾으라는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "순서 파악",
+      "q": "글에서 가장 먼저 일어난 일은?\nWhen I got home, I found that someone had eaten my cake. My brother had come home before me.",
+      "c": [
+        "내가 집에 왔다.",
+        "케이크가 없어진 것을 알았다.",
+        "형에게 따졌다.",
+        "형이 집에 왔다."
+      ],
+      "a": 3,
+      "e": "형이 나보다 먼저 집에 와서 케이크를 먹었다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nWhy don't you join our book club? We meet every Friday and talk about what we have read.",
+      "c": [
+        "책을 판매하려고",
+        "모임 장소를 바꾸려고",
+        "독서 동아리 가입을 권하려고",
+        "책 내용을 요약하려고"
+      ],
+      "a": 2,
+      "e": "Why don't you ~?로 동아리 가입을 권한다.",
+      "std": "[9영01-06]"
+    },
+    {
+      "t": "내용 일치",
+      "q": "글의 내용과 일치하는 것은?\nWalking along the beach, Sora found a bottle. Inside it, there was a letter written in Spanish.",
+      "c": [
+        "Sora는 산에서 병을 발견했다.",
+        "병 속 편지는 스페인어로 쓰였다.",
+        "병 속에 지도가 있었다.",
+        "Sora가 편지를 썼다."
+      ],
+      "a": 1,
+      "e": "스페인어로 쓰인 편지가 병 안에 있었다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "연결어",
+      "q": "빈칸에 알맞은 연결어는?\nHe had never cooked before. ___, he made a delicious meal for us.",
+      "c": [
+        "Surprisingly",
+        "Therefore",
+        "For example",
+        "As a result"
+      ],
+      "a": 0,
+      "e": "요리를 처음 했는데 맛있었으니 놀라운 일이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "글쓰기",
+      "q": "소망을 쓴 글의 빈칸에 알맞은 말은?\nIf I ___ a superpower, I would fly around the world.",
+      "c": [
+        "have",
+        "will have",
+        "has",
+        "had"
+      ],
+      "a": 3,
+      "e": "가정법 과거 if절에는 과거형 had를 쓴다.",
+      "std": "[9영02-07]"
+    },
+    {
+      "t": "감사 편지",
+      "q": "편지의 빈칸에 알맞은 말은?\nThank you for letting me ___ at your house last weekend.",
+      "c": [
+        "to stay",
+        "stayed",
+        "stay",
+        "stays"
+      ],
+      "a": 2,
+      "e": "let+목적어+동사원형 구조이다.",
+      "std": "[9영02-08]"
+    },
+    {
+      "t": "인터뷰",
+      "q": "인터뷰 질문으로 알맞은 것은?",
+      "c": [
+        "Can you tell us how did you become a scientist?",
+        "Can you tell us how you became a scientist?",
+        "Can you tell us how became you a scientist?",
+        "Can you tell us you how became a scientist?"
+      ],
+      "a": 1,
+      "e": "간접의문문은 의문사+주어+동사 순서이다.",
+      "std": "[9영02-09]"
+    },
+    {
+      "t": "가정법 과거",
+      "q": "빈칸에 알맞은 말은?\nIf he ___ here, he would help us.",
+      "c": [
+        "were",
+        "is",
+        "will be",
+        "has been"
+      ],
+      "a": 0,
+      "e": "가정법 과거의 be동사는 주어와 상관없이 were를 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "I wish",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do you have a brother?\nB: No. I wish I ___ one.",
+      "c": [
+        "have",
+        "has",
+        "will have",
+        "had"
+      ],
+      "a": 3,
+      "e": "I wish+과거형으로 현재 이루기 힘든 소망을 나타낸다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "관계부사 where",
+      "q": "두 문장을 관계부사로 바르게 연결한 것은?\nThis is the library. I study there.",
+      "c": [
+        "This is the library where I study there.",
+        "This is the library which I study.",
+        "This is the library where I study.",
+        "This is the library when I study."
+      ],
+      "a": 2,
+      "e": "there를 관계부사 where로 바꿔 연결한다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "관계부사 why",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nThat's why I love this city.",
+      "c": [
+        "나는 왜 이 도시를 좋아할까?",
+        "그것이 내가 이 도시를 좋아하는 이유이다.",
+        "이 도시는 나를 좋아한다.",
+        "나는 이 도시를 좋아하지 않는다."
+      ],
+      "a": 1,
+      "e": "That's why ~는 '그것이 ~한 이유이다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "사역동사 make",
+      "q": "빈칸에 알맞은 말은?\nThe sad movie made her ___.",
+      "c": [
+        "cry",
+        "to cry",
+        "cried",
+        "crying to"
+      ],
+      "a": 0,
+      "e": "사역동사 make+목적어+동사원형 구조이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "지각동사",
+      "q": "빈칸에 알맞은 말은?\nI smelled something ___ in the kitchen.",
+      "c": [
+        "burned to",
+        "to burn",
+        "burns",
+        "burning"
+      ],
+      "a": 3,
+      "e": "지각동사 smell의 목적격보어로 -ing를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "분사구문",
+      "q": "빈칸에 알맞은 말은?\n___ by the noise, the baby woke up.",
+      "c": [
+        "Surprising",
+        "Surprise",
+        "Surprised",
+        "To surprise"
+      ],
+      "a": 2,
+      "e": "아기가 놀란 것이므로 수동의 과거분사를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료",
+      "q": "빈칸에 알맞은 말은?\nShe realized that she ___ her phone on the bus.",
+      "c": [
+        "has left",
+        "had left",
+        "leaves",
+        "is leaving"
+      ],
+      "a": 1,
+      "e": "알아챈 것보다 두고 내린 일이 먼저이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "how to",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do you know ___ this machine?\nB: Sure. Just press the green button.",
+      "c": [
+        "how to use",
+        "how use",
+        "what to using",
+        "how using"
+      ],
+      "a": 0,
+      "e": "'사용 방법'은 how to use이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "놀람 응답",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Guess what? I got a perfect score!\nB: ___",
+      "c": [
+        "Oh, that's too bad.",
+        "I'm sorry to hear that.",
+        "Never mind.",
+        "Wow! That's amazing!"
+      ],
+      "a": 3,
+      "e": "좋은 소식에 놀람과 칭찬을 표현한다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "어휘: 뜻",
+      "q": "'achieve'의 뜻으로 알맞은 것은?",
+      "c": [
+        "포기하다",
+        "도착하다",
+        "이루다, 성취하다",
+        "준비하다"
+      ],
+      "a": 2,
+      "e": "achieve one's goal은 '목표를 이루다'이다.",
+      "std": "[9영01-07]"
     }
   ]
 }

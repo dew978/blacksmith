@@ -1275,6 +1275,13 @@ function renderSelect() {
   previewBank();
 }
 const BANK_CACHE = {};
+// 수학 문제 생성기 (js/mathgen.js). 없거나 실패하면 고정 문제만 쓴다.
+async function mathExtra(code, n) {
+  try {
+    const m = await import('./mathgen.js');
+    return m.generateMath(code, n).map((q) => ({ t: q.t, q: q.q, c: q.c, a: q.a, e: q.e }));
+  } catch (e) { return []; }
+}
 async function fetchBank(code) {
   if (BANK_CACHE[code]) return BANK_CACHE[code];
   const r = await fetch(`data/q/${code}.json`, { cache: 'no-cache' });
@@ -1292,7 +1299,7 @@ async function previewBank() {
   try {
     const b = await fetchBank(code);
     if (bankCode(SEL.grade, SEL.sem, SEL.subj) !== code) return;
-    info.innerHTML = `<b>${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}</b> · ${b.questions.length}문제 · 2022 개정<br>${(b.units || []).slice(0, 6).map(esc).join(' · ')}`;
+    info.innerHTML = `<b>${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}</b> · ${SEL.subj === 'math' ? '문제 생성기 + ' + b.questions.length : b.questions.length}문제 · 2022 개정<br>${(b.units || []).slice(0, 6).map(esc).join(' · ')}`;
   } catch (e) {
     if (bankCode(SEL.grade, SEL.sem, SEL.subj) === code) info.innerHTML = '<span class="err">이 과목 문제는 아직 준비 중이다</span>';
   }
@@ -1302,8 +1309,12 @@ async function loadBank() {
     QUESTIONS = withIds(store.get('jf_questions', null) || SAMPLE_QUESTIONS); COURSE = '내 문제';
   } else {
     try {
-      const b = await fetchBank(bankCode(SEL.grade, SEL.sem, SEL.subj));
-      QUESTIONS = withIds(b.questions.map((q) => ({ t: q.t, q: q.q, c: q.c, a: q.a, e: q.e })));
+      const code = bankCode(SEL.grade, SEL.sem, SEL.subj);
+      const b = await fetchBank(code);
+      let list = b.questions.map((q) => ({ t: q.t, q: q.q, c: q.c, a: q.a, e: q.e }));
+      // 수학은 문제 생성기로 판마다 새 문제를 넉넉히 섞는다
+      if (SEL.subj === 'math') list = list.concat(await mathExtra(code.replace(/-math$/, ''), 150));
+      QUESTIONS = withIds(list);
       COURSE = `${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}`;
     } catch (e) { $('#sel-info').innerHTML = '<span class="err">이 과목 문제는 아직 준비 중이다</span>'; return false; }
   }

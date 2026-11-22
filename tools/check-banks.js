@@ -20,7 +20,9 @@ for (const code of expected) {
   let b;
   try { b = JSON.parse(fs.readFileSync(f, 'utf8')); } catch (e) { console.log(`JSON 오류 ${code}: ${e.message}`); problems++; continue; }
   const qs = b.questions || [], errs = [];
-  if (qs.length < 15) errs.push(`문제 수 ${qs.length}`);
+  // 수학은 문제 생성기(js/mathgen.js)가 채우므로 고정 문제 20개면 되고, 나머지 과목은 100개 이상
+  const minQ = code.endsWith('-math') ? 20 : 100;
+  if (qs.length < minQ) errs.push(`문제 수 ${qs.length} (최소 ${minQ})`);
   qs.forEach((q, i) => {
     const n = i + 1;
     if (!q.q || !q.e || !q.t) errs.push(`#${n} 빈 칸`);

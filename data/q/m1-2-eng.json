@@ -271,6 +271,1111 @@
       "a": 0,
       "e": "아파서 학교에 못 간 이유를 설명하는 글이다.",
       "std": "[9영01-06]"
+    },
+    {
+      "t": "be동사 과거",
+      "q": "빈칸에 알맞은 말은?\nThey ___ in the gym an hour ago.",
+      "c": [
+        "were",
+        "was",
+        "are",
+        "is"
+      ],
+      "a": 0,
+      "e": "ago는 과거이고 주어가 복수이므로 were를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "be동사 과거",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Were you busy yesterday?\nB: No, ___",
+      "c": [
+        "I wasn't.",
+        "I weren't.",
+        "I didn't.",
+        "I'm not."
+      ],
+      "a": 0,
+      "e": "Were you ~?에는 I was/wasn't로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "불규칙 과거",
+      "q": "동사와 과거형이 바르게 짝지어진 것은?",
+      "c": [
+        "come – comed",
+        "take – taked",
+        "make – made",
+        "write – writed"
+      ],
+      "a": 2,
+      "e": "make의 과거형은 made이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "불규칙 과거",
+      "q": "빈칸에 알맞은 말은?\nI ___ a letter to my grandma last week.",
+      "c": [
+        "write",
+        "writed",
+        "wrote",
+        "writes"
+      ],
+      "a": 2,
+      "e": "last week는 과거이며 write의 과거형은 wrote이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "규칙 과거",
+      "q": "동사와 과거형이 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "stop – stoped",
+        "play – played",
+        "like – liked",
+        "cry – cried"
+      ],
+      "a": 0,
+      "e": "stop은 끝 자음을 겹쳐 stopped로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거 부정",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "She didn't call me last night.",
+        "She didn't called me last night.",
+        "She doesn't call me last night.",
+        "She wasn't call me last night."
+      ],
+      "a": 0,
+      "e": "과거 부정은 didn't+동사원형이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거 의문",
+      "q": "빈칸에 알맞은 말은?\nA: What time ___ you get up this morning?\nB: I got up at seven.",
+      "c": [
+        "do",
+        "were",
+        "did",
+        "are"
+      ],
+      "a": 2,
+      "e": "과거의 일을 물으므로 did를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거 의문",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "Did you see the movie?",
+        "Was she at home?",
+        "Did he went to the park?",
+        "Where did they go?"
+      ],
+      "a": 2,
+      "e": "Did 의문문에는 동사원형 go를 써야 한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거 시간 표현",
+      "q": "과거시제와 함께 쓸 수 없는 말은?",
+      "c": [
+        "yesterday",
+        "tomorrow",
+        "last year",
+        "two days ago"
+      ],
+      "a": 1,
+      "e": "tomorrow는 미래를 나타내는 말이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거시제",
+      "q": "빈칸에 알맞은 말은?\nWe ___ pizza for dinner last night.",
+      "c": [
+        "had",
+        "have",
+        "has",
+        "haved"
+      ],
+      "a": 0,
+      "e": "have의 과거형은 had이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거시제",
+      "q": "'나는 어제 도서관에서 책을 읽었다.'를 바르게 옮긴 것은?",
+      "c": [
+        "I readed a book in the library yesterday.",
+        "I reads a book in the library yesterday.",
+        "I am reading a book in the library yesterday.",
+        "I read a book in the library yesterday."
+      ],
+      "a": 3,
+      "e": "read의 과거형은 형태가 같은 read이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거시제",
+      "q": "빈칸에 알맞은 말은?\nMy family ___ to Gyeongju two years ago.",
+      "c": [
+        "travels",
+        "travel",
+        "traveled",
+        "will travel"
+      ],
+      "a": 2,
+      "e": "two years ago는 과거이므로 과거형을 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "can 의문",
+      "q": "빈칸에 알맞은 말은?\nA: Can your sister ride a bike?\nB: Yes, she ___.",
+      "c": [
+        "does",
+        "can",
+        "is",
+        "do"
+      ],
+      "a": 1,
+      "e": "Can으로 물으면 can으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "can 부정",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "I can't speak Chinese.",
+        "I don't can speak Chinese.",
+        "I can't speaks Chinese.",
+        "I can not to speak Chinese."
+      ],
+      "a": 0,
+      "e": "can의 부정은 can't+동사원형이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "can 뜻",
+      "q": "밑줄 친 can의 뜻이 나머지와 다른 것은?",
+      "c": [
+        "He can run fast.",
+        "She can play the violin.",
+        "I can swim well.",
+        "Can I open the window?"
+      ],
+      "a": 3,
+      "e": "첫 문장의 can은 허락, 나머지는 능력이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "be able to",
+      "q": "빈칸에 알맞은 말은?\nShe can solve the problem.\n= She is ___ to solve the problem.",
+      "c": [
+        "can",
+        "enable",
+        "able",
+        "ability"
+      ],
+      "a": 2,
+      "e": "can은 be able to로 바꿔 쓸 수 있다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "부탁하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Can you help me with my homework?\nB: ___ What is it?",
+      "c": [
+        "No, I can't.",
+        "Sure.",
+        "Yes, I did.",
+        "I'm sorry."
+      ],
+      "a": 1,
+      "e": "뒤에 What is it?으로 이어지므로 수락한다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "will",
+      "q": "빈칸에 알맞은 말은?\nI will ___ you tomorrow.",
+      "c": [
+        "call",
+        "calls",
+        "called",
+        "calling"
+      ],
+      "a": 0,
+      "e": "will 뒤에는 동사원형이 온다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "will 부정",
+      "q": "빈칸에 알맞은 말은?\nDon't worry. I ___ be late again.",
+      "c": [
+        "don't",
+        "am not",
+        "willn't",
+        "won't"
+      ],
+      "a": 3,
+      "e": "will not의 줄임말은 won't이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "will 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Will you come to my party?\nB: ___ I have to visit my uncle.",
+      "c": [
+        "Sure, I will.",
+        "Yes, I did.",
+        "Sorry, I can't.",
+        "Of course."
+      ],
+      "a": 2,
+      "e": "삼촌을 방문해야 해서 못 간다고 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "will 문장",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "It will be sunny.",
+        "He wills study hard.",
+        "They will win the game.",
+        "We will help you."
+      ],
+      "a": 1,
+      "e": "will은 주어에 따라 형태가 바뀌지 않는다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "must",
+      "q": "빈칸에 알맞은 말은?\nYou ___ stop at a red light.",
+      "c": [
+        "must",
+        "can",
+        "may",
+        "will"
+      ],
+      "a": 0,
+      "e": "빨간불에는 반드시 멈춰야 하므로 must를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "must not",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nYou must not swim here.",
+      "c": [
+        "여기서 수영해야 한다.",
+        "여기서 수영할 수 있다.",
+        "여기서 수영할 필요가 없다.",
+        "여기서 수영하면 안 된다."
+      ],
+      "a": 3,
+      "e": "must not은 '~해서는 안 된다'는 금지이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "must 규칙",
+      "q": "박물관 규칙으로 알맞지 않은 것은?",
+      "c": [
+        "You must not touch the paintings.",
+        "You must be quiet.",
+        "You must run inside.",
+        "You must not eat food inside."
+      ],
+      "a": 2,
+      "e": "박물관 안에서 뛰어야 한다는 것은 규칙이 아니다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "have to",
+      "q": "빈칸에 알맞은 말은?\nYou must wear a uniform.\n= You ___ to wear a uniform.",
+      "c": [
+        "has",
+        "have",
+        "are",
+        "can"
+      ],
+      "a": 1,
+      "e": "must는 have to로 바꿔 쓸 수 있다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be going to",
+      "q": "빈칸에 알맞은 말은?\nShe ___ going to learn yoga.",
+      "c": [
+        "is",
+        "are",
+        "am",
+        "does"
+      ],
+      "a": 0,
+      "e": "주어가 3인칭 단수이므로 is going to를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "be going to",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "I'm going to buying a new phone.",
+        "I going to buy a new phone.",
+        "I'm go to buy a new phone.",
+        "I'm going to buy a new phone."
+      ],
+      "a": 3,
+      "e": "be going to+동사원형으로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "going to 부정",
+      "q": "'우리는 내일 축구를 하지 않을 것이다.'를 바르게 옮긴 것은?",
+      "c": [
+        "We don't going to play soccer tomorrow.",
+        "We aren't going to playing soccer tomorrow.",
+        "We aren't going to play soccer tomorrow.",
+        "We not are going to play soccer tomorrow."
+      ],
+      "a": 2,
+      "e": "be going to의 부정은 be동사 뒤에 not을 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "going to 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Are you going to visit Busan?\nB: Yes, ___",
+      "c": [
+        "I do.",
+        "I am.",
+        "I will.",
+        "I go."
+      ],
+      "a": 1,
+      "e": "Are you ~?로 물으면 I am으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "be going to",
+      "q": "빈칸에 알맞은 말은?\nLook at the dark clouds. It ___ rain.",
+      "c": [
+        "is going to",
+        "is going",
+        "go to",
+        "goes to"
+      ],
+      "a": 0,
+      "e": "눈앞의 근거로 예측할 때 be going to를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "미래 표현",
+      "q": "빈칸에 공통으로 알맞은 말은?\nI will visit my aunt.\n= I am ___ to visit my aunt.",
+      "c": [
+        "go",
+        "will",
+        "went",
+        "going"
+      ],
+      "a": 3,
+      "e": "will은 be going to로 바꿔 쓸 수 있다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "There is",
+      "q": "빈칸에 알맞은 말은?\nThere ___ a big tree in front of my house.",
+      "c": [
+        "are",
+        "be",
+        "is",
+        "have"
+      ],
+      "a": 2,
+      "e": "뒤에 단수 명사가 오므로 There is를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "There is",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "There are three cups on the table.",
+        "There is many people in the park.",
+        "There is some milk in the fridge.",
+        "There are two boys in the room."
+      ],
+      "a": 1,
+      "e": "people은 복수이므로 There are를 써야 한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "There is 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Is there a bank near here?\nB: Yes, ___",
+      "c": [
+        "there is.",
+        "it is.",
+        "there are.",
+        "I do."
+      ],
+      "a": 0,
+      "e": "Is there ~?에는 Yes, there is로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "There is 부정",
+      "q": "빈칸에 알맞은 말은?\nThere ___ any students in the classroom now.",
+      "c": [
+        "isn't",
+        "don't",
+        "doesn't",
+        "aren't"
+      ],
+      "a": 3,
+      "e": "students가 복수이므로 aren't를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "There was",
+      "q": "빈칸에 알맞은 말은?\nThere ___ a lot of snow last winter.",
+      "c": [
+        "were",
+        "is",
+        "was",
+        "are"
+      ],
+      "a": 2,
+      "e": "셀 수 없는 snow와 과거 시점이므로 was를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "How many",
+      "q": "빈칸에 알맞은 말은?\nA: How many students ___ there in your class?\nB: There are twenty-five.",
+      "c": [
+        "is",
+        "are",
+        "do",
+        "have"
+      ],
+      "a": 1,
+      "e": "복수 students에 맞춰 are를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "위치 전치사",
+      "q": "우리말에 맞게 빈칸에 알맞은 말은?\n고양이가 상자 안에 있다.\nThe cat is ___ the box.",
+      "c": [
+        "in",
+        "on",
+        "under",
+        "behind"
+      ],
+      "a": 0,
+      "e": "'~ 안에'는 in이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "위치 전치사",
+      "q": "우리말에 맞게 빈칸에 알맞은 말은?\n편의점은 학교 건너편에 있다.\nThe store is ___ from the school.",
+      "c": [
+        "next",
+        "between",
+        "behind",
+        "across"
+      ],
+      "a": 3,
+      "e": "across from은 '~의 건너편에'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "위치 전치사",
+      "q": "우리말에 맞게 빈칸에 알맞은 말은?\n빵집은 은행 옆에 있다.\nThe bakery is ___ to the bank.",
+      "c": [
+        "in front",
+        "across",
+        "next",
+        "behind"
+      ],
+      "a": 2,
+      "e": "next to는 '~ 옆에'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "길 묻기",
+      "q": "길을 묻는 말이 아닌 것은?",
+      "c": [
+        "Where is the museum?",
+        "How long does it take?",
+        "How can I get to the museum?",
+        "Is there a museum near here?"
+      ],
+      "a": 1,
+      "e": "How long does it take?는 걸리는 시간을 묻는다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "길 안내",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How can I get to the library?\nB: ___",
+      "c": [
+        "Go straight two blocks and turn right.",
+        "I like the library.",
+        "It opens at nine.",
+        "I read books there."
+      ],
+      "a": 0,
+      "e": "가는 방법을 물었으므로 길을 안내한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "길 안내",
+      "q": "대화를 읽고 B가 안내한 우체국의 위치는?\nA: Where is the post office?\nB: Go straight one block. It's on your left.",
+      "c": [
+        "한 블록 직진 후 오른편",
+        "두 블록 직진 후 왼편",
+        "왼쪽으로 돈 후 오른편",
+        "한 블록 직진 후 왼편"
+      ],
+      "a": 3,
+      "e": "한 블록 직진하면 왼편에 있다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "소요 시간",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How long does it take to get there?\nB: ___",
+      "c": [
+        "It's ten o'clock.",
+        "It's ten meters long.",
+        "It takes about ten minutes.",
+        "It's on Tenth Street."
+      ],
+      "a": 2,
+      "e": "걸리는 시간을 물었으므로 It takes ~로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "길 안내",
+      "q": "'길을 건너세요.'를 영어로 옮긴 것은?",
+      "c": [
+        "Turn the street.",
+        "Cross the street.",
+        "Go down the street.",
+        "Walk along the street."
+      ],
+      "a": 1,
+      "e": "'길을 건너다'는 cross the street이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "길 묻기 응답",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Excuse me. Is there a subway station around here?\nB: ___ I'm new here, too.",
+      "c": [
+        "Sorry, I don't know.",
+        "Yes, it's right there.",
+        "Go straight.",
+        "Sure, follow me."
+      ],
+      "a": 0,
+      "e": "자신도 처음 왔다고 했으므로 모른다고 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "길 안내",
+      "q": "안내를 따라가면 도착하는 곳은?\nGo straight and turn left at the corner. The hospital is next to the park.",
+      "c": [
+        "모퉁이의 공원",
+        "공원 건너편 병원",
+        "병원 안 공원",
+        "공원 옆 병원"
+      ],
+      "a": 3,
+      "e": "병원이 공원 옆에 있다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "계획 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: ___\nB: I'm going to visit my grandparents.",
+      "c": [
+        "What did you do last vacation?",
+        "Where do your grandparents live?",
+        "What are you going to do this vacation?",
+        "How was your vacation?"
+      ],
+      "a": 2,
+      "e": "앞으로의 계획을 묻는 말이 알맞다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "경험 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How was your trip?\nB: ___",
+      "c": [
+        "I will go by train.",
+        "It was wonderful.",
+        "It's next Monday.",
+        "I go there every year."
+      ],
+      "a": 1,
+      "e": "How was ~?는 과거의 일에 대한 소감을 묻는다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "지난 일",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Where did you go last Sunday?\nB: ___",
+      "c": [
+        "I went to the zoo.",
+        "I go to the zoo.",
+        "I'm going to the zoo.",
+        "I will go to the zoo."
+      ],
+      "a": 0,
+      "e": "지난 일요일의 일이므로 과거형으로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "계획 말하기",
+      "q": "앞으로의 계획을 말하는 문장은?",
+      "c": [
+        "I learned Spanish last year.",
+        "I usually study Spanish.",
+        "I studied Spanish yesterday.",
+        "I'm planning to learn Spanish."
+      ],
+      "a": 3,
+      "e": "be planning to는 계획을 말할 때 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "주말 계획",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do you have any plans for this weekend?\nB: ___",
+      "c": [
+        "Yes. I went camping.",
+        "No. I was at home.",
+        "Yes. I'm going to go camping.",
+        "Yes. I camped there."
+      ],
+      "a": 2,
+      "e": "주말 계획을 물었으므로 미래 표현으로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "기원하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I'm going to take a trip to London tomorrow.\nB: ___",
+      "c": [
+        "Welcome back!",
+        "Have a great trip!",
+        "Congratulations!",
+        "Thank you."
+      ],
+      "a": 1,
+      "e": "여행을 떠나는 친구에게 좋은 여행을 빌어 준다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "일기 시제",
+      "q": "일기의 빈칸에 알맞은 말은?\nToday I ___ to the beach with my family. It was great.",
+      "c": [
+        "went",
+        "go",
+        "will go",
+        "am going"
+      ],
+      "a": 0,
+      "e": "오늘 이미 한 일이므로 과거형을 쓴다.",
+      "std": "[9영02-07]"
+    },
+    {
+      "t": "어휘: 날씨",
+      "q": "'눈이 오는'을 뜻하는 단어는?",
+      "c": [
+        "cloudy",
+        "foggy",
+        "stormy",
+        "snowy"
+      ],
+      "a": 3,
+      "e": "snowy는 눈이 오는, cloudy는 흐린이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 장소",
+      "q": "'a place where you can see many animals'에 해당하는 것은?",
+      "c": [
+        "bank",
+        "bakery",
+        "zoo",
+        "airport"
+      ],
+      "a": 2,
+      "e": "많은 동물을 볼 수 있는 곳은 zoo(동물원)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 교통",
+      "q": "'subway'의 뜻으로 알맞은 것은?",
+      "c": [
+        "버스",
+        "지하철",
+        "자전거",
+        "비행기"
+      ],
+      "a": 1,
+      "e": "subway는 '지하철'이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 동사",
+      "q": "'arrive'의 반대말은?",
+      "c": [
+        "leave",
+        "reach",
+        "come",
+        "stay"
+      ],
+      "a": 0,
+      "e": "arrive(도착하다)의 반대말은 leave(떠나다)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 시간",
+      "q": "'the day before today'를 뜻하는 단어는?",
+      "c": [
+        "tomorrow",
+        "tonight",
+        "weekend",
+        "yesterday"
+      ],
+      "a": 3,
+      "e": "오늘의 전날은 yesterday이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 방학",
+      "q": "'vacation'과 뜻이 가장 가까운 것은?",
+      "c": [
+        "homework",
+        "exam",
+        "holiday",
+        "lesson"
+      ],
+      "a": 2,
+      "e": "vacation과 holiday는 모두 휴가·방학을 뜻한다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 장소",
+      "q": "빈칸에 알맞은 말은?\nI want to buy some bread. Is there a ___ near here?",
+      "c": [
+        "library",
+        "bakery",
+        "hospital",
+        "gym"
+      ],
+      "a": 1,
+      "e": "빵을 사는 곳은 bakery(빵집)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 서수",
+      "q": "'5월 3일'을 바르게 읽은 것은?",
+      "c": [
+        "May third",
+        "May three",
+        "March third",
+        "May thirty"
+      ],
+      "a": 0,
+      "e": "날짜는 서수로 읽어 May third이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "글을 읽고 알 수 없는 것은?\nLast summer, I went to Jeju with my family. We stayed there for four days. We swam in the sea.",
+      "c": [
+        "여행 간 곳",
+        "머문 기간",
+        "함께 간 사람",
+        "비행기 요금"
+      ],
+      "a": 3,
+      "e": "비행기 요금은 글에 나오지 않는다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "순서 파악",
+      "q": "글에서 가장 먼저 일어난 일은?\nI got up late this morning. So I missed the bus. I ran to school, but I was late.",
+      "c": [
+        "버스 놓치기",
+        "학교로 뛰기",
+        "늦잠 자기",
+        "지각하기"
+      ],
+      "a": 2,
+      "e": "늦게 일어난 것이 가장 먼저이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "심정 추론",
+      "q": "글쓴이의 심정으로 알맞은 것은?\nI lost my favorite cap at the park yesterday. I looked for it for hours, but I couldn't find it.",
+      "c": [
+        "excited",
+        "upset",
+        "proud",
+        "thankful"
+      ],
+      "a": 1,
+      "e": "아끼는 모자를 잃어버려 속상한 심정이다.",
+      "std": "[9영01-05]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nOur school festival is on May 20. There will be music shows and food. Please come and enjoy it!",
+      "c": [
+        "축제에 초대하려고",
+        "음식을 주문하려고",
+        "공연을 취소하려고",
+        "날짜 변경을 알리려고"
+      ],
+      "a": 0,
+      "e": "학교 축제에 와서 즐기라고 초대하는 글이다.",
+      "std": "[9영01-06]"
+    },
+    {
+      "t": "내용 일치",
+      "q": "글의 내용과 일치하는 것은?\nThere is a small park near my house. There are many flowers and two benches in it.",
+      "c": [
+        "공원은 집에서 멀다.",
+        "공원은 아주 크다.",
+        "공원에 꽃이 없다.",
+        "공원에 벤치가 두 개 있다."
+      ],
+      "a": 3,
+      "e": "공원 안에 꽃이 많고 벤치가 두 개 있다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "원인과 결과",
+      "q": "Jun이 오늘 축구를 하지 못한 이유는?\nJun loves soccer. But he couldn't play today because it rained a lot.",
+      "c": [
+        "다리를 다쳐서",
+        "공이 없어서",
+        "비가 많이 와서",
+        "숙제가 많아서"
+      ],
+      "a": 2,
+      "e": "비가 많이 와서 축구를 못 했다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nThis Saturday, I'm going to clean my room. Then I'm going to bake cookies with my sister.",
+      "c": [
+        "지난 주말의 일",
+        "토요일 계획",
+        "쿠키 만드는 법",
+        "방 청소 방법"
+      ],
+      "a": 1,
+      "e": "이번 토요일에 할 일을 말하는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "안내문",
+      "q": "안내문의 내용과 일치하지 않는 것은?\nCity Museum\nOpen: 9 a.m. – 6 p.m.\nClosed on Mondays\nYou must not take photos.",
+      "c": [
+        "월요일에도 문을 연다.",
+        "오전 9시에 문을 연다.",
+        "오후 6시에 문을 닫는다.",
+        "사진을 찍으면 안 된다."
+      ],
+      "a": 0,
+      "e": "월요일은 휴관이라고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "초대 응답",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Let's go to the movies this Friday.\nB: ___ What time shall we meet?",
+      "c": [
+        "Sorry, I can't.",
+        "I don't like it.",
+        "No, thanks.",
+        "Sounds good."
+      ],
+      "a": 3,
+      "e": "뒤에 만날 시간을 물으므로 제안을 수락한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "약속 정하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Where should we meet?\nB: ___",
+      "c": [
+        "Let's meet at three.",
+        "Let's go by bus.",
+        "Let's meet at the bus stop.",
+        "Let's meet again."
+      ],
+      "a": 2,
+      "e": "만날 장소를 물었으므로 장소로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "허락 응답",
+      "q": "대화의 빈칸에 알맞지 않은 것은?\nA: Can I sit here?\nB: ___",
+      "c": [
+        "Sure.",
+        "Yes, I can.",
+        "Of course.",
+        "Go ahead."
+      ],
+      "a": 1,
+      "e": "Can I ~?는 허락을 구하는 말이라 Yes, I can은 어색하다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "편지 쓰기",
+      "q": "감사 카드의 빈칸에 알맞은 말은?\nDear Grandma,\nThank you ___ the nice sweater.",
+      "c": [
+        "for",
+        "to",
+        "at",
+        "with"
+      ],
+      "a": 0,
+      "e": "'~에 대해 고맙다'는 Thank you for ~이다.",
+      "std": "[9영02-08]"
+    },
+    {
+      "t": "과거 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Did you finish your homework?\nB: No, ___",
+      "c": [
+        "I don't.",
+        "I wasn't.",
+        "I haven't.",
+        "I didn't."
+      ],
+      "a": 3,
+      "e": "Did you ~?에는 I did/didn't로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "불규칙 과거",
+      "q": "빈칸에 알맞은 말은?\nHe ___ a new bag at the mall yesterday.",
+      "c": [
+        "buyed",
+        "buys",
+        "bought",
+        "brought"
+      ],
+      "a": 2,
+      "e": "buy의 과거형은 bought이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거진술",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I saw him last Friday.",
+        "I meet him last Friday.",
+        "She ate lunch at noon.",
+        "We were tired last night."
+      ],
+      "a": 1,
+      "e": "last Friday는 과거이므로 met을 써야 한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "can 허락",
+      "q": "도서관에서 할 수 있는 허락 요청으로 알맞은 것은?",
+      "c": [
+        "Can I borrow this book?",
+        "Can you be quiet?",
+        "I can read fast.",
+        "You can't run here."
+      ],
+      "a": 0,
+      "e": "Can I ~?는 허락을 구하는 표현이다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "will 예측",
+      "q": "빈칸에 알맞은 말은?\nA: What will the weather be like tomorrow?\nB: It ___ be cloudy.",
+      "c": [
+        "was",
+        "is",
+        "did",
+        "will"
+      ],
+      "a": 3,
+      "e": "내일 날씨이므로 will로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "There are",
+      "q": "빈칸에 알맞은 말은?\nThere ___ some apples in the basket.",
+      "c": [
+        "is",
+        "be",
+        "are",
+        "was"
+      ],
+      "a": 2,
+      "e": "apples는 복수이므로 are를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "길 안내",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Is the bus stop far from here?\nB: ___ It's just around the corner.",
+      "c": [
+        "Yes, it is.",
+        "No, it isn't.",
+        "No, it doesn't.",
+        "Yes, I am."
+      ],
+      "a": 1,
+      "e": "모퉁이만 돌면 있다고 했으므로 멀지 않다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "어휘: 방향",
+      "q": "'turn left'의 뜻으로 알맞은 것은?",
+      "c": [
+        "왼쪽으로 돌다",
+        "오른쪽으로 돌다",
+        "곧장 가다",
+        "뒤로 돌다"
+      ],
+      "a": 0,
+      "e": "turn left는 '왼쪽으로 돌다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 경험",
+      "q": "'안내원, 가이드'를 뜻하는 단어는?",
+      "c": [
+        "guest",
+        "driver",
+        "pilot",
+        "guide"
+      ],
+      "a": 3,
+      "e": "guide는 안내원, guest는 손님이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "결심 말하기",
+      "q": "새해 결심을 말하는 문장으로 알맞은 것은?",
+      "c": [
+        "I exercised yesterday.",
+        "I am exercising now.",
+        "I will exercise every day.",
+        "I exercised last year."
+      ],
+      "a": 2,
+      "e": "앞으로의 다짐은 will로 말한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "Amy가 지난 주말에 한 일은?\nLast weekend, Amy stayed home. She baked cookies and watched a movie.",
+      "c": [
+        "쇼핑하기",
+        "쿠키 굽기",
+        "캠핑하기",
+        "친구 집 방문"
+      ],
+      "a": 1,
+      "e": "집에서 쿠키를 굽고 영화를 봤다.",
+      "std": "[9영01-02]"
     }
   ]
 }

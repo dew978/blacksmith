@@ -272,6 +272,1098 @@
       "a": 3,
       "e": "지명과 달 이름은 대문자로 시작해요.",
       "std": "[6영02-03]"
+    },
+    {
+      "t": "학년",
+      "q": "'I'm in the fifth grade.'의 뜻은?",
+      "c": [
+        "나는 5반이야.",
+        "나는 5학년이야.",
+        "나는 다섯 살이야.",
+        "나는 다섯 번째야."
+      ],
+      "a": 1,
+      "e": "fifth grade는 5학년이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "서수",
+      "q": "'second'의 뜻은?",
+      "c": [
+        "두 개",
+        "스물",
+        "두 번째",
+        "두 번"
+      ],
+      "a": 2,
+      "e": "second는 두 번째예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "서수",
+      "q": "'첫 번째'를 뜻하는 낱말은?",
+      "c": [
+        "one",
+        "once",
+        "third",
+        "first"
+      ],
+      "a": 3,
+      "e": "first는 첫 번째예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "학년",
+      "q": "대화에서 B의 학년은?\\nA: What grade are you in?\\nB: I'm in the fourth grade.",
+      "c": [
+        "4학년",
+        "3학년",
+        "5학년",
+        "6학년"
+      ],
+      "a": 0,
+      "e": "fourth는 네 번째예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "동아리",
+      "q": "'I'm in the dance club.'의 뜻은?",
+      "c": [
+        "나는 춤을 잘 춰.",
+        "나는 춤 동아리에 있어.",
+        "나는 춤을 배울 거야.",
+        "나는 춤추고 있어."
+      ],
+      "a": 1,
+      "e": "club은 동아리예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "동아리",
+      "q": "빈칸에 알맞은 말은?\\nA: What ___ are you in?\\nB: I'm in the science club.",
+      "c": [
+        "club",
+        "grade",
+        "subject",
+        "age"
+      ],
+      "a": 0,
+      "e": "동아리는 What club are you in?으로 물어요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "서수",
+      "q": "'다섯 번째'를 뜻하는 낱말의 철자로 바른 것은?",
+      "c": [
+        "fivth",
+        "fiveth",
+        "fifht",
+        "fifth"
+      ],
+      "a": 3,
+      "e": "다섯 번째는 f-i-f-t-h예요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "학년",
+      "q": "빈칸에 알맞은 말은?\\nI'm in the ___ grade. I'm twelve years old.",
+      "c": [
+        "six",
+        "sixty",
+        "sixth",
+        "sixteen"
+      ],
+      "a": 2,
+      "e": "학년은 서수로 말해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "동아리",
+      "q": "대화에서 B가 미술 동아리에 있는 이유는?\\nA: Why are you in the art club?\\nB: Because I like painting.",
+      "c": [
+        "춤추기를 좋아해서",
+        "그림 그리기를 좋아해서",
+        "친구가 있어서",
+        "요리를 잘해서"
+      ],
+      "a": 1,
+      "e": "painting은 그림 그리기예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "학년",
+      "q": "'grade'의 뜻은?",
+      "c": [
+        "학교",
+        "교실",
+        "선생님",
+        "학년"
+      ],
+      "a": 3,
+      "e": "grade는 학년이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "동아리",
+      "q": "'member'의 뜻은?",
+      "c": [
+        "선생님",
+        "교실",
+        "회원",
+        "반장"
+      ],
+      "a": 2,
+      "e": "member는 회원이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "학년",
+      "q": "글에서 알 수 있는 것은?\\nI'm Hana. I'm in the sixth grade. I'm in the soccer club.",
+      "c": [
+        "Hana는 축구 동아리 회원이다",
+        "Hana는 5학년이다",
+        "Hana는 춤 동아리 회원이다",
+        "Hana는 축구를 싫어한다"
+      ],
+      "a": 0,
+      "e": "Hana는 축구 동아리에 있어요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "동아리",
+      "q": "'Let's join the music club together.'에 동의하는 말은?",
+      "c": [
+        "I have a fever.",
+        "Good idea.",
+        "No, I'm not.",
+        "Turn left."
+      ],
+      "a": 1,
+      "e": "Good idea.는 좋은 생각이라는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'headache'의 뜻은?",
+      "c": [
+        "치통",
+        "복통",
+        "두통",
+        "감기"
+      ],
+      "a": 2,
+      "e": "head(머리)+ache(아픔)는 두통이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'복통'을 뜻하는 낱말은?",
+      "c": [
+        "headache",
+        "toothache",
+        "fever",
+        "stomachache"
+      ],
+      "a": 3,
+      "e": "stomachache는 배앓이, 복통이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'I have a runny nose.'의 뜻은?",
+      "c": [
+        "나는 콧물이 나.",
+        "나는 코가 커.",
+        "나는 코가 막혀.",
+        "나는 열이 나."
+      ],
+      "a": 0,
+      "e": "runny nose는 콧물이 나는 코예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "조언하기",
+      "q": "'I have a toothache.'라고 한 친구에게 알맞은 조언은?",
+      "c": [
+        "You should eat more candy.",
+        "You should go to the dentist.",
+        "You should go to bed late.",
+        "That's great."
+      ],
+      "a": 1,
+      "e": "치통에는 치과(dentist)에 가라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "대화에서 B가 아픈 곳은?\\nA: What's wrong?\\nB: I have a headache.",
+      "c": [
+        "머리",
+        "배",
+        "이",
+        "다리"
+      ],
+      "a": 0,
+      "e": "headache는 두통이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "조언하기",
+      "q": "빈칸에 알맞은 말은?\\nYou ___ drink warm water.",
+      "c": [
+        "are",
+        "does",
+        "is",
+        "should"
+      ],
+      "a": 3,
+      "e": "조언은 You should ~.로 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'What's the matter?'의 뜻은?",
+      "c": [
+        "그게 뭐니?",
+        "몇 시니?",
+        "무슨 일이야?",
+        "어디 가니?"
+      ],
+      "a": 2,
+      "e": "What's the matter?는 무슨 일인지 묻는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "조언하기",
+      "q": "'You should see a doctor.'의 뜻은?",
+      "c": [
+        "너는 의사가 되어야 해.",
+        "너는 병원에 가 봐야 해.",
+        "너는 의사를 만났구나.",
+        "너는 의사를 좋아하니?"
+      ],
+      "a": 1,
+      "e": "see a doctor는 진찰을 받다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'My leg hurts.'의 뜻은?",
+      "c": [
+        "다리가 길어.",
+        "다리를 다쳤니?",
+        "다리가 튼튼해.",
+        "다리가 아파."
+      ],
+      "a": 3,
+      "e": "hurt는 아프다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "조언하기",
+      "q": "대화에서 A의 조언은?\\nA: You should take some medicine.\\nB: Okay, I will.",
+      "c": [
+        "물을 마셔라",
+        "푹 쉬어라",
+        "약을 먹어라",
+        "운동해라"
+      ],
+      "a": 2,
+      "e": "take medicine은 약을 먹다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "카드 쓰기",
+      "q": "아픈 친구에게 쓰는 카드의 문장으로 알맞은 것은?",
+      "c": [
+        "Get well soon.",
+        "Happy birthday.",
+        "Congratulations!",
+        "Good job!"
+      ],
+      "a": 0,
+      "e": "Get well soon.은 빨리 나으라는 말이에요.",
+      "std": "[6영02-08]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'fever'의 뜻은?",
+      "c": [
+        "기침",
+        "열",
+        "콧물",
+        "감기"
+      ],
+      "a": 1,
+      "e": "fever는 열이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "조언하기",
+      "q": "'I'm so tired.'에 알맞은 조언은?",
+      "c": [
+        "You should run more.",
+        "You should watch TV all night.",
+        "You should go to bed early.",
+        "That's too spicy."
+      ],
+      "a": 2,
+      "e": "피곤하면 일찍 자라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'I have a cough.'의 뜻은?",
+      "c": [
+        "나는 열이 나.",
+        "나는 콧물이 나.",
+        "나는 배가 아파.",
+        "나는 기침을 해."
+      ],
+      "a": 3,
+      "e": "cough는 기침이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'traditional'의 뜻은?",
+      "c": [
+        "전통적인",
+        "현대적인",
+        "유명한",
+        "특별한"
+      ],
+      "a": 0,
+      "e": "traditional은 전통적인이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "전통문화",
+      "q": "글에서 알 수 있는 것은?\\nSongpyeon is a Korean rice cake. People eat it on Chuseok.",
+      "c": [
+        "송편은 설날에 먹는다",
+        "송편은 추석에 먹는다",
+        "송편은 중국 음식이다",
+        "송편은 고기로 만든다"
+      ],
+      "a": 1,
+      "e": "on Chuseok은 추석에라는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'Do you know about Seollal?'에 알맞은 대답은?",
+      "c": [
+        "Yes. It's Korean New Year's Day.",
+        "Yes. It's a Korean rice cake.",
+        "No, I'm not.",
+        "It's on your right."
+      ],
+      "a": 0,
+      "e": "Seollal은 설날이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'festival'의 뜻은?",
+      "c": [
+        "음식",
+        "인형",
+        "옷",
+        "축제"
+      ],
+      "a": 3,
+      "e": "festival은 축제예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "전통문화",
+      "q": "대화에서 B가 설명하는 것은?\\nA: What's hanbok?\\nB: It's Korean traditional clothes.",
+      "c": [
+        "한국의 전통 음식",
+        "한국의 전통 놀이",
+        "한국의 전통 옷",
+        "한국의 전통 집"
+      ],
+      "a": 2,
+      "e": "clothes는 옷이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'famous'의 뜻은?",
+      "c": [
+        "전통적인",
+        "유명한",
+        "재미있는",
+        "어려운"
+      ],
+      "a": 1,
+      "e": "famous는 유명한이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "전통문화",
+      "q": "빈칸에 알맞은 말은?\\nA: Do you know ___ tteokguk?\\nB: Yes. We eat it on New Year's Day.",
+      "c": [
+        "at",
+        "to",
+        "on",
+        "about"
+      ],
+      "a": 3,
+      "e": "Do you know about ~?로 아는지 물어요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "전통문화",
+      "q": "글에서 한옥에 대해 알 수 있는 것은?\\nHanok is a Korean traditional house. It is warm in winter.",
+      "c": [
+        "여름에 덥다",
+        "현대식 집이다",
+        "겨울에 따뜻하다",
+        "중국의 집이다"
+      ],
+      "a": 2,
+      "e": "warm in winter는 겨울에 따뜻하다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'We play yunnori on Seollal.'의 뜻은?",
+      "c": [
+        "우리는 설날에 윷놀이를 한다.",
+        "우리는 추석에 윷놀이를 한다.",
+        "우리는 설날에 송편을 먹는다.",
+        "우리는 설날에 한복을 산다."
+      ],
+      "a": 0,
+      "e": "Seollal은 설날이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "전통문화",
+      "q": "외국 친구에게 우리 문화를 바르게 소개한 말은?",
+      "c": [
+        "Kimchi is from Japan.",
+        "Kimchi is a Korean traditional food.",
+        "Kimchi is a dance.",
+        "Kimchi is a Korean doll."
+      ],
+      "a": 1,
+      "e": "김치는 한국의 전통 음식이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'Sushi is a famous Japanese food.'의 뜻은?",
+      "c": [
+        "초밥은 유명한 한국 음식이다.",
+        "초밥은 일본의 전통 옷이다.",
+        "초밥은 유명한 일본 음식이다.",
+        "초밥은 일본에서 인기가 없다."
+      ],
+      "a": 2,
+      "e": "Japanese는 일본의라는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'holiday'의 뜻은?",
+      "c": [
+        "생일",
+        "숙제",
+        "주말",
+        "휴일, 명절"
+      ],
+      "a": 3,
+      "e": "holiday는 휴일, 명절이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'I'd like a cheese pizza, please.'를 말하는 곳으로 알맞은 곳은?",
+      "c": [
+        "식당",
+        "병원",
+        "도서관",
+        "학교"
+      ],
+      "a": 0,
+      "e": "I'd like ~.는 음식을 주문하는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'Would you like some dessert?'의 뜻은?",
+      "c": [
+        "후식이 맛있나요?",
+        "후식을 드시겠어요?",
+        "후식을 만들었나요?",
+        "후식은 얼마예요?"
+      ],
+      "a": 1,
+      "e": "dessert는 후식이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "빈칸에 알맞은 말은?\\nA: What would you like?\\nB: I'd ___ a hamburger, please.",
+      "c": [
+        "like",
+        "likes",
+        "liking",
+        "to like"
+      ],
+      "a": 0,
+      "e": "I'd like ~.로 주문해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "대화에서 B가 주문한 음료는?\\nA: Would you like anything to drink?\\nB: Milk, please.",
+      "c": [
+        "물",
+        "주스",
+        "콜라",
+        "우유"
+      ],
+      "a": 3,
+      "e": "milk는 우유예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'For here or to go?'의 뜻은?",
+      "c": [
+        "여기는 어디인가요?",
+        "어디로 가시나요?",
+        "여기서 드실 건가요, 가져가실 건가요?",
+        "여기서 기다리시겠어요?"
+      ],
+      "a": 2,
+      "e": "to go는 가지고 간다는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "주문을 마칠 때 '그게 다예요.'라고 하는 말은?",
+      "c": [
+        "That's too bad.",
+        "That's all.",
+        "That's mine.",
+        "That's right."
+      ],
+      "a": 1,
+      "e": "That's all.은 그게 다라는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "맛",
+      "q": "대화에서 B의 생각은?\\nA: How's the ice cream?\\nB: It's too sweet for me.",
+      "c": [
+        "너무 차갑다",
+        "아주 맛있다",
+        "너무 짜다",
+        "너무 달다"
+      ],
+      "a": 3,
+      "e": "too sweet는 너무 달다는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'Here's your spaghetti. Enjoy!'에 알맞은 대답은?",
+      "c": [
+        "You're welcome.",
+        "Get well soon.",
+        "Thank you.",
+        "Twice a week."
+      ],
+      "a": 2,
+      "e": "음식을 받으면 Thank you.라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "철자",
+      "q": "'후식'을 뜻하는 낱말의 철자로 바른 것은?",
+      "c": [
+        "dessert",
+        "desert",
+        "dissert",
+        "desart"
+      ],
+      "a": 0,
+      "e": "후식은 s가 두 개인 dessert예요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'What would you like?'와 비슷한 뜻의 말은?",
+      "c": [
+        "What did you eat?",
+        "What do you want?",
+        "Where would you like to go?",
+        "What do you do?"
+      ],
+      "a": 1,
+      "e": "둘 다 무엇을 원하는지 묻는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "맛",
+      "q": "식당에서 음식이 너무 맵다고 할 때 알맞은 말은?",
+      "c": [
+        "It's too cheap.",
+        "It's too big.",
+        "It's too spicy.",
+        "It's too far."
+      ],
+      "a": 2,
+      "e": "spicy는 매운이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'get off'의 뜻은?",
+      "c": [
+        "타다",
+        "갈아타다",
+        "기다리다",
+        "내리다"
+      ],
+      "a": 3,
+      "e": "get off는 (차에서) 내리다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'Take Bus Number 5.'의 뜻은?",
+      "c": [
+        "5번 버스를 타세요.",
+        "버스를 5번 타세요.",
+        "5분 동안 버스를 타세요.",
+        "5번 버스에서 내리세요."
+      ],
+      "a": 0,
+      "e": "take는 (탈것을) 타다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "대화에서 B가 알려 준 방법은?\\nA: How can I get to the zoo?\\nB: Take subway Line 4.",
+      "c": [
+        "버스 4번 타기",
+        "지하철 4호선 타기",
+        "4블록 걷기",
+        "택시 타기"
+      ],
+      "a": 1,
+      "e": "subway Line 4는 지하철 4호선이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "빈칸에 알맞은 말은?\\nA: How can I ___ to the library?\\nB: Walk two blocks and turn right.",
+      "c": [
+        "get",
+        "take",
+        "ride",
+        "make"
+      ],
+      "a": 0,
+      "e": "get to는 ~에 가다, 도착하다예요.",
+      "std": "[6영02-05]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'How long does it take?'의 뜻은?",
+      "c": [
+        "얼마나 길어요?",
+        "얼마예요?",
+        "얼마나 자주 가요?",
+        "얼마나 걸려요?"
+      ],
+      "a": 3,
+      "e": "시간이 얼마나 걸리는지 묻는 말이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'It takes ten minutes by bus.'의 뜻은?",
+      "c": [
+        "버스를 10번 타요.",
+        "버스는 10시에 와요.",
+        "버스로 10분 걸려요.",
+        "10번 버스를 타요."
+      ],
+      "a": 2,
+      "e": "by bus는 버스로예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'cross the street'의 뜻은?",
+      "c": [
+        "길을 따라 걷다",
+        "길을 건너다",
+        "길에서 기다리다",
+        "길을 찾다"
+      ],
+      "a": 1,
+      "e": "cross는 건너다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'역'을 뜻하는 낱말은?",
+      "c": [
+        "stadium",
+        "store",
+        "street",
+        "station"
+      ],
+      "a": 3,
+      "e": "station은 역이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'Get off at the third stop.'의 뜻은?",
+      "c": [
+        "세 번째 정류장에서 타세요.",
+        "정류장 세 곳을 지나서 타세요.",
+        "세 번째 정류장에서 내리세요.",
+        "3번 버스에서 내리세요."
+      ],
+      "a": 2,
+      "e": "third stop은 세 번째 정류장이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "대화의 빈칸에 알맞은 말은?\\nA: How can I get to the park?\\nB: ___",
+      "c": [
+        "Go straight and turn left.",
+        "I like the park.",
+        "The park is big.",
+        "I went to the park."
+      ],
+      "a": 0,
+      "e": "가는 방법을 물으면 길을 알려 줘요.",
+      "std": "[6영02-05]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'You can walk there.'의 뜻은?",
+      "c": [
+        "거기서 걸어 다니면 안 돼요.",
+        "거기까지 걸어갈 수 있어요.",
+        "거기는 걷기 힘들어요.",
+        "거기서 걷고 있어요."
+      ],
+      "a": 1,
+      "e": "walk there는 거기에 걸어가다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'bus stop'의 뜻은?",
+      "c": [
+        "버스 기사",
+        "버스 요금",
+        "버스 정류장",
+        "지하철역"
+      ],
+      "a": 2,
+      "e": "stop은 정류장이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "빈도",
+      "q": "'once a week'의 뜻은?",
+      "c": [
+        "일주일에 두 번",
+        "하루에 한 번",
+        "한 달에 한 번",
+        "일주일에 한 번"
+      ],
+      "a": 3,
+      "e": "once는 한 번이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "빈도",
+      "q": "'always'의 뜻은?",
+      "c": [
+        "항상",
+        "가끔",
+        "절대 ~ 않다",
+        "보통"
+      ],
+      "a": 0,
+      "e": "always는 항상이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "빈도",
+      "q": "'never'의 뜻은?",
+      "c": [
+        "항상",
+        "절대 ~ 않다",
+        "자주",
+        "가끔"
+      ],
+      "a": 1,
+      "e": "never는 절대 ~ 않다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "빈도",
+      "q": "대화에서 B가 수영하는 횟수는?\\nA: How often do you swim?\\nB: Twice a week.",
+      "c": [
+        "일주일에 두 번",
+        "일주일에 한 번",
+        "하루에 두 번",
+        "한 달에 두 번"
+      ],
+      "a": 0,
+      "e": "twice a week는 일주일에 두 번이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "빈도",
+      "q": "빈칸에 알맞은 말은?\\nA: How ___ do you read books?\\nB: Every day.",
+      "c": [
+        "much",
+        "many",
+        "old",
+        "often"
+      ],
+      "a": 3,
+      "e": "빈도는 How often ~?으로 물어요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "습관",
+      "q": "'I eat breakfast every day.'의 뜻은?",
+      "c": [
+        "나는 가끔 아침을 먹는다.",
+        "나는 아침을 먹지 않는다.",
+        "나는 매일 아침을 먹는다.",
+        "나는 어제 아침을 먹었다."
+      ],
+      "a": 2,
+      "e": "every day는 매일이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "습관",
+      "q": "좋은 습관을 말한 문장은?",
+      "c": [
+        "I never brush my teeth.",
+        "I wash my hands before meals.",
+        "I go to bed very late.",
+        "I eat candy every day."
+      ],
+      "a": 1,
+      "e": "밥 먹기 전에 손을 씻는 것은 좋은 습관이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "빈도",
+      "q": "'sometimes'의 뜻은?",
+      "c": [
+        "항상",
+        "매일",
+        "절대 ~ 않다",
+        "가끔"
+      ],
+      "a": 3,
+      "e": "sometimes는 가끔이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "습관",
+      "q": "글쓴이가 매일 하는 일은?\\nI walk my dog every day. I clean my room once a week.",
+      "c": [
+        "방 청소하기",
+        "수영하기",
+        "개 산책시키기",
+        "요리하기"
+      ],
+      "a": 2,
+      "e": "walk my dog는 개를 산책시키다예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "빈도",
+      "q": "빈도를 묻는 말은?",
+      "c": [
+        "How often do you play tennis?",
+        "How long do you play tennis?",
+        "Where do you play tennis?",
+        "When did you play tennis?"
+      ],
+      "a": 0,
+      "e": "How often ~?은 얼마나 자주인지 묻는 말이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "빈도",
+      "q": "'three times a day'의 뜻은?",
+      "c": [
+        "일주일에 세 번",
+        "하루에 세 번",
+        "세 시에",
+        "사흘 동안"
+      ],
+      "a": 1,
+      "e": "times는 ~번이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "습관",
+      "q": "'Do you exercise every day?'에 알맞은 대답은?",
+      "c": [
+        "Yes, I'm in the sixth grade.",
+        "It's on your right.",
+        "No. I exercise twice a week.",
+        "I have a cold."
+      ],
+      "a": 2,
+      "e": "운동하는 빈도로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "빈도",
+      "q": "'every Sunday'의 뜻은?",
+      "c": [
+        "이번 일요일",
+        "지난 일요일",
+        "다음 일요일",
+        "일요일마다"
+      ],
+      "a": 3,
+      "e": "every는 ~마다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "'I'm going to learn Chinese.'의 뜻은?",
+      "c": [
+        "나는 중국어를 배울 거야.",
+        "나는 중국어를 배웠어.",
+        "나는 중국에 갈 거야.",
+        "나는 중국어를 가르쳐."
+      ],
+      "a": 0,
+      "e": "be going to는 ~할 거라는 계획이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "빈칸에 알맞은 말은?\\nA: What are you going to do tomorrow?\\nB: I'm going to ___ my room.",
+      "c": [
+        "cleaned",
+        "clean",
+        "cleans",
+        "cleaning"
+      ],
+      "a": 1,
+      "e": "be going to 다음에는 동사원형을 써요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "대화에서 B가 이번 방학에 할 일은?\\nA: What are you going to do this vacation?\\nB: I'm going to take a swimming class.",
+      "c": [
+        "수영 수업 듣기",
+        "캠핑 가기",
+        "여행 가기",
+        "책 읽기"
+      ],
+      "a": 0,
+      "e": "swimming class는 수영 수업이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "'next week'의 뜻은?",
+      "c": [
+        "지난주",
+        "이번 주",
+        "매주",
+        "다음 주"
+      ],
+      "a": 3,
+      "e": "next는 다음의예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "계획을 묻는 말은?",
+      "c": [
+        "What did you do last weekend?",
+        "What do you do on weekends?",
+        "What are you going to do this weekend?",
+        "How often do you go out?"
+      ],
+      "a": 2,
+      "e": "be going to로 계획을 물어요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "'I'm going to visit Gyeongju.'에 알맞은 반응은?",
+      "c": [
+        "Get well soon.",
+        "Sounds great. Have fun!",
+        "Oh, that's too bad.",
+        "You should take a rest."
+      ],
+      "a": 1,
+      "e": "좋은 계획에는 Have fun!이라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "일의 순서",
+      "q": "글쓴이가 일요일에 할 일은?\\nOn Saturday, I'm going to see a movie. On Sunday, I'm going to go hiking.",
+      "c": [
+        "영화 보기",
+        "수영하기",
+        "쇼핑하기",
+        "등산하기"
+      ],
+      "a": 3,
+      "e": "go hiking은 등산하다예요.",
+      "std": "[6영01-06]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "'be going to'로 말하는 내용은?",
+      "c": [
+        "지난 일",
+        "지금 하는 일",
+        "앞으로 할 계획",
+        "자주 하는 일"
+      ],
+      "a": 2,
+      "e": "be going to는 앞으로의 계획을 말해요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "초대장 쓰기",
+      "q": "초대장의 빈칸에 알맞은 말은?\\nPlease come to my party ___ Saturday.",
+      "c": [
+        "on",
+        "in",
+        "at",
+        "to"
+      ],
+      "a": 0,
+      "e": "요일 앞에는 on을 써요.",
+      "std": "[6영02-08]"
     }
   ]
 }

@@ -272,6 +272,1124 @@
       "a": 0,
       "e": "give up은 '포기하다'라는 뜻이다.",
       "std": "[9영01-07]"
+    },
+    {
+      "t": "수여동사",
+      "q": "빈칸에 알맞은 말은?\nCan you lend ___ your eraser?",
+      "c": [
+        "me",
+        "my",
+        "I",
+        "mine"
+      ],
+      "a": 0,
+      "e": "수여동사 lend 뒤 간접목적어는 목적격 me이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "수여동사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "She gave a present me.",
+        "She gave me a present.",
+        "She gave a present to me.",
+        "She sent me a card."
+      ],
+      "a": 0,
+      "e": "수여동사 뒤에는 '사람+사물' 순서로 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3형식 전환",
+      "q": "빈칸에 알맞은 말은?\nHe told the story ___ his children.",
+      "c": [
+        "for",
+        "of",
+        "with",
+        "to"
+      ],
+      "a": 3,
+      "e": "tell은 3형식으로 바꿀 때 to를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3형식 전환",
+      "q": "빈칸에 알맞은 말은?\nDad cooked dinner ___ us.",
+      "c": [
+        "to",
+        "of",
+        "for",
+        "at"
+      ],
+      "a": 2,
+      "e": "cook은 3형식으로 바꿀 때 for를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3형식 전환",
+      "q": "빈칸에 알맞은 말은?\nHe got a ticket ___ his sister.",
+      "c": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "a": 1,
+      "e": "get은 3형식으로 바꿀 때 for를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "전치사 구분",
+      "q": "빈칸에 들어갈 전치사가 나머지와 다른 것은?",
+      "c": [
+        "She bought a hat ___ me.",
+        "He sent a letter ___ me.",
+        "She gave a book ___ me.",
+        "He showed a map ___ me."
+      ],
+      "a": 0,
+      "e": "buy는 for, 나머지는 to를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "수여동사",
+      "q": "'선생님이 우리에게 영어를 가르쳐 주신다.'를 바르게 옮긴 것은?",
+      "c": [
+        "Our teacher teaches English us.",
+        "Our teacher teaches to us English.",
+        "Our teacher teaches we English.",
+        "Our teacher teaches us English."
+      ],
+      "a": 3,
+      "e": "teach+사람+사물 순서로 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "문장 전환",
+      "q": "다음 문장과 뜻이 같은 것은?\nI wrote him a long letter.",
+      "c": [
+        "I wrote a long letter for him.",
+        "I wrote him to a long letter.",
+        "I wrote a long letter to him.",
+        "He wrote me a long letter."
+      ],
+      "a": 2,
+      "e": "write는 3형식으로 바꿀 때 to를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "make+형용사",
+      "q": "빈칸에 알맞은 말은?\nThis song always makes me ___.",
+      "c": [
+        "sadly",
+        "sad",
+        "sadness",
+        "to sadly"
+      ],
+      "a": 1,
+      "e": "make+목적어+형용사 구조이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "keep+형용사",
+      "q": "빈칸에 알맞은 말은?\nPlease keep the room ___.",
+      "c": [
+        "clean",
+        "cleanly",
+        "to cleaning",
+        "cleaned up of"
+      ],
+      "a": 0,
+      "e": "keep+목적어+형용사는 '~을 …하게 유지하다'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "call+명사",
+      "q": "빈칸에 알맞은 말은?\nMy friends call ___ \"Little Bear.\"",
+      "c": [
+        "my",
+        "I",
+        "mine",
+        "me"
+      ],
+      "a": 3,
+      "e": "call+목적어+명사 구조이며 목적어는 목적격이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "want+to",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "Mom wants me come home early.",
+        "Mom wants me coming home early.",
+        "Mom wants me to come home early.",
+        "Mom wants I to come home early."
+      ],
+      "a": 2,
+      "e": "want+목적어+to부정사 구조이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "ask+to",
+      "q": "빈칸에 알맞은 말은?\nShe asked me ___ the window.",
+      "c": [
+        "open",
+        "to open",
+        "opening",
+        "opened"
+      ],
+      "a": 1,
+      "e": "ask+목적어+to부정사 구조이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "tell+to",
+      "q": "빈칸에 알맞은 말은?\nThe doctor told him ___ more water.",
+      "c": [
+        "to drink",
+        "drink",
+        "drinking",
+        "drank"
+      ],
+      "a": 0,
+      "e": "tell+목적어+to부정사 구조이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "목적격보어",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "The movie made him famous.",
+        "They named the dog Max.",
+        "I want you to be happy.",
+        "The movie made him famously."
+      ],
+      "a": 3,
+      "e": "make의 목적격보어로 형용사 famous를 써야 한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "목적격보어 뜻",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nI found the book interesting.",
+      "c": [
+        "나는 재미있는 책을 찾았다.",
+        "나는 그 책을 재미있게 찾았다.",
+        "나는 그 책이 재미있다는 것을 알았다.",
+        "나는 그 책을 찾고 싶었다."
+      ],
+      "a": 2,
+      "e": "find+목적어+형용사는 '~이 …하다고 알게 되다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "expect+to",
+      "q": "빈칸에 알맞은 말은?\nWe expect our team ___ the game.",
+      "c": [
+        "win",
+        "to win",
+        "winning",
+        "won"
+      ],
+      "a": 1,
+      "e": "expect+목적어+to부정사 구조이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "수동태",
+      "q": "빈칸에 알맞은 말은?\nEnglish ___ in many countries.",
+      "c": [
+        "is spoken",
+        "speaks",
+        "is speaking",
+        "spoke"
+      ],
+      "a": 0,
+      "e": "영어가 '말해지는' 것이므로 수동태를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "수동태 과거",
+      "q": "빈칸에 알맞은 말은?\nThis picture ___ by my uncle in 2015.",
+      "c": [
+        "is taken",
+        "took",
+        "was took",
+        "was taken"
+      ],
+      "a": 3,
+      "e": "2015년 과거이며 take의 과거분사는 taken이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "수동태 과거",
+      "q": "빈칸에 알맞은 말은?\nThe Mona Lisa ___ by Leonardo da Vinci.",
+      "c": [
+        "painted",
+        "is painting",
+        "was painted",
+        "was painting"
+      ],
+      "a": 2,
+      "e": "그림은 그려진 것이므로 수동태 과거를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "과거분사",
+      "q": "동사와 과거분사가 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "build – built",
+        "write – wrote",
+        "sing – sung",
+        "steal – stolen"
+      ],
+      "a": 1,
+      "e": "write의 과거분사는 written이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "수동태 부정",
+      "q": "빈칸에 알맞은 말은?\nThe room ___ cleaned yesterday.",
+      "c": [
+        "wasn't",
+        "didn't",
+        "doesn't",
+        "weren't"
+      ],
+      "a": 0,
+      "e": "수동태 부정은 be동사 뒤에 not을 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "수동태 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ this cake made by your sister?\nB: Yes, it was.",
+      "c": [
+        "Did",
+        "Does",
+        "Were",
+        "Was"
+      ],
+      "a": 3,
+      "e": "Yes, it was로 답하므로 Was로 묻는다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "수동태",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "The house was built in 1990.",
+        "The car is washed every week.",
+        "The letter was wrote by Amy.",
+        "The song was sung by kids."
+      ],
+      "a": 2,
+      "e": "write의 과거분사는 written이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "능동→수동",
+      "q": "'Tom cleaned the classroom.'을 수동태로 바르게 바꾼 것은?",
+      "c": [
+        "The classroom is cleaned by Tom.",
+        "The classroom was cleaned by Tom.",
+        "The classroom cleaned by Tom.",
+        "Tom was cleaned by the classroom."
+      ],
+      "a": 1,
+      "e": "과거 능동태는 was/were+과거분사로 바꾼다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "by 이외",
+      "q": "빈칸에 알맞은 말은?\nThe mountain is covered ___ snow.",
+      "c": [
+        "with",
+        "of",
+        "at",
+        "from"
+      ],
+      "a": 0,
+      "e": "be covered with는 '~으로 덮여 있다'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "by 이외",
+      "q": "빈칸에 알맞은 말은?\nI'm interested ___ science.",
+      "c": [
+        "with",
+        "by",
+        "at",
+        "in"
+      ],
+      "a": 3,
+      "e": "be interested in은 '~에 관심이 있다'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "조동사 수동",
+      "q": "빈칸에 알맞은 말은?\nThe work will ___ finished by Friday.",
+      "c": [
+        "is",
+        "been",
+        "be",
+        "being"
+      ],
+      "a": 2,
+      "e": "조동사 뒤 수동태는 be+과거분사이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 경험",
+      "q": "빈칸에 알맞은 말은?\nI have ___ that movie three times.",
+      "c": [
+        "saw",
+        "seen",
+        "see",
+        "seeing"
+      ],
+      "a": 1,
+      "e": "현재완료는 have+과거분사이며 see의 과거분사는 seen이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "현재완료 경험",
+      "q": "빈칸에 알맞은 말은?\nShe ___ ridden a horse before.",
+      "c": [
+        "has",
+        "have",
+        "is",
+        "did"
+      ],
+      "a": 0,
+      "e": "3인칭 단수 주어에는 has+과거분사를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "경험 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Have you ever been to Japan?\nB: No, ___",
+      "c": [
+        "I didn't.",
+        "I don't.",
+        "I'm not.",
+        "I haven't."
+      ],
+      "a": 3,
+      "e": "Have you ~?에는 have/haven't로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "ever 위치",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "Have ever you tried kimchi?",
+        "Did you ever have tried kimchi?",
+        "Have you ever tried kimchi?",
+        "Have you ever try kimchi?"
+      ],
+      "a": 2,
+      "e": "Have+주어+ever+과거분사 순서이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "been vs gone",
+      "q": "두 문장의 뜻 차이로 알맞은 것은?\n(a) He has been to Paris.\n(b) He has gone to Paris.",
+      "c": [
+        "(a) 가 버리고 없다 / (b) 가 본 적 있다",
+        "(a) 가 본 적 있다 / (b) 가 버리고 없다",
+        "두 문장의 뜻은 같다",
+        "(a) 갈 것이다 / (b) 가고 있다"
+      ],
+      "a": 1,
+      "e": "have been to는 경험, have gone to는 결과이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "현재완료",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I have visited the museum last year.",
+        "I have visited the museum twice.",
+        "I have never visited the museum.",
+        "Have you visited the museum?"
+      ],
+      "a": 0,
+      "e": "last year 같은 과거 시점은 현재완료와 쓰지 않는다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "횟수 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How many times have you climbed Mt. Halla?\nB: ___",
+      "c": [
+        "I climbed it tomorrow.",
+        "I'll climb it next week.",
+        "Yes, I have.",
+        "I've climbed it once."
+      ],
+      "a": 3,
+      "e": "횟수를 물었으므로 once, twice 등으로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거분사",
+      "q": "빈칸에 알맞은 말은?\nHave you ever ___ a famous person?",
+      "c": [
+        "meet",
+        "meeted",
+        "met",
+        "meeting"
+      ],
+      "a": 2,
+      "e": "meet의 과거분사는 met이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "관계대명사 who",
+      "q": "빈칸에 알맞은 말은?\nThe girl ___ is singing on the stage is my cousin.",
+      "c": [
+        "which",
+        "who",
+        "what",
+        "where"
+      ],
+      "a": 1,
+      "e": "선행사가 사람이므로 who를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계대명사 which",
+      "q": "빈칸에 알맞은 말은?\nI like movies ___ have happy endings.",
+      "c": [
+        "which",
+        "who",
+        "what",
+        "whom"
+      ],
+      "a": 0,
+      "e": "선행사가 사물이므로 which를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계대명사 that",
+      "q": "빈칸에 공통으로 알맞은 말은?\n• I know a boy ___ can speak three languages.\n• This is a phone ___ takes great pictures.",
+      "c": [
+        "who",
+        "which",
+        "what",
+        "that"
+      ],
+      "a": 3,
+      "e": "that은 사람과 사물 선행사에 모두 쓸 수 있다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계사절 동사",
+      "q": "빈칸에 알맞은 말은?\nI have two friends who ___ in Busan.",
+      "c": [
+        "lives",
+        "living",
+        "live",
+        "to live"
+      ],
+      "a": 2,
+      "e": "선행사 two friends가 복수이므로 live를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계대명사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "I met a man who works at the bank.",
+        "I met a man which works at the bank.",
+        "I have a cat which has blue eyes.",
+        "She is the girl that won the prize."
+      ],
+      "a": 1,
+      "e": "선행사가 사람이면 which를 쓸 수 없다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "문장 연결",
+      "q": "두 문장을 관계대명사로 바르게 연결한 것은?\nI have a sister. She is a nurse.",
+      "c": [
+        "I have a sister who is a nurse.",
+        "I have a sister which is a nurse.",
+        "I have a sister who she is a nurse.",
+        "I have a sister is who a nurse."
+      ],
+      "a": 0,
+      "e": "She를 주격 관계대명사 who로 바꿔 연결한다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "관계대명사 뜻",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nA farmer is a person who grows food.",
+      "c": [
+        "농부는 식량을 사는 사람이다.",
+        "사람들은 농부를 키운다.",
+        "농부는 음식을 요리한다.",
+        "농부는 식량을 기르는 사람이다."
+      ],
+      "a": 3,
+      "e": "who grows food가 a person을 꾸민다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "선행사 찾기",
+      "q": "밑줄 친 who의 선행사는?\nThe students who joined the club are very active.",
+      "c": [
+        "the club",
+        "active",
+        "The students",
+        "who"
+      ],
+      "a": 2,
+      "e": "who 앞의 사람 명사 The students가 선행사이다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "have to",
+      "q": "빈칸에 알맞은 말은?\nShe ___ to finish the report today.",
+      "c": [
+        "have",
+        "has",
+        "does",
+        "must"
+      ],
+      "a": 1,
+      "e": "3인칭 단수 주어에는 has to를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "had to",
+      "q": "빈칸에 알맞은 말은?\nI ___ to wait for the bus for an hour yesterday.",
+      "c": [
+        "had",
+        "have",
+        "has",
+        "must"
+      ],
+      "a": 0,
+      "e": "must와 have to의 과거는 had to이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "have to 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do I have to bring my lunch?\nB: No, you ___. We'll have pizza.",
+      "c": [
+        "must not",
+        "aren't",
+        "can't have",
+        "don't have to"
+      ],
+      "a": 3,
+      "e": "'~할 필요가 없다'는 don't have to이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "should",
+      "q": "빈칸에 알맞은 말은?\nYou should ___ your teeth after meals.",
+      "c": [
+        "brushes",
+        "brushing",
+        "brush",
+        "to brush"
+      ],
+      "a": 2,
+      "e": "should 뒤에는 동사원형이 온다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "should not",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nYou shouldn't eat too much fast food.",
+      "c": [
+        "패스트푸드를 많이 먹어야 한다.",
+        "패스트푸드를 너무 많이 먹지 않는 게 좋다.",
+        "패스트푸드를 먹을 수 있다.",
+        "패스트푸드를 먹어 본 적이 없다."
+      ],
+      "a": 1,
+      "e": "shouldn't는 '~하지 않는 게 좋다'는 충고이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "must not vs",
+      "q": "빈칸에 알맞은 말은?\n(박물관 안내) You ___ take pictures here. It's against the rules.",
+      "c": [
+        "must not",
+        "don't have to",
+        "have to",
+        "should"
+      ],
+      "a": 0,
+      "e": "규칙상 금지이므로 must not을 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "have to",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "We have to save energy.",
+        "You have to be careful.",
+        "They had to leave early.",
+        "He have to go to the dentist."
+      ],
+      "a": 3,
+      "e": "3인칭 단수 주어에는 has to를 써야 한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "제안하기",
+      "q": "제안하는 표현이 아닌 것은?",
+      "c": [
+        "Why don't we go to the park?",
+        "Let's go to the park.",
+        "I went to the park.",
+        "How about going to the park?"
+      ],
+      "a": 2,
+      "e": "I went to the park는 지난 일을 말한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "제안 수락",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How about playing badminton after school?\nB: ___ I'll bring my racket.",
+      "c": [
+        "Sorry, I can't.",
+        "Sounds good.",
+        "I don't think so.",
+        "No, thanks."
+      ],
+      "a": 1,
+      "e": "라켓을 가져오겠다고 하므로 수락한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "충고 구하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: ___\nB: You should talk to her first and say sorry.",
+      "c": [
+        "I had a fight with my friend. What should I do?",
+        "I want to buy a new phone.",
+        "What time is it now?",
+        "Where is the library?"
+      ],
+      "a": 0,
+      "e": "You should ~는 고민에 대한 충고이다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "충고하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I always feel tired in the morning.\nB: ___",
+      "c": [
+        "You should stay up late.",
+        "You should drink more coffee at night.",
+        "You should skip breakfast.",
+        "You should go to bed earlier."
+      ],
+      "a": 3,
+      "e": "피곤하다는 친구에게 일찍 자라고 충고한다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "충고 표현",
+      "q": "충고하는 표현으로 알맞은 것은?",
+      "c": [
+        "I took an umbrella.",
+        "This is my umbrella.",
+        "You had better take an umbrella.",
+        "I like your umbrella."
+      ],
+      "a": 2,
+      "e": "had better는 '~하는 게 좋겠다'는 충고이다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "had better",
+      "q": "빈칸에 알맞은 말은?\nYou had better ___ a jacket. It's cold outside.",
+      "c": [
+        "to wear",
+        "wear",
+        "wearing",
+        "wore"
+      ],
+      "a": 1,
+      "e": "had better 뒤에는 동사원형이 온다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "제안 거절",
+      "q": "제안을 거절하는 말로 알맞은 것은?",
+      "c": [
+        "I'd love to, but I have other plans.",
+        "That's a great idea.",
+        "Sure, why not?",
+        "Okay, let's do that."
+      ],
+      "a": 0,
+      "e": "I'd love to, but ~은 정중한 거절 표현이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "도움 제안",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: These boxes are so heavy.\nB: ___",
+      "c": [
+        "You look heavy.",
+        "I'm heavy, too.",
+        "Put them on me.",
+        "Let me help you."
+      ],
+      "a": 3,
+      "e": "무거운 상자를 든 친구에게 도움을 제안한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "어휘: 직업",
+      "q": "'a person who writes news for newspapers or TV'에 해당하는 것은?",
+      "c": [
+        "pilot",
+        "dentist",
+        "reporter",
+        "cook"
+      ],
+      "a": 2,
+      "e": "뉴스를 쓰는 사람은 reporter(기자)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻",
+      "q": "'invent'의 과거분사로 알맞은 것은?",
+      "c": [
+        "invent",
+        "invented",
+        "invention",
+        "inventor"
+      ],
+      "a": 1,
+      "e": "규칙동사 invent의 과거분사는 invented이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻",
+      "q": "'advice'의 뜻으로 알맞은 것은?",
+      "c": [
+        "충고",
+        "광고",
+        "모험",
+        "주소"
+      ],
+      "a": 0,
+      "e": "advice는 '충고, 조언'이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 뜻풀이",
+      "q": "'to let someone use something for a short time'에 해당하는 것은?",
+      "c": [
+        "borrow",
+        "sell",
+        "steal",
+        "lend"
+      ],
+      "a": 3,
+      "e": "잠시 쓰도록 빌려주는 것은 lend이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 반의어",
+      "q": "'forget'의 반대말은?",
+      "c": [
+        "repeat",
+        "return",
+        "remember",
+        "report"
+      ],
+      "a": 2,
+      "e": "forget(잊다)의 반대말은 remember(기억하다)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 건강",
+      "q": "빈칸에 알맞은 말은?\nI have a ___. My throat hurts and I'm coughing.",
+      "c": [
+        "cough drop",
+        "cold",
+        "medicine",
+        "doctor"
+      ],
+      "a": 1,
+      "e": "목이 아프고 기침하므로 감기(cold)에 걸렸다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 관용",
+      "q": "'take care of'의 뜻으로 알맞은 것은?",
+      "c": [
+        "~을 돌보다",
+        "~을 가져가다",
+        "~을 조심하다",
+        "~을 걱정하다"
+      ],
+      "a": 0,
+      "e": "take care of는 '~을 돌보다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nDear Minji, I heard you're sick. You should rest and drink warm tea. Get well soon! – Yuri",
+      "c": [
+        "파티에 초대하려고",
+        "차를 주문하려고",
+        "약속을 정하려고",
+        "아픈 친구를 위로하려고"
+      ],
+      "a": 3,
+      "e": "아픈 친구에게 쉬라고 하며 쾌유를 비는 글이다.",
+      "std": "[9영01-06]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "글을 읽고 알 수 있는 것은?\nThe Eiffel Tower was built in 1889. It was designed by Gustave Eiffel's company.",
+      "c": [
+        "에펠탑의 높이",
+        "에펠탑의 입장료",
+        "에펠탑이 지어진 해",
+        "에펠탑의 방문객 수"
+      ],
+      "a": 2,
+      "e": "1889년에 지어졌다는 정보가 있다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nYou should wash your hands often. You should also cover your mouth when you cough.",
+      "c": [
+        "손 씻기의 역사",
+        "감기 예방 수칙",
+        "비누 만드는 법",
+        "병원 이용 방법"
+      ],
+      "a": 1,
+      "e": "병을 막기 위한 생활 수칙을 말하는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "심정 추론",
+      "q": "글쓴이의 심정으로 알맞은 것은?\nI have never been on a plane. Tomorrow I will fly to Canada for the first time. I can't sleep!",
+      "c": [
+        "excited",
+        "bored",
+        "tired",
+        "angry"
+      ],
+      "a": 0,
+      "e": "처음 비행기를 타게 되어 설레는 심정이다.",
+      "std": "[9영01-05]"
+    },
+    {
+      "t": "내용 일치",
+      "q": "글의 내용과 일치하지 않는 것은?\nMr. Kim is a teacher who loves nature. He has climbed Mt. Jiri five times.",
+      "c": [
+        "그는 교사이다.",
+        "그는 자연을 좋아한다.",
+        "그는 지리산에 다섯 번 올랐다.",
+        "그는 지리산에 가 본 적이 없다."
+      ],
+      "a": 3,
+      "e": "지리산에 다섯 번 올랐다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "요지",
+      "q": "글의 요지로 알맞은 것은?\nMany animals are losing their homes. We have to protect forests. They are home to many animals.",
+      "c": [
+        "동물을 집에서 키우자.",
+        "나무를 베어 집을 짓자.",
+        "숲을 보호해야 한다.",
+        "동물원을 늘려야 한다."
+      ],
+      "a": 2,
+      "e": "동물의 서식지인 숲을 지켜야 한다는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "원인과 결과",
+      "q": "글을 읽고 Eric이 상을 받은 이유는?\nEric helped many old people in his town, so he was given an award.",
+      "c": [
+        "시험을 잘 봐서",
+        "이웃 어른들을 도와서",
+        "대회에서 우승해서",
+        "그림을 잘 그려서"
+      ],
+      "a": 1,
+      "e": "마을 어른들을 도와 상을 받았다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "충고 글쓰기",
+      "q": "고민 상담 답장의 빈칸에 알맞은 말은?\nDear Worried, I think you ___ tell your parents about the problem.",
+      "c": [
+        "should",
+        "shouldn't to",
+        "must not",
+        "had"
+      ],
+      "a": 0,
+      "e": "충고할 때는 should+동사원형을 쓴다.",
+      "std": "[9영02-08]"
+    },
+    {
+      "t": "안내문",
+      "q": "안내문의 내용과 일치하는 것은?\nSwimming Pool Rules\n• You must wear a swimming cap.\n• You must not eat in the pool.",
+      "c": [
+        "수영장에서 먹어도 된다.",
+        "수영모는 쓰지 않아도 된다.",
+        "음식을 가져와야 한다.",
+        "수영모를 꼭 써야 한다."
+      ],
+      "a": 3,
+      "e": "수영모 착용은 의무이다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "정보 전달",
+      "q": "빈칸에 알맞은 말은?\nHangeul ___ by King Sejong in 1443.",
+      "c": [
+        "created",
+        "is created",
+        "was created",
+        "was creating"
+      ],
+      "a": 2,
+      "e": "한글은 만들어진 것이므로 과거 수동태를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "추천하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Can you recommend a good book?\nB: ___",
+      "c": [
+        "I read a lot of books.",
+        "How about \"Charlotte's Web\"? It's touching.",
+        "I don't have a book.",
+        "The bookstore is closed."
+      ],
+      "a": 1,
+      "e": "추천을 부탁했으므로 책을 추천한다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "경험 말하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Have you ever tried Thai food?\nB: Yes, I have. ___",
+      "c": [
+        "I tried it last month.",
+        "I will try it someday.",
+        "I've never tried it.",
+        "I don't know it."
+      ],
+      "a": 0,
+      "e": "먹어 본 경험이 있으므로 언제 먹었는지 덧붙인다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "수여동사",
+      "q": "빈칸에 알맞은 말은?\nPlease pass ___ the salt.",
+      "c": [
+        "to me",
+        "my",
+        "for me",
+        "me"
+      ],
+      "a": 3,
+      "e": "pass+사람+사물 순서이며 사람은 목적격이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "want+to 2",
+      "q": "빈칸에 알맞은 말은?\nMy parents want me ___ a good student.",
+      "c": [
+        "be",
+        "being",
+        "to be",
+        "am"
+      ],
+      "a": 2,
+      "e": "want+목적어+to부정사 구조이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "수동태",
+      "q": "빈칸에 알맞은 말은?\nThese cookies ___ by my grandma every Christmas.",
+      "c": [
+        "is baked",
+        "are baked",
+        "bake",
+        "are baking"
+      ],
+      "a": 1,
+      "e": "복수 주어이고 구워지는 것이므로 are baked이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "수동태 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nThe bridge was built 100 years ago.",
+      "c": [
+        "그 다리는 100년 전에 지어졌다.",
+        "그 다리를 100년 동안 짓고 있다.",
+        "100년 후에 다리가 지어질 것이다.",
+        "그들은 다리를 100개 지었다."
+      ],
+      "a": 0,
+      "e": "was built는 '지어졌다'는 과거 수동이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "현재완료 경험",
+      "q": "빈칸에 알맞은 말은?\nHe has ___ eaten sushi. He wants to try it.",
+      "c": [
+        "ever",
+        "already",
+        "yet",
+        "never"
+      ],
+      "a": 3,
+      "e": "먹어 보고 싶다고 했으므로 먹어 본 적이 없다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "관계대명사 who",
+      "q": "빈칸에 알맞은 말은?\nA doctor is a person ___ helps sick people.",
+      "c": [
+        "which",
+        "what",
+        "who",
+        "whose"
+      ],
+      "a": 2,
+      "e": "사람 선행사를 받는 주격 관계대명사는 who이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "should 대화",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I want to get good grades.\nB: ___",
+      "c": [
+        "You should play games all night.",
+        "You should review every day.",
+        "You shouldn't study at all.",
+        "You should skip classes."
+      ],
+      "a": 1,
+      "e": "성적을 올리려면 매일 복습하라고 충고한다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "must not",
+      "q": "다음 표지판의 뜻으로 알맞은 것은?\nYou must not feed the animals.",
+      "c": [
+        "동물에게 먹이를 주면 안 된다.",
+        "동물에게 먹이를 줘야 한다.",
+        "동물에게 먹이를 줘도 된다.",
+        "동물이 배고플 것이다."
+      ],
+      "a": 0,
+      "e": "must not은 금지를 나타낸다.",
+      "std": "[9영01-07]"
     }
   ]
 }

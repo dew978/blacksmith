@@ -272,6 +272,1098 @@
       "a": 1,
       "e": "아는 사람이 없고 손이 떨리니 긴장한 상태이다.",
       "std": "[9영01-05]"
+    },
+    {
+      "t": "be동사",
+      "q": "빈칸에 알맞은 말은?\nI ___ a big fan of K-pop.",
+      "c": [
+        "is",
+        "am",
+        "are",
+        "be"
+      ],
+      "a": 1,
+      "e": "주어가 I이면 be동사는 am을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사",
+      "q": "빈칸에 알맞은 말은?\nThe books ___ on the shelf.",
+      "c": [
+        "are",
+        "is",
+        "am",
+        "be"
+      ],
+      "a": 0,
+      "e": "주어 The books가 복수이므로 are를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사",
+      "q": "빈칸에 알맞은 말은?\nMy dog ___ very cute.",
+      "c": [
+        "are",
+        "am",
+        "do",
+        "is"
+      ],
+      "a": 3,
+      "e": "주어가 3인칭 단수이므로 is를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ you a new student?\nB: Yes, I am.",
+      "c": [
+        "Is",
+        "Do",
+        "Are",
+        "Am"
+      ],
+      "a": 2,
+      "e": "you에 맞는 be동사 의문문은 Are you ~?이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "be동사 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Is your brother tall?\nB: No, ___",
+      "c": [
+        "he doesn't.",
+        "he isn't.",
+        "he aren't.",
+        "I'm not."
+      ],
+      "a": 1,
+      "e": "Is your brother ~?에는 he is/isn't로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "be동사 부정",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "Mina and I isn't busy.",
+        "I'm not hungry.",
+        "It isn't cold today.",
+        "They aren't at home."
+      ],
+      "a": 0,
+      "e": "Mina and I는 복수이므로 aren't를 써야 한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사 줄임",
+      "q": "줄임말이 바르게 쓰인 것은?",
+      "c": [
+        "Your'e my friend.",
+        "Hes' my friend.",
+        "I'am your friend.",
+        "They're my friends."
+      ],
+      "a": 3,
+      "e": "They are의 줄임말은 They're이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사 뜻",
+      "q": "다음 문장의 be동사의 뜻이 나머지와 다른 것은?",
+      "c": [
+        "He is a teacher.",
+        "She is kind.",
+        "My cat is under the bed.",
+        "I am thirteen."
+      ],
+      "a": 2,
+      "e": "첫 문장의 is는 '~에 있다', 나머지는 '~이다'이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "be동사",
+      "q": "빈칸에 공통으로 알맞은 말은?\n• Jisu ___ my best friend.\n• It ___ sunny today.",
+      "c": [
+        "are",
+        "is",
+        "am",
+        "does"
+      ],
+      "a": 1,
+      "e": "주어가 모두 3인칭 단수이므로 is를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사 의문",
+      "q": "빈칸에 알맞은 말은?\nA: Where ___ your parents?\nB: They are in the kitchen.",
+      "c": [
+        "are",
+        "is",
+        "do",
+        "does"
+      ],
+      "a": 0,
+      "e": "주어 your parents가 복수이므로 are를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "be동사 부정",
+      "q": "'우리는 같은 반이 아니다.'를 바르게 옮긴 것은?",
+      "c": [
+        "We don't in the same class.",
+        "We isn't in the same class.",
+        "We not are in the same class.",
+        "We aren't in the same class."
+      ],
+      "a": 3,
+      "e": "be동사 부정문은 be동사 뒤에 not을 붙인다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사",
+      "q": "빈칸에 들어갈 말이 나머지와 다른 것은?",
+      "c": [
+        "You ___ very smart.",
+        "We ___ hungry now.",
+        "Tom ___ in the gym.",
+        "The kids ___ happy."
+      ],
+      "a": 2,
+      "e": "Tom 뒤에는 is, 나머지 복수·you 주어 뒤에는 are를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3인칭 단수",
+      "q": "빈칸에 알맞은 말은?\nMy father ___ coffee every morning.",
+      "c": [
+        "drink",
+        "drinks",
+        "drinking",
+        "is drink"
+      ],
+      "a": 1,
+      "e": "3인칭 단수 주어 뒤 일반동사에 -s를 붙인다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3인칭 단수",
+      "q": "빈칸에 알맞은 말은?\nMy brother ___ TV after dinner.",
+      "c": [
+        "watches",
+        "watchs",
+        "watch",
+        "watching"
+      ],
+      "a": 0,
+      "e": "-ch로 끝나는 동사는 -es를 붙인다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3인칭 단수형",
+      "q": "동사와 3인칭 단수형이 바르게 짝지어진 것은?",
+      "c": [
+        "play – plaies",
+        "do – dos",
+        "wash – washs",
+        "fly – flies"
+      ],
+      "a": 3,
+      "e": "자음+y는 y를 i로 고치고 -es를 붙인다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "일반동사 부정",
+      "q": "빈칸에 알맞은 말은?\nThey ___ eat breakfast on weekends.",
+      "c": [
+        "doesn't",
+        "aren't",
+        "don't",
+        "isn't"
+      ],
+      "a": 2,
+      "e": "복수 주어의 일반동사 부정은 don't+동사원형이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "일반동사 부정",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "He doesn't plays baseball.",
+        "He doesn't play baseball.",
+        "He don't play baseball.",
+        "He isn't play baseball."
+      ],
+      "a": 1,
+      "e": "doesn't 뒤에는 동사원형을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "일반동사 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ your sister go to school by bus?\nB: Yes, she does.",
+      "c": [
+        "Does",
+        "Do",
+        "Is",
+        "Are"
+      ],
+      "a": 0,
+      "e": "3인칭 단수 주어의 의문문은 Does로 시작한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "일반동사 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do your friends like soccer?\nB: No, ___",
+      "c": [
+        "they doesn't.",
+        "they aren't.",
+        "we don't.",
+        "they don't."
+      ],
+      "a": 3,
+      "e": "your friends는 they로 받고 don't로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "일반동사 의문",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "Do you live near here?",
+        "Does Mina have a cat?",
+        "Does he likes music?",
+        "Do they speak English?"
+      ],
+      "a": 2,
+      "e": "Does 의문문에서는 동사원형 like를 써야 한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "일반동사",
+      "q": "빈칸에 알맞은 말은?\nShe ___ two brothers.",
+      "c": [
+        "have",
+        "has",
+        "haves",
+        "is have"
+      ],
+      "a": 1,
+      "e": "have의 3인칭 단수형은 has이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "빈도부사",
+      "q": "빈도부사의 위치가 바른 문장은?",
+      "c": [
+        "I always get up at seven.",
+        "I get always up at seven.",
+        "Always I get up at seven.",
+        "I get up at seven always."
+      ],
+      "a": 0,
+      "e": "빈도부사는 일반동사 앞, be동사 뒤에 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "빈도부사",
+      "q": "빈칸에 알맞은 말은?\n나는 학교에 절대 늦지 않는다.\nI am ___ late for school.",
+      "c": [
+        "always",
+        "usually",
+        "often",
+        "never"
+      ],
+      "a": 3,
+      "e": "'절대 ~않다'는 never로 나타낸다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "명령문",
+      "q": "빈칸에 알맞은 말은?\n___ your hands before lunch.",
+      "c": [
+        "Washes",
+        "Washing",
+        "Wash",
+        "To wash"
+      ],
+      "a": 2,
+      "e": "명령문은 동사원형으로 시작한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "부정 명령문",
+      "q": "빈칸에 알맞은 말은?\n___ late for class again.",
+      "c": [
+        "Don't",
+        "Don't be",
+        "Not be",
+        "Doesn't be"
+      ],
+      "a": 1,
+      "e": "be동사 부정 명령문은 Don't be ~이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "Let's",
+      "q": "빈칸에 알맞은 말은?\nIt's hot. Let's ___ some ice cream.",
+      "c": [
+        "eat",
+        "eats",
+        "eating",
+        "to eat"
+      ],
+      "a": 0,
+      "e": "Let's 뒤에는 동사원형이 온다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "Let's 부정",
+      "q": "'오늘은 밖에 나가지 말자.'를 바르게 옮긴 것은?",
+      "c": [
+        "Let's don't go out today.",
+        "Don't let's go out today.",
+        "Let's go not out today.",
+        "Let's not go out today."
+      ],
+      "a": 3,
+      "e": "Let's의 부정은 Let's not+동사원형이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "명령문",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "Open the window, please.",
+        "Please sit down.",
+        "Is careful on the stairs.",
+        "Don't touch the paint."
+      ],
+      "a": 2,
+      "e": "명령문은 동사원형으로 시작하므로 Be careful이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "명령문 뜻",
+      "q": "다음 표지판 문구의 뜻으로 알맞은 것은?\nPlease keep off the grass.",
+      "c": [
+        "잔디를 깎아 주세요.",
+        "잔디밭에 들어가지 마세요.",
+        "잔디에 물을 주세요.",
+        "잔디밭에서 쉬세요."
+      ],
+      "a": 1,
+      "e": "keep off는 '~에 들어가지 않다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "명령문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I'm cold.\nB: ___",
+      "c": [
+        "Put on your jacket.",
+        "Take off your jacket.",
+        "Open the window.",
+        "Eat some ice cream."
+      ],
+      "a": 0,
+      "e": "춥다고 했으므로 재킷을 입으라고 말한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "명령문",
+      "q": "빈칸에 공통으로 알맞은 말은?\n• ___ quiet in the library.\n• ___ kind to your friends.",
+      "c": [
+        "Do",
+        "Are",
+        "Is",
+        "Be"
+      ],
+      "a": 3,
+      "e": "형용사 앞의 명령문은 Be로 시작한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "주격",
+      "q": "빈칸에 알맞은 말은?\nThis is Mr. Lee. ___ is my English teacher.",
+      "c": [
+        "His",
+        "Him",
+        "He",
+        "She"
+      ],
+      "a": 2,
+      "e": "Mr. Lee를 받는 주격 대명사는 He이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "소유격",
+      "q": "빈칸에 알맞은 말은?\nI have a cat. ___ name is Coco.",
+      "c": [
+        "It's",
+        "Its",
+        "It",
+        "Their"
+      ],
+      "a": 1,
+      "e": "고양이의 이름이므로 소유격 Its를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "목적격",
+      "q": "빈칸에 알맞은 말은?\nMy grandparents live in Jeju. I miss ___ a lot.",
+      "c": [
+        "them",
+        "they",
+        "their",
+        "theirs"
+      ],
+      "a": 0,
+      "e": "miss의 목적어 자리이므로 목적격 them을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "소유대명사",
+      "q": "빈칸에 알맞은 말은?\nThis umbrella is not mine. It's ___.",
+      "c": [
+        "her",
+        "she",
+        "she's",
+        "hers"
+      ],
+      "a": 3,
+      "e": "'그녀의 것'은 소유대명사 hers이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "인칭대명사",
+      "q": "밑줄 친 부분이 어법상 옳지 않은 것은?",
+      "c": [
+        "We love our school.",
+        "Is this your pen?",
+        "Please help I.",
+        "They know him."
+      ],
+      "a": 2,
+      "e": "동사 help의 목적어는 목적격 me를 써야 한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "인칭대명사",
+      "q": "대명사 변화가 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "I – my – me – mine",
+        "we – our – us – ours",
+        "she – her – her – hers",
+        "they – their – them – theirs"
+      ],
+      "a": 1,
+      "e": "we의 소유대명사는 ours이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "소유격",
+      "q": "빈칸에 알맞은 말은?\nMina and Jun are in the same club. ___ club is very popular.",
+      "c": [
+        "Their",
+        "They",
+        "Them",
+        "Theirs"
+      ],
+      "a": 0,
+      "e": "명사 club 앞에는 소유격 Their를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "지시대명사",
+      "q": "빈칸에 알맞은 말은?\nA: Are ___ your shoes?\nB: Yes, they are.",
+      "c": [
+        "this",
+        "it",
+        "that",
+        "these"
+      ],
+      "a": 3,
+      "e": "복수 명사를 가리키고 they로 답하므로 these를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "소유격 's",
+      "q": "빈칸에 알맞은 말은?\n이것은 우리 엄마의 차이다.\nThis is my ___ car.",
+      "c": [
+        "moms",
+        "moms'",
+        "mom's",
+        "mom"
+      ],
+      "a": 2,
+      "e": "사람의 소유는 명사에 's를 붙여 나타낸다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "인칭대명사",
+      "q": "밑줄 친 it이 가리키는 것은?\nI have a new bike. I ride it to school every day.",
+      "c": [
+        "학교",
+        "자전거",
+        "나",
+        "매일"
+      ],
+      "a": 1,
+      "e": "it은 앞 문장의 a new bike를 가리킨다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "현재진행",
+      "q": "빈칸에 알맞은 말은?\nShe ___ a letter now.",
+      "c": [
+        "is writing",
+        "writes",
+        "is writeing",
+        "are writing"
+      ],
+      "a": 0,
+      "e": "write는 e를 빼고 -ing를 붙여 writing이 된다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "-ing형",
+      "q": "동사와 -ing형이 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "swim – swimming",
+        "make – making",
+        "lie – lying",
+        "run – runing"
+      ],
+      "a": 3,
+      "e": "run은 끝 자음을 겹쳐 running으로 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "진행 부정",
+      "q": "빈칸에 알맞은 말은?\nI ___ watching TV. I'm doing my homework.",
+      "c": [
+        "don't",
+        "isn't",
+        "am not",
+        "not"
+      ],
+      "a": 2,
+      "e": "현재진행 부정은 be동사+not+-ing이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "진행 의문",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What are you doing?\nB: ___",
+      "c": [
+        "I cook dinner.",
+        "I'm cooking dinner.",
+        "Yes, I am.",
+        "I'm a cook."
+      ],
+      "a": 1,
+      "e": "지금 무엇을 하는지 물었으므로 현재진행으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "진행 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ he sleeping now?\nB: No, he isn't.",
+      "c": [
+        "Is",
+        "Does",
+        "Do",
+        "Are"
+      ],
+      "a": 0,
+      "e": "현재진행 의문문은 be동사로 시작한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "진행 불가 동사",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "They are playing soccer.",
+        "He is reading a book.",
+        "We are having lunch.",
+        "I am knowing the answer."
+      ],
+      "a": 3,
+      "e": "know는 상태동사라 진행형으로 쓰지 않는다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "현재 vs 진행",
+      "q": "빈칸에 알맞은 말은?\nListen! Someone ___ the piano.",
+      "c": [
+        "plays",
+        "play",
+        "is playing",
+        "playing"
+      ],
+      "a": 2,
+      "e": "Listen!은 지금 일어나는 일이므로 현재진행을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "현재 vs 진행",
+      "q": "빈칸에 알맞은 말은?\nMy mom usually ___ to work by subway.",
+      "c": [
+        "is going",
+        "goes",
+        "go",
+        "going"
+      ],
+      "a": 1,
+      "e": "usually는 습관을 나타내므로 현재시제를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "현재진행",
+      "q": "'아이들이 수영장에서 수영하고 있다.'를 바르게 옮긴 것은?",
+      "c": [
+        "The kids are swimming in the pool.",
+        "The kids is swimming in the pool.",
+        "The kids are swiming in the pool.",
+        "The kids swimming in the pool."
+      ],
+      "a": 0,
+      "e": "복수 주어+are+swimming(자음 겹침)으로 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "자기소개",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Where are you from?\nB: ___",
+      "c": [
+        "I'm fine.",
+        "I'm twelve.",
+        "I'm a student.",
+        "I'm from Canada."
+      ],
+      "a": 3,
+      "e": "출신을 물었으므로 I'm from ~으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "나이 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: ___\nB: I'm fourteen years old.",
+      "c": [
+        "How are you?",
+        "What do you do?",
+        "How old are you?",
+        "Who are you?"
+      ],
+      "a": 2,
+      "e": "나이를 말하므로 How old are you?로 묻는다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "소개하기",
+      "q": "다른 사람을 소개하는 말로 알맞은 것은?",
+      "c": [
+        "I am Jake.",
+        "This is my friend, Jake.",
+        "Who is Jake?",
+        "Jake, nice to meet you."
+      ],
+      "a": 1,
+      "e": "This is ~는 다른 사람을 소개할 때 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "헤어질 때",
+      "q": "헤어질 때 하는 말이 아닌 것은?",
+      "c": [
+        "Long time no see.",
+        "See you later.",
+        "Have a nice day.",
+        "Bye for now."
+      ],
+      "a": 0,
+      "e": "Long time no see는 오랜만에 만났을 때 하는 말이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "안부 답하기",
+      "q": "대화의 빈칸에 알맞지 않은 것은?\nA: How's it going?\nB: ___",
+      "c": [
+        "Not bad.",
+        "Pretty good.",
+        "Great, thanks.",
+        "I'm going to school."
+      ],
+      "a": 3,
+      "e": "How's it going?은 안부를 묻는 말이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "이름 철자",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How do you spell your name?\nB: ___",
+      "c": [
+        "My name is Kevin.",
+        "I'm Kevin's friend.",
+        "K-E-V-I-N.",
+        "Call me later."
+      ],
+      "a": 2,
+      "e": "철자를 물었으므로 알파벳으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "자기소개",
+      "q": "글을 읽고 Sora에 대해 알 수 없는 것은?\nHi, I'm Sora. I'm in the first grade. I have one brother. I want to be a singer.",
+      "c": [
+        "학년",
+        "좋아하는 과목",
+        "형제 수",
+        "장래 희망"
+      ],
+      "a": 1,
+      "e": "좋아하는 과목은 나오지 않는다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "인사 상황",
+      "q": "아침에 선생님을 만났을 때 할 말로 알맞은 것은?",
+      "c": [
+        "Good morning, Ms. Park.",
+        "Good night, Ms. Park.",
+        "Goodbye, Ms. Park.",
+        "Happy birthday, Ms. Park."
+      ],
+      "a": 0,
+      "e": "아침 인사는 Good morning이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "감사 응답",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Thank you for your help.\nB: ___",
+      "c": [
+        "I'm sorry.",
+        "Nice to meet you.",
+        "Me, too.",
+        "You're welcome."
+      ],
+      "a": 3,
+      "e": "감사의 말에는 You're welcome으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "자기소개",
+      "q": "다음 문장을 영어로 바르게 옮긴 것은?\n나는 그림 그리기에 관심이 있다.",
+      "c": [
+        "I'm interesting in drawing.",
+        "I interested in drawing.",
+        "I'm interested in drawing.",
+        "I'm interested at drawing."
+      ],
+      "a": 2,
+      "e": "'~에 관심이 있다'는 be interested in이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "선호 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Do you like spicy food?\nB: ___ I love it!",
+      "c": [
+        "No, I don't.",
+        "Yes, I do.",
+        "Yes, I am.",
+        "No, I'm not."
+      ],
+      "a": 1,
+      "e": "뒤에 I love it!이 오므로 긍정으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "선호 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: ___\nB: My favorite color is blue.",
+      "c": [
+        "What is your favorite color?",
+        "Do you have a blue pen?",
+        "What color is the sky?",
+        "Where is my blue bag?"
+      ],
+      "a": 0,
+      "e": "가장 좋아하는 색을 묻는 질문이 알맞다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "선호 표현",
+      "q": "좋아하는 것을 말하는 표현이 아닌 것은?",
+      "c": [
+        "I'm into it.",
+        "I really enjoy it.",
+        "I'm a big fan of it.",
+        "I can't stand it."
+      ],
+      "a": 3,
+      "e": "can't stand는 '참을 수 없다', 싫다는 뜻이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "like+동명사",
+      "q": "빈칸에 알맞은 말은?\nI like ___ to music in my room.",
+      "c": [
+        "listens",
+        "listened",
+        "listening",
+        "am listen"
+      ],
+      "a": 2,
+      "e": "like 뒤에는 동명사나 to부정사가 온다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "동의하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I like cats.\nB: ___ They're so cute.",
+      "c": [
+        "Me, neither.",
+        "Me, too.",
+        "I don't.",
+        "No, thanks."
+      ],
+      "a": 1,
+      "e": "같이 좋아할 때는 Me, too라고 말한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "좋아하는 이유",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Why do you like summer?\nB: ___",
+      "c": [
+        "Because I can swim in the sea.",
+        "I like winter better.",
+        "It is in August.",
+        "Yes, I like summer."
+      ],
+      "a": 0,
+      "e": "Why로 물으면 Because로 이유를 말한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "선호 비교",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Which do you like better, tea or milk?\nB: ___",
+      "c": [
+        "Yes, I do.",
+        "I don't like it.",
+        "I drink it every day.",
+        "I like milk better."
+      ],
+      "a": 3,
+      "e": "둘 중 무엇을 더 좋아하는지 하나를 골라 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "좋아하는 것",
+      "q": "글의 내용과 일치하는 것은?\nMy favorite sport is badminton. I play it with my dad every Sunday.",
+      "c": [
+        "배드민턴을 싫어한다.",
+        "혼자 배드민턴을 친다.",
+        "일요일마다 아빠와 배드민턴을 친다.",
+        "토요일마다 운동한다."
+      ],
+      "a": 2,
+      "e": "일요일마다 아빠와 배드민턴을 친다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "어휘: 요일",
+      "q": "'Wednesday'의 다음 요일은?",
+      "c": [
+        "Tuesday",
+        "Thursday",
+        "Friday",
+        "Monday"
+      ],
+      "a": 1,
+      "e": "수요일 다음은 목요일 Thursday이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 학교",
+      "q": "'a room for reading and borrowing books'에 해당하는 것은?",
+      "c": [
+        "library",
+        "gym",
+        "cafeteria",
+        "classroom"
+      ],
+      "a": 0,
+      "e": "책을 읽고 빌리는 곳은 library(도서관)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 성격",
+      "q": "'친절한'을 뜻하는 단어는?",
+      "c": [
+        "shy",
+        "lazy",
+        "funny",
+        "kind"
+      ],
+      "a": 3,
+      "e": "kind는 친절한, shy는 수줍은이라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 반의어",
+      "q": "반의어끼리 짝지어진 것은?",
+      "c": [
+        "happy – glad",
+        "big – large",
+        "tall – short",
+        "smart – clever"
+      ],
+      "a": 2,
+      "e": "tall과 short는 반대말이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 동물",
+      "q": "나머지 셋을 모두 포함하는 단어는?",
+      "c": [
+        "rabbit",
+        "animal",
+        "tiger",
+        "horse"
+      ],
+      "a": 1,
+      "e": "rabbit, tiger, horse는 모두 animal이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 가족",
+      "q": "'my father's mother'를 뜻하는 단어는?",
+      "c": [
+        "grandmother",
+        "aunt",
+        "sister",
+        "daughter"
+      ],
+      "a": 0,
+      "e": "아버지의 어머니는 grandmother(할머니)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 취미",
+      "q": "'collect'의 뜻으로 알맞은 것은?",
+      "c": [
+        "그리다",
+        "고치다",
+        "버리다",
+        "모으다"
+      ],
+      "a": 3,
+      "e": "collect stamps는 '우표를 모으다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "어휘: 시간",
+      "q": "'I go to bed at nine thirty.'의 시각은?",
+      "c": [
+        "9시 13분",
+        "3시 9분",
+        "9시 30분",
+        "9시 3분"
+      ],
+      "a": 2,
+      "e": "nine thirty는 9시 30분이다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "Ben이 매일 아침 하는 일은?\nBen gets up at six. He walks his dog every morning. Then he eats breakfast.",
+      "c": [
+        "조깅하기",
+        "개 산책시키기",
+        "신문 읽기",
+        "아침 요리하기"
+      ],
+      "a": 1,
+      "e": "매일 아침 개를 산책시킨다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nI have a best friend, Yuna. She is funny and kind. We always eat lunch together.",
+      "c": [
+        "가장 친한 친구 소개",
+        "점심 메뉴 소개",
+        "학교 규칙",
+        "가족 소개"
+      ],
+      "a": 0,
+      "e": "가장 친한 친구 Yuna를 소개하는 글이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "심정 추론",
+      "q": "글쓴이의 심정으로 알맞은 것은?\nToday is my birthday. My friends gave me a surprise party. I love them!",
+      "c": [
+        "sad",
+        "scared",
+        "bored",
+        "happy"
+      ],
+      "a": 3,
+      "e": "깜짝 파티를 받아 기쁜 심정이다.",
+      "std": "[9영01-05]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nJoin our Science Club! We do fun experiments every Friday. Come to Room 201.",
+      "c": [
+        "실험 결과를 알리려고",
+        "교실을 바꾸려고",
+        "동아리 가입을 권하려고",
+        "선생님을 소개하려고"
+      ],
+      "a": 2,
+      "e": "Join our Science Club!으로 가입을 권하는 글이다.",
+      "std": "[9영01-06]"
+    },
+    {
+      "t": "내용 일치",
+      "q": "글의 내용과 일치하지 않는 것은?\nMy name is Hana. I'm 13. I live with my parents and a cat. I don't like math.",
+      "c": [
+        "Hana는 13살이다.",
+        "Hana는 수학을 좋아한다.",
+        "Hana는 부모님과 산다.",
+        "Hana는 고양이를 키운다."
+      ],
+      "a": 1,
+      "e": "Hana는 수학을 좋아하지 않는다고 했다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "순서 파악",
+      "q": "글에서 가장 나중에 하는 일은?\nI go home at four. First, I do my homework. Then I play games. Finally, I eat dinner.",
+      "c": [
+        "저녁 먹기",
+        "숙제하기",
+        "게임하기",
+        "집에 가기"
+      ],
+      "a": 0,
+      "e": "Finally 뒤의 저녁 먹기가 마지막이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "의사소통",
+      "q": "친구에게 함께 하자고 제안하는 말은?",
+      "c": [
+        "I play tennis well.",
+        "Do you have a tennis racket?",
+        "Tennis is my favorite sport.",
+        "Let's play tennis after school."
+      ],
+      "a": 3,
+      "e": "Let's ~는 함께 하자는 제안 표현이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "소개 글쓰기",
+      "q": "자기소개 글의 빈칸에 알맞은 말은?\nHello, everyone. ___ name is Minsu.",
+      "c": [
+        "I",
+        "Me",
+        "My",
+        "Mine"
+      ],
+      "a": 2,
+      "e": "명사 name 앞에는 소유격 My를 쓴다.",
+      "std": "[9영02-07]"
     }
   ]
 }
