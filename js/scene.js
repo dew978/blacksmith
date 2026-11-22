@@ -710,7 +710,7 @@ export class World {
     const rim = new THREE.PointLight(0x3a6cff, 2, 5, 2); rim.position.set(0, 3.6, -8.6); this.scene.add(rim);
   }
   setSpiritMood(kind) {
-    const c = { calm: [1.2, 4, 5], happy: [2.5, 5.5, 5], angry: [6, 0.8, 0.4], doom: [6, 0.3, 0.2] }[kind];
+    const c = { calm: [1.2, 4, 5], happy: [2.5, 5.5, 5], angry: [6, 0.8, 0.4], doom: [6, 0.3, 0.2], sleep: [0.08, 0.25, 0.3] }[kind];
     this.spiritMood.target.setRGB(...c);
     this.spiritMood.flare = kind === 'calm' ? 0 : 1;
     this.pageSpeed = kind === 'happy' ? 1.4 : kind === 'angry' || kind === 'doom' ? 2.2 : 0.25;

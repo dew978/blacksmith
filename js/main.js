@@ -932,7 +932,7 @@ async function victory() {
   S.mode = 'over'; refresh(); $('#hud').classList.add('hidden');
   world.setSpiritMood('happy'); sfx.play('great'); sfx.play('bell');
   world.goStation('overview', 1.2);
-  openPanel(`<h2>계약 완수</h2><p class="sub">7일째 종소리가 울리자 서고지기가 고개를 숙였다. "그대의 검에는 잊히지 않을 지식이 담겼다." 대장간의 불씨는 이제 당신의 것이다.</p>
+  openPanel(`<h2>계약 완수</h2><p class="sub">7일째 종소리가 울리자 서고지기가 고개를 숙였다. "이 검들에 담긴 것만큼은, 다시는 잊지 마라." 잠겼던 문이 열리고 눈부신 빛이 쏟아졌다. 눈을 뜨니 도서관 책상 위, 시험 날 아침이었다. 문제집 여백에 처음 보는 검 그림이 그려져 있었다.</p>
     ${summaryHTML()}<div class="btnrow"><button id="end-notes" class="ghost">오답 노트</button><button id="end-retry" class="primary">새 계약 시작</button></div>`);
   bindEnd();
 }
@@ -1195,14 +1195,132 @@ $('#btn-howto').onclick = () => openHowTo();
 $('#opt-timer').checked = settings.timer;
 $('#opt-timer').onchange = (e) => { settings.timer = e.target.checked; store.set('jf_settings', settings); };
 $('#btn-start').onclick = () => {
-  sfx.init(); sfx.play('bell');
+  sfx.init();
+  if (!store.get('jf_intro', 0)) { playIntro(); return; }
+  sfx.play('bell');
   $('#title-screen').classList.add('hidden'); $('#hud').classList.remove('hidden');
   newGame();
 };
+$('#btn-intro').onclick = () => { sfx.init(); playIntro(); };
+
+// ───────── 프롤로그 컷씬 ─────────
+// 시험 전날 도서관에서 잠들었다가 망각의 서고의 대장간에서 깨어나는 이야기. 클릭·Space로 넘기고 Esc로 건너뛴다.
+const CS = { on: false, skip: false, next: null };
+const csSleep = (ms) => new Promise((res) => {
+  if (CS.skip) return res();
+  const t = setTimeout(res, ms);
+  CS.next = () => { clearTimeout(t); res(); };
+});
+function csShot(pos, look, speed = 1.2) { world.tgtPos.set(...pos); world.tgtLook.set(...look); world.camSpeed = speed; }
+function csCut(pos, look) { csShot(pos, look, 1e4); world.camPos.set(...pos); world.camLook.set(...look); }
+async function csFade(to, ms) {
+  const f = $('#cs-fade'); f.style.transition = `opacity ${ms}ms ease`; f.style.opacity = to;
+  await csSleep(ms);
+}
+async function csDark(a, b, ms) {
+  const t0 = performance.now();
+  while (!CS.skip) {
+    const k = Math.min(1, (performance.now() - t0) / ms);
+    world.darkness = a + (b - a) * k;
+    if (k >= 1) break;
+    await new Promise((r) => setTimeout(r, 16));
+  }
+}
+async function csLine(who, text, hold) {
+  if (CS.skip) return;
+  const box = $('#cs-sub'), body = $('#cs-text');
+  box.className = who ? 'speak' : 'narr'; $('#cs-name').textContent = who || ''; body.textContent = '';
+  void box.offsetWidth; box.classList.add('show');
+  if (who) sfx.play('ui');
+  let i = 0, typing = true;
+  await new Promise((res) => {
+    CS.next = () => { typing = false; };
+    const tick = () => {
+      if (CS.skip || !typing) { body.textContent = text; return res(); }
+      body.textContent = text.slice(0, ++i);
+      if (i >= text.length) return res();
+      setTimeout(tick, 34);
+    };
+    tick();
+  });
+  await csSleep(hold ?? Math.max(1800, text.length * 60));
+  box.classList.remove('show');
+  await csSleep(280);
+}
+async function playIntro() {
+  if (CS.on) return;
+  CS.on = true; CS.skip = false;
+  if (S.cur) { world.scene.remove(S.cur.car); S.cur = null; }
+  S.mode = 'cutscene'; view = 'cine'; refresh();
+  $('#title-screen').classList.add('hidden'); $('#hud').classList.add('hidden'); closeModal();
+  $('#cutscene').classList.remove('hidden');
+  const fade = $('#cs-fade'); fade.style.transition = 'none'; fade.style.opacity = 1;
+  world.darkness = 0.85; world.setRack([]); world.setSpiritMood('sleep');
+  world.candles.forEach((_, i) => world.setCandle(i, false));
+  csCut([0, 1.62, 4.05], [0, 1.35, 0]);
+  await csSleep(700);
+  await csLine('', '시험 전날 밤, 도서관 맨 구석 자리.');
+  await csLine('', '펼쳐 둔 문제집 위로, 고개가 천천히 떨어졌다.');
+  sfx.play('whoosh');
+  await csFade(0, 2200);
+  await csLine('', '눈을 뜨니 낯선 대장간이었다. 화로의 불은 거의 꺼져 있었다.');
+  // 철창 너머에서 눈이 뜨인다
+  csShot([0.35, 1.7, -1.5], [0, 2.6, -7], 0.9);
+  await csSleep(1800);
+  world.setSpiritMood('happy'); sfx.play('spirit'); world.shake(0.015);
+  await csSleep(700);
+  await csLine('망각의 서고지기', '…또 하나 굴러들어왔구나.');
+  world.setSpiritMood('calm');
+  await csLine('망각의 서고지기', '여기는 망각의 서고. 외우다 만 것, 대충 넘긴 것, 시험이 끝나자마자 흘려버린 것들이 가라앉는 곳이지.');
+  await csLine('망각의 서고지기', '네가 잊어버린 것들도, 전부 여기 있다.');
+  // 화로가 살아난다
+  csShot([-0.9, 1.7, 0.6], [-3.3, 0.9, -2.4], 1.3);
+  sfx.play('heat');
+  await csDark(0.85, 0.3, 1800);
+  await csLine('망각의 서고지기', '꺼져 가던 이 대장간에 불씨를 빌려주마. 잊힌 지식을 다시 두드려 검으로 벼려라.');
+  // 모루와 망치
+  csShot([0, 2.1, 2.2], [0, 1.2, -0.3], 1.3);
+  await csSleep(1100);
+  await csLine('망각의 서고지기', '문제를 맞혀야 망치를 들 수 있다. 검이 버틸지 부서질지는… 네 운에 달렸지.');
+  // 제단에 촛불이 켜진다
+  csShot([0, 1.75, -1.75], [0, 1.2, -4.4], 1.2);
+  await csSleep(1300);
+  for (let i = 0; i < 3 && !CS.skip; i++) { world.setCandle(i, true); sfx.play('place'); await csSleep(500); }
+  await csDark(0.3, 0, 900);
+  await csLine('망각의 서고지기', '대가는 7일. 날마다 정해진 가치만큼의 검을 이 제단에 바쳐라.');
+  world.setSpiritMood('angry'); world.shake(0.035); sfx.play('blowout');
+  await csLine('망각의 서고지기', '모자라면 촛불이 하나씩 꺼진다. 셋이 모두 꺼지면… 너 역시 이곳에 잊힌다.');
+  world.setSpiritMood('calm');
+  // 등 뒤에서 문이 잠긴다
+  csShot([0, 1.62, 1.6], [0, 1.4, 4.5], 2.2);
+  await csSleep(1200);
+  if (!CS.skip) { sfx.play('dull'); sfx.play('crack'); world.shake(0.1); }
+  await csLine('', '쿵. 등 뒤에서 문이 잠겼다.');
+  await csLine('', '돌아가려면, 7일을 버텨야 한다.');
+  endIntro();
+}
+function endIntro() {
+  if (!CS.on) return;
+  CS.on = false; CS.skip = false; CS.next = null;
+  $('#cutscene').classList.add('hidden'); $('#cs-sub').classList.remove('show');
+  world.darkness = 0; world.setSpiritMood('calm');
+  store.set('jf_intro', 1);
+  sfx.play('bell');
+  $('#hud').classList.remove('hidden');
+  newGame();
+}
+function skipIntro() { if (!CS.on) return; CS.skip = true; if (CS.next) CS.next(); }
+$('#cs-skip').onclick = (e) => { e.stopPropagation(); skipIntro(); };
+$('#cutscene').onclick = () => { if (CS.next) CS.next(); };
 
 window.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
   const k = e.key;
+  if (CS.on) {
+    if (k === 'Escape') skipIntro();
+    else if (k === ' ' || k === 'Enter') { if (CS.next) CS.next(); }
+    e.preventDefault(); return;
+  }
   if (S.mode === 'question') {
     if (/^[1-6]$/.test(k)) { answer(+k - 1); e.preventDefault(); }
     else if ((k === 'Enter' || k === ' ') && Q.pendingWrong) { confirmWrong(); e.preventDefault(); }

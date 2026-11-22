@@ -74,10 +74,10 @@
     <h1>지식의 대장간</h1>
     <p class="tagline">아는 만큼 단단해지는 검</p>
     <p class="story">
-      망각의 서고지기가 꺼져 가던 대장간에 불씨를 빌려주었다.<br>
-      대가는 7일 동안 매일 정해진 가치만큼의 <b>지식의 검</b>.<br>
-      문제를 맞히면 검이 강해지고, 틀리면 금이 간다.<br>
-      제단의 촛불 세 개가 모두 꺼지면 대장간은 망각에 삼켜진다.
+      시험 전날 밤, 도서관에서 잠든 당신은 <b>망각의 서고</b>에서 눈을 떴다.<br>
+      잊어버린 지식이 가라앉는 곳. 문은 잠겼고, 서고지기는 대가를 원한다.<br>
+      7일 동안 매일, 잊힌 지식을 두드려 벼린 <b>지식의 검</b>을 바쳐라.<br>
+      제단의 촛불 세 개가 모두 꺼지면 당신도 이곳에 잊힌다.
     </p>
     <div class="title-btns">
       <button id="btn-start" class="primary big">대장간 문 열기</button>
@@ -85,11 +85,19 @@
         <button id="btn-qset" class="ghost">문제 세트</button>
         <button id="btn-notes2" class="ghost">오답 노트</button>
         <button id="btn-howto" class="ghost">플레이 방법</button>
+        <button id="btn-intro" class="ghost">프롤로그</button>
       </div>
       <label class="opt"><input type="checkbox" id="opt-timer"> 문제마다 20초 제한 시간</label>
     </div>
     <p class="qinfo" id="qinfo"></p>
   </div>
+</div>
+
+<div id="cutscene" class="hidden">
+  <div class="cs-bar top"></div><div class="cs-bar bottom"></div>
+  <div id="cs-fade"></div>
+  <div id="cs-sub"><div id="cs-name"></div><div id="cs-text"></div><div class="cs-more">▼</div></div>
+  <button id="cs-skip" class="ghost small">건너뛰기 <kbd>Esc</kbd></button>
 </div>
 
 <div id="loading">불씨를 지피는 중…</div>
