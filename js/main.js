@@ -436,7 +436,17 @@ function resolveStrike(correct, fever) {
     flashRed();
     popup('파괴', above, 'brk');
   } else {
-    if (c.level !== before) setLyingBladeLevel(c.holder, c.level);
+    if (c.level !== before) {
+      // 단계가 바뀌면 검의 모양 자체가 바뀐다: 새 모양이 부풀었다 가라앉으며 이름을 알린다
+      setLyingBladeLevel(c.holder, c.level);
+      const up = c.level > before, h = c.holder;
+      wait(up ? 0.32 : 0.2, k => { const s = 1 + (up ? 0.22 : 0.08) * Math.sin(k * Math.PI) * (1 - k * 0.3); h.scale.setScalar(s); }).then(() => h.scale.setScalar(1));
+      if (up) {
+        world.spawnSparks(ip.clone().add(new THREE.Vector3(-0.1, 0.03, 0)), 30, 0xfff1c8, { speed: 1.6, up: 0.6, life: 0.7, spread: 0.45 });
+        const sp = world.toScreen(ip.clone().add(new THREE.Vector3(0, -0.12, 0)));
+        setTimeout(() => popup(`✦ ${bladeName(c.level)}`, sp, 'sm cyan'), 180);
+      }
+    }
     c.flash = 0.08;
     c.maxValue = Math.max(c.maxValue, value(c.level));
     S.stats.best = Math.max(S.stats.best, c.level);

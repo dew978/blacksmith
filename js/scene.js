@@ -3,6 +3,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const rand = (a, b) => a + Math.random() * (b - a);
 const lerp = (a, b, k) => a + (b - a) * k;
@@ -94,64 +95,286 @@ function fireTexture() {
   });
 }
 
-// ───────── 검 외형 ─────────
-const LOOKS = [
-  { lv: 0, color: 0x6e4a32, rough: 0.8, metal: 0.35, guard: 0x4a3626, glow: 0x000000, gi: 0 },
-  { lv: 3, color: 0x8f8e88, rough: 0.5, metal: 0.75, guard: 0x5a4a3a, glow: 0x000000, gi: 0 },
-  { lv: 6, color: 0xcdd6de, rough: 0.22, metal: 0.95, guard: 0x8a7a5a, glow: 0x223344, gi: 0.15 },
-  { lv: 9, color: 0xf1c862, rough: 0.2, metal: 1.0, guard: 0xd9a640, glow: 0x553300, gi: 0.35 },
-  { lv: 12, color: 0x9ff2ff, rough: 0.12, metal: 0.9, guard: 0xf2d27a, glow: 0x2aa6c8, gi: 0.9 },
-];
-function lookFor(level) {
-  let a = LOOKS[0], b = LOOKS[LOOKS.length - 1];
-  for (let i = 0; i < LOOKS.length - 1; i++) if (level >= LOOKS[i].lv && level <= LOOKS[i + 1].lv) { a = LOOKS[i]; b = LOOKS[i + 1]; break; }
-  if (level >= b.lv) a = b;
-  const k = a === b ? 0 : (level - a.lv) / (b.lv - a.lv);
-  const c = new THREE.Color(a.color).lerp(new THREE.Color(b.color), k);
-  const gl = new THREE.Color(a.glow).lerp(new THREE.Color(b.glow), k);
-  return { color: c, rough: lerp(a.rough, b.rough, k), metal: lerp(a.metal, b.metal, k), guard: new THREE.Color(a.guard).lerp(new THREE.Color(b.guard), k), glow: gl, gi: lerp(a.gi, b.gi, k) };
+// ───────── 검 외형: 강화 단계마다 다른 모양 ─────────
+// 금속이 반사할 주변 환경 (World가 만들 때 채운다). 없으면 금·강철이 갈색으로 죽어 보인다.
+let BLADE_ENV = null;
+const mstd = (color, rough = 0.4, metal = 0.9, emissive = 0x000000, ei = 0) => new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: metal, emissive, emissiveIntensity: ei, envMap: BLADE_ENV, envMapIntensity: 0.15 });
+const mglow = (r, g, b) => new THREE.MeshBasicMaterial({ color: new THREE.Color(r, g, b), toneMapped: false });
+function bladeMat(color, rough, metal, glow = 0x000000, gi = 0) {
+  const m = mstd(color, rough, metal, glow, gi);
+  m.userData.baseEmissive = new THREE.Color(glow); m.userData.baseEI = gi;
+  return m;
 }
+// 오른쪽 윤곽(밑동→끝)을 주면 좌우 대칭 모양을 만든다. 끝점 x가 0이면 뾰족한 끝.
+function sym(pts, holes = []) {
+  const s = new THREE.Shape();
+  s.moveTo(-pts[0][0], pts[0][1]);
+  for (const [x, y] of pts) s.lineTo(x, y);
+  for (let i = pts.length - 1; i >= 1; i--) {
+    if (i === pts.length - 1 && pts[i][0] === 0) continue;
+    s.lineTo(-pts[i][0], pts[i][1]);
+  }
+  s.closePath();
+  for (const h of holes) s.holes.push(h);
+  return s;
+}
+function shapeOf(pts) { const s = new THREE.Shape(); s.moveTo(pts[0][0], pts[0][1]); for (const [x, y] of pts.slice(1)) s.lineTo(x, y); s.closePath(); return s; }
+function flat(shape, mat, depth = 0.008, bev = 0.006) {
+  const g = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: bev > 0, bevelThickness: bev, bevelSize: bev, bevelSegments: 1, curveSegments: 12 });
+  g.translate(0, 0, -depth / 2);
+  const m = new THREE.Mesh(g, mat); m.castShadow = true; return m;
+}
+function part(root, geo, mat, x = 0, y = 0, z = 0) { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; root.add(m); return m; }
+const Box = (w, h, d) => new THREE.BoxGeometry(w, h, d);
+const FACE = 0.0103; // 칼날 표면 높이 (앞뒤)
+function bothFaces(root, geo, mat, x, y) { part(root, geo, mat, x, y, FACE); part(root, geo, mat, x, y, -FACE); }
+// 손잡이: 아래 끝 y를 돌려준다
+function hilt(root, { len = 0.16, r = 0.018, color = 0x3a2214, wraps = 0, wrapMat } = {}) {
+  part(root, new THREE.CylinderGeometry(r, r * 1.1, len, 10), mstd(color, 0.85, 0.05), 0, -0.034 - len / 2, 0);
+  for (let i = 0; i < wraps; i++) {
+    const t = part(root, new THREE.TorusGeometry(r * 1.06, 0.0035, 5, 14), wrapMat || mstd(0x1a0f08, 0.8, 0.2), 0, -0.034 - len * (i + 0.5) / wraps, 0);
+    t.rotation.x = Math.PI / 2;
+  }
+  return -0.034 - len;
+}
+function seeded(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+
+const BLADES = [
+  // 0 녹슨 깃펜칼: 펜촉 모양, 이 빠진 날, 깃털 손잡이
+  (root) => {
+    const mat = bladeMat(0x6e4a32, 0.85, 0.3);
+    const hole = new THREE.Path(); hole.absarc(0, 0.29, 0.009, 0, Math.PI * 2, true);
+    root.add(flat(sym([[0.034, 0], [0.038, 0.1], [0.03, 0.15], [0.039, 0.19], [0.035, 0.27], [0.026, 0.35], [0.014, 0.42], [0, 0.47]], [hole]), mat));
+    part(root, Box(0.003, 0.13, 0.026), mstd(0x150c06, 1, 0), 0, 0.37, 0);
+    part(root, Box(0.11, 0.03, 0.045), mstd(0x4a3626, 0.9, 0.1), 0, -0.017, 0);
+    const b = hilt(root, { len: 0.13, color: 0x5a3e28 });
+    const f = flat(sym([[0.008, 0], [0.026, 0.05], [0.024, 0.1], [0.012, 0.14], [0, 0.17]]), mstd(0xd8cbb0, 0.9, 0), 0.003, 0.002);
+    f.rotation.z = Math.PI + 0.22; f.position.y = b + 0.01; root.add(f);
+    return { mat, tip: 0.47 };
+  },
+  // 1 갈아 낸 연필검: 육각 몸통, 깎은 나무, 흑연 끝, 지우개 손잡이
+  (root) => {
+    const mat = bladeMat(0x9a958c, 0.45, 0.7);
+    part(root, new THREE.CylinderGeometry(0.03, 0.03, 0.4, 6), mat, 0, 0.2, 0);
+    part(root, new THREE.CylinderGeometry(0.0095, 0.03, 0.12, 6), mstd(0xd9b48a, 0.8, 0), 0, 0.46, 0);
+    part(root, new THREE.ConeGeometry(0.0095, 0.04, 6), mstd(0x26262a, 0.3, 0.6), 0, 0.54, 0);
+    part(root, new THREE.CylinderGeometry(0.031, 0.031, 0.012, 6), mstd(0xd9a640, 0.3, 1), 0, 0.06, 0);
+    const fer = mstd(0xc8ccd0, 0.25, 1);
+    part(root, new THREE.CylinderGeometry(0.036, 0.036, 0.05, 16), fer, 0, -0.01, 0);
+    for (const y of [-0.0, -0.02]) { const t = part(root, new THREE.TorusGeometry(0.036, 0.003, 5, 16), mstd(0x8a8e92, 0.3, 1), 0, y, 0); t.rotation.x = Math.PI / 2; }
+    const b = hilt(root, { len: 0.12, r: 0.024, color: 0xd9a13a });
+    part(root, new THREE.CylinderGeometry(0.03, 0.03, 0.05, 16), mstd(0xe8899a, 0.9, 0), 0, b - 0.022, 0);
+    return { mat, tip: 0.56 };
+  },
+  // 2 다듬은 잉크검: 잎사귀 날, 처진 가드, 잉크 방울
+  (root) => {
+    const mat = bladeMat(0x1e2a48, 0.3, 0.6, 0x0a1838, 0.45); mat.envMapIntensity = 0.08;
+    root.add(flat(sym([[0.03, 0], [0.034, 0.15], [0.045, 0.36], [0.048, 0.44], [0.036, 0.53], [0.016, 0.6], [0, 0.64]]), mat));
+    const gm = mstd(0x2a3248, 0.35, 0.9);
+    for (const sx of [-1, 1]) { const a = part(root, Box(0.07, 0.022, 0.04), gm, sx * 0.04, -0.024, 0); a.rotation.z = -sx * 0.35; }
+    for (const z of [-0.022, 0.022]) part(root, new THREE.SphereGeometry(0.013, 12, 10), mglow(0.5, 0.9, 2.6), 0, -0.02, z);
+    const b = hilt(root, { len: 0.14, color: 0x1e1a24 });
+    part(root, new THREE.SphereGeometry(0.024, 14, 12), gm, 0, b - 0.018, 0);
+    const c = part(root, new THREE.ConeGeometry(0.02, 0.04, 14), gm, 0, b - 0.045, 0); c.rotation.z = Math.PI;
+    return { mat, tip: 0.64 };
+  },
+  // 3 공책 철검: 넓은 날, 스프링 제본 고리, 줄 노트
+  (root) => {
+    const mat = bladeMat(0x8f8e88, 0.5, 0.75);
+    root.add(flat(shapeOf([[-0.045, 0], [0.045, 0], [0.045, 0.58], [-0.045, 0.66]]), mat));
+    const ring = mstd(0x2c2e33, 0.4, 0.9);
+    for (let i = 0; i < 8; i++) { const t = part(root, new THREE.TorusGeometry(0.013, 0.0028, 5, 14), ring, -0.05, 0.05 + i * 0.07, 0); t.rotation.x = Math.PI / 2; }
+    const line = mstd(0x3d5c9e, 0.8, 0.1);
+    for (let i = 0; i < 6; i++) bothFaces(root, Box(0.07, 0.0025, 0.001), line, 0.01, 0.08 + i * 0.08);
+    bothFaces(root, Box(0.0025, 0.52, 0.001), mstd(0x9e3a3a, 0.8, 0.1), -0.025, 0.29);
+    part(root, Box(0.17, 0.03, 0.05), mstd(0x3a3c40, 0.4, 0.9), 0, -0.017, 0);
+    const b = hilt(root, { len: 0.15, color: 0x2a2a2e });
+    const p = part(root, Box(0.04, 0.04, 0.04), mstd(0x3a3c40, 0.4, 0.9), 0, b - 0.02, 0); p.rotation.set(0.6, 0.6, 0);
+    return { mat, tip: 0.66 };
+  },
+  // 4 쓸 만한 문법검: 외날 펄션, S자 가드
+  (root) => {
+    const mat = bladeMat(0xa9aba8, 0.38, 0.85);
+    root.add(flat(shapeOf([[-0.034, 0], [0.036, 0], [0.05, 0.25], [0.062, 0.5], [0.05, 0.63], [-0.02, 0.72], [-0.034, 0.62]]), mat));
+    bothFaces(root, Box(0.009, 0.5, 0.001), mstd(0x6a6c6a, 0.4, 0.9), -0.016, 0.3);
+    const gm = mstd(0x7a5a2a, 0.35, 0.9);
+    part(root, Box(0.14, 0.026, 0.045), gm, 0, -0.017, 0);
+    part(root, new THREE.SphereGeometry(0.016, 10, 8), gm, 0.072, -0.002, 0);
+    part(root, new THREE.SphereGeometry(0.016, 10, 8), gm, -0.072, -0.032, 0);
+    const b = hilt(root, { len: 0.15, wraps: 3, wrapMat: gm });
+    const d = part(root, new THREE.CylinderGeometry(0.03, 0.03, 0.02, 18), gm, 0, b - 0.02, 0); d.rotation.x = Math.PI / 2;
+    return { mat, tip: 0.72 };
+  },
+  // 5 단단한 공식검: 무장검, 등호 장식, 삼각 가드
+  (root) => {
+    const mat = bladeMat(0xbcc5cc, 0.3, 0.9);
+    root.add(flat(sym([[0.038, 0], [0.036, 0.52], [0.03, 0.62], [0.014, 0.7], [0, 0.74]]), mat));
+    bothFaces(root, Box(0.012, 0.48, 0.001), mstd(0x707880, 0.3, 0.9), 0, 0.3);
+    const gold = mstd(0xd9a640, 0.25, 1);
+    part(root, Box(0.05, 0.008, 0.024), gold, 0, 0.085, 0); part(root, Box(0.05, 0.008, 0.024), gold, 0, 0.11, 0);
+    const gm = mstd(0x5a6068, 0.3, 0.95);
+    part(root, Box(0.19, 0.028, 0.045), gm, 0, -0.017, 0);
+    for (const sx of [-1, 1]) { const c = part(root, new THREE.ConeGeometry(0.024, 0.045, 3), gm, sx * 0.115, -0.017, 0); c.rotation.z = -sx * Math.PI / 2; }
+    const b = hilt(root, { len: 0.16, wraps: 4 });
+    part(root, new THREE.OctahedronGeometry(0.03), gm, 0, b - 0.024, 0);
+    return { mat, tip: 0.74 };
+  },
+  // 6 빛나는 개념검: 잎날, 빛나는 중심선, 초승달 가드, 전구 손잡이
+  (root) => {
+    const mat = bladeMat(0xd3dce4, 0.2, 0.95, 0x224466, 0.25);
+    root.add(flat(sym([[0.036, 0], [0.04, 0.2], [0.054, 0.48], [0.05, 0.6], [0.03, 0.71], [0, 0.79]]), mat));
+    bothFaces(root, Box(0.006, 0.56, 0.001), mglow(0.6, 1.5, 2.4), 0, 0.32);
+    const g = part(root, new THREE.TorusGeometry(0.075, 0.012, 8, 24, Math.PI), mstd(0xc9b07a, 0.3, 1), 0, 0.045, 0); g.rotation.z = Math.PI;
+    const b = hilt(root, { len: 0.15, wraps: 3, wrapMat: mstd(0xc9b07a, 0.3, 1) });
+    part(root, new THREE.CylinderGeometry(0.018, 0.022, 0.02, 12), mstd(0x9a9ea2, 0.3, 1), 0, b - 0.008, 0);
+    part(root, new THREE.SphereGeometry(0.03, 16, 12), mglow(3, 2.4, 1.1), 0, b - 0.04, 0);
+    return { mat, tip: 0.79 };
+  },
+  // 7 원리의 장검: 길고 곧은 날, 긴 가드, 바퀴 모양 손잡이 끝
+  (root) => {
+    const mat = bladeMat(0xd0d8df, 0.22, 0.95);
+    root.add(flat(sym([[0.035, 0], [0.033, 0.7], [0.026, 0.82], [0.012, 0.9], [0, 0.94]]), mat));
+    bothFaces(root, Box(0.01, 0.66, 0.001), mstd(0x7a828a, 0.3, 0.9), 0, 0.37);
+    const gm = mstd(0x4a4e56, 0.3, 0.95);
+    part(root, Box(0.3, 0.024, 0.04), gm, 0, -0.017, 0);
+    for (const sx of [-1, 1]) part(root, new THREE.SphereGeometry(0.019, 10, 8), gm, sx * 0.15, -0.017, 0);
+    const b = hilt(root, { len: 0.22, wraps: 6 });
+    const w = part(root, new THREE.CylinderGeometry(0.036, 0.036, 0.024, 20), gm, 0, b - 0.03, 0); w.rotation.x = Math.PI / 2;
+    part(root, new THREE.SphereGeometry(0.012, 10, 8), mstd(0xc9a24a, 0.3, 1), 0, b - 0.03, 0.014);
+    return { mat, tip: 0.94 };
+  },
+  // 8 통찰의 검: 눈 모양 구멍 속 보석, 날개 가드
+  (root) => {
+    const mat = bladeMat(0xdde2ea, 0.2, 0.95, 0x221a40, 0.2);
+    const hole = new THREE.Path(); hole.absellipse(0, 0.16, 0.022, 0.05, 0, Math.PI * 2, true);
+    root.add(flat(sym([[0.048, 0], [0.05, 0.62], [0.038, 0.78], [0.018, 0.87], [0, 0.92]], [hole]), mat));
+    const gem = part(root, new THREE.OctahedronGeometry(0.018), mglow(1.6, 0.8, 3.4), 0, 0.16, 0); gem.scale.y = 1.7;
+    const gold = mstd(0xd9b860, 0.25, 1);
+    const eye = part(root, new THREE.TorusGeometry(0.03, 0.004, 6, 28), gold, 0, 0.16, 0); eye.scale.y = 1.9;
+    const wing = shapeOf([[0, 0], [0.12, 0.025], [0.15, 0.075], [0.09, 0.045], [0.02, 0.03]]);
+    for (const sx of [-1, 1]) { const m = flat(wing, gold, 0.014, 0.004); m.scale.x = sx; m.position.y = -0.04; root.add(m); }
+    const b = hilt(root, { len: 0.18, wraps: 4, wrapMat: gold });
+    part(root, new THREE.SphereGeometry(0.026, 14, 12), mglow(1.4, 0.7, 3), 0, b - 0.024, 0);
+    return { mat, tip: 0.92 };
+  },
+  // 9 학자의 대검: 넓은 대검, 책 모양 가드
+  (root) => {
+    const mat = bladeMat(0xe6cf8a, 0.22, 1.0, 0x332200, 0.2);
+    root.add(flat(sym([[0.058, 0], [0.056, 0.78], [0.045, 0.9], [0.02, 0.98], [0, 1.0]]), mat));
+    bothFaces(root, Box(0.016, 0.7, 0.001), mstd(0x9a7a3a, 0.3, 1), 0, 0.38);
+    const cover = mstd(0x6b2b1a, 0.7, 0.1);
+    for (const z of [-0.036, 0.036]) part(root, Box(0.22, 0.062, 0.008), cover, 0, -0.033, z);
+    part(root, Box(0.008, 0.062, 0.08), cover, -0.11, -0.033, 0);
+    part(root, Box(0.21, 0.054, 0.064), mstd(0xeee0c0, 0.9, 0), 0.004, -0.033, 0);
+    const gold = mstd(0xe0b040, 0.25, 1);
+    const b = hilt(root, { len: 0.24, wraps: 5, wrapMat: gold, color: 0x2a140c });
+    part(root, new THREE.SphereGeometry(0.034, 16, 12), gold, 0, b - 0.026, 0);
+    return { mat, tip: 1.0 };
+  },
+  // 10 현자의 빛검: 물결 날(플랑베르주), 태양 가드
+  (root) => {
+    const mat = bladeMat(0xf1c862, 0.2, 1.0, 0x553300, 0.4);
+    const pts = [];
+    for (let i = 0; i <= 24; i++) { const y = i / 24 * 0.86; pts.push([0.042 + 0.009 * Math.sin(y * 38) * Math.min(1, y / 0.08), y]); }
+    pts.push([0.035, 0.92], [0.016, 0.99], [0, 1.03]);
+    root.add(flat(sym(pts), mat));
+    const gold = mstd(0xe8b84a, 0.2, 1, 0x442200, 0.3);
+    const disc = part(root, new THREE.CylinderGeometry(0.05, 0.05, 0.022, 28), gold, 0, -0.03, 0); disc.rotation.x = Math.PI / 2;
+    for (let i = 0; i < 10; i++) {
+      const a = Math.PI / 2 + Math.PI / 10 + i * (Math.PI * 2 - Math.PI / 5) / 9;
+      const r = part(root, new THREE.ConeGeometry(0.009, 0.045, 6), gold, Math.cos(a) * 0.072, -0.03 + Math.sin(a) * 0.072, 0); r.rotation.z = a - Math.PI / 2;
+    }
+    for (const z of [-0.013, 0.013]) part(root, new THREE.SphereGeometry(0.016, 12, 10), mglow(3.5, 1, 0.4), 0, -0.03, z);
+    const b = hilt(root, { len: 0.2, wraps: 4, wrapMat: gold });
+    part(root, new THREE.SphereGeometry(0.026, 14, 12), mglow(3, 2, 0.8), 0, b - 0.022, 0);
+    return { mat, tip: 1.03 };
+  },
+  // 11 진리의 쌍날검: 끝이 두 갈래, 겹 가드
+  (root) => {
+    const mat = bladeMat(0xeae4c0, 0.18, 1.0, 0x2a5560, 0.5);
+    root.add(flat(sym([[0.052, 0], [0.055, 0.5], [0.062, 0.72], [0.052, 0.9], [0.034, 1.02], [0.02, 0.9], [0.008, 0.82], [0, 0.8]]), mat));
+    bothFaces(root, Box(0.006, 0.7, 0.001), mglow(0.8, 2.6, 3), 0, 0.4);
+    const gm = mstd(0xcdb46a, 0.22, 1);
+    part(root, Box(0.26, 0.016, 0.04), gm, 0, -0.008, 0);
+    part(root, Box(0.22, 0.016, 0.04), gm, 0, -0.036, 0);
+    for (const sx of [-1, 1]) part(root, new THREE.OctahedronGeometry(0.014), mglow(1, 3, 3.6), sx * 0.07, -0.022, 0);
+    const b = hilt(root, { len: 0.22, wraps: 5, wrapMat: gm });
+    for (const sx of [-1, 1]) part(root, new THREE.SphereGeometry(0.02, 12, 10), gm, sx * 0.018, b - 0.018, 0);
+    return { mat, tip: 1.02 };
+  },
+  // 12 만물박사의 검: 톱니 가드, 세 빛깔 보석, 나침반 손잡이 끝
+  (root) => {
+    const mat = bladeMat(0xbfe6e6, 0.18, 0.95, 0x1a6a80, 0.4);
+    root.add(flat(sym([[0.058, 0], [0.06, 0.8], [0.05, 0.94], [0.024, 1.03], [0, 1.07]]), mat));
+    [[0.2, [4, 1, 0.8]], [0.35, [1, 3.5, 1]], [0.5, [1, 1.6, 4.5]]].forEach(([y, c]) => part(root, new THREE.OctahedronGeometry(0.014), mglow(...c), 0, y, 0));
+    const bronze = mstd(0xb08a4a, 0.3, 1);
+    part(root, new THREE.TorusGeometry(0.075, 0.012, 8, 36), bronze, 0, -0.03, 0);
+    for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; const t = part(root, Box(0.022, 0.018, 0.022), bronze, Math.cos(a) * 0.09, -0.03 + Math.sin(a) * 0.09, 0); t.rotation.z = a; }
+    const b = hilt(root, { len: 0.22, wraps: 5, wrapMat: bronze });
+    const c = part(root, new THREE.CylinderGeometry(0.034, 0.034, 0.02, 24), mstd(0xd9b860, 0.25, 1), 0, b - 0.03, 0); c.rotation.x = Math.PI / 2;
+    const n = part(root, Box(0.006, 0.05, 0.004), mglow(3.5, 0.6, 0.4), 0, b - 0.03, 0.012); n.rotation.z = 0.5;
+    return { mat, tip: 1.07 };
+  },
+  // 13 별을 읽는 검: 밤하늘 날에 박힌 별, 초승달 가드
+  (root) => {
+    const mat = bladeMat(0x1c2c5c, 0.18, 0.9, 0x1a2a77, 0.7);
+    root.add(flat(sym([[0.044, 0], [0.047, 0.6], [0.042, 0.86], [0.022, 1.02], [0, 1.1]]), mat));
+    const rnd = seeded(1313), star = mglow(4, 4, 5);
+    for (let i = 0; i < 14; i++) {
+      const y = 0.06 + rnd() * 0.9, half = y < 0.86 ? 0.036 : 0.036 * (1.1 - y) / 0.24;
+      bothFaces(root, new THREE.SphereGeometry(0.0035 + rnd() * 0.004, 6, 5), star, (rnd() * 2 - 1) * half, y);
+    }
+    const moon = mstd(0xf0e0a0, 0.25, 1, 0x553a10, 0.5);
+    const arc = Math.PI * 1.3;
+    const m = part(root, new THREE.TorusGeometry(0.075, 0.014, 8, 28, arc), moon, 0, 0.045, 0); m.rotation.z = -Math.PI / 2 - arc / 2;
+    const b = hilt(root, { len: 0.22, wraps: 5, wrapMat: moon, color: 0x101a38 });
+    part(root, new THREE.OctahedronGeometry(0.03), mglow(3.5, 3.5, 4.5), 0, b - 0.026, 0);
+    return { mat, tip: 1.1 };
+  },
+  // 14 지혜의 성검: 흰 금빛 날, 날개 가드, 후광
+  (root) => {
+    const mat = bladeMat(0xf6f1e2, 0.18, 1.0, 0x664422, 0.35);
+    root.add(flat(sym([[0.06, 0], [0.062, 0.4], [0.058, 0.8], [0.045, 0.98], [0.02, 1.08], [0, 1.12]]), mat));
+    bothFaces(root, Box(0.012, 0.85, 0.001), mstd(0xe8c060, 0.2, 1, 0x664400, 0.6), 0, 0.46);
+    const gold = mstd(0xf2d27a, 0.2, 1, 0x553311, 0.4);
+    const wing = shapeOf([[0, -0.01], [0.17, 0.04], [0.19, 0.11], [0.15, 0.07], [0.155, 0.1], [0.11, 0.055], [0.11, 0.08], [0.05, 0.03], [0, 0.02]]);
+    for (const sx of [-1, 1]) { const w = flat(wing, gold, 0.014, 0.004); w.scale.x = sx; w.position.y = -0.04; root.add(w); }
+    part(root, new THREE.TorusGeometry(0.06, 0.005, 6, 36), mglow(3, 2.6, 1.4), 0, 0.07, 0);
+    const b = hilt(root, { len: 0.24, wraps: 5, wrapMat: gold, color: 0xeee6d0 });
+    part(root, new THREE.OctahedronGeometry(0.034), mglow(3.5, 2.5, 1), 0, b - 0.03, 0);
+    return { mat, tip: 1.12 };
+  },
+  // 15 전설의 지식검: 빛나는 수정 날, 펼친 책 가드, 룬 고리
+  (root) => {
+    const mat = bladeMat(0x9ff2ff, 0.12, 0.6, 0x2aa6c8, 0.45);
+    root.add(flat(sym([[0.06, 0], [0.066, 0.3], [0.07, 0.7], [0.055, 0.95], [0.03, 1.12], [0, 1.2]]), mat));
+    root.add(flat(sym([[0.012, 0.04], [0.016, 0.7], [0, 1.05]]), mglow(0.45, 1.0, 1.2), 0.023, 0));
+    const rune = mglow(0.5, 1.3, 1.6);
+    part(root, new THREE.TorusGeometry(0.11, 0.004, 6, 48), rune, 0, 0.35, 0);
+    part(root, new THREE.TorusGeometry(0.09, 0.004, 6, 48), rune, 0, 0.8, 0);
+    const page = mstd(0xfff3d6, 0.6, 0, 0xffd890, 0.7), gold = mstd(0xf2d27a, 0.2, 1);
+    for (const sx of [-1, 1]) { const p = part(root, Box(0.13, 0.008, 0.07), page, sx * 0.062, -0.012, 0); p.rotation.z = sx * 0.35; }
+    part(root, Box(0.03, 0.03, 0.075), gold, 0, -0.03, 0);
+    const b = hilt(root, { len: 0.26, wraps: 6, wrapMat: rune, color: 0x14283a });
+    part(root, new THREE.SphereGeometry(0.036, 18, 14), mglow(1.4, 3.4, 4), 0, b - 0.03, 0);
+    return { mat, tip: 1.2 };
+  },
+];
 
 export function buildBlade(level) {
-  const lv = Math.min(level, 15);
-  const L = 0.5 + lv * 0.036, w = 0.062 + lv * 0.0045;
-  const look = lookFor(lv);
-  const mat = new THREE.MeshStandardMaterial({ color: look.color, roughness: look.rough, metalness: look.metal, emissive: look.glow, emissiveIntensity: look.gi });
-  mat.userData.baseEmissive = look.glow.clone(); mat.userData.baseEI = look.gi;
+  const lv = Math.max(0, Math.min(level, 15));
   const root = new THREE.Group();
-  const s = new THREE.Shape();
-  s.moveTo(-w / 2, 0); s.lineTo(-w / 2, L); s.lineTo(0, L + w * 1.5); s.lineTo(w / 2, L); s.lineTo(w / 2, 0); s.closePath();
-  const geo = new THREE.ExtrudeGeometry(s, { depth: 0.006, bevelEnabled: true, bevelThickness: 0.007, bevelSize: 0.011, bevelSegments: 1 });
-  geo.translate(0, 0, -0.003);
-  const blade = new THREE.Mesh(geo, mat); blade.castShadow = true; root.add(blade);
-  // 홈(풀러)
-  if (lv >= 4) {
-    const f = new THREE.Mesh(new THREE.BoxGeometry(w * 0.25, L * 0.75, 0.002), new THREE.MeshStandardMaterial({ color: look.color.clone().multiplyScalar(0.6), metalness: 1, roughness: 0.3 }));
-    f.position.set(0, L * 0.42, 0.011); root.add(f);
-    const f2 = f.clone(); f2.position.z = -0.011; root.add(f2);
-  }
-  const gmat = new THREE.MeshStandardMaterial({ color: look.guard, metalness: 0.9, roughness: 0.35 });
-  const gw = w * (lv >= 8 ? 4.2 : 3.2);
-  const guard = new THREE.Mesh(new THREE.BoxGeometry(gw, 0.034, 0.05), gmat); guard.position.y = -0.017; guard.castShadow = true; root.add(guard);
-  if (lv >= 8) {
-    for (const sx of [-1, 1]) { const t = new THREE.Mesh(new THREE.SphereGeometry(0.022, 10, 8), gmat); t.position.set(sx * gw / 2, -0.017, 0); root.add(t); }
-  }
-  const grip = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.02, 0.16, 10), new THREE.MeshStandardMaterial({ color: 0x3a2214, roughness: 0.9 }));
-  grip.position.y = -0.115; root.add(grip);
-  const pommel = new THREE.Mesh(new THREE.SphereGeometry(0.03, 12, 10), gmat); pommel.position.y = -0.205; root.add(pommel);
-  if (lv >= 5) { // 보석
-    const gemMat = new THREE.MeshBasicMaterial({ color: lv >= 12 ? new THREE.Color(1.5, 4, 5) : lv >= 9 ? new THREE.Color(4, 1.2, 0.8) : new THREE.Color(0.6, 1.4, 3.2), toneMapped: false });
-    const gem = new THREE.Mesh(new THREE.OctahedronGeometry(0.018), gemMat); gem.position.set(0, -0.017, 0.028); root.add(gem);
-    const gem2 = gem.clone(); gem2.position.z = -0.028; root.add(gem2);
-  }
-  root.userData = { mat, length: L, tip: L + w * 1.5 };
+  const { mat, tip } = BLADES[lv](root);
+  root.userData = { mat, length: tip, tip };
   return root;
 }
 
 // 모루 위에 눕힌 검: holder(위치) → orient(방향) → blade
 export function makeLyingBlade(level) {
   const holder = new THREE.Group();
-  holder.rotation.x = -Math.PI / 2;
+  // 납작하게 눕히면 카메라에서 칼등만 보이므로, 칼면이 카메라 쪽을 향하게 비스듬히 세운다
+  holder.rotation.x = -Math.PI / 2 + 0.4; // 0.8 근처는 천장 조명을 카메라로 정반사해 하얗게 날아간다
+  holder.position.y = 0.035;
   const orient = new THREE.Group(); orient.rotation.z = -Math.PI / 2;
   holder.add(orient);
   holder.userData.orient = orient;
@@ -183,6 +406,7 @@ export class World {
     r.outputColorSpace = THREE.SRGBColorSpace;
 
     this.scene = new THREE.Scene();
+    if (!BLADE_ENV) { const pm = new THREE.PMREMGenerator(r); BLADE_ENV = pm.fromScene(new RoomEnvironment(), 0.04).texture; pm.dispose(); }
     this.scene.background = new THREE.Color(0x060403);
     this.scene.fog = new THREE.FogExp2(0x120c08, 0.03);
     this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.05, 60);
