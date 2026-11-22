@@ -13,7 +13,36 @@ const REQ = [1000, 2500, 6000, 15000, 40000, 100000, 250000];
 const RELIC_SLOTS = 5;
 // 골드로 사는 것은 그날 요구 가치에 비례
 const priceOf = (k) => Math.max(100, Math.round(REQ[S.day - 1] * ITEMS[k].price / 10) * 10);
-const descOf = (k) => k === 'coin' ? ITEMS[k].desc + ` (오늘은 ${S.day % 2 ? '대성공' : '파괴'})` : ITEMS[k].desc;
+// 융합: 짝이 되는 두 유물을 함께 가지면 하나로 합쳐진다(칸 하나가 빈다).
+// 첫 번째는 원작 그대로(부러진 성검 + 새벽의 검집 → 여명을 되찾은 성검), 나머지는 지식의 대장간에서 새로 만든 조합.
+const FUSIONS = [
+  { a: 'quill', b: 'bookmark', into: 'dawnquill', orig: true },
+  { a: 'pad', b: 'sharp', into: 'modelnote' },
+  { a: 'crack', b: 'redpen', into: 'redrule' },
+  { a: 'dict', b: 'sealnote', into: 'encyclo' },
+];
+const descOf = (k) => {
+  let d = ITEMS[k].desc;
+  if (k === 'coin') d += ` (오늘은 ${S.day % 2 ? '대성공' : '파괴'})`;
+  for (const r of FUSIONS) {
+    const other = r.a === k ? r.b : r.b === k ? r.a : null;
+    if (other) d += ` ${ITEMS[other].name}과(와) 만나면 ${ITEMS[r.into].name}(으)로 융합한다.`;
+  }
+  return d;
+};
+function checkFusion() {
+  for (const r of FUSIONS) {
+    if (S.relics.has(r.a) && S.relics.has(r.b)) {
+      S.relics.delete(r.a); S.relics.delete(r.b); S.relics.add(r.into);
+      banner('융합!', `${ITEMS[r.a].name} + ${ITEMS[r.b].name} → ${ITEMS[r.into].name}`);
+      sfx.play('milestone'); setTimeout(() => sfx.play('great'), 120);
+      world.flashLight(world.merchant.position.clone(), 0xffd27a, 30, 0.8);
+      world.spawnSparks(world.merchant.position.clone(), 120, 0xffe08a, { speed: 2.5, up: 2.5, life: 1.2 });
+      return true;
+    }
+  }
+  return false;
+}
 const NAMES = ['녹슨 깃펜칼', '갈아 낸 연필검', '다듬은 잉크검', '공책 철검', '쓸 만한 문법검', '단단한 공식검', '빛나는 개념검', '원리의 장검',
   '통찰의 검', '학자의 대검', '현자의 빛검', '진리의 쌍날검', '만물박사의 검', '별을 읽는 검', '지혜의 성검', '전설의 지식검'];
 const BASE_BLANKS = 3;
@@ -36,7 +65,16 @@ const ITEMS = {
   ink: { name: '마르지 않는 잉크병', kind: 'relic', cost: 4, icon: '잉', desc: '유지 표 +2장. 유지 5회마다 다음 파괴 1회를 유지로 바꾸는 보호가 생긴다(이 검에 2회까지 저장).' },
   contract: { name: '평생 학습 계약서', kind: 'relic', cost: 5, icon: '계', desc: '파괴 표 −1장. 서고지기의 요구 가치 30% 감소.' },
   cocoon: { name: '부화 직전의 원석 알', kind: 'relic', cost: 1, icon: '알', desc: '2일 뒤 원석 3개를 주고 사라진다.' },
-  bookmark: { name: '세 겹 책갈피', kind: 'relic', cost: 3, icon: '갈', desc: '검이 파괴되면 그 강화의 40%를 다음 +0강 검이 물려받고, 영감 4칸이 찬다.' },
+  bookmark: { name: '새벽의 책갈피', kind: 'relic', cost: 3, icon: '갈', desc: '검이 파괴되면 그 강화의 40%를 다음 +0강 검이 물려받고, 영감 4칸이 찬다.' },
+  quill: { name: '부러진 깃펜', kind: 'relic', cost: 1, icon: '깃', desc: '검이 파괴되면 그 강화의 30%를 다음 +0강 검이 물려받고, 영감 3칸이 찬다.' },
+  weight: { name: '기다림의 추', kind: 'relic', cost: 1, icon: '기', desc: '손상 표 −2장, 유지 표 +3장.' },
+  hoop: { name: '튼튼한 책 고리', kind: 'relic', cost: 3, icon: '고', desc: '파괴 표 −2장.' },
+  twin: { name: '쌍둥이 도장', kind: 'relic', cost: 4, icon: '쌍', desc: '검을 완성해 걸 때 2% 확률로 똑같은 검이 한 자루 더 생긴다.' },
+  // 융합으로만 얻는 유물 (상점에 나오지 않는다)
+  dawnquill: { name: '새벽을 되찾은 깃펜', kind: 'relic', fused: true, cost: 0, icon: '새', desc: '검이 파괴되면 그 강화의 70%를 다음 +0강 검이 물려받고, 영감 7칸이 찬다. 물려받은 검의 파괴 확률은 부서진 검 1강마다 1.5% 줄어든다(최대 50%).' },
+  modelnote: { name: '모범 답안 노트', kind: 'relic', fused: true, cost: 0, icon: '모', desc: '유지 표 2장과 손상 표 1장을 성공 표로 바꾸고, 대성공 표 +1장.' },
+  redrule: { name: '빨간 줄 책받침', kind: 'relic', fused: true, cost: 0, icon: '줄', desc: '유지 표 2장을 손상 표로 바꾼다. 손상마다 이 검의 파괴 확률 20% 감소, 최대 80%.' },
+  encyclo: { name: '봉인된 백과사전', kind: 'relic', fused: true, cost: 0, icon: '백', desc: '유지 표 +2장. 유지하면 다음 타격의 파괴 확률 60% 감소. 유지 2연속마다 +1강.' },
   glasses: { name: '지혜의 안경', kind: 'relic', cost: 2, icon: '안', desc: '문제마다 오답 보기 하나가 흐려진다.' },
   tape: { name: '운명을 고치는 수정테이프', kind: 'instant', cost: 2, icon: '테', desc: '사는 즉시 이번 판의 손상 표 1장을 없앤다. 유물 칸을 차지하지 않는다.' },
   ticket: { name: '합격 추첨표', kind: 'gold', price: 0.6, icon: '추', desc: '이번 판의 성공 표 +1장. 유물 칸을 차지하지 않는다. 상인 방문마다 한 번만 살 수 있다.' },
@@ -138,8 +176,11 @@ function deckOf(level, fever, c) {
   const R = (k) => S.relics.has(k);
   if (R('pad')) move('keep', 'succ', 2);
   if (R('sharp')) move('dmg', 'succ', 1);
-  if (R('redpen')) move('keep', 'dmg', 2);
-  if (R('sealnote')) d.keep += 2;
+  if (R('modelnote')) { move('keep', 'succ', 2); move('dmg', 'succ', 1); d.great += 1; }
+  if (R('redpen') || R('redrule')) move('keep', 'dmg', 2);
+  if (R('sealnote') || R('encyclo')) d.keep += 2;
+  if (R('weight')) { d.dmg = Math.max(0, d.dmg - 2); d.keep += 3; }
+  if (R('hoop')) d.brk = Math.max(0, d.brk - 2);
   if (R('ink')) d.keep += 2;
   if (R('contract')) d.brk = Math.max(0, d.brk - 1);
   for (const k in S.deck) d[k] = Math.max(0, d[k] + S.deck[k]);   // 이번 판 표
@@ -153,7 +194,7 @@ function brkCut(c) {
   if (!c) return 0;
   let k = 1;
   if (c.crack) k *= 1 - c.crack;
-  if (c.dictNext) k *= 0.65;
+  if (c.dictNext) k *= 1 - c.dictNext;
   if (c.crown) k *= 1 - c.crown;
   if (c.inheritCut) k *= 1 - c.inheritCut;
   return 1 - k;
@@ -443,7 +484,12 @@ async function takeBlank() {
   world.scene.add(car);
   S.cur = { level: startLv, holder, car, heat: 0, flash: 0, maxValue: value(startLv), deck: { ...ZERO } };
   if (S.rs.worm) { S.cur.deck.succ += 6; S.rs.worm = false; banner('굶주린 책벌레', '이 검의 성공 표 +6장'); }
-  if (S.rs.inherit) { S.rs.inherit = 0; S.gauge = Math.min(10, S.gauge + 4); if (S.gauge >= 10) S.feverPending = true; banner('세 겹 책갈피', `부서진 검의 강화를 물려받아 +${startLv}에서 시작`); }
+  if (S.rs.inherit) {
+    S.gauge = Math.min(10, S.gauge + (S.rs.inheritBars || 4)); if (S.gauge >= 10) S.feverPending = true;
+    if (S.rs.inheritCut) S.cur.inheritCut = S.rs.inheritCut;
+    banner(ITEMS[S.rs.inheritFrom || 'bookmark'].name, `부서진 검의 강화를 물려받아 +${startLv}에서 시작${S.rs.inheritCut ? ` · 파괴 확률 −${Math.round(S.rs.inheritCut * 100)}%` : ''}`);
+    S.rs.inherit = 0; S.rs.inheritCut = 0;
+  }
   if (S.rs.forced) { S.cur.forced = S.rs.forced; S.rs.forced = null; }
   drawBoard();
   world.goStation('furnace', 3.2);
@@ -501,18 +547,25 @@ function resolveStrike(correct, fever) {
   else if (out === 'dmg') c.level = Math.max(0, c.level - 1);
   if (out === 'keep') {
     c.keepRun = (c.keepRun || 0) + 1;
-    if (R('sealnote') && c.keepRun % 2 === 0 && c.level < MAX_LV) { c.level++; notes.push('복습 노트 +1'); }
-    if (R('dict')) c.dictNext = true;
+    if ((R('sealnote') || R('encyclo')) && c.keepRun % 2 === 0 && c.level < MAX_LV) { c.level++; notes.push('복습 노트 +1'); }
+    if (R('encyclo')) c.dictNext = 0.6; else if (R('dict')) c.dictNext = 0.35;
     if (R('ink')) { c.inkKeeps = (c.inkKeeps || 0) + 1; if (c.inkKeeps % 5 === 0 && (c.guard || 0) < 2) { c.guard = (c.guard || 0) + 1; notes.push('보호 +1'); } }
   } else c.keepRun = 0;
   if (R('sheet')) c.crown = out === 'great' ? (c.crown ? Math.min(0.6, c.crown + 0.1) : 0.4) : 0;
   if (out === 'dmg') {
-    if (R('crack')) c.crack = Math.min(0.6, (c.crack || 0) + 0.15);
+    if (R('redrule')) c.crack = Math.min(0.8, (c.crack || 0) + 0.2);
+    else if (R('crack')) c.crack = Math.min(0.6, (c.crack || 0) + 0.15);
     if (R('stamp')) { c.loser = (c.loser || 0) + 1; if (c.loser >= 10 && !c.stampDone) { c.stampDone = true; c.deck.great += 4; notes.push('대성공 표 +4'); } }
   }
   if (out === 'brk') {
     if (R('worm') && before >= 4) { S.rs.worm = true; notes.push('책벌레가 다음 검을 기다린다'); }
-    if (R('bookmark') && before > 0) { S.rs.inherit = Math.floor(before * 0.4); notes.push(`책갈피: 다음 검 +${S.rs.inherit}`); }
+    // 계승: 가진 것 중 가장 센 것 하나
+    const inh = R('dawnquill') ? [0.7, 7, 'dawnquill'] : R('bookmark') ? [0.4, 4, 'bookmark'] : R('quill') ? [0.3, 3, 'quill'] : null;
+    if (inh && before > 0) {
+      S.rs.inherit = Math.floor(before * inh[0]); S.rs.inheritBars = inh[1]; S.rs.inheritFrom = inh[2];
+      S.rs.inheritCut = inh[2] === 'dawnquill' ? Math.min(0.5, before * 0.015) : 0;
+      notes.push(`${ITEMS[inh[2]].name}: 다음 검 +${S.rs.inherit}`);
+    }
   }
   if (notes.length) setTimeout(() => popup(notes.join(' · '), world.toScreen(world.impactPoint.clone().add(new THREE.Vector3(0, -0.18, 0))), 'sm cyan'), 260);
   const ip = world.impactPoint, fx = fever ? FX.fever : FX[out];
@@ -631,6 +684,7 @@ async function finishBlade() {
   await wait(0.9, k => { const e = easeInOut(k); c.car.position.lerpVectors(a, b, e); c.car.position.y += Math.sin(k * Math.PI) * 0.6; c.car.rotation.z = e * 0.8; });
   world.scene.remove(c.car);
   S.finished.push(hungState(c));
+  if (S.relics.has('twin') && Math.random() < 0.02 && S.finished.length < 8) { S.finished.push(hungState(c)); setTimeout(() => banner('쌍둥이 도장', `${bladeName(c.level)} +${c.level}이(가) 한 자루 더!`), 400); }
   if (!c.wasHung) S.stats.made++;
   S.cur = null;
   world.setRack(S.finished); sfx.play('place');
@@ -640,7 +694,7 @@ async function finishBlade() {
 }
 
 // 검걸이에 걸 때 이 검의 표·유물 누적 효과도 함께 보관한다 (다시 가져와 이어서 벼릴 수 있게)
-const KEEP_FIELDS = ['deck', 'crack', 'guard', 'loser', 'stampDone', 'keepRun', 'inkKeeps', 'crown'];
+const KEEP_FIELDS = ['deck', 'crack', 'guard', 'loser', 'stampDone', 'keepRun', 'inkKeeps', 'crown', 'inheritCut'];
 function hungState(c) {
   const o = { level: c.level };
   for (const k of KEEP_FIELDS) if (c[k] !== undefined) o[k] = k === 'deck' ? { ...c[k] } : c[k];
@@ -765,7 +819,8 @@ async function ring(sel, useScrap) {
 
 // ───────── 상인 ─────────
 function rollOffers() {
-  const pool = shuffle(Object.keys(ITEMS).filter(k => (ITEMS[k].kind === 'relic' && !S.relics.has(k)) || ITEMS[k].kind === 'instant'));
+  const fusedHave = (k) => FUSIONS.some(r => (r.a === k || r.b === k) && S.relics.has(r.into));
+  const pool = shuffle(Object.keys(ITEMS).filter(k => (ITEMS[k].kind === 'relic' && !ITEMS[k].fused && !S.relics.has(k) && !fusedHave(k)) || ITEMS[k].kind === 'instant'));
   S.offers = pool.slice(0, 3).map(k => ({ k, sold: false }));
 }
 function openShop() {
@@ -792,9 +847,9 @@ function renderShop() {
     <div class="offer-list">${S.finished.length ? S.finished.map((b, i) => `<div class="offer"><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b><small>${fmt(value(b.level))} G어치</small></span><button class="ghost small" data-feed="${i}">넣기 · 조각 +1</button></div>`).join('') : '<div class="empty">넣을 검이 없다. 제단에 바치지 않고 남긴 검만 넣을 수 있다.</div>'}</div>
     <h3 class="shop-h">진열장 (검 조각)</h3>
     <div class="shop-grid">
-      ${S.offers.map((o, i) => { const it = ITEMS[o.k], full = it.kind === 'relic' && used >= RELIC_SLOTS; return `<div class="card ${o.sold ? 'sold' : ''}">
+      ${S.offers.map((o, i) => { const it = ITEMS[o.k], full = it.kind === 'relic' && used >= RELIC_SLOTS && !fusesWith(o.k), fuse = it.kind === 'relic' && fusesWith(o.k); return `<div class="card ${o.sold ? 'sold' : ''}">
         <div class="ico">${it.icon}</div>
-        <div class="body"><div class="kind">${it.kind === 'relic' ? '유물 · 칸 차지' : '즉시 사용'}</div><div class="nm">${it.name}</div><div class="ds">${descOf(o.k)}</div></div>
+        <div class="body"><div class="kind">${fuse ? '<span style="color:var(--gold)">융합 가능!</span>' : it.kind === 'relic' ? '유물 · 칸 차지' : '즉시 사용'}</div><div class="nm">${it.name}</div><div class="ds">${descOf(o.k)}</div></div>
         <button class="${o.sold ? 'ghost' : 'primary'} small" data-buy="${i}" ${o.sold || S.tokens < it.cost || full ? 'disabled' : ''}>${o.sold ? '구매함' : full ? '칸 부족' : '조각 ' + it.cost}</button></div>`; }).join('')}
     </div>
     <h3 class="shop-h">골드</h3>
@@ -815,12 +870,13 @@ function feedSword(i) {
 function buy(i) {
   const o = S.offers[i], it = ITEMS[o.k];
   if (o.sold || S.tokens < it.cost) return;
-  if (it.kind === 'relic' && S.relics.size >= RELIC_SLOTS) return;
+  if (it.kind === 'relic' && S.relics.size >= RELIC_SLOTS && !fusesWith(o.k)) return;
   S.tokens -= it.cost; o.sold = true; sfx.play('coin');
-  if (it.kind === 'relic') { S.relics.add(o.k); if (o.k === 'cocoon') S.rs.cocoonDay = S.day + 2; }
+  if (it.kind === 'relic') { S.relics.add(o.k); if (o.k === 'cocoon') S.rs.cocoonDay = S.day + 2; checkFusion(); }
   else if (o.k === 'tape') S.deck.dmg -= 1;
   refresh(); renderShop();
 }
+const fusesWith = (k) => FUSIONS.some(r => (r.a === k && S.relics.has(r.b)) || (r.b === k && S.relics.has(r.a)));
 function buyGold(k) {
   const p = priceOf(k);
   if (S.gold < p || (k === 'ticket' && S.ticketBought)) return;
@@ -945,6 +1001,7 @@ function openHowTo(back) {
     <li><b>다시 벼리기</b> — 모루가 비어 있을 때 검걸이를 바라보고 E를 누르면, 걸어 둔 검을 다시 가져와 이어서 강화할 수 있다. 그 검에 쌓인 표와 효과도 따라온다.</li>
     <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
     <li><b>떠돌이 사서 등불</b> — 매일 밤 온다. 유물은 <b>검 조각</b>으로 산다(제단에 바치지 않고 남긴 검을 투입구에 넣으면 한 자루에 조각 하나). 유물은 칸 5개까지, 표 더미를 바꾸거나 특별한 효과를 준다. 골드로는 합격 추첨표(성공 표 +1, 방문마다 한 번)·힌트·양초를 산다. HUD의 유물을 누르면 버릴 수 있다.</li>
+    <li><b>융합</b> — 짝이 되는 두 유물을 함께 가지면 더 강한 유물 하나로 합쳐지고 칸 하나가 빈다. 유물 설명에 "○○과 만나면 △△로 융합한다"라고 적혀 있다.</li>
     <li><b>오답 노트</b> — 틀린 문제와 해설이 저장되고, 다음 판에 더 자주 나온다.</li></ol>
     <div class="btnrow"><button id="ht-close" class="primary">알겠다</button></div>`);
   $('#ht-close').onclick = () => { closeModal(); if (back) back(); };
