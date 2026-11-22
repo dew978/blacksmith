@@ -1,7 +1,7 @@
 // 효과음: audio/ 폴더의 녹음(생성) 샘플을 우선 쓰고, 아직 못 불러왔거나 없는 소리는 Web Audio로 즉석 합성한다.
 // 샘플은 Stable Audio 3로 만들어 다듬은 것(audio/raw → audio/*.mp3).
 const AUDIO_DIR = new URL('../audio/', import.meta.url);
-const FILES = ['hit_clang', 'hit_great', 'hit_dull', 'hit_crack', 'shatter', 'coin', 'correct', 'wrong', 'door_slam', 'heat', 'hiss',
+const FILES = ['hit_clang', 'hit_great', 'hit_dull', 'hit_crack', 'shatter', 'coin', 'correct', 'wrong', 'door_slam', 'gate_grind', 'maw_growl', 'heat', 'hiss',
   'thunder', 'breakthrough', 'spirit', 'step', 'bell', 'fire_loop', 'music', 'intro_drone'];
 // 게임 이벤트 이름 → 샘플, 크기, 재생 속도 범위(같은 소리가 반복돼도 덜 기계적으로)
 const MAP = {
@@ -22,6 +22,8 @@ const MAP = {
   milestone: { s: 'breakthrough', gain: 0.8 },
   step: { s: 'step', gain: 0.3, rate: [0.85, 1.15] },
   doorSlam: { s: 'door_slam', gain: 0.95 },
+  gateGrind: { s: 'gate_grind', gain: 0.8 },
+  maw: { s: 'maw_growl', gain: 0.9 },
 };
 export class Sfx {
   constructor() { this.ctx = null; this.muted = false; this.buf = {}; }
@@ -136,7 +138,7 @@ export class Sfx {
     const t = this.ctx.currentTime + 0.004, m = MAP[name];
     if (m && this.buf[m.s]) {
       const r = m.rate ? m.rate[0] + Math.random() * (m.rate[1] - m.rate[0]) : 1;
-      this._sample(m.s, t, { gain: m.gain, rate: opt.fast && name === 'feverHit' ? r * 1.05 : r });
+      this._sample(m.s, t, { gain: m.gain * (opt.gain ?? 1), rate: opt.rate ?? (opt.fast && name === 'feverHit' ? r * 1.05 : r) });
       return;
     }
     if (this[name]) this[name](t, opt);

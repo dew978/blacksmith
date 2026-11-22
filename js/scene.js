@@ -441,6 +441,8 @@ export class World {
       anvil: { pos: [0, 2.15, 2.3], look: [0, 1.45, -0.45] },
       furnace: { pos: [-1.25, 1.65, -0.35], look: [-2.9, 0.85, -2.4] },
       altar: { pos: [0.55, 2.0, -1.15], look: [0.8, 1.6, -5.2] },
+      // 공물 의식: 조금 물러나 철창 너머 전체가 보이게
+      ritual: { pos: [2.0, 2.55, -1.45], look: [-0.3, 1.6, -5.0] },
       shop: { pos: [1.35, 1.85, -0.75], look: [3.5, 1.3, -2.9] },
     };
     const st = this.stations.title;
@@ -561,6 +563,7 @@ export class World {
     this.buildCrate();
     this.buildAltar();
     this.buildSpirit();
+    this.buildMaw();
     this.buildRack();
     this.buildShop();
     this.buildDecor();
@@ -667,7 +670,7 @@ export class World {
     }
     for (const y of [0.9, 2.2, 3.25]) { const h = new THREE.Mesh(new THREE.BoxGeometry(3, 0.06, 0.06), iron); h.position.set(0, y, -5.02); bars.add(h); }
     const frame = new THREE.Mesh(new THREE.BoxGeometry(3.3, 0.22, 0.3), this.mats.darkWood); frame.position.set(0, 3.38, -4.95); bars.add(frame);
-    this.scene.add(bars);
+    this.scene.add(bars); this.bars = bars;
   }
 
   buildSpirit() {
@@ -714,6 +717,106 @@ export class World {
     this.spiritMood.target.setRGB(...c);
     this.spiritMood.flare = kind === 'calm' ? 0 : 1;
     this.pageSpeed = kind === 'happy' ? 1.4 : kind === 'angry' || kind === 'doom' ? 2.2 : 0.25;
+  }
+  // ───────── 공물 의식: 철창이 열리고 서고지기의 손이 검을 낚아챈다 ─────────
+  // maw 값(0~1)만 바꾸면 update에서 모양이 따라온다. gate 철창, eyes 어둠 속 눈, tent 촉수, reach 손 뻗기, grip 움켜쥐기, lift 손 들기
+  buildMaw() {
+    this.maw = { gate: 0, eyes: 0, tent: 0, reach: 0, grip: 0, lift: 0 };
+    const skin = new THREE.MeshStandardMaterial({ color: 0x08090d, roughness: 0.82, metalness: 0, envMapIntensity: 0.05, emissive: new THREE.Color(0.006, 0.02, 0.028) });
+    const glow = new THREE.MeshBasicMaterial({ color: new THREE.Color(1.2, 4, 5), toneMapped: false });
+    this.mawGlow = glow;
+    // 손: 손바닥이 아래, 손가락이 +z(사람 쪽)
+    const hand = new THREE.Group(); hand.visible = false; hand.matrixAutoUpdate = true;
+    const palm = new THREE.Mesh(new THREE.SphereGeometry(0.5, 24, 16), skin); palm.scale.set(1.3, 0.4, 1.05); hand.add(palm);
+    const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.62, 5, 18), skin); arm.rotation.x = Math.PI / 2; arm.position.z = -2.7; hand.add(arm);
+    // 손등과 팔에 박힌 눈
+    this.handEyes = [];
+    [[0.2, 0.17, -0.05, 0.06], [-0.25, 0.16, 0.1, 0.045], [0.05, 0.36, -1.1, 0.08], [-0.2, 0.4, -1.9, 0.06], [0.28, 0.38, -2.4, 0.05]].forEach(([x, y, z, r]) => {
+      const e = new THREE.Mesh(new THREE.SphereGeometry(r, 12, 10), glow); e.position.set(x, y, z); e.scale.set(1.4, 0.55, 1); hand.add(e); this.handEyes.push(e);
+    });
+    this.fingers = [];
+    const seg = (r, len) => { const m = new THREE.Mesh(new THREE.CapsuleGeometry(r, len, 4, 10), skin); m.rotation.x = Math.PI / 2; m.position.z = len / 2; return m; };
+    const makeFinger = (lens, r0) => {
+      const root = new THREE.Group(); let parent = root; const joints = [];
+      lens.forEach((len, i) => {
+        const j = new THREE.Group(); if (i > 0) j.position.z = lens[i - 1]; parent.add(j); joints.push(j);
+        j.add(seg(r0 * (1 - i * 0.2), len)); parent = j;
+      });
+      const claw = new THREE.Mesh(new THREE.ConeGeometry(r0 * 0.55, 0.22, 8), skin); claw.rotation.x = Math.PI / 2 + 0.5; claw.position.set(0, -0.03, lens[lens.length - 1] + 0.08); parent.add(claw);
+      return { root, joints };
+    };
+    [-0.45, -0.15, 0.15, 0.45].forEach((x, i) => {
+      const fg = makeFinger([0.5, 0.4, 0.32].map((l) => l * (i === 0 || i === 3 ? 0.88 : 1)), 0.1);
+      fg.root.position.set(x, -0.02, 0.4); fg.root.rotation.y = -x * 0.25; hand.add(fg.root); this.fingers.push(fg);
+    });
+    const th = makeFinger([0.38, 0.32], 0.11); th.root.position.set(0.6, -0.05, 0.0); th.root.rotation.y = 1.0; hand.add(th.root); this.fingers.push(th);
+    hand.scale.setScalar(1.15);
+    this.scene.add(hand); this.hand = hand;
+    this.handFrom = new THREE.Vector3(0, 2.3, -8.6); this.handTo = new THREE.Vector3(0, 1.62, -4.95);
+    // 촉수: 철창 틈에서 기어 나온다
+    const ball = new THREE.SphereGeometry(1, 10, 8);
+    this.tentacles = [];
+    [[-1.35, 0.25, 0.6, 1], [1.35, 0.4, -0.5, 1], [-1.3, 2.9, 1.2, -1], [1.3, 2.7, -1.1, -1], [-0.7, 0.05, 0.3, 1], [0.8, 3.2, -0.3, -1]].forEach(([x, y, side, up], k) => {
+      const segs = [];
+      for (let i = 0; i < 18; i++) { const m = new THREE.Mesh(ball, skin); m.visible = false; this.scene.add(m); segs.push(m); }
+      this.tentacles.push({ base: new THREE.Vector3(x, y, -5.25), side, up, ph: k * 1.7, segs, len: 1.6 + (k % 3) * 0.35 });
+    });
+    // 어둠 속에서 뜨는 눈들
+    this.darkEyes = [];
+    for (let i = 0; i < 26; i++) {
+      const pair = new THREE.Group();
+      const r = 0.025 + Math.random() * 0.05;
+      for (const sx of [-1, 1]) { const e = new THREE.Mesh(new THREE.SphereGeometry(r, 10, 8), glow); e.position.x = sx * r * 2.6; e.scale.set(1.4, 0.5, 0.6); pair.add(e); }
+      const wall = Math.random();
+      if (wall < 0.5) pair.position.set((Math.random() - 0.5) * 2.6, 0.3 + Math.random() * 2.8, -9.1);
+      else { const sx = wall < 0.75 ? -1 : 1; pair.position.set(sx * 1.42, 0.3 + Math.random() * 2.8, -5.6 - Math.random() * 3.4); pair.rotation.y = -sx * Math.PI / 2; }
+      pair.userData = { th: Math.random() * 0.8, ph: Math.random() * 9 };
+      pair.visible = false; this.scene.add(pair); this.darkEyes.push(pair);
+    }
+    this.mawLight = new THREE.PointLight(0x5fd6ff, 0, 6, 1.6); this.mawLight.position.set(0, 3.2, -6.2); this.scene.add(this.mawLight);
+  }
+  // 손바닥 아래, 검을 쥐는 자리 (월드 좌표)
+  mawGrip() { this.hand.updateMatrixWorld(); return new THREE.Vector3(0, -0.36, 0.7).applyMatrix4(this.hand.matrixWorld); }
+  updateMaw(dt, t) {
+    const m = this.maw; if (!m) return;
+    this.bars.position.y = m.gate * 3.1;
+    // 손
+    const r = 1 - Math.pow(1 - Math.min(1, Math.max(0, m.reach)), 3);
+    this.hand.visible = m.reach > 0.001;
+    this.hand.position.lerpVectors(this.handFrom, this.handTo, r);
+    this.hand.position.y += m.lift * 0.9 + Math.sin(t * 2.3) * 0.03 * r;
+    this.hand.rotation.set(0.12 - m.lift * 0.35 + (1 - r) * 0.3, Math.sin(t * 0.9) * 0.05, Math.sin(t * 1.3) * 0.04);
+    const open = r * (1 - m.grip);
+    this.fingers.forEach((fg, i) => fg.joints.forEach((j, k) => {
+      if (i === 4) { j.rotation.y = -m.grip * (k === 0 ? 0.9 : 0.6); return; }
+      // 펼칠 때는 살짝 젖히고, 쥘 때는 마디마다 크게 굽힌다
+      j.rotation.x = -open * 0.18 + m.grip * (k === 0 ? 0.75 : 0.95) + Math.sin(t * 3 + i + k) * 0.04;
+    }));
+    const pulse = 0.6 + Math.sin(t * 4) * 0.4;
+    this.handEyes.forEach((e, i) => { e.scale.y = 0.55 * (((t + i * 1.3) % 3.7) < 0.12 ? 0.1 : 1); });
+    // 촉수
+    for (const tc of this.tentacles) {
+      const L = tc.len * m.tent, n = tc.segs.length;
+      for (let i = 0; i < n; i++) {
+        const sk = i / (n - 1), d = sk * L, sg = tc.segs[i];
+        sg.visible = m.tent > 0.01;
+        if (!sg.visible) continue;
+        const w = Math.sin(t * 2.4 - sk * 5 + tc.ph) * 0.35 * sk;
+        sg.position.set(tc.base.x + tc.side * 0.25 * d + w * 0.6, tc.base.y + tc.up * (0.35 * d + Math.sin(sk * 3 + t * 1.7 + tc.ph) * 0.25 * sk), tc.base.z + d * 0.85 + w * 0.3);
+        sg.scale.setScalar(Math.max(0.02, (0.17 * (1 - sk * 0.85)) * Math.min(1, m.tent * 1.5)));
+      }
+    }
+    // 어둠 속 눈
+    for (const p of this.darkEyes) {
+      const u = p.userData, on = m.eyes > u.th;
+      p.visible = on;
+      if (on) { const k = Math.min(1, (m.eyes - u.th) * 5); p.scale.set(1, k * (((t + u.ph) % 4.1) < 0.12 ? 0.1 : 1), 1); }
+    }
+    this.mawGlow.color.copy(this.spiritMood.color).multiplyScalar(0.8 + pulse * 0.4);
+    this.mawLight.color.copy(this.spiritLight.color);
+    this.mawLight.intensity = (m.eyes * 1.2 + r * 1.2) * (0.8 + pulse * 0.2);
+    // 서고지기가 부풀어 오른다
+    this.spirit.scale.setScalar(1 + m.eyes * 0.22);
   }
   setCandle(i, lit) { const c = this.candles[i]; if (c) c.lit = lit; }
 
@@ -1065,6 +1168,7 @@ export class World {
       p.rotation.set(Math.sin(t + u.bob) * 0.6, u.a + Math.PI / 2, Math.cos(t * 0.7 + u.bob) * 0.4);
     }
     this.altarRune.material.opacity = 0.45 + Math.sin(t * 2) * 0.2;
+    this.updateMaw(dt, t);
     // 상인 등불
     this.merchant.position.y = this.merchantBaseY + Math.sin(t * 1.6) * 0.06;
     this.merchant.rotation.y = Math.sin(t * 0.5) * 0.4;
