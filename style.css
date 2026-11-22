@@ -414,3 +414,12 @@ body.touch #title-screen:not(.hidden) ~ #btn-fs { display: inline-flex; top: 14p
 .reqbox.dock .rq-top { justify-content: flex-start; }
 .reqbox.dock b { font-size: 22px; }
 @media (max-width: 720px) { .reqbox.dock { left: 10px; width: min(200px, 53vw); } .reqbox.dock b { font-size: 19px; } }
+
+/* 그림 아이콘 */
+.ico svg.ic, .relic svg.ic { width: 64%; height: 64%; display: block; color: #fff0d0; filter: drop-shadow(0 1px 1px rgba(0,0,0,.5)); }
+.shop2 .srow .ico { width: 40px; height: 40px; }
+.relic.item svg.ic { color: #dff4ff; }
+
+/* 이어하기 */
+#btn-continue small { display: block; font-size: 12px; font-weight: 500; opacity: .75; margin-top: 2px; letter-spacing: 0; }
+#btn-continue:not(.hidden) + #btn-start { margin-top: 10px; transform: scale(.86); opacity: .9; }

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { World, makeLyingBlade, setLyingBladeLevel, formOf } from './scene.js';
 import { Sfx } from './audio.js';
 import { SAMPLE_QUESTIONS } from './questions.js';
+import { ICONS } from './icons.js';
 
 // ───────── 규칙 데이터 ─────────
 const MAX_DAY = 7;
@@ -353,6 +354,7 @@ function flashRed() {
 }
 
 function refresh() {
+  queueSave();
   $('#hud-day').textContent = S.day; $('#hud-maxday').textContent = MAX_DAY;
   // 오늘의 요구: 걸어 둔 검(+고철)으로 얼마나 채웠는지
   const need = req(), have = S.finished.reduce((t, b) => t + value(b.level), 0) + (S.scrap || 0), full = have >= need;
@@ -401,7 +403,7 @@ function refresh() {
 }
 function badge(k, cnt) {
   const it = ITEMS[k], relic = it.kind === 'relic';
-  return `<div class="relic ${relic ? '' : 'item'}" ${relic ? `data-relic="${k}"` : ''}>${it.icon}${cnt ? `<span class="cnt">${cnt}</span>` : ''}<div class="tip"><b>${it.name}</b>${descOf(k)}${relic ? '<br><small>눌러서 버리기</small>' : ''}</div></div>`;
+  return `<div class="relic ${relic ? '' : 'item'}" ${relic ? `data-relic="${k}"` : ''}>${ICONS[k] || it.icon}${cnt ? `<span class="cnt">${cnt}</span>` : ''}<div class="tip"><b>${it.name}</b>${descOf(k)}${relic ? '<br><small>눌러서 버리기</small>' : ''}</div></div>`;
 }
 function discardRelic(k) {
   if (!S.relics.has(k) || !(S.mode === 'idle' || S.mode === 'anvil' || S.mode === 'shop')) return;
@@ -944,7 +946,7 @@ function renderShop() {
   const row = (k, price, btn, dis, sold) => {
     const it = ITEMS[k];
     return `<div class="srow ${sold ? 'sold' : ''}" title="${esc(descOf(k))}">
-      <div class="ico">${it.icon}</div>
+      <div class="ico">${ICONS[k] || it.icon}</div>
       <div class="txt"><b>${it.name}</b><span>${it.short}${k === 'coin' ? ` — 오늘은 ${S.day % 2 ? '대성공' : '파괴'}` : ''}</span>${fuseTag(k)}</div>
       <button class="${sold ? 'ghost' : 'primary'} small" ${btn} ${dis || sold ? 'disabled' : ''}>${sold ? '✓' : price}</button></div>`;
   };
@@ -1002,6 +1004,7 @@ function buyGold(k) {
 
 // ───────── 하루 / 판 ─────────
 function newGame() {
+  clearSave();
   world.setTitleStage(false);
   if (S.cur) world.scene.remove(S.cur.car);
   $('#fever-frame').classList.remove('on'); $('#fever-bar').classList.remove('on');
@@ -1036,6 +1039,7 @@ function summaryHTML() {
     <div class="notes">${wrong.length ? wrong.map(q => `<div class="note"><div class="qq">${esc(q.q)}</div><div class="aa">정답: ${esc(q.c[q.a])}</div>${q.e ? `<div class="ee">${esc(q.e)}</div>` : ''}</div>`).join('') : `<div class="empty">${S.stats.answered ? '틀린 문제가 없다. 완벽한 대장장이!' : '이번 판에는 푼 문제가 없다.'}</div>`}</div>`;
 }
 async function gameOver() {
+  clearSave();
   S.mode = 'over'; refresh(); $('#hud').classList.add('hidden');
   sfx.music(null); sfx.play('doom'); world.goStation('altar', 1.2);
   await wait(2.2, k => { world.darkness = k * 0.8; });
@@ -1044,6 +1048,7 @@ async function gameOver() {
   bindEnd();
 }
 async function victory() {
+  clearSave();
   S.mode = 'over'; refresh(); $('#hud').classList.add('hidden');
   world.setSpiritMood('happy'); sfx.play('great'); sfx.play('bell');
   world.goStation('overview', 1.2);
@@ -1297,7 +1302,7 @@ function openPause() {
   $('#pz-notes').onclick = () => openNotes(() => { openPause.reopen(); });
   $('#pz-sound').onclick = () => { $('#btn-sound').onclick(); openPause.reopen(); };
   const fz = $('#pz-fs'); if (fz) fz.onclick = () => { $('#btn-fs').click(); setTimeout(openPause.reopen, 150); };
-  $('#pz-title').onclick = () => { if (confirm('지금 판을 그만두고 처음 화면으로 갈까요? 진행은 저장되지 않습니다 (오답 노트는 남습니다).')) goTitle(); };
+  $('#pz-title').onclick = () => { if (confirm('지금 판을 그만두고 처음 화면으로 갈까요? 지금까지의 진행은 자동 저장되어, 처음 화면의 「이어하기」로 돌아올 수 있습니다.')) goTitle(); };
 }
 // 일시정지 화면을 다시 그린다 (하위 메뉴에서 돌아올 때)
 openPause.reopen = () => { const from = pauseFrom, at = pausedAt; S.mode = from; openPause(); pausedAt = at; };
@@ -1386,6 +1391,8 @@ $('#opt-timer').onchange = (e) => { settings.timer = e.target.checked; store.set
 $('#btn-start').onclick = () => { sfx.init(); sfx.play('ui'); showSelect(); };
 $('#btn-back').onclick = () => { sfx.play('ui'); $('#title-select').classList.add('hidden'); $('#title-home').classList.remove('hidden'); };
 $('#btn-go').onclick = async () => {
+  const sv = loadSave();
+  if (sv && !confirm(`저장된 판(${sv.s.day}일째 · ${sv.course || ''})이 지워지고 새로 시작합니다. 괜찮을까요?`)) return;
   sfx.init();
   const ok = await loadBank();
   if (!ok) return;
@@ -1736,3 +1743,65 @@ window.__forge = {
 
 // 창 크기가 바뀌면 왼쪽 위 패널 높이도 바뀌므로 요구 가치 상자 위치를 다시 잡는다
 window.addEventListener('resize', () => { const tl = document.querySelector('.hud-tl'), rb = document.querySelector('#reqbox'); if (rb.classList.contains('dock') && tl) rb.style.top = (tl.getBoundingClientRect().bottom + 8) + 'px'; });
+
+// ───────── 저장 (브라우저 localStorage) ─────────
+// 걷기·모루·상점처럼 멈춰 있는 순간에만 저장한다. 문제를 푸는 중이나 의식 중에 창을 닫으면 그 직전 상태로 돌아온다.
+var SAVE_KEY = 'jf_save';
+var SAVABLE = ['idle', 'anvil', 'shop'];
+var saveTimer = 0;
+function queueSave() {
+  if (!SAVABLE || !SAVABLE.includes(S.mode) || saveTimer) return;
+  saveTimer = setTimeout(() => { saveTimer = 0; writeSave(); }, 300);
+}
+function writeSave() {
+  if (!SAVABLE.includes(S.mode)) return;
+  const c = S.cur;
+  const cur = c ? Object.fromEntries(Object.entries(c).filter(([k]) => k !== 'holder' && k !== 'car')) : null;
+  store.set(SAVE_KEY, {
+    v: 1, at: Date.now(), sel: { grade: SEL.grade, sem: SEL.sem, subjs: [...SEL.subjs], custom: SEL.custom }, course: COURSE,
+    s: { ...S, cur, relics: [...S.relics], sessionWrong: [...S.sessionWrong], feverUntil: 0, feverPending: false, boardMsg: null, mode: S.mode === 'shop' ? 'shop' : 'play' },
+  });
+  updateContinue();
+}
+function loadSave() { const sv = store.get(SAVE_KEY, null); return sv && sv.v === 1 && sv.s ? sv : null; }
+function clearSave() { clearTimeout(saveTimer); saveTimer = 0; try { localStorage.removeItem(SAVE_KEY); } catch { /* 저장 불가 환경 */ } updateContinue(); }
+window.addEventListener('pagehide', () => { if (SAVABLE.includes(S.mode)) writeSave(); });
+
+// 처음 화면의 '이어하기' 버튼
+function updateContinue() {
+  const b = $('#btn-continue'); if (!b) return;
+  const sv = loadSave();
+  b.classList.toggle('hidden', !sv);
+  if (sv) b.innerHTML = `이어하기<small>${sv.s.day}일째 · ${esc(sv.course || '')}</small>`;
+}
+async function continueGame() {
+  const sv = loadSave(); if (!sv) return;
+  sfx.init();
+  Object.assign(SEL, sv.sel);
+  const ok = await loadBank(); if (!ok) return;
+  sfx.play('bell');
+  $('#title-screen').classList.add('hidden'); $('#hud').classList.remove('hidden');
+  world.setTitleStage(false);
+  if (S.cur) world.scene.remove(S.cur.car);
+  S = Object.assign(freshState(), sv.s, { relics: new Set(sv.s.relics), sessionWrong: new Set(sv.s.sessionWrong), cur: null, feverUntil: 0 });
+  sfx.music('music');
+  world.darkness = 0; world.setSpiritMood('calm');
+  world.candles.forEach((_, i) => world.setCandle(i, i < S.candles));
+  world.setRack(S.finished);
+  // 모루 위에 있던 검을 다시 올려 둔다
+  if (sv.s.cur) {
+    const holder = makeLyingBlade(sv.s.cur.level), car = new THREE.Group(); car.add(holder);
+    car.position.copy(world.anvilTop); world.scene.add(car);
+    S.cur = { ...sv.s.cur, holder, car, heat: 0.3, flash: 0 };
+  }
+  drawCalendar(); drawBoard();
+  if (sv.s.mode === 'shop') {
+    S.mode = 'shop'; refresh(); world.goStation('shop', 2.4); renderShop();
+  } else {
+    S.mode = S.cur ? 'anvil' : 'idle';
+    placePlayer(0, 3.4, 0, -0.12); enterWalk(); refresh();
+    banner(`${S.day}일째 · 이어서`, `서고지기의 요구 · ${fmt(req())} G`);
+  }
+}
+$('#btn-continue').onclick = () => continueGame();
+updateContinue();
