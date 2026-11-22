@@ -245,17 +245,19 @@ function refresh() {
   $('#hud-relics').innerHTML = rel.join('');
   // 행동 버튼
   const m = S.mode, canAct = m === 'idle' || m === 'anvil';
-  $('#actions').classList.toggle('hidden', !canAct);
-  $('#act-take').disabled = !(m === 'idle' && !S.cur && S.blanks > 0);
-  $('#act-strike').disabled = !(m === 'anvil' && S.cur);
-  $('#act-finish').disabled = !(m === 'anvil' && S.cur);
-  $('#act-altar').disabled = !canAct;
+  const atAnvil = view === 'anvil' && m === 'anvil' && !!S.cur, walk = view === 'walk' && canAct;
+  $('#actions').classList.toggle('hidden', !atAnvil);
   $('#act-strike').innerHTML = feverOn() ? '<kbd>Space</kbd>연타!' : '<kbd>Space</kbd>망치질';
   let hint = '';
-  if (m === 'idle') hint = S.blanks > 0 ? '원석을 꺼내 화로에 달군 뒤 모루에서 두드리세요' : '원석을 다 썼어요. 완성한 검을 제단에 바치세요';
-  else if (m === 'anvil') hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : '망치질하면 문제가 나옵니다 · 위험해지면 검 완성으로 멈추세요';
+  if (walk) {
+    const goal = S.cur ? '모루에 벼리던 검이 있어요' : S.blanks > 0 ? '원석 상자에서 원석을 꺼내세요' : '원석을 다 썼어요 · 검을 제단에 바치세요';
+    hint = (IS_TOUCH ? '조이스틱 이동 · 끌어서 둘러보기 · 톡 상호작용' : (pointerLocked() ? 'WASD 이동 · 마우스 둘러보기 · E 상호작용' : '화면을 클릭하면 마우스로 둘러볼 수 있어요 · WASD 이동')) + ` — ${goal}`;
+  } else if (atAnvil) hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : '망치질하면 문제가 나옵니다 · 위험해지면 검 완성으로 멈추세요';
   $('#hud-hint').textContent = hint;
-  $('#hud-hint').classList.toggle('hidden', !canAct);
+  $('#hud-hint').classList.toggle('hidden', !(walk || atAnvil));
+  $('#crosshair').classList.toggle('hidden', !walk);
+  $('#joy').classList.toggle('hidden', !(walk && IS_TOUCH));
+  if (!walk) $('#prompt').classList.add('hidden');
   world.setOreCount(Math.min(8, S.blanks));
 }
 function badge(k, cnt) {
@@ -366,7 +368,7 @@ function closeCard() { $('#qcard').classList.add('hidden'); }
 // ───────── 대장간 흐름 ─────────
 async function takeBlank() {
   if (S.mode !== 'idle' || S.cur || S.blanks <= 0) return;
-  sfx.init(); S.blanks--; S.mode = 'moving'; refresh();
+  sfx.init(); S.blanks--; S.mode = 'moving'; view = 'cine'; refresh();
   const holder = makeLyingBlade(0);
   const car = new THREE.Group(); car.add(holder); car.position.copy(world.cratePos);
   world.scene.add(car);
@@ -383,7 +385,7 @@ async function takeBlank() {
   await wait(0.8, k => { const e = easeInOut(k); car.position.lerpVectors(b, c, e); car.position.y += Math.sin(k * Math.PI) * 0.4; car.rotation.y = Math.PI * (1 - e); });
   sfx.play('place'); world.shake(0.012);
   world.spawnSparks(c, 12, 0xff9a40, { speed: 1.4, up: 1 });
-  S.mode = 'anvil'; drawBoard(); refresh();
+  S.mode = 'anvil'; view = 'anvil'; drawBoard(); refresh();
 }
 
 function strike() {
@@ -404,6 +406,8 @@ async function doStrike(correct, fever) {
   if (S.mode === 'striking') S.mode = S.cur ? 'anvil' : 'idle';
   if (S.feverPending) { S.feverPending = false; if (S.cur) startFever(); }
   refresh();
+  // 검이 부서지면 파편이 흩어지는 걸 보여 준 뒤 자유 이동으로 돌아간다
+  if (!S.cur && view === 'anvil') setTimeout(() => { if (view === 'anvil' && S.mode === 'idle' && !S.cur) leaveAnvil(); }, 1100);
 }
 
 function resolveStrike(correct, fever) {
@@ -481,8 +485,8 @@ async function finishBlade() {
   S.stats.made++; S.cur = null;
   world.setRack(S.finished); sfx.play('place');
   await wait(0.5);
-  world.goStation('anvil', 2.6);
-  S.mode = 'idle'; drawBoard(); refresh();
+  S.mode = 'idle'; drawBoard();
+  placePlayer(2.4, 0.2, -Math.PI / 2, 0.12); enterWalk(); // 검걸이 앞에서 걸어 둔 검을 바라본다
 }
 
 // ───────── 제단 ─────────
@@ -518,7 +522,7 @@ function openAltar() {
       else { const i = +el.dataset.i; sel.has(i) ? sel.delete(i) : sel.add(i); }
       sfx.play('ui'); render();
     }));
-    $('#al-back').onclick = () => { closeModal(); S.mode = S.cur ? 'anvil' : 'idle'; world.goStation('anvil'); refresh(); };
+    $('#al-back').onclick = () => { closeModal(); S.mode = S.cur ? 'anvil' : 'idle'; enterWalk(); };
     $('#al-ring').onclick = () => {
       if (!ok && !confirm('요구 가치에 못 미칩니다. 촛불 하나가 꺼집니다. 그래도 종을 울릴까요?')) return;
       ring([...sel], useScrap);
@@ -632,7 +636,7 @@ function startDay() {
   S.blanks += BASE_BLANKS + (S.relics.has('pouch') ? 1 : 0) + S.bonusBlanks;
   S.bonusBlanks = 0;
   S.mode = S.cur ? 'anvil' : 'idle';
-  world.goStation('anvil', 1.6);
+  placePlayer(0, 3.4, 0, -0.12); enterWalk();
   drawCalendar(); drawBoard(); refresh();
   banner(`${S.day}일째`, `서고지기의 요구 · ${fmt(req())} G`);
 }
@@ -720,11 +724,13 @@ function openQSet(back) {
 }
 function openHowTo(back) {
   openPanel(`<h2>플레이 방법</h2><ol class="howto">
-    <li><b>원석 꺼내기 (E)</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다.</li>
+    <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 화면을 클릭한 뒤 마우스로 둘러본다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
+    <li><b>상호작용 (E)</b> — 원석 상자·화로·모루·제단·책장을 바라보면 안내가 뜬다. E나 클릭(휴대폰은 톡)으로 실행한다.</li>
+    <li><b>원석 꺼내기</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다. 모루 앞에 서면 시점이 고정된다. Esc나 이동 키로 자리를 뜰 수 있다.</li>
     <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. <b>맞히면</b> 성공·대성공으로 강해지고, <b>틀리면</b> 유지·손상·파괴 중 하나가 뽑힌다. 강할수록 틀렸을 때 파괴 확률이 높다.</li>
     <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
     <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
-    <li><b>제단 (Q)</b> — 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
+    <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
     <li><b>떠돌이 사서 등불</b> — 매일 밤 골드로 유물과 소모품을 산다.</li>
     <li><b>오답 노트</b> — 틀린 문제와 해설이 저장되고, 다음 판에 더 자주 나온다.</li></ol>
     <div class="btnrow"><button id="ht-close" class="primary">알겠다</button></div>`);
@@ -735,11 +741,168 @@ function updateQInfo() {
   $('#qinfo').textContent = `문제 ${QUESTIONS.length}개 · 오답 노트 ${nw}개${settings.reviewOnly ? ' · 오답 복습 모드' : ''}`;
 }
 
+// ───────── 1인칭 이동 ─────────
+// view: 'walk'(걸어 다님) · 'anvil'(모루 앞 고정 시점) · 'cine'(원석 옮기는 연출)
+var view = 'walk';
+const IS_TOUCH = matchMedia('(pointer: coarse)').matches;
+if (IS_TOUCH) document.body.classList.add('touch');
+const P = { x: 0, z: 3.4, yaw: 0, pitch: -0.12, vx: 0, vz: 0, bob: 0, stepAt: 0 };
+const EYE = 1.62, PR = 0.3, SPEED = 2.5, RUN = 3.9;
+// 부딪히는 사물 (x, z, 반지름)
+const BLOCKERS = [
+  [0, 0, 0.78], [-3.6, -2.4, 1.05], [-1.95, 0.95, 0.58], [-2.2, -0.5, 0.42], [0, -4.3, 0.72],
+  [3.75, -3.55, 0.85], [-3.45, -4.72, 0.95], [2.6, 1.2, 0.4], [-4.3, -4.8, 0.3], [4.3, -4.8, 0.3], [-4.3, 2.5, 0.3], [4.3, 2.5, 0.3],
+];
+// 바라보면 상호작용할 수 있는 곳
+const SPOTS = [
+  { id: 'crate', x: -1.95, z: 0.95, r: 1.75 },
+  { id: 'furnace', x: -3.1, z: -2.4, r: 1.9 },
+  { id: 'anvil', x: 0, z: 0, r: 1.85 },
+  { id: 'altar', x: 0, z: -4.3, r: 2.0 },
+  { id: 'shelf', x: -3.45, z: -4.6, r: 1.9 },
+  { id: 'rack', x: 4.35, z: 0.1, r: 2.3 },
+  { id: 'merchant', x: 3.0, z: -2.9, r: 2.0 },
+  { id: 'calendar', x: -4.45, z: 0.55, r: 2.1 },
+  { id: 'door', x: 0, z: 4.45, r: 1.6 },
+];
+function spotInfo(id) {
+  const free = S.mode === 'idle' && !S.cur;
+  switch (id) {
+    case 'crate': case 'furnace':
+      if (S.cur) return { label: '모루에 벼리던 검이 있다' };
+      if (S.blanks <= 0) return { label: '원석을 다 썼다 · 검을 제단에 바치자' };
+      return free ? { label: id === 'crate' ? `원석 꺼내 달구기 (남은 원석 ${S.blanks})` : '원석을 꺼내 화로에 달구기', act: takeBlank } : null;
+    case 'anvil':
+      return S.cur ? { label: `모루 앞에 서기 · ${bladeName(S.cur.level)} +${S.cur.level}`, act: enterAnvil } : { label: '원석 상자에서 원석을 가져오자' };
+    case 'altar': return { label: `서고지기에게 검 바치기 · 오늘 ${fmt(req())} G`, act: openAltar };
+    case 'shelf': return { label: '오답 노트 펼치기', act: () => $('#btn-notes').onclick() };
+    case 'rack': {
+      const tot = S.finished.reduce((s, b) => s + value(b.level), 0);
+      return { label: S.finished.length ? `완성한 검 ${S.finished.length}자루 · 합계 ${fmt(tot)} G` : '아직 걸어 둔 검이 없다' };
+    }
+    case 'merchant': return { label: '떠돌이 사서 등불 · 제단에 바친 밤에 진열장을 연다' };
+    case 'calendar': return { label: `${S.day}일째 / ${MAX_DAY}일 · 촛불 ${S.candles}개 남음` };
+    case 'door': return { label: '서고지기와의 계약이 끝날 때까지 나갈 수 없다' };
+  }
+  return null;
+}
+function placePlayer(x, z, yaw, pitch) { Object.assign(P, { x, z, yaw, pitch, vx: 0, vz: 0 }); }
+let ctrlSince = 0, wasCtrl = false;
+function enterWalk() { view = 'walk'; refresh(); }
+function leaveAnvil() {
+  if (view !== 'anvil' || (S.mode !== 'anvil' && S.mode !== 'idle')) return;
+  placePlayer(0, 1.55, 0, -0.32); enterWalk();
+}
+function enterAnvil() {
+  if (S.mode !== 'anvil' || !S.cur) return;
+  view = 'anvil'; if (pointerLocked()) document.exitPointerLock();
+  world.goStation('anvil', 3.2); sfx.play('place'); refresh();
+}
+const pointerLocked = () => document.pointerLockElement === canvasEl;
+const walkActive = () => view === 'walk' && (S.mode === 'idle' || S.mode === 'anvil');
+const keys = new Set();
+const joy = { x: 0, y: 0, id: null };
+let focus = null, focusInfo = null, promptKey = '';
+
+function forward() { return { x: -Math.sin(P.yaw), z: -Math.cos(P.yaw) }; }
+function collide() {
+  for (const [bx, bz, br] of BLOCKERS) {
+    const dx = P.x - bx, dz = P.z - bz, d = Math.hypot(dx, dz), min = br + PR;
+    if (d < min && d > 1e-4) { P.x = bx + dx / d * min; P.z = bz + dz / d * min; }
+  }
+  P.x = Math.max(-4.5 + PR + 0.05, Math.min(4.5 - PR - 0.05, P.x));
+  P.z = Math.max(-4.6, Math.min(4.5 - PR - 0.05, P.z));
+}
+function updateWalk(dt, now) {
+  const ctrl = view === 'walk' && (S.mode === 'idle' || S.mode === 'anvil' || S.mode === 'menu');
+  world.walking = ctrl;
+  if (ctrl && !wasCtrl) ctrlSince = now;
+  wasCtrl = ctrl;
+  if (!ctrl) { if (pointerLocked()) document.exitPointerLock(); return; }
+  const active = walkActive();
+  // 이동 입력
+  let ix = 0, iz = 0;
+  if (active) {
+    if (keys.has('w') || keys.has('arrowup')) iz += 1;
+    if (keys.has('s') || keys.has('arrowdown')) iz -= 1;
+    if (keys.has('d') || keys.has('arrowright')) ix += 1;
+    if (keys.has('a') || keys.has('arrowleft')) ix -= 1;
+    ix += joy.x; iz -= joy.y;
+  }
+  const len = Math.hypot(ix, iz); if (len > 1) { ix /= len; iz /= len; }
+  const f = forward(), sp = keys.has('shift') ? RUN : SPEED;
+  const tx = (f.x * iz + -f.z * ix) * sp, tz = (f.z * iz + f.x * ix) * sp;
+  const a = 1 - Math.exp(-dt * 10);
+  P.vx += (tx - P.vx) * a; P.vz += (tz - P.vz) * a;
+  P.x += P.vx * dt; P.z += P.vz * dt; collide();
+  const v = Math.hypot(P.vx, P.vz);
+  P.bob += v * dt * 3.1;
+  if (v > 0.6 && P.bob > P.stepAt) { P.stepAt = P.bob + Math.PI; sfx.play('step'); }
+  if (v < 0.3) P.stepAt = Math.min(P.stepAt, P.bob + 0.6);
+  const bobY = Math.sin(P.bob * 2) * 0.022 * Math.min(1, v / SPEED);
+  // 카메라: 들어올 때만 부드럽게 넘어가고 이후에는 바로 따라간다
+  const t = (now - ctrlSince) / 1000;
+  world.camSpeed = t < 0.7 ? 3 + t * 14 : 1e4;
+  const cp = Math.cos(P.pitch);
+  world.tgtPos.set(P.x, EYE + bobY, P.z);
+  world.tgtLook.set(P.x + f.x * cp * 2, EYE + bobY + Math.sin(P.pitch) * 2, P.z + f.z * cp * 2);
+  // 바라보는 대상
+  let best = null, bestS = -1;
+  if (active) for (const s of SPOTS) {
+    const dx = s.x - P.x, dz = s.z - P.z, d = Math.hypot(dx, dz);
+    if (d > s.r) continue;
+    const c = (dx * f.x + dz * f.z) / Math.max(d, 1e-3);
+    const score = c - d * 0.08;
+    if (c > 0.72 && score > bestS) { best = s; bestS = score; }
+  }
+  focus = best; focusInfo = best ? spotInfo(best.id) : null;
+  const key = focusInfo ? focusInfo.label + !!focusInfo.act : '';
+  if (key !== promptKey) {
+    promptKey = key;
+    const pr = $('#prompt');
+    pr.classList.toggle('hidden', !focusInfo);
+    if (focusInfo) { pr.classList.toggle('info', !focusInfo.act); pr.innerHTML = `<kbd>E</kbd>${esc(focusInfo.label)}`; }
+    $('#crosshair').classList.toggle('on', !!(focusInfo && focusInfo.act));
+  }
+}
+function interact() {
+  if (!walkActive() || !focusInfo || !focusInfo.act) return;
+  sfx.init(); keys.clear(); joy.x = joy.y = 0;
+  const act = focusInfo.act; promptKey = '__';
+  if (pointerLocked() && act !== takeBlank) document.exitPointerLock();
+  act();
+}
+$('#prompt').onclick = (e) => { e.stopPropagation(); interact(); };
+$('#act-leave').onclick = leaveAnvil;
+
+// 마우스: 클릭하면 포인터 잠금, 잠기지 않는 환경에서는 끌어서 둘러보기
+let dragging = null;
+function look(dx, dy, s) {
+  P.yaw -= dx * s; P.pitch = Math.max(-1.25, Math.min(1.2, P.pitch - dy * s));
+}
+document.addEventListener('pointerlockchange', () => refresh());
+document.addEventListener('mousemove', (e) => {
+  if (walkActive() && pointerLocked()) look(e.movementX, e.movementY, 0.0022);
+});
+
+// 조이스틱 (터치)
+const joyEl = $('#joy');
+const capture = (el, id) => { try { el.setPointerCapture(id); } catch (_) {} };
+joyEl.addEventListener('pointerdown', (e) => { joy.id = e.pointerId; capture(joyEl, e.pointerId); moveJoy(e); e.preventDefault(); });
+joyEl.addEventListener('pointermove', (e) => { if (e.pointerId === joy.id) moveJoy(e); });
+const endJoy = (e) => { if (e.pointerId !== joy.id) return; joy.id = null; joy.x = joy.y = 0; joyEl.firstElementChild.style.transform = ''; };
+joyEl.addEventListener('pointerup', endJoy); joyEl.addEventListener('pointercancel', endJoy);
+function moveJoy(e) {
+  const r = joyEl.getBoundingClientRect(), R = r.width / 2 - 10;
+  let dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+  const d = Math.hypot(dx, dy); if (d > R) { dx = dx / d * R; dy = dy / d * R; }
+  joy.x = dx / R; joy.y = dy / R;
+  joyEl.firstElementChild.style.transform = `translate(${dx}px, ${dy}px)`;
+}
+
 // ───────── 입력 ─────────
-$('#act-take').onclick = takeBlank;
 $('#act-strike').onclick = strike;
 $('#act-finish').onclick = finishBlade;
-$('#act-altar').onclick = openAltar;
 $('#q-hint').onclick = useHint;
 $('#q-go').onclick = confirmWrong;
 $('#btn-notes').onclick = () => { if (S.mode === 'idle' || S.mode === 'anvil') { const m = S.mode; S.mode = 'menu'; refresh(); openNotes(() => { S.mode = m; refresh(); }); } };
@@ -765,25 +928,57 @@ window.addEventListener('keydown', (e) => {
     return;
   }
   if (!$('#modal').classList.contains('hidden')) return;
-  if (k === ' ') { strike(); e.preventDefault(); }
-  else if (k.toLowerCase() === 'e') takeBlank();
-  else if (k.toLowerCase() === 'f') finishBlade();
-  else if (k.toLowerCase() === 'q') openAltar();
+  const kl = k.toLowerCase();
+  const MOVE = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'];
+  if (MOVE.includes(kl) || kl === 'shift') {
+    keys.add(kl);
+    if (kl.startsWith('arrow')) e.preventDefault();
+    if (view === 'anvil' && MOVE.includes(kl) && S.mode === 'anvil') leaveAnvil();
+    return;
+  }
+  if (view === 'walk') {
+    if (kl === 'e' || k === 'Enter' || k === ' ') { interact(); e.preventDefault(); }
+    return;
+  }
+  if (view === 'anvil') {
+    if (k === ' ') { strike(); e.preventDefault(); }
+    else if (kl === 'f') finishBlade();
+    else if (k === 'Escape' || kl === 'e') leaveAnvil();
+  }
 });
+window.addEventListener('keyup', (e) => keys.delete(e.key.toLowerCase()));
+window.addEventListener('blur', () => keys.clear());
 const canvasEl = $('#scene');
 canvasEl.addEventListener('pointerdown', (e) => {
-  if (S.mode !== 'idle' && S.mode !== 'anvil') return;
-  const p = world.pick(e.clientX, e.clientY);
-  if (p === 'anvil') { if (S.mode === 'anvil') strike(); else takeBlank(); }
-  else if (p === 'crate' || p === 'furnace') takeBlank();
-  else if (p === 'altar') openAltar();
+  if (view === 'walk') {
+    if (!walkActive()) return;
+    if (e.pointerType === 'mouse') {
+      if (pointerLocked()) { interact(); return; }
+      try { const r = canvasEl.requestPointerLock(); if (r && r.catch) r.catch(() => {}); } catch (_) {}
+    }
+    dragging = { id: e.pointerId, x: e.clientX, y: e.clientY, t: performance.now(), moved: 0 };
+    capture(canvasEl, e.pointerId);
+    return;
+  }
+  if (view === 'anvil' && S.mode === 'anvil' && world.pick(e.clientX, e.clientY) === 'anvil') strike();
 });
-let hoverT = 0;
 canvasEl.addEventListener('pointermove', (e) => {
-  const now = performance.now(); if (now - hoverT < 80) return; hoverT = now;
-  const ok = (S.mode === 'idle' || S.mode === 'anvil') && world.pick(e.clientX, e.clientY);
-  canvasEl.style.cursor = ok && ok !== 'shop' ? 'pointer' : 'default';
+  if (dragging && e.pointerId === dragging.id) {
+    const dx = e.clientX - dragging.x, dy = e.clientY - dragging.y;
+    dragging.x = e.clientX; dragging.y = e.clientY; dragging.moved += Math.abs(dx) + Math.abs(dy);
+    if (walkActive() && !pointerLocked()) look(dx, dy, e.pointerType === 'mouse' ? 0.004 : 0.006);
+    return;
+  }
+  if (view === 'anvil') canvasEl.style.cursor = world.pick(e.clientX, e.clientY) === 'anvil' ? 'pointer' : 'default';
+  else canvasEl.style.cursor = 'default';
 });
+const endDrag = (e) => {
+  if (!dragging || e.pointerId !== dragging.id) return;
+  // 터치로 짧게 톡 치면 바라보는 대상과 상호작용
+  if (e.pointerType !== 'mouse' && dragging.moved < 10 && performance.now() - dragging.t < 300) interact();
+  dragging = null;
+};
+canvasEl.addEventListener('pointerup', endDrag); canvasEl.addEventListener('pointercancel', endDrag);
 
 // ───────── 루프 ─────────
 let last = performance.now(), lastBoard = 0, feverWas = false, msgWas = false;
@@ -819,6 +1014,7 @@ function frame(now) {
     const t = now / 1000;
     world.tgtPos.set(2.4 + Math.sin(t * 0.1) * 0.8, 2.35, 3.9);
   }
+  updateWalk(dt, now);
   world.update(dt, gdt);
   requestAnimationFrame(frame);
 }
@@ -830,5 +1026,6 @@ requestAnimationFrame((t) => { last = t; frame(t); setTimeout(() => { const l = 
 window.__forge = {
   get S() { return S; }, world, probs, value, Q,
   // 창이 숨겨져 프레임이 멈출 때 검증용으로 시간을 직접 흘린다
-  tick(sec) { for (let i = 0; i < sec * 60; i++) { hitstopUntil = 0; updateTweens(1 / 60); world.update(1 / 60, 1 / 60); } },
+  tick(sec) { for (let i = 0; i < sec * 60; i++) { hitstopUntil = 0; updateTweens(1 / 60); updateWalk(1 / 60, performance.now() + 5000); world.update(1 / 60, 1 / 60); } },
+  P, keys, interact, get view() { return view; }, get focus() { return focusInfo; },
 };

@@ -195,7 +195,7 @@ export class World {
 
     this.stations = {
       title: { pos: [2.4, 2.35, 3.9], look: [-0.2, 1.25, -2.2] },
-      overview: { pos: [0, 2.75, 4.5], look: [0, 1.3, -1.8] },
+      overview: { pos: [0, 2.75, 4.2], look: [0, 1.3, -1.8] },
       anvil: { pos: [0, 2.15, 2.3], look: [0, 1.45, -0.45] },
       furnace: { pos: [-1.25, 1.65, -0.35], look: [-2.9, 0.85, -2.4] },
       altar: { pos: [0.55, 2.0, -1.15], look: [0.8, 1.6, -5.2] },
@@ -222,9 +222,12 @@ export class World {
     const w = window.innerWidth, h = window.innerHeight;
     this.renderer.setSize(w, h); this.composer.setSize(w, h);
     this.camera.aspect = w / h;
-    // 세로 화면에서는 시야를 넓혀 주요 사물이 잘리지 않게 한다
-    this.camera.fov = w / h < 0.9 ? 68 : 50;
     this.camera.updateProjectionMatrix();
+  }
+  // 세로 화면에서는 시야를 넓혀 주요 사물이 잘리지 않게 하고, 걸어 다닐 때는 더 넓게 본다
+  fovTarget() {
+    const portrait = window.innerWidth / window.innerHeight < 0.9;
+    return this.walking ? (portrait ? 80 : 66) : (portrait ? 68 : 50);
   }
 
   goStation(name, speed = 2.6) {
@@ -269,6 +272,20 @@ export class World {
       const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), backMat);
       m.position.set(x, y, -5); m.receiveShadow = true; S.add(m);
     }
+    // 앞벽과 대장간 문 (자유 이동 중 뒤를 돌아봐도 막혀 있게)
+    const wallF = new THREE.Mesh(new THREE.PlaneGeometry(9, H), stoneWall);
+    wallF.position.set(0, H / 2, 4.5); wallF.rotation.y = Math.PI; wallF.receiveShadow = true; S.add(wallF);
+    const door = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.4, 0.08), darkWood); door.position.set(0, 1.2, 4.45); S.add(door);
+    for (const y of [0.45, 1.95]) { const band = new THREE.Mesh(new THREE.BoxGeometry(1.42, 0.07, 0.1), iron); band.position.set(0, y, 4.42); S.add(band); }
+    const doorFrame = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.2, 0.2), darkWood); doorFrame.position.set(0, 2.5, 4.42); S.add(doorFrame);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.06, 0.012, 6, 16), iron); ring.position.set(0.45, 1.15, 4.39); S.add(ring);
+    // 문 옆 벽등
+    for (const sx of [-1.25, 1.25]) {
+      const bracket = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.06, 0.22), iron); bracket.position.set(sx, 2.1, 4.38); S.add(bracket);
+      const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 10), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 1.2, 0.45) }));
+      lamp.position.set(sx, 2.12, 4.27); S.add(lamp);
+    }
+    const doorLight = new THREE.PointLight(0xffa860, 3.2, 6, 1.6); doorLight.position.set(0, 2.2, 3.95); S.add(doorLight);
     const ceil = new THREE.Mesh(new THREE.PlaneGeometry(9, 9.5), new THREE.MeshStandardMaterial({ color: 0x15100c, roughness: 1 }));
     ceil.rotation.x = Math.PI / 2; ceil.position.set(0, H, -0.25); S.add(ceil);
     for (let z = -4.2; z <= 3.5; z += 1.9) { // 들보
@@ -656,6 +673,8 @@ export class World {
     // 카메라
     const k = 1 - Math.exp(-dt * this.camSpeed);
     this.camPos.lerp(this.tgtPos, k); this.camLook.lerp(this.tgtLook, k);
+    const fov = this.fovTarget();
+    if (Math.abs(this.camera.fov - fov) > 0.05) { this.camera.fov = lerp(this.camera.fov, fov, 1 - Math.exp(-dt * 5)); this.camera.updateProjectionMatrix(); }
     this.shakeAmt *= Math.exp(-dt * 11);
     const sh = this.shakeAmt;
     const sway = 0.012;

@@ -77,6 +77,7 @@ export class Sfx {
     }, 420);
   }
 
+  step(t) { this._noise(t, 0.07, { type: 'lowpass', freq: 380 + Math.random() * 120, gain: 0.07, attack: 0.004 }); this._tone(t, 70 + Math.random() * 15, 0.06, { gain: 0.05, freqEnd: 45 }); }
   ui(t) { this._tone(t, 880, 0.06, { type: 'triangle', gain: 0.05 }); }
   whoosh(t, { fast } = {}) { this._noise(t, fast ? 0.1 : 0.17, { type: 'bandpass', freq: 400, freqEnd: 2400, q: 1.4, gain: 0.12, attack: 0.04 }); }
 
