@@ -222,8 +222,8 @@ const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
 // 전광판 둘째 줄: 검의 열기
 function chillNote(c) {
   const ch = c.chill || 0;
-  if (ch >= CHILL_MAX) return '검이 식었다 · R로 화로에 다시 달구기';
-  return `열기 ${'●'.repeat(CHILL_MAX - ch)}${'○'.repeat(ch)} · 맞혀야 망치를 든다 · 틀리면 식는다`;
+  if (ch >= CHILL_MAX) return '검이 식음 · R 다시 달구기';
+  return `열기 ${'●'.repeat(CHILL_MAX - ch)}${'○'.repeat(ch)}`;
 }
 function drawBoard() {
   const g = world.boardCtx, W = 1024, H = 512, now = performance.now();
@@ -408,7 +408,7 @@ function openQuestion() {
   S.mode = 'question'; refresh();
   $('#q-tag').textContent = q.t || '문제';
   const p = probs(S.cur.level, false);
-  $('#q-risk').innerHTML = `${esc(bladeName(S.cur.level))} +${S.cur.level} · 맞히면 두드린다 (파괴 <b>${pct(p.brk)}</b> · 성공 <b>${pct(p.succ + p.great)}</b>)`;
+  $('#q-risk').innerHTML = `+${S.cur.level} · 파괴 <b>${pct(p.brk)}</b> · 성공 <b>${pct(p.succ + p.great)}</b>`;
   $('#q-text').textContent = q.q;
   const box = $('#q-choices'); box.innerHTML = '';
   Q.order.forEach((orig, i) => {
@@ -474,11 +474,11 @@ function answer(i) {
     let chillMsg = '';
     if (S.cur) {
       S.cur.chill = Math.min(CHILL_MAX, (S.cur.chill || 0) + 1);
-      chillMsg = S.cur.chill >= CHILL_MAX ? ' 검이 완전히 식었다. 화로에 다시 달궈야 두드릴 수 있다.' : ` 검이 식어 간다(${CHILL_MAX - S.cur.chill}번 더 틀리면 다시 달궈야 한다).`;
+      chillMsg = S.cur.chill >= CHILL_MAX ? '<span class="warn">검이 식음 · R 다시 달구기</span>' : `<span>열기 ${'●'.repeat(CHILL_MAX - S.cur.chill)}${'○'.repeat(S.cur.chill)}</span>`;
     }
     sfx.play('wrong');
     ex.className = 'q-explain';
-    ex.innerHTML = `${i < 0 ? '<b>시간 초과!</b> ' : ''}정답은 <b>${esc(q.c[q.a])}</b>${q.e ? ` — ${esc(q.e)}` : ''}<br><small>오답 노트에 적어 두었다. 이번엔 망치를 들지 못했다.${fine > 0 ? ` 수업료 ${fmt(fine)} G.` : ''}${chillMsg}</small>`;
+    ex.innerHTML = `${i < 0 ? '<b>시간 초과!</b> ' : ''}정답은 <b>${esc(q.c[q.a])}</b>${q.e ? ` — ${esc(q.e)}` : ''}<div class="pills" style="margin-top:8px"><span>헛손질</span>${fine > 0 ? `<span>수업료 −${fmt(fine)} G</span>` : ''}${chillMsg}<span>오답 노트 +1</span></div>`;
     $('#q-go').classList.remove('hidden');
     Q.pendingWrong = true;
     drawBoard(); refresh();
@@ -723,9 +723,9 @@ function hungState(c) {
 function openRackPicker() {
   if (S.mode !== 'idle' || S.cur || !S.finished.length) return;
   S.mode = 'menu'; refresh();
-  openPanel(`<h2>걸어 둔 검</h2><p class="sub">다시 모루로 가져가 이어서 벼린다. 그 검에 쌓인 표와 효과도 그대로 따라온다. 대신 부서질 수도 있다.</p>
+  openPanel(`<h2>걸어 둔 검</h2><div class="pills"><span>이어서 강화</span><span>쌓인 효과 유지</span><span class="warn">부서질 수 있음</span></div>
     <div class="offer-list">${S.finished.map((b, i) => `<div class="offer"><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b><small>${fmt(value(b.level))} G</small></span><button class="primary small" data-take="${i}">모루로</button></div>`).join('')}</div>
-    <div class="btnrow"><button id="rk-close" class="ghost">그대로 둔다</button></div>`, true);
+    <div class="btnrow"><button id="rk-close" class="ghost">닫기</button></div>`, true);
   document.querySelectorAll('[data-take]').forEach(b => b.onclick = () => { closeModal(); takeFromRack(+b.dataset.take); });
   $('#rk-close').onclick = () => { closeModal(); S.mode = 'idle'; refresh(); };
 }
@@ -760,21 +760,20 @@ function openAltar() {
     const total = [...sel].reduce((s, i) => s + value(S.finished[i].level), 0) + (useScrap ? S.scrap : 0);
     const ok = total >= req();
     const warn = [];
-    if (S.cur) warn.push(`모루 위의 ${bladeName(S.cur.level)} +${S.cur.level}은(는) 아직 완성하지 않아 바칠 수 없다.`);
-    if (S.blanks > 0) warn.push(`원석 ${S.blanks}개가 남아 있다. 남은 원석은 내일로 넘어간다.`);
+    if (S.cur) warn.push(`모루 위 +${S.cur.level} 미완성`);
+    if (S.blanks > 0) warn.push(`원석 ${S.blanks} → 내일로`);
     openPanel(`
-      <h2>망각의 서고지기</h2>
-      <p class="sub">철창 너머에서 푸른 눈이 당신을 내려다본다. "${S.day}일째의 대가를 바쳐라. <b>${fmt(req())} G</b> 이상."</p>
+      <h2>서고지기의 제단</h2>
+      <div class="pills"><span>${S.day}일째</span><span>요구 <b>${fmt(req())} G</b></span></div>
       <div class="offer-list">
-        ${S.finished.length || S.scrap ? '' : '<div class="empty">바칠 검이 없다. 이대로 종을 울리면 촛불 하나가 꺼진다.</div>'}
-        ${S.finished.map((b, i) => `<label class="offer ${sel.has(i) ? 'on' : ''}" data-i="${i}"><input type="checkbox" ${sel.has(i) ? 'checked' : ''}><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b><small>완성한 검</small></span><span class="val">${fmt(value(b.level))} G</span></label>`).join('')}
-        ${S.scrap > 0 ? `<label class="offer ${useScrap ? 'on' : ''}" data-scrap="1"><input type="checkbox" ${useScrap ? 'checked' : ''}><span class="nm">고철 더미<small>파괴된 검에서 모은 쇳조각</small></span><span class="val">${fmt(S.scrap)} G</span></label>` : ''}
+        ${S.finished.length || S.scrap ? '' : '<div class="empty">바칠 검 없음 · 울리면 촛불 −1</div>'}
+        ${S.finished.map((b, i) => `<label class="offer ${sel.has(i) ? 'on' : ''}" data-i="${i}"><input type="checkbox" ${sel.has(i) ? 'checked' : ''}><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b></span><span class="val">${fmt(value(b.level))} G</span></label>`).join('')}
+        ${S.scrap > 0 ? `<label class="offer ${useScrap ? 'on' : ''}" data-scrap="1"><input type="checkbox" ${useScrap ? 'checked' : ''}><span class="nm">고철 더미</span><span class="val">${fmt(S.scrap)} G</span></label>` : ''}
       </div>
       <div class="meter"><div class="line"><span>바칠 가치</span><b style="color:${ok ? 'var(--green)' : 'var(--red)'}">${fmt(total)} / ${fmt(req())} G</b></div>
         <div class="bar"><div class="${ok ? 'ok' : ''}" style="width:${Math.min(100, total / req() * 100)}%"></div></div>
-        <p class="sub" style="margin:8px 0 0">바친 가치만큼 골드를 받는다. 남긴 검은 내일 바칠 수 있다.</p></div>
-      ${warn.length ? `<p class="sub" style="margin-top:12px">${warn.map(esc).join('<br>')}</p>` : ''}
-      <div class="btnrow"><button id="al-back" class="ghost">대장간으로 돌아가기</button><button id="al-ring" class="primary">${ok ? '바치고 종 울리기' : '부족하지만 종 울리기'}</button></div>`, true);
+        <div class="pills" style="margin-top:8px"><span>바친 만큼 골드</span><span>남긴 검 → 내일·상점</span>${warn.map(w => `<span class="warn">${esc(w)}</span>`).join('')}</div></div>
+      <div class="btnrow"><button id="al-back" class="ghost">돌아가기</button><button id="al-ring" class="primary">${ok ? '바치기 🔔' : '부족해도 울리기 🔔'}</button></div>`, true);
     document.querySelectorAll('.offer').forEach(el => el.addEventListener('click', (e) => {
       e.preventDefault();
       if (el.dataset.scrap) useScrap = !useScrap;
@@ -975,8 +974,8 @@ function openPanel(html, side = false) { $('#panel').classList.remove('shop2'); 
 function closeModal() { $('#modal').classList.add('hidden'); panelBack = null; }
 function openNotes(back) {
   const list = Object.entries(WRONGS).sort((a, b) => b[1].count - a[1].count);
-  openPanel(`<h2>오답 노트</h2><p class="sub">틀린 문제는 여기에 쌓이고, 게임 중에 더 자주 나온다. 같은 문제를 연속으로 맞히면 노트에서 빠진다.</p>
-    <label class="opt" style="margin-bottom:12px"><input type="checkbox" id="nt-review" ${settings.reviewOnly ? 'checked' : ''}> 오답만 복습하는 모드 (오답이 3개 이상일 때)</label>
+  openPanel(`<h2>오답 노트</h2><div class="pills"><span>더 자주 출제</span><span>연속 정답 → 졸업</span></div>
+    <label class="opt" style="margin-bottom:12px"><input type="checkbox" id="nt-review" ${settings.reviewOnly ? 'checked' : ''}> 오답만 복습 (3개 이상)</label>
     <div class="notes">${list.length ? list.map(([, w]) => `<div class="note"><span class="cc">${w.count}번 틀림${w.streak ? ` · ${w.streak}연속 정답` : ''}</span><div class="qq">${w.t ? `[${esc(w.t)}] ` : ''}${esc(w.q)}</div><div class="aa">정답: ${esc(w.ans)}</div>${w.e ? `<div class="ee">${esc(w.e)}</div>` : ''}</div>`).join('') : '<div class="empty">아직 틀린 문제가 없다.</div>'}</div>
     <div class="btnrow"><button id="nt-clear" class="ghost">기록 지우기</button><button id="nt-close" class="primary">닫기</button></div>`);
   $('#nt-review').onchange = (e) => { settings.reviewOnly = e.target.checked; store.set('jf_settings', settings); };
@@ -1003,7 +1002,7 @@ function parseQuestions(text) {
   return { out, errs };
 }
 function openQSet(back) {
-  openPanel(`<h2>문제 세트</h2><p class="sub">한 줄에 한 문제. <b>[분류] 문제 | 보기1 | 보기2 | 보기3 | 보기4 | 정답 번호 | 해설</b><br>보기는 2~6개, 해설은 생략할 수 있다. 구글 시트에서 칸을 복사해 붙여 넣어도 된다(탭 구분).</p>
+  openPanel(`<h2>문제 세트</h2><p class="sub">한 줄에 한 문제 · <b>[분류] 문제 | 보기… | 정답번호 | 해설</b></p><div class="pills"><span>보기 2~6개</span><span>해설 생략 가능</span><span>시트 붙여넣기 OK</span></div>
     <textarea id="qs-text" spellcheck="false">${esc(serializeQuestions())}</textarea>
     <div class="msg" id="qs-msg">현재 ${QUESTIONS.length}문제</div>
     <div class="btnrow"><button id="qs-sample" class="ghost">샘플로 되돌리기</button><button id="qs-cancel" class="ghost">닫기</button><button id="qs-apply" class="primary">적용</button></div>`);
@@ -1018,19 +1017,21 @@ function openQSet(back) {
   $('#qs-cancel').onclick = () => { closeModal(); if (back) back(); };
 }
 function openHowTo(back) {
-  openPanel(`<h2>플레이 방법</h2><ol class="howto">
-    <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 마우스를 움직이는 만큼 시점이 돈다. Esc로 마우스를 풀 수 있다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
-    <li><b>상호작용 (E)</b> — 원석 상자·화로·모루·제단·책장을 바라보면 안내가 뜬다. E나 클릭(휴대폰은 톡)으로 실행한다.</li>
-    <li><b>원석 꺼내기</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다. 모루 앞에 서면 시점이 고정된다. Esc나 이동 키로 자리를 뜰 수 있다.</li>
-    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. 문제를 <b>맞혀야</b> 망치를 한 번 두드릴 수 있다. 틀리면 헛손질이고, 검이 식고(3번 틀리면 R로 화로에 다시 달궈야 한다) 그날 요구 가치의 5%를 수업료로 낸다. 두드린 결과는 전광판의 확률표대로 파괴·손상(−1)·유지·성공(+1)·대성공(+2) 중 하나. 가치는 1강마다 1.5배. 최대 +100.</li>
-    <li><b>검의 모양</b> — 초반엔 2강마다 새 모양으로 바뀌고, +62부터는 최종형이 되어 점점 더 빛난다. +25·50·75에선 번개가 친다.</li>
-    <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
-    <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
-    <li><b>다시 벼리기</b> — 모루가 비어 있을 때 검걸이를 바라보고 E를 누르면, 걸어 둔 검을 다시 가져와 이어서 강화할 수 있다. 그 검에 쌓인 표와 효과도 따라온다.</li>
-    <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
-    <li><b>떠돌이 사서 등불</b> — 매일 밤 온다. 유물은 <b>검 조각</b>으로 산다(제단에 바치지 않고 남긴 검을 투입구에 넣으면 한 자루에 조각 하나). 유물은 칸 5개까지, 표 더미를 바꾸거나 특별한 효과를 준다. 골드로는 합격 추첨표(성공 표 +1, 방문마다 한 번)·힌트·양초를 산다. HUD의 유물을 누르면 버릴 수 있다.</li>
-    <li><b>융합</b> — 짝이 되는 두 유물을 함께 가지면 더 강한 유물 하나로 합쳐지고 칸 하나가 빈다. 유물 설명에 "○○과 만나면 △△로 융합한다"라고 적혀 있다.</li>
-    <li><b>오답 노트</b> — 틀린 문제와 해설이 저장되고, 다음 판에 더 자주 나온다.</li></ol>
+  const K = (k, t) => `<span class="key"><kbd>${k}</kbd>${t}</span>`;
+  const R = (ico, h, t) => `<li><i>${ico}</i><b>${h}</b><span>${t}</span></li>`;
+  openPanel(`<h2>플레이 방법</h2>
+    <div class="keys">${K('WASD', '이동')}${K('마우스', '시점')}${K('E', '상호작용')}${K('Space', '망치질')}${K('F', '완성')}${K('R', '다시 달구기')}${K('Esc', '자리 뜨기')}</div>
+    <ul class="howto2">
+      ${R('🔨', '망치질', '맞히면 1번 두드림 · 결과는 확률표대로 (파괴 · 손상 −1 · 유지 · 성공 +1 · 대성공 +2)')}
+      ${R('❌', '오답', '헛손질 · 검이 식음 (3번 → R) · 수업료 5% · 영감 −3')}
+      ${R('✨', '영감', '정답 10번 → 6초 연타 · 파괴 0%')}
+      ${R('⚔️', '완성', 'F로 걸이에 · 걸이에서 다시 가져와 이어 강화')}
+      ${R('🕯️', '제단', '요구 가치 채우면 골드 · 부족하면 촛불 −1 · 0개면 끝 · 7일 버티면 승리')}
+      ${R('🏮', '상인', '남은 검 → 조각 → 유물 (5칸) · 골드 → 추첨표·힌트·양초')}
+      ${R('🔗', '융합', '짝 유물 2개 → 강한 유물 1개')}
+      ${R('📒', '오답 노트', '틀린 문제가 더 자주 나옴')}
+      ${R('📈', '강화', '최대 +100 · 가치 1강마다 ×1.5 · +25·50·75 번개')}
+    </ul>
     <div class="btnrow"><button id="ht-close" class="primary">알겠다</button></div>`);
   $('#ht-close').onclick = () => { closeModal(); if (back) back(); };
 }
