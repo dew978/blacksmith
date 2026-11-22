@@ -1016,10 +1016,10 @@ function renderShop() {
     .map((k) => row(k, `${fmt(priceOf(k))} G`, `data-gold="${k}"`, S.gold < priceOf(k), k === 'ticket' && S.ticketBought)).join('');
   const feed = S.finished.length
     ? `<div class="sec">완성한 검 녹이기 <small>1자루 → 검 조각 1개</small></div><div class="chips">${S.finished.map((b, i) => `<button class="chip" data-feed="${i}" title="${esc(bladeName(b.level))}">+${b.level} · ${fmt(value(b.level))} G</button>`).join('')}</div>`
-    : '';
+    : '<div class="sec">완성한 검 녹이기 <small>남은 검이 없다 · 검을 완성해 걸어 두면 여기서 1자루 → 조각 1개</small></div>';
   openPanel(`
     <h2>떠돌이 사서 등불</h2>
-    <div class="stats"><span>💰 <b>${fmt(S.gold)}</b> G</span><span>🗡 조각 <b>${S.tokens}</b></span><span>유물 <b>${used}/${RELIC_SLOTS}</b></span></div>
+    <div class="stats"><span>💰 <b>${fmt(S.gold)}</b> G</span><span title="완성한 검 1자루를 녹이면 조각 1개">🗡 조각 <b>${S.tokens}</b></span><span>유물 <b>${used}/${RELIC_SLOTS}</b></span></div>
     ${feed}
     <div class="sec">유물 <small>검 조각으로 산다 · 계속 효과</small></div>
     <div class="slist">${relics}</div>
@@ -1181,7 +1181,8 @@ function openHowTo(back) {
       ${R('✨', '영감', '정답 10번 → 6초 연타 · 파괴 0%')}
       ${R('⚔️', '완성', 'F로 걸이에 · 걸이에서 다시 가져와 이어 강화')}
       ${R('🕯️', '제단', '요구 가치 채우면 골드 · 부족하면 촛불 −1 · 0개면 끝 · 21일 버티면 승리 · 날마다 계율')}
-      ${R('🏮', '상인', '남은 검 → 조각 → 유물 (5칸) · 골드 → 추첨표·힌트·양초')}
+      ${R('🗡️', '검 조각', '제단 뒤 상점에서 완성한 검 1자루를 녹이면 조각 1개 · 강화 수치와 상관없이 1개라 싼 검을 녹이는 게 이득')}
+      ${R('🏮', '상인', '조각 → 유물 (5칸) · 골드 → 추첨표·힌트·양초')}
       ${R('🔗', '융합', '짝 유물 2개 → 강한 유물 1개')}
       ${R('📒', '오답 노트', '틀린 문제가 더 자주 나옴')}
       ${R('📈', '강화', '최대 +100 · 가치 1강마다 ×1.5 · +25·50·75 번개')}
