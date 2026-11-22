@@ -1,0 +1,277 @@
+{
+  "grade": "중1",
+  "semester": 1,
+  "subject": "영어",
+  "units": [
+    "be동사",
+    "일반동사 현재",
+    "명령문",
+    "인칭대명사",
+    "현재진행",
+    "인사·자기소개",
+    "좋아하는 것 말하기"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호 별책14) 중1~3학년군 성취기준. 학기 배분은 검정 교과서의 일반적 문법·의사소통 순서를 따른 임의 배분",
+  "questions": [
+    {
+      "t": "be동사",
+      "q": "빈칸에 알맞은 말은?\nMy sister ___ a middle school student.",
+      "c": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "a": 1,
+      "e": "주어가 3인칭 단수이므로 is를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "be동사 부정",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "We aren't late.",
+        "They isn't busy.",
+        "I amn't tired.",
+        "He aren't here."
+      ],
+      "a": 0,
+      "e": "We에는 are를 쓰고 부정형은 aren't이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3인칭 단수",
+      "q": "빈칸에 알맞은 말은?\nTom ___ soccer after school.",
+      "c": [
+        "play",
+        "plays",
+        "playing",
+        "is play"
+      ],
+      "a": 1,
+      "e": "3인칭 단수 주어의 현재형 동사에는 -s를 붙인다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "일반동사 부정",
+      "q": "빈칸에 알맞은 말은?\nShe ___ like carrots.",
+      "c": [
+        "don't",
+        "isn't",
+        "doesn't",
+        "not"
+      ],
+      "a": 2,
+      "e": "3인칭 단수의 일반동사 부정은 doesn't+동사원형이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "일반동사 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ you have a pet?\nB: Yes, I do.",
+      "c": [
+        "Are",
+        "Does",
+        "Do",
+        "Is"
+      ],
+      "a": 2,
+      "e": "Yes, I do로 답하므로 Do로 묻는다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "3인칭 단수형",
+      "q": "동사와 3인칭 단수형이 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "watch – watches",
+        "study – studies",
+        "go – goes",
+        "have – haves"
+      ],
+      "a": 3,
+      "e": "have의 3인칭 단수형은 has이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "명령문",
+      "q": "우리말에 맞게 빈칸에 알맞은 말은?\n조용히 해 주세요. → Please ___ quiet.",
+      "c": [
+        "are",
+        "is",
+        "being",
+        "be"
+      ],
+      "a": 3,
+      "e": "명령문은 동사원형으로 시작하므로 be를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "부정 명령문",
+      "q": "'교실에서 뛰지 마.'를 영어로 바르게 옮긴 것은?",
+      "c": [
+        "Not run in the classroom.",
+        "No run you in the classroom.",
+        "Don't run in the classroom.",
+        "You don't run in the classroom?"
+      ],
+      "a": 2,
+      "e": "부정 명령문은 Don't+동사원형으로 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "목적격",
+      "q": "빈칸에 알맞은 말은?\nThis is my friend Mina. I like ___ very much.",
+      "c": [
+        "her",
+        "she",
+        "hers",
+        "his"
+      ],
+      "a": 0,
+      "e": "like의 목적어 자리이므로 목적격 her를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "소유대명사",
+      "q": "빈칸에 알맞은 말은?\nA: Is this your bag?\nB: No, it isn't ___. It's Jisu's.",
+      "c": [
+        "my",
+        "me",
+        "mine",
+        "I"
+      ],
+      "a": 2,
+      "e": "'나의 것'은 소유대명사 mine이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "현재진행",
+      "q": "빈칸에 알맞은 말은?\nLook! The kids ___ in the park.",
+      "c": [
+        "are running",
+        "run",
+        "runs",
+        "is running"
+      ],
+      "a": 0,
+      "e": "지금 일어나는 일이고 주어가 복수라서 are -ing를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "자기소개",
+      "q": "자기를 소개하는 말이 아닌 것은?",
+      "c": [
+        "My name is Junho.",
+        "I'm from Busan.",
+        "What's your name?",
+        "I'm interested in music."
+      ],
+      "a": 2,
+      "e": "What's your name?은 상대방의 이름을 묻는 말이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "첫 만남 인사",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Hi, I'm Yuna. Nice to meet you.\nB: ___",
+      "c": [
+        "I'm fine, thank you.",
+        "Nice to meet you, too.",
+        "You're welcome.",
+        "See you later."
+      ],
+      "a": 1,
+      "e": "Nice to meet you에는 Nice to meet you, too로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "안부 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: How are you today?\nB: ___",
+      "c": [
+        "I'm thirteen.",
+        "I'm a student.",
+        "It's Monday.",
+        "I'm great, thanks."
+      ],
+      "a": 3,
+      "e": "How are you?는 안부를 묻는 말이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "좋아하는 것",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What's your favorite subject?\nB: ___",
+      "c": [
+        "I'm in Class 3.",
+        "It's on the desk.",
+        "I like math best.",
+        "Yes, I do."
+      ],
+      "a": 2,
+      "e": "가장 좋아하는 과목을 물었으므로 과목으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "여가 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What do you do in your free time?\nB: ___",
+      "c": [
+        "I'm free on Sunday.",
+        "Yes, I am.",
+        "It's three o'clock.",
+        "I usually read comic books."
+      ],
+      "a": 3,
+      "e": "여가 시간에 하는 일을 물었으므로 취미로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "어휘: 과목",
+      "q": "나머지 셋을 모두 포함하는 단어는?",
+      "c": [
+        "subject",
+        "science",
+        "history",
+        "math"
+      ],
+      "a": 0,
+      "e": "science, history, math는 모두 subject(과목)이다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "어휘: 가족",
+      "q": "'my mother's brother'를 뜻하는 단어는?",
+      "c": [
+        "cousin",
+        "nephew",
+        "aunt",
+        "uncle"
+      ],
+      "a": 3,
+      "e": "어머니의 남자 형제는 uncle(외삼촌)이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "세부 정보",
+      "q": "글을 읽고 알 수 없는 것은?\nI'm Minho. I'm 14 years old. I live in Daegu. I like basketball.",
+      "c": [
+        "이름",
+        "좋아하는 음식",
+        "나이",
+        "사는 곳"
+      ],
+      "a": 1,
+      "e": "글에는 좋아하는 음식이 나오지 않는다.",
+      "std": "[9영01-02]"
+    },
+    {
+      "t": "심정 추론",
+      "q": "글쓴이의 심정으로 알맞은 것은?\nToday is my first day at my new school. I don't know anyone here. My hands are shaking.",
+      "c": [
+        "proud",
+        "nervous",
+        "angry",
+        "bored"
+      ],
+      "a": 1,
+      "e": "아는 사람이 없고 손이 떨리니 긴장한 상태이다.",
+      "std": "[9영01-05]"
+    }
+  ]
+}

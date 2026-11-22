@@ -110,6 +110,13 @@ const store = {
 const hashId = (s) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); };
 const withIds = (list) => list.map(q => ({ ...q, id: hashId(q.q + '|' + q.c[q.a]) }));
 let QUESTIONS = withIds(store.get('jf_questions', null) || SAMPLE_QUESTIONS);
+// 2022 개정 교육과정 문제 은행 (data/q/{초e·중m}{학년}-{학기}-{과목}.json)
+const GRADES = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3'];
+const SUBJ = { kor: '국어', math: '수학', soc: '사회', sci: '과학', eng: '영어' };
+const subjectsOf = (g) => g.startsWith('중') ? ['soc', 'sci', 'eng'] : (g === '초1' || g === '초2') ? ['kor', 'math'] : ['kor', 'math', 'soc', 'sci', 'eng'];
+const bankCode = (g, sem, sub) => `${g.startsWith('중') ? 'm' : 'e'}${g.slice(1)}-${sem}-${sub}`;
+const SEL = Object.assign({ grade: '초5', sem: 1, subj: 'sci', custom: false }, store.get('jf_sel', {}));
+let COURSE = '';
 let WRONGS = store.get('jf_wrongs', {});
 const settings = store.get('jf_settings', { timer: false, reviewOnly: false });
 
@@ -1239,13 +1246,81 @@ $('#btn-notes2').onclick = () => openNotes(updateQInfo);
 $('#btn-howto').onclick = () => openHowTo();
 $('#opt-timer').checked = settings.timer;
 $('#opt-timer').onchange = (e) => { settings.timer = e.target.checked; store.set('jf_settings', settings); };
-$('#btn-start').onclick = () => {
+$('#btn-start').onclick = () => { sfx.init(); sfx.play('ui'); showSelect(); };
+$('#btn-back').onclick = () => { $('#title-select').classList.add('hidden'); $('#title-home').classList.remove('hidden'); };
+$('#btn-go').onclick = async () => {
   sfx.init();
+  const ok = await loadBank();
+  if (!ok) return;
   if (!store.get('jf_intro', 0)) { playIntro(); return; }
   sfx.play('bell');
   $('#title-screen').classList.add('hidden'); $('#hud').classList.remove('hidden');
   newGame();
 };
+// 학년·학기·과목 고르기
+function showSelect() {
+  $('#title-home').classList.add('hidden'); $('#title-select').classList.remove('hidden');
+  renderSelect();
+}
+function renderSelect() {
+  if (!subjectsOf(SEL.grade).includes(SEL.subj)) SEL.subj = subjectsOf(SEL.grade)[0];
+  $('#sel-grade').innerHTML = GRADES.map((g) => `${g === '중1' ? '<span class="br"></span>' : ''}<button data-g="${g}" class="${g === SEL.grade && !SEL.custom ? 'on' : ''}">${g}</button>`).join('');
+  $('#sel-sem').innerHTML = [1, 2].map((n) => `<button data-s="${n}" class="${n === SEL.sem && !SEL.custom ? 'on' : ''}">${n}학기</button>`).join('');
+  $('#sel-subj').innerHTML = subjectsOf(SEL.grade).map((k) => `<button data-k="${k}" class="${k === SEL.subj && !SEL.custom ? 'on' : ''}">${SUBJ[k]}</button>`).join('')
+    + `<button data-k="custom" class="gap ${SEL.custom ? 'on' : ''}">내 문제</button>`;
+  document.querySelectorAll('#sel-grade [data-g]').forEach((b) => b.onclick = () => { SEL.grade = b.dataset.g; SEL.custom = false; sfx.play('ui'); renderSelect(); });
+  document.querySelectorAll('#sel-sem [data-s]').forEach((b) => b.onclick = () => { SEL.sem = +b.dataset.s; SEL.custom = false; sfx.play('ui'); renderSelect(); });
+  document.querySelectorAll('#sel-subj [data-k]').forEach((b) => b.onclick = () => { if (b.dataset.k === 'custom') SEL.custom = true; else { SEL.subj = b.dataset.k; SEL.custom = false; } sfx.play('ui'); renderSelect(); });
+  store.set('jf_sel', SEL);
+  previewBank();
+}
+const BANK_CACHE = {};
+async function fetchBank(code) {
+  if (BANK_CACHE[code]) return BANK_CACHE[code];
+  const r = await fetch(`data/q/${code}.json`, { cache: 'no-cache' });
+  if (!r.ok) throw new Error('no bank');
+  return (BANK_CACHE[code] = await r.json());
+}
+async function previewBank() {
+  const info = $('#sel-info');
+  if (SEL.custom) {
+    const n = (store.get('jf_questions', null) || SAMPLE_QUESTIONS).length;
+    info.innerHTML = `<b>내 문제 세트</b> · ${n}문제 · "내 문제 세트"에서 붙여 넣어 바꿀 수 있다`; return;
+  }
+  const code = bankCode(SEL.grade, SEL.sem, SEL.subj);
+  info.textContent = '불러오는 중…';
+  try {
+    const b = await fetchBank(code);
+    if (bankCode(SEL.grade, SEL.sem, SEL.subj) !== code) return;
+    info.innerHTML = `<b>${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}</b> · ${b.questions.length}문제 · 2022 개정<br>${(b.units || []).slice(0, 6).map(esc).join(' · ')}`;
+  } catch (e) {
+    if (bankCode(SEL.grade, SEL.sem, SEL.subj) === code) info.innerHTML = '<span class="err">이 과목 문제는 아직 준비 중이다</span>';
+  }
+}
+async function loadBank() {
+  if (SEL.custom) {
+    QUESTIONS = withIds(store.get('jf_questions', null) || SAMPLE_QUESTIONS); COURSE = '내 문제';
+  } else {
+    try {
+      const b = await fetchBank(bankCode(SEL.grade, SEL.sem, SEL.subj));
+      QUESTIONS = withIds(b.questions.map((q) => ({ t: q.t, q: q.q, c: q.c, a: q.a, e: q.e })));
+      COURSE = `${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}`;
+    } catch (e) { $('#sel-info').innerHTML = '<span class="err">이 과목 문제는 아직 준비 중이다</span>'; return false; }
+  }
+  $('#hud-course').textContent = COURSE;
+  return true;
+}
+// 전체화면
+const fsEl = $('#btn-fs');
+if (!(document.fullscreenEnabled || document.webkitFullscreenEnabled)) fsEl.classList.add('hidden');
+fsEl.onclick = (e) => {
+  e.stopPropagation();
+  const d = document, on = d.fullscreenElement || d.webkitFullscreenElement;
+  if (on) (d.exitFullscreen || d.webkitExitFullscreen).call(d);
+  else { const el = d.documentElement; const p = (el.requestFullscreen || el.webkitRequestFullscreen).call(el); if (p && p.catch) p.catch(() => {}); }
+};
+const fsSync = () => { fsEl.textContent = (document.fullscreenElement || document.webkitFullscreenElement) ? '⛶ 창 모드' : '⛶ 전체화면'; setTimeout(() => world.resize(), 60); };
+document.addEventListener('fullscreenchange', fsSync); document.addEventListener('webkitfullscreenchange', fsSync);
 $('#btn-intro').onclick = () => { sfx.init(); playIntro(); };
 
 // ───────── 프롤로그 컷씬 ─────────

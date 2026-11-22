@@ -1,0 +1,277 @@
+{
+  "grade": "초5",
+  "semester": 2,
+  "subject": "영어",
+  "units": [
+    "지난 일",
+    "외모와 옷차림",
+    "길 묻기",
+    "전화하기",
+    "하루 일과",
+    "집 안의 물건",
+    "여가 활동"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호) 5~6학년군 성취기준·[별표 3] 초등 권장 어휘. 학기 구분은 검정 교과서 단원 흐름(경기도교육청 2025 NET 수업도움자료 Scope and Sequence)을 참고한 임의 배열",
+  "questions": [
+    {
+      "t": "지난 일",
+      "q": "'What did you do last weekend?'에 알맞은 대답은?",
+      "c": [
+        "I visited my uncle.",
+        "I like my uncle.",
+        "I'm visiting my uncle.",
+        "I will visit my uncle."
+      ],
+      "a": 0,
+      "e": "지난 일은 과거형(visited)으로 답해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과거형",
+      "q": "'go'의 과거형은?",
+      "c": [
+        "going",
+        "goes",
+        "went",
+        "gone"
+      ],
+      "a": 2,
+      "e": "go의 과거형은 went예요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과거형",
+      "q": "빈칸에 알맞은 말은? I ___ my room yesterday.",
+      "c": [
+        "will clean",
+        "cleans",
+        "clean",
+        "cleaned"
+      ],
+      "a": 3,
+      "e": "yesterday가 있으니 과거형 cleaned를 써요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "방학",
+      "q": "'How was your vacation?'에 알맞은 대답은?",
+      "c": [
+        "It was fun.",
+        "It's Monday.",
+        "It's on your left.",
+        "I will go to the beach."
+      ],
+      "a": 0,
+      "e": "How was ~?에는 It was ~.로 답해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "지난 일",
+      "q": "글쓴이가 바닷가에서 한 일은? Last summer, I went to the beach with my family. I swam in the sea. It was great.",
+      "c": [
+        "바다에서 수영했다",
+        "책을 읽었다",
+        "쿠키를 만들었다",
+        "자전거를 탔다"
+      ],
+      "a": 0,
+      "e": "swam은 swim의 과거형이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "외모",
+      "q": "'What does she look like?'에 알맞은 대답은?",
+      "c": [
+        "She likes music.",
+        "She has long curly hair.",
+        "She is a doctor.",
+        "She is in the kitchen."
+      ],
+      "a": 1,
+      "e": "look like는 외모를 묻는 말이에요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "옷차림",
+      "q": "'He is wearing a yellow T-shirt.'의 뜻은?",
+      "c": [
+        "그는 노란 티셔츠를 샀다.",
+        "그는 노란 티셔츠를 입고 있다.",
+        "그는 노란 티셔츠를 좋아한다.",
+        "그는 노란 티셔츠를 찾고 있다."
+      ],
+      "a": 1,
+      "e": "wear는 입다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "인물 묘사",
+      "q": "글 속 언니의 모습은? My sister is tall. She has short straight hair.",
+      "c": [
+        "키가 크고 긴 곱슬머리다",
+        "키가 작고 긴 곱슬머리다",
+        "키가 작고 짧은 생머리다",
+        "키가 크고 짧은 생머리다"
+      ],
+      "a": 3,
+      "e": "tall은 키가 큰, straight는 곧은이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "길 묻기",
+      "q": "'Where is the library?'에 알맞은 대답은?",
+      "c": [
+        "I like books.",
+        "It's Tuesday.",
+        "Go straight and turn left.",
+        "It's ten o'clock."
+      ],
+      "a": 2,
+      "e": "길을 물으면 가는 방법을 알려 줘요.",
+      "std": "[6영02-05]"
+    },
+    {
+      "t": "위치",
+      "q": "'next to'의 뜻은?",
+      "c": [
+        "~ 앞에",
+        "~ 사이에",
+        "~ 뒤에",
+        "~ 옆에"
+      ],
+      "a": 3,
+      "e": "next to는 옆, in front of는 앞이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "위치 설명",
+      "q": "'은행은 병원 옆에 있어요.'를 바르게 말한 것은?",
+      "c": [
+        "The bank is behind the hospital.",
+        "The bank is next to the hospital.",
+        "The bank is in front of the hospital.",
+        "The hospital is behind the bank."
+      ],
+      "a": 1,
+      "e": "~ 옆에는 next to예요.",
+      "std": "[6영02-05]"
+    },
+    {
+      "t": "위치",
+      "q": "글에서 은행의 위치는? The bank is between the park and the hospital.",
+      "c": [
+        "공원 앞",
+        "공원 옆이 아닌 곳",
+        "병원 뒤",
+        "공원과 병원 사이"
+      ],
+      "a": 3,
+      "e": "between A and B는 A와 B 사이예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "전화하기",
+      "q": "'May I speak to Jenny?'에 Jenny가 직접 받았을 때 하는 말은?",
+      "c": [
+        "Excuse me.",
+        "Speaking.",
+        "Same here.",
+        "Go straight."
+      ],
+      "a": 1,
+      "e": "전화에서 Speaking.은 저예요라는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "전화하기",
+      "q": "전화를 걸어 자신을 밝힐 때 알맞은 말은?",
+      "c": [
+        "Is Minho there?",
+        "Goodbye, Minho.",
+        "Hello, this is Minho.",
+        "Minho, go straight."
+      ],
+      "a": 2,
+      "e": "전화에서는 This is ~.로 자신을 밝혀요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "하루 일과",
+      "q": "'What time do you get up?'에 알맞은 대답은?",
+      "c": [
+        "I like to get up.",
+        "I get up in my room.",
+        "I get up at seven.",
+        "It's Monday."
+      ],
+      "a": 2,
+      "e": "시각은 at + 시각으로 말해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "하루 일과",
+      "q": "아침을 먹은 다음에 하는 일은? I get up at 7. I have breakfast at 7:30. Then I go to school at 8.",
+      "c": [
+        "숙제를 한다",
+        "일어난다",
+        "잠자리에 든다",
+        "학교에 간다"
+      ],
+      "a": 3,
+      "e": "Then 다음에 오는 일이 그다음 일이에요.",
+      "std": "[6영01-06]"
+    },
+    {
+      "t": "집 안의 물건",
+      "q": "'What's in the living room?'에 알맞은 대답은?",
+      "c": [
+        "It's in the kitchen.",
+        "I'm in my room.",
+        "There's a sofa.",
+        "It is big."
+      ],
+      "a": 2,
+      "e": "There's ~.는 ~이 있다는 뜻이에요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "집",
+      "q": "'kitchen'은 어떤 곳인가요?",
+      "c": [
+        "부엌",
+        "거실",
+        "욕실",
+        "침실"
+      ],
+      "a": 0,
+      "e": "kitchen은 부엌, bathroom은 욕실이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "여가 활동",
+      "q": "'What do you do in your free time?'에 알맞은 대답은?",
+      "c": [
+        "I usually play the violin.",
+        "It's free.",
+        "I'm in the fifth grade.",
+        "I'm free today."
+      ],
+      "a": 0,
+      "e": "free time은 여가 시간이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "일기 쓰기",
+      "q": "일기의 빈칸에 알맞은 말은? Saturday, May 10. Today I ___ to the park with my dog.",
+      "c": [
+        "go",
+        "went",
+        "will go",
+        "going"
+      ],
+      "a": 1,
+      "e": "오늘 한 일을 쓰니 과거형 went를 써요.",
+      "std": "[6영02-08]"
+    }
+  ]
+}

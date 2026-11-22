@@ -1,0 +1,277 @@
+{
+  "grade": "초6",
+  "semester": 1,
+  "subject": "영어",
+  "units": [
+    "학년과 동아리",
+    "아픈 곳과 조언",
+    "전통문화",
+    "음식 주문",
+    "길 찾기",
+    "빈도와 습관",
+    "미래 계획"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호) 5~6학년군 성취기준·[별표 3] 초등 권장 어휘. 학기 구분은 검정 교과서 단원 흐름(경기도교육청 2025 NET 수업도움자료 Scope and Sequence)을 참고한 임의 배열",
+  "questions": [
+    {
+      "t": "학년",
+      "q": "'What grade are you in?'에 알맞은 대답은?",
+      "c": [
+        "I'm from Korea.",
+        "I'm in the sixth grade.",
+        "I'm twelve years old.",
+        "I'm in the music club."
+      ],
+      "a": 1,
+      "e": "grade는 학년이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "동아리",
+      "q": "'What club are you in?'에 알맞은 대답은?",
+      "c": [
+        "I'm in the cooking club.",
+        "I'm in the sixth grade.",
+        "I cook every day.",
+        "I'm a cook."
+      ],
+      "a": 0,
+      "e": "club은 동아리예요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "서수",
+      "q": "'third'의 뜻은?",
+      "c": [
+        "세 번째",
+        "서른",
+        "열셋",
+        "세 개"
+      ],
+      "a": 0,
+      "e": "first, second, third는 순서를 나타내요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'What's wrong?'에 알맞은 대답은?",
+      "c": [
+        "I'm in the sixth grade.",
+        "It's on the desk.",
+        "I'd like some water.",
+        "I have a cold."
+      ],
+      "a": 3,
+      "e": "What's wrong?은 어디 아프냐고 묻는 말이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "아픈 곳",
+      "q": "'toothache'의 뜻은?",
+      "c": [
+        "복통",
+        "두통",
+        "치통",
+        "감기"
+      ],
+      "a": 2,
+      "e": "tooth(이)+ache(통증)로 치통이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "조언하기",
+      "q": "'I have a fever.'라고 말한 친구에게 알맞은 조언은?",
+      "c": [
+        "That's great!",
+        "You should take a rest.",
+        "Let's go swimming.",
+        "You should eat more ice cream."
+      ],
+      "a": 1,
+      "e": "열이 나면 쉬라고 조언해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "전통문화",
+      "q": "'Do you know anything about hanbok?'에 알맞은 대답은?",
+      "c": [
+        "I'm going to Busan.",
+        "Yes. Koreans wear it on special days.",
+        "It's on your left.",
+        "I have a fever."
+      ],
+      "a": 1,
+      "e": "한복에 대해 아는 것을 말해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "전통문화",
+      "q": "글에서 알 수 있는 것은? Matryoshka is a Russian doll. You can find smaller dolls inside it.",
+      "c": [
+        "한국의 전통 인형이다",
+        "안에 더 작은 인형들이 들어 있다",
+        "전통 음식의 이름이다",
+        "전통 춤의 이름이다"
+      ],
+      "a": 1,
+      "e": "smaller dolls inside it은 안의 작은 인형이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "'What would you like?'에 알맞은 대답은?",
+      "c": [
+        "I'd like spaghetti, please.",
+        "It's spicy.",
+        "Take Bus Number 9.",
+        "Twice a week."
+      ],
+      "a": 0,
+      "e": "I'd like ~.로 원하는 것을 말해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "음료 주문",
+      "q": "'Would you like anything to drink?'에 알맞은 대답은?",
+      "c": [
+        "I have a cold.",
+        "Go straight.",
+        "It's salty.",
+        "Orange juice, please."
+      ],
+      "a": 3,
+      "e": "마실 것을 물으면 음료 이름으로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "맛",
+      "q": "대화에서 B의 음식은 어떤가요? A: How's your food? B: It's too spicy. I need some water.",
+      "c": [
+        "너무 달다",
+        "아주 맛있다",
+        "너무 맵다",
+        "너무 짜다"
+      ],
+      "a": 2,
+      "e": "spicy는 매운이라는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'How can I get to the museum?'에 알맞은 대답은?",
+      "c": [
+        "I'm going to the museum.",
+        "I like museums.",
+        "It's a big museum.",
+        "Take Bus Number 9."
+      ],
+      "a": 3,
+      "e": "가는 방법을 물으면 교통편을 알려 줘요.",
+      "std": "[6영02-05]"
+    },
+    {
+      "t": "길 찾기",
+      "q": "'Take subway Line 2 and get off at City Hall.'의 뜻은?",
+      "c": [
+        "버스 2번을 타고 시청에서 내려라.",
+        "지하철 2호선을 타고 시청에서 타라.",
+        "지하철 2호선을 타고 시청에서 내려라.",
+        "시청까지 두 블록 걸어가라."
+      ],
+      "a": 2,
+      "e": "get off는 내리다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "빈도",
+      "q": "'How often do you exercise?'에 알맞은 대답은?",
+      "c": [
+        "Three days ago.",
+        "For three hours.",
+        "Three times a week.",
+        "At three o'clock."
+      ],
+      "a": 2,
+      "e": "How often은 얼마나 자주인지 묻는 말이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "빈도",
+      "q": "'twice'의 뜻은?",
+      "c": [
+        "두 번",
+        "두 개",
+        "둘째",
+        "두 시"
+      ],
+      "a": 0,
+      "e": "once는 한 번, twice는 두 번이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "습관",
+      "q": "글쓴이는 하루에 이를 몇 번 닦나요? I brush my teeth three times a day. I wash my hands before lunch.",
+      "c": [
+        "세 번",
+        "두 번",
+        "한 번",
+        "네 번"
+      ],
+      "a": 0,
+      "e": "three times a day는 하루 세 번이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "미래 계획",
+      "q": "'What are you going to do this summer?'에 알맞은 대답은?",
+      "c": [
+        "I went to Busan last summer.",
+        "I'm going to go on a trip to Busan.",
+        "Busan is a big city.",
+        "I'm from Busan."
+      ],
+      "a": 1,
+      "e": "be going to로 앞으로의 계획을 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "일의 순서",
+      "q": "꽃을 심은 다음에 할 일은? This Saturday, I'm going to visit my grandparents. First, I'm going to plant flowers. Then I'm going to feed their dog.",
+      "c": [
+        "영화 보기",
+        "수영하기",
+        "조부모님 댁 방문",
+        "개에게 먹이 주기"
+      ],
+      "a": 3,
+      "e": "First 다음 Then이 이어지는 순서예요.",
+      "std": "[6영01-06]"
+    },
+    {
+      "t": "초대하기",
+      "q": "생일 파티 초대 카드에 들어갈 문장으로 가장 알맞은 것은?",
+      "c": [
+        "Get well soon.",
+        "I'm sorry I'm late.",
+        "Please come to my birthday party.",
+        "Thank you for the gift."
+      ],
+      "a": 2,
+      "e": "초대 글에는 와 달라는 말을 써요.",
+      "std": "[6영02-08]"
+    },
+    {
+      "t": "대문자",
+      "q": "대문자와 문장 부호를 바르게 쓴 문장은?",
+      "c": [
+        "I'm going to visit jeju-do in july.",
+        "i'm going to visit Jeju-do in July.",
+        "I'm going to visit Jeju-do in july?",
+        "I'm going to visit Jeju-do in July."
+      ],
+      "a": 3,
+      "e": "지명과 달 이름은 대문자로 시작해요.",
+      "std": "[6영02-03]"
+    }
+  ]
+}

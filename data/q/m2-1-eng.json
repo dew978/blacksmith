@@ -1,0 +1,276 @@
+{
+  "grade": "중2",
+  "semester": 1,
+  "subject": "영어",
+  "units": [
+    "to부정사",
+    "동명사",
+    "비교급·최상급",
+    "접속사 because·if",
+    "감각동사",
+    "감정·의견 표현"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호 별책14) 중1~3학년군 성취기준. 학기 배분은 검정 교과서의 일반적 문법·의사소통 순서를 따른 임의 배분",
+  "questions": [
+    {
+      "t": "to부정사 목적어",
+      "q": "빈칸에 알맞은 말은?\nI want ___ a doctor.",
+      "c": [
+        "be",
+        "being",
+        "to be",
+        "to being"
+      ],
+      "a": 2,
+      "e": "want는 to부정사를 목적어로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "동명사 목적어",
+      "q": "빈칸에 알맞은 말은?\nShe enjoys ___ pictures.",
+      "c": [
+        "take",
+        "taking",
+        "to take",
+        "took"
+      ],
+      "a": 1,
+      "e": "enjoy는 동명사를 목적어로 쓴다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "동명사 주어",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "Reading books is fun.",
+        "Read books is fun.",
+        "Reading books are fun.",
+        "Reads books is fun."
+      ],
+      "a": 0,
+      "e": "동명사 주어는 단수 취급하여 is를 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "형용사적 to부정사",
+      "q": "'마실 것'을 영어로 바르게 옮긴 것은?",
+      "c": [
+        "to drink something",
+        "something to drink",
+        "something drinking",
+        "drink to something"
+      ],
+      "a": 1,
+      "e": "to부정사가 대명사를 뒤에서 꾸며 '~할'이 된다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "부사적 to부정사",
+      "q": "우리말에 맞게 빈칸에 알맞은 말은?\n나는 우유를 사려고 가게에 갔다.\nI went to the store ___ some milk.",
+      "c": [
+        "buy",
+        "bought",
+        "for buy",
+        "to buy"
+      ],
+      "a": 3,
+      "e": "'~하기 위해'는 to부정사로 나타낸다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "비교급",
+      "q": "빈칸에 알맞은 말은?\nThis box is ___ than that one.",
+      "c": [
+        "heavy",
+        "heaviest",
+        "heavier",
+        "more heavy"
+      ],
+      "a": 2,
+      "e": "heavy의 비교급은 heavier이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "최상급",
+      "q": "빈칸에 알맞은 말은?\nJiho is the ___ student in our class.",
+      "c": [
+        "taller",
+        "tallest",
+        "tall",
+        "most tall"
+      ],
+      "a": 1,
+      "e": "the+최상급은 '가장 ~한'이라는 뜻이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "more 비교급",
+      "q": "빈칸에 알맞은 말은?\nThis movie is ___ than the book.",
+      "c": [
+        "interestinger",
+        "most interesting",
+        "more interesting",
+        "much interesting"
+      ],
+      "a": 2,
+      "e": "긴 형용사는 앞에 more를 붙여 비교급을 만든다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "불규칙 비교",
+      "q": "good의 비교급과 최상급이 바르게 짝지어진 것은?",
+      "c": [
+        "gooder – goodest",
+        "more good – most good",
+        "better – most",
+        "better – best"
+      ],
+      "a": 3,
+      "e": "good은 better, best로 불규칙하게 변한다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "원급 비교",
+      "q": "'미나는 언니만큼 키가 크다.'를 바르게 옮긴 것은?",
+      "c": [
+        "Mina is as taller as her sister.",
+        "Mina is tall as as her sister.",
+        "Mina is as tall as her sister.",
+        "Mina is so tall than her sister."
+      ],
+      "a": 2,
+      "e": "as+원급+as는 '~만큼 …한'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "because",
+      "q": "빈칸에 알맞은 말은?\nI stayed home ___ I had a cold.",
+      "c": [
+        "but",
+        "because",
+        "or",
+        "so"
+      ],
+      "a": 1,
+      "e": "감기에 걸린 것이 집에 있었던 이유이다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "조건 if",
+      "q": "빈칸에 알맞은 말은?\n___ it rains tomorrow, we will stay inside.",
+      "c": [
+        "If",
+        "But",
+        "And",
+        "So"
+      ],
+      "a": 0,
+      "e": "'만약 ~하면'은 If로 나타낸다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "if절 시제",
+      "q": "빈칸에 알맞은 말은?\nIf you ___ hard, you will pass the test.",
+      "c": [
+        "will study",
+        "studied",
+        "studying",
+        "study"
+      ],
+      "a": 3,
+      "e": "조건의 if절에서는 미래 대신 현재시제를 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "감각동사",
+      "q": "빈칸에 알맞은 말은?\nThis soup tastes ___.",
+      "c": [
+        "well",
+        "good",
+        "goodly",
+        "to good"
+      ],
+      "a": 1,
+      "e": "감각동사 뒤에는 형용사가 온다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "걱정 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: You look sad. What's wrong?\nB: ___",
+      "c": [
+        "I'm happy to see you.",
+        "That sounds great.",
+        "Thank you for coming.",
+        "I lost my dog."
+      ],
+      "a": 3,
+      "e": "슬퍼 보이는 이유를 물었으므로 문제를 말한다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "위로하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I failed the math test.\nB: ___",
+      "c": [
+        "Congratulations!",
+        "I'm sorry to hear that.",
+        "That's great news.",
+        "Good for you."
+      ],
+      "a": 1,
+      "e": "안 좋은 일을 들으면 유감과 위로를 표현한다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "의견 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What do you think of this song?\nB: ___",
+      "c": [
+        "I'm in the music room.",
+        "Yes, I did.",
+        "It's on the radio at five.",
+        "I think it's really cool."
+      ],
+      "a": 3,
+      "e": "의견을 물었으므로 I think ~로 답한다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "어휘: 반의어",
+      "q": "반의어끼리 짝지어지지 않은 것은?",
+      "c": [
+        "quiet – silent",
+        "safe – dangerous",
+        "early – late",
+        "cheap – expensive"
+      ],
+      "a": 0,
+      "e": "quiet와 silent는 뜻이 비슷한 단어이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nBreakfast gives you energy. It also helps you focus in class. So don't skip breakfast.",
+      "c": [
+        "건강한 간식 만들기",
+        "아침 식사의 중요성",
+        "수업 시간 규칙",
+        "운동의 좋은 점"
+      ],
+      "a": 1,
+      "e": "아침을 거르지 말라는 것이 중심 내용이다.",
+      "std": "[9영01-03]"
+    },
+    {
+      "t": "원인과 결과",
+      "q": "Jina가 지각한 이유는?\nJina missed the bus this morning, so she was late for school.",
+      "c": [
+        "늦잠을 자서",
+        "길을 잃어서",
+        "아파서",
+        "버스를 놓쳐서"
+      ],
+      "a": 3,
+      "e": "버스를 놓친 것이 지각의 원인이다.",
+      "std": "[9영01-04]"
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "grade": "초6",
+  "semester": 2,
+  "subject": "영어",
+  "units": [
+    "지난 경험",
+    "생일과 특별한 날",
+    "환경 보호",
+    "비교하기",
+    "좋아하는 계절",
+    "안전과 충고",
+    "장래 희망"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호) 5~6학년군 성취기준·[별표 3] 초등 권장 어휘. 학기 구분은 검정 교과서 단원 흐름(경기도교육청 2025 NET 수업도움자료 Scope and Sequence)을 참고한 임의 배열",
+  "questions": [
+    {
+      "t": "지난 경험",
+      "q": "'What did you do there?'에 알맞은 대답은?",
+      "c": [
+        "I'd like a horse.",
+        "I'm going to ride a horse.",
+        "I ride a horse every day.",
+        "I rode a horse."
+      ],
+      "a": 3,
+      "e": "did로 물으면 과거형으로 답해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과거형",
+      "q": "'eat'의 과거형은?",
+      "c": [
+        "eats",
+        "eating",
+        "eaten",
+        "ate"
+      ],
+      "a": 3,
+      "e": "eat의 과거형은 ate예요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "반응하기",
+      "q": "'I stayed at home all day. It was boring.'에 알맞은 반응은?",
+      "c": [
+        "Congratulations!",
+        "That sounds great!",
+        "You're welcome.",
+        "Oh, that's too bad."
+      ],
+      "a": 3,
+      "e": "안 좋은 일에는 That's too bad.라고 해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "지난 경험",
+      "q": "글쓴이가 한 일이 아닌 것은? Last winter, I went to Jeju-do. I rode a horse and ate some fish. It was fun.",
+      "c": [
+        "생선을 먹었다",
+        "스키를 탔다",
+        "말을 탔다",
+        "제주도에 갔다"
+      ],
+      "a": 1,
+      "e": "글에 스키를 탔다는 내용은 없어요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "생일",
+      "q": "'When is your birthday?'에 알맞은 대답은?",
+      "c": [
+        "It's a birthday cake.",
+        "It's March 27th.",
+        "I'm twelve years old.",
+        "I had a party."
+      ],
+      "a": 1,
+      "e": "날짜는 달 이름과 서수로 말해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "달 이름",
+      "q": "'8월'을 뜻하는 낱말은?",
+      "c": [
+        "April",
+        "June",
+        "August",
+        "October"
+      ],
+      "a": 2,
+      "e": "8월은 August, 4월은 April이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "날짜",
+      "q": "'5월 2일'을 영어로 나타낸 것은?",
+      "c": [
+        "May 20th",
+        "May 2nd",
+        "March 2nd",
+        "May 12th"
+      ],
+      "a": 1,
+      "e": "May는 5월, 2nd는 둘째 날이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "특별한 날",
+      "q": "대화에서 운동회 날짜는? A: When is Sports Day? B: It's October 15th.",
+      "c": [
+        "11월 15일",
+        "10월 15일",
+        "10월 5일",
+        "8월 15일"
+      ],
+      "a": 1,
+      "e": "October는 10월이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "'How about reusing plastic bottles?'의 뜻은?",
+      "c": [
+        "플라스틱 병을 다시 쓰는 게 어때?",
+        "플라스틱 병을 버리는 게 어때?",
+        "플라스틱 병이 몇 개니?",
+        "플라스틱 병을 사는 게 어때?"
+      ],
+      "a": 0,
+      "e": "reuse는 다시 쓰다예요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "환경 보호",
+      "q": "환경을 지키는 방법으로 알맞은 것은?",
+      "c": [
+        "Use more paper cups.",
+        "Leave the TV on all day.",
+        "Turn off the lights.",
+        "Throw trash on the street."
+      ],
+      "a": 2,
+      "e": "안 쓰는 불을 끄면 에너지를 아껴요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "제안 수락",
+      "q": "'How about walking to school?'에 동의하는 말은?",
+      "c": [
+        "Sounds good.",
+        "Oh, that's too bad.",
+        "No, thanks. I'm full.",
+        "It's March 27th."
+      ],
+      "a": 0,
+      "e": "Sounds good.은 좋다는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "비교하기",
+      "q": "'The pencil is longer than the ruler.'의 뜻은?",
+      "c": [
+        "자가 연필보다 길다.",
+        "연필과 자의 길이가 같다.",
+        "연필이 자보다 길다.",
+        "연필이 자보다 짧다."
+      ],
+      "a": 2,
+      "e": "longer than은 ~보다 더 긴이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "비교하기",
+      "q": "빈칸에 알맞은 말은? An elephant is ___ than a mouse.",
+      "c": [
+        "biggest",
+        "big",
+        "smaller",
+        "bigger"
+      ],
+      "a": 3,
+      "e": "코끼리가 쥐보다 크니 bigger예요.",
+      "std": "[6영02-04]"
+    },
+    {
+      "t": "비교하기",
+      "q": "글에서 키가 가장 큰 사람은? Tom is taller than Jim. Jim is taller than Mina.",
+      "c": [
+        "모두 같다",
+        "Jim",
+        "Tom",
+        "Mina"
+      ],
+      "a": 2,
+      "e": "Tom > Jim > Mina 순서예요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "좋아하는 계절",
+      "q": "'What's your favorite season?'에 알맞은 대답은?",
+      "c": [
+        "My favorite season is fall.",
+        "My favorite color is blue.",
+        "I went skiing last winter.",
+        "It's cool today."
+      ],
+      "a": 0,
+      "e": "season은 계절이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "이유 말하기",
+      "q": "'Why do you like winter?'에 알맞은 대답은?",
+      "c": [
+        "Because the leaves are green.",
+        "Because I can swim in the sea.",
+        "Because I can make a snowman.",
+        "Because it's very hot."
+      ],
+      "a": 2,
+      "e": "겨울에 할 수 있는 일로 이유를 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "충고하기",
+      "q": "'You should wear your helmet.'의 뜻은?",
+      "c": [
+        "너는 헬멧을 써야 해.",
+        "너는 헬멧을 샀구나.",
+        "너는 헬멧이 있니?",
+        "너는 헬멧을 벗어야 해."
+      ],
+      "a": 0,
+      "e": "should는 ~해야 한다는 뜻이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "교통안전",
+      "q": "'The light is red.'라고 할 때 알맞은 충고는?",
+      "c": [
+        "You should stop and wait.",
+        "You should cross the street now.",
+        "You should run fast.",
+        "Let's cross now."
+      ],
+      "a": 0,
+      "e": "빨간불에는 멈춰서 기다려요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "장래 희망",
+      "q": "'What do you want to be?'에 알맞은 대답은?",
+      "c": [
+        "I like to play soccer.",
+        "I'm a sixth grader.",
+        "I want to eat pizza.",
+        "I want to be a painter."
+      ],
+      "a": 3,
+      "e": "want to be는 ~가 되고 싶다예요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "감사 카드",
+      "q": "감사 카드의 빈칸에 알맞은 말은? Dear Ms. Kim, ___ for teaching us. Love, Mina",
+      "c": [
+        "Happy birthday",
+        "Thank you",
+        "Congratulations",
+        "Get well"
+      ],
+      "a": 1,
+      "e": "Thank you for ~.로 감사를 전해요.",
+      "std": "[6영02-08]"
+    }
+  ]
+}

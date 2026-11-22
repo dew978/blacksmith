@@ -1,0 +1,276 @@
+{
+  "grade": "중1",
+  "semester": 2,
+  "subject": "영어",
+  "units": [
+    "과거시제",
+    "조동사 can·will·must",
+    "be going to",
+    "There is/are",
+    "길 묻고 안내하기",
+    "계획·경험 말하기"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호 별책14) 중1~3학년군 성취기준. 학기 배분은 검정 교과서의 일반적 문법·의사소통 순서를 따른 임의 배분",
+  "questions": [
+    {
+      "t": "be동사 과거",
+      "q": "빈칸에 알맞은 말은?\nI ___ at home yesterday.",
+      "c": [
+        "were",
+        "was",
+        "am",
+        "be"
+      ],
+      "a": 1,
+      "e": "yesterday는 과거이고 주어가 I이므로 was를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "불규칙 과거",
+      "q": "동사와 과거형이 바르게 짝지어지지 않은 것은?",
+      "c": [
+        "go – went",
+        "buy – bought",
+        "see – saw",
+        "eat – eated"
+      ],
+      "a": 3,
+      "e": "eat의 과거형은 ate이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거 부정",
+      "q": "빈칸에 알맞은 말은?\nHe ___ go to school last Monday.",
+      "c": [
+        "doesn't",
+        "wasn't",
+        "don't",
+        "didn't"
+      ],
+      "a": 3,
+      "e": "과거 일반동사의 부정은 didn't+동사원형이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "과거 의문",
+      "q": "빈칸에 알맞은 말은?\nA: ___ you enjoy the movie?\nB: Yes, I did.",
+      "c": [
+        "Do",
+        "Did",
+        "Were",
+        "Was"
+      ],
+      "a": 1,
+      "e": "Yes, I did로 답하므로 Did로 묻는다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "규칙 과거",
+      "q": "빈칸에 알맞은 말은?\nShe ___ English hard last night.",
+      "c": [
+        "studyed",
+        "studied",
+        "studies",
+        "study"
+      ],
+      "a": 1,
+      "e": "자음+y로 끝나면 y를 i로 바꾸고 -ed를 붙인다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "조동사 can",
+      "q": "빈칸에 알맞은 말은?\nMy brother can ___ the guitar.",
+      "c": [
+        "plays",
+        "play",
+        "played",
+        "playing"
+      ],
+      "a": 1,
+      "e": "조동사 뒤에는 동사원형이 온다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "허락 구하기",
+      "q": "빈칸에 알맞은 말은?\nA: ___ I use your pen?\nB: Sure, go ahead.",
+      "c": [
+        "Am",
+        "Does",
+        "Did",
+        "Can"
+      ],
+      "a": 3,
+      "e": "Can I ~?는 허락을 구하는 표현이다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "미래 will",
+      "q": "빈칸에 알맞은 말은?\nIt ___ rain tomorrow.",
+      "c": [
+        "is",
+        "does",
+        "was",
+        "will"
+      ],
+      "a": 3,
+      "e": "미래의 일은 will+동사원형으로 나타낸다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "be going to",
+      "q": "빈칸에 알맞은 말은?\nWe are going to ___ our grandparents this weekend.",
+      "c": [
+        "visits",
+        "visited",
+        "visiting",
+        "visit"
+      ],
+      "a": 3,
+      "e": "be going to 뒤에는 동사원형이 온다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "의무 must",
+      "q": "'너는 헬멧을 써야 한다.'를 바르게 옮긴 것은?",
+      "c": [
+        "You must wear a helmet.",
+        "You must wearing a helmet.",
+        "You must to wear a helmet.",
+        "You musts wear a helmet."
+      ],
+      "a": 0,
+      "e": "must+동사원형은 '~해야 한다'는 뜻이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "There are",
+      "q": "빈칸에 알맞은 말은?\nThere ___ two cats under the table.",
+      "c": [
+        "is",
+        "are",
+        "be",
+        "am"
+      ],
+      "a": 1,
+      "e": "뒤의 명사가 복수이므로 There are를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "길 묻기",
+      "q": "빈칸에 알맞은 말은?\nA: Excuse me. ___ is the post office?\nB: Go straight and turn left.",
+      "c": [
+        "What",
+        "Who",
+        "When",
+        "Where"
+      ],
+      "a": 3,
+      "e": "장소를 물을 때는 Where를 쓴다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "길 안내",
+      "q": "'오른쪽으로 도세요.'를 영어로 옮긴 것은?",
+      "c": [
+        "Turn left.",
+        "Go straight.",
+        "Turn right.",
+        "Cross the street."
+      ],
+      "a": 2,
+      "e": "오른쪽으로 돌라는 말은 Turn right이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "위치 전치사",
+      "q": "우리말에 맞게 빈칸에 알맞은 말은?\n은행은 도서관과 학교 사이에 있다.\nThe bank is ___ the library and the school.",
+      "c": [
+        "behind",
+        "between",
+        "across",
+        "under"
+      ],
+      "a": 1,
+      "e": "between A and B는 'A와 B 사이에'이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "계획 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What are you going to do this Saturday?\nB: ___",
+      "c": [
+        "I went hiking.",
+        "Yes, I am.",
+        "I'm going to go hiking.",
+        "I'm tired."
+      ],
+      "a": 2,
+      "e": "앞으로의 계획을 물었으므로 be going to로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "능력 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Can you swim?\nB: ___ But I'm learning now.",
+      "c": [
+        "No, I don't.",
+        "Yes, I can't.",
+        "No, I'm not.",
+        "No, I can't."
+      ],
+      "a": 3,
+      "e": "Can으로 물으면 can으로 답한다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "지난 일 말하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: What did you do last weekend?\nB: ___",
+      "c": [
+        "I'll watch a movie.",
+        "I watch movies every day.",
+        "I'm watching a movie.",
+        "I watched a movie with my family."
+      ],
+      "a": 3,
+      "e": "지난 주말의 일을 물었으므로 과거시제로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "어휘: 날씨",
+      "q": "'비가 오는'을 뜻하는 단어는?",
+      "c": [
+        "sunny",
+        "rainy",
+        "windy",
+        "snowy"
+      ],
+      "a": 1,
+      "e": "rainy는 비가 오는, sunny는 맑은이라는 뜻이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "순서 파악",
+      "q": "글에서 가장 먼저 일어난 일은?\nAfter lunch, I went to the library. Before that, I cleaned my room in the morning.",
+      "c": [
+        "점심 먹기",
+        "도서관 가기",
+        "방 청소하기",
+        "책 빌리기"
+      ],
+      "a": 2,
+      "e": "아침에 방을 청소한 일이 가장 먼저이다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "글의 목적",
+      "q": "글을 쓴 목적으로 알맞은 것은?\nDear Ms. Kim, I was sick today, so I couldn't go to school. I'm sorry.",
+      "c": [
+        "결석한 이유를 알리려고",
+        "생일을 축하하려고",
+        "책을 빌리려고",
+        "여행을 제안하려고"
+      ],
+      "a": 0,
+      "e": "아파서 학교에 못 간 이유를 설명하는 글이다.",
+      "std": "[9영01-06]"
+    }
+  ]
+}

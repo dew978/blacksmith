@@ -1,0 +1,277 @@
+{
+  "grade": "초5",
+  "semester": 1,
+  "subject": "영어",
+  "units": [
+    "안부 묻기",
+    "출신 나라",
+    "물건의 주인",
+    "좋아하는 과목",
+    "음식 주문",
+    "물건 사기",
+    "앞으로 할 일"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호) 5~6학년군 성취기준·[별표 3] 초등 권장 어휘. 학기 구분은 검정 교과서 단원 흐름(경기도교육청 2025 NET 수업도움자료 Scope and Sequence)을 참고한 임의 배열",
+  "questions": [
+    {
+      "t": "안부 묻기",
+      "q": "'How's it going?'에 알맞은 대답은?",
+      "c": [
+        "It's on the desk.",
+        "Not bad. How about you?",
+        "I will go swimming.",
+        "I'm from Korea."
+      ],
+      "a": 1,
+      "e": "How's it going?은 잘 지내냐는 인사예요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "'Where are you from?'에 알맞은 대답은?",
+      "c": [
+        "I'm from Canada.",
+        "I'm twelve.",
+        "I'm in the kitchen.",
+        "I'm fine."
+      ],
+      "a": 0,
+      "e": "출신을 물으면 I'm from + 나라.로 답해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "출신 나라",
+      "q": "글에서 Tom의 출신 나라는? Hi, I'm Tom. I'm from the U.K. I like soccer.",
+      "c": [
+        "호주",
+        "영국",
+        "미국",
+        "캐나다"
+      ],
+      "a": 1,
+      "e": "the U.K.는 영국이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "'Whose book is this?'에 알맞은 대답은?",
+      "c": [
+        "It's Minsu's.",
+        "It's a book.",
+        "It's blue.",
+        "It's on the desk."
+      ],
+      "a": 0,
+      "e": "Minsu's는 민수의 것이라는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건의 주인",
+      "q": "빈칸에 알맞은 말은? A: Is this your pencil? B: Yes, it's ___.",
+      "c": [
+        "my",
+        "me",
+        "I",
+        "mine"
+      ],
+      "a": 3,
+      "e": "it's mine은 내 것이라는 뜻이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "좋아하는 과목",
+      "q": "'What's your favorite subject?'에 알맞은 대답은?",
+      "c": [
+        "I'm a scientist.",
+        "My favorite subject is science.",
+        "I like pizza.",
+        "It's Monday."
+      ],
+      "a": 1,
+      "e": "subject는 과목이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "과목",
+      "q": "'사회' 과목을 뜻하는 말은?",
+      "c": [
+        "P.E.",
+        "math",
+        "social studies",
+        "science"
+      ],
+      "a": 2,
+      "e": "science는 과학, P.E.는 체육이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "좋아하는 이유",
+      "q": "대화에서 B가 미술을 좋아하는 이유는? A: Why do you like art? B: Because I like drawing.",
+      "c": [
+        "선생님이 좋아서",
+        "노래를 좋아해서",
+        "만들기를 잘해서",
+        "그림 그리기를 좋아해서"
+      ],
+      "a": 3,
+      "e": "Because 뒤에 이유가 나와요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "식당에서 'May I take your order?'의 뜻은?",
+      "c": [
+        "얼마예요?",
+        "맛이 어때요?",
+        "어디에서 왔어요?",
+        "주문하시겠어요?"
+      ],
+      "a": 3,
+      "e": "order는 주문이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "음식 주문",
+      "q": "식당에서 음식을 주문하는 말로 알맞은 것은?",
+      "c": [
+        "Where is the bank?",
+        "Whose cap is this?",
+        "I'd like noodles, please.",
+        "How much is it?"
+      ],
+      "a": 2,
+      "e": "I'd like ~.로 원하는 음식을 말해요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "맛",
+      "q": "'How's the steak?'에 알맞은 대답은?",
+      "c": [
+        "It's ten thousand won.",
+        "It's mine.",
+        "It's on the table.",
+        "It's delicious."
+      ],
+      "a": 3,
+      "e": "How's ~?는 어떠냐고 묻는 말이에요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "맛",
+      "q": "'짠'을 뜻하는 낱말은?",
+      "c": [
+        "sweet",
+        "salty",
+        "hot",
+        "sour"
+      ],
+      "a": 1,
+      "e": "salty는 짠, sweet는 단, sour는 신이에요.",
+      "std": "[6영01-03]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "옷 가게에서 'May I help you?'에 알맞은 대답은?",
+      "c": [
+        "It's fifty thousand won.",
+        "I'm from Korea.",
+        "Yes. I'm looking for a jacket.",
+        "No, it's mine."
+      ],
+      "a": 2,
+      "e": "look for는 ~을 찾다예요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건 값",
+      "q": "'How much are these shoes?'에 알맞은 대답은?",
+      "c": [
+        "They are thirty thousand won.",
+        "Yes, they are.",
+        "They are on the shelf.",
+        "They are blue."
+      ],
+      "a": 0,
+      "e": "How much는 값을 묻는 말이에요.",
+      "std": "[6영02-07]"
+    },
+    {
+      "t": "물건 사기",
+      "q": "대화에서 B의 생각은? A: How about these pants? B: They are too expensive.",
+      "c": [
+        "바지가 너무 비싸다",
+        "바지가 마음에 든다",
+        "바지가 싸다",
+        "바지가 너무 작다"
+      ],
+      "a": 0,
+      "e": "expensive는 비싼이라는 뜻이에요.",
+      "std": "[6영01-04]"
+    },
+    {
+      "t": "앞으로 할 일",
+      "q": "'What will you do this summer?'에 알맞은 대답은?",
+      "c": [
+        "I'm from Korea.",
+        "I like summer.",
+        "I visited my grandparents.",
+        "I will visit my grandparents."
+      ],
+      "a": 3,
+      "e": "will을 써서 앞으로 할 일을 말해요.",
+      "std": "[6영02-06]"
+    },
+    {
+      "t": "일의 순서",
+      "q": "글쓴이가 영화를 본 다음에 할 일은? This weekend, I will watch a movie with my sister. Then we will make cookies.",
+      "c": [
+        "조부모님 댁 방문",
+        "쿠키 만들기",
+        "책 읽기",
+        "수영하기"
+      ],
+      "a": 1,
+      "e": "Then은 그다음에라는 뜻이에요.",
+      "std": "[6영01-06]"
+    },
+    {
+      "t": "대문자",
+      "q": "대문자와 문장 부호를 바르게 쓴 문장은?",
+      "c": [
+        "I'm from Korea.",
+        "i'm from korea.",
+        "i'm From Korea.",
+        "I'm from korea."
+      ],
+      "a": 0,
+      "e": "문장 첫 글자, I, 나라 이름은 대문자로 써요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "문장 부호",
+      "q": "끝에 물음표(?)를 써야 하는 문장은?",
+      "c": [
+        "I'm from China",
+        "I like music",
+        "Where are you from",
+        "My name is Ann"
+      ],
+      "a": 2,
+      "e": "묻는 문장 끝에는 물음표를 써요.",
+      "std": "[6영02-03]"
+    },
+    {
+      "t": "반응하기",
+      "q": "'I will join a book club.'에 알맞은 반응은?",
+      "c": [
+        "I'm from France.",
+        "No, I'm not.",
+        "Sounds great!",
+        "It's mine."
+      ],
+      "a": 2,
+      "e": "Sounds great!는 좋겠다는 반응이에요.",
+      "std": "[6영02-07]"
+    }
+  ]
+}

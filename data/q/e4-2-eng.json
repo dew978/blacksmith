@@ -1,0 +1,277 @@
+{
+  "grade": "초4",
+  "semester": 2,
+  "subject": "영어",
+  "units": [
+    "시각",
+    "옷과 요청",
+    "허락 구하기",
+    "음식 권하기",
+    "지금 하는 일",
+    "물건 값",
+    "요일"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호) 3~4학년군 성취기준·[별표 3] 초등 권장 어휘. 학기 구분은 검정 교과서 단원 흐름(경기도교육청 2025 NET 수업도움자료 Scope and Sequence)을 참고한 임의 배열",
+  "questions": [
+    {
+      "t": "시각",
+      "q": "'What time is it?'에 알맞은 대답은?",
+      "c": [
+        "It's Monday.",
+        "It's twelve o'clock.",
+        "It's sunny.",
+        "It's mine."
+      ],
+      "a": 1,
+      "e": "시각을 물으면 It's ~ o'clock.으로 답해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "시각",
+      "q": "대화에서 지금 할 일은? A: What time is it? B: It's twelve. It's time for lunch.",
+      "c": [
+        "잠자기",
+        "아침 먹기",
+        "점심 먹기",
+        "학교 가기"
+      ],
+      "a": 2,
+      "e": "time for lunch는 점심 먹을 시간이에요.",
+      "std": "[4영01-06]"
+    },
+    {
+      "t": "숫자",
+      "q": "'thirty'가 나타내는 수는?",
+      "c": [
+        "3",
+        "300",
+        "30",
+        "13"
+      ],
+      "a": 2,
+      "e": "thirty는 30, thirteen은 13이에요.",
+      "std": "[4영01-05]"
+    },
+    {
+      "t": "옷 입기",
+      "q": "'Put on your coat.'의 뜻은?",
+      "c": [
+        "외투를 입어라.",
+        "신발을 벗어라.",
+        "모자를 써라.",
+        "외투를 벗어라."
+      ],
+      "a": 0,
+      "e": "put on은 입다, take off는 벗다예요.",
+      "std": "[4영02-06]"
+    },
+    {
+      "t": "옷",
+      "q": "다음 중 '양말'을 뜻하는 낱말은?",
+      "c": [
+        "skirt",
+        "socks",
+        "pants",
+        "shoes"
+      ],
+      "a": 1,
+      "e": "socks는 양말, shoes는 신발이에요.",
+      "std": "[4영01-05]"
+    },
+    {
+      "t": "허락 구하기",
+      "q": "'Can I come in?'에 허락하는 말은?",
+      "c": [
+        "Sure. Come in.",
+        "It's three o'clock.",
+        "No, I'm not.",
+        "I'm late."
+      ],
+      "a": 0,
+      "e": "허락할 때 Sure.라고 해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "허락 구하기",
+      "q": "'Can I sit here?'에 거절하는 말로 알맞은 것은?",
+      "c": [
+        "Of course.",
+        "Sorry, you can't.",
+        "Okay.",
+        "Sure."
+      ],
+      "a": 1,
+      "e": "거절할 때 Sorry, you can't.라고 해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "음식 권하기",
+      "q": "'Do you want some soup?'에 사양하는 말로 알맞은 것은?",
+      "c": [
+        "Yes, please.",
+        "It's delicious.",
+        "Help yourself.",
+        "No, thanks. I'm full."
+      ],
+      "a": 3,
+      "e": "No, thanks.는 사양하는 말이에요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "음식 권하기",
+      "q": "음식을 권하며 '마음껏 먹어.'라고 할 때 알맞은 말은?",
+      "c": [
+        "Hurry up.",
+        "Watch out.",
+        "See you later.",
+        "Help yourself."
+      ],
+      "a": 3,
+      "e": "Help yourself.는 마음껏 먹으라는 말이에요.",
+      "std": "[4영01-05]"
+    },
+    {
+      "t": "맛",
+      "q": "'delicious'의 뜻은?",
+      "c": [
+        "뜨거운",
+        "배부른",
+        "맛있는",
+        "배고픈"
+      ],
+      "a": 2,
+      "e": "delicious는 맛있는이라는 뜻이에요.",
+      "std": "[4영01-05]"
+    },
+    {
+      "t": "지금 하는 일",
+      "q": "'What are you doing?'에 알맞은 대답은?",
+      "c": [
+        "I'm drawing.",
+        "I can draw.",
+        "I like drawing.",
+        "I'm a cook."
+      ],
+      "a": 0,
+      "e": "지금 하는 일은 I'm ~ing.로 답해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "지금 하는 일",
+      "q": "대화에서 그녀가 하고 있는 일은? A: What is she doing? B: She is reading a book.",
+      "c": [
+        "노래하고 있다",
+        "요리하고 있다",
+        "그림을 그리고 있다",
+        "책을 읽고 있다"
+      ],
+      "a": 3,
+      "e": "reading a book은 책을 읽는 중이에요.",
+      "std": "[4영01-06]"
+    },
+    {
+      "t": "집안일",
+      "q": "'설거지하다'를 영어로 나타낸 것은?",
+      "c": [
+        "clean the room",
+        "do homework",
+        "take a picture",
+        "wash the dishes"
+      ],
+      "a": 3,
+      "e": "dish는 접시, wash는 씻다예요.",
+      "std": "[4영01-05]"
+    },
+    {
+      "t": "물건 값",
+      "q": "'How much is it?'에 알맞은 대답은?",
+      "c": [
+        "It's two thousand won.",
+        "It's two o'clock.",
+        "It's mine.",
+        "It's Tuesday."
+      ],
+      "a": 0,
+      "e": "값을 물으면 It's ~ won.으로 답해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "가게에서",
+      "q": "가게 점원이 'Can I help you?'라고 할 때 알맞은 대답은?",
+      "c": [
+        "No, I'm not.",
+        "Yes, please.",
+        "Yes, I can.",
+        "You're welcome."
+      ],
+      "a": 1,
+      "e": "도움을 원하면 Yes, please.라고 해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "요일",
+      "q": "'What day is it today?'에 알맞은 대답은?",
+      "c": [
+        "It's nine hundred won.",
+        "It's ten o'clock.",
+        "It's Wednesday.",
+        "It's sunny."
+      ],
+      "a": 2,
+      "e": "요일을 물으면 It's + 요일.로 답해요.",
+      "std": "[4영02-08]"
+    },
+    {
+      "t": "요일",
+      "q": "'Monday' 바로 다음 요일은?",
+      "c": [
+        "Thursday",
+        "Wednesday",
+        "Tuesday",
+        "Sunday"
+      ],
+      "a": 2,
+      "e": "월요일 다음은 화요일 Tuesday예요.",
+      "std": "[4영01-05]"
+    },
+    {
+      "t": "요일",
+      "q": "대화에서 B가 오늘 듣는 수업은? A: What day is it? B: It's Friday. I have music class.",
+      "c": [
+        "영어",
+        "미술",
+        "체육",
+        "음악"
+      ],
+      "a": 3,
+      "e": "music class는 음악 수업이에요.",
+      "std": "[4영01-06]"
+    },
+    {
+      "t": "소리와 철자",
+      "q": "'손목시계'를 뜻하는 'w_tch'의 빈칸에 알맞은 글자는?",
+      "c": [
+        "i",
+        "a",
+        "e",
+        "o"
+      ],
+      "a": 1,
+      "e": "손목시계는 w-a-t-c-h, watch예요.",
+      "std": "[4영02-03]"
+    },
+    {
+      "t": "대화 예절",
+      "q": "약속에 늦었을 때 하는 말로 알맞은 것은?",
+      "c": [
+        "I'm sorry. I'm late.",
+        "Help yourself.",
+        "You're welcome.",
+        "Nice to meet you."
+      ],
+      "a": 0,
+      "e": "늦었을 때는 사과하는 말을 해요.",
+      "std": "[4영02-10]"
+    }
+  ]
+}

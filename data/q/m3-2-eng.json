@@ -1,0 +1,277 @@
+{
+  "grade": "중3",
+  "semester": 2,
+  "subject": "영어",
+  "units": [
+    "가정법 과거",
+    "관계부사",
+    "사역·지각동사",
+    "분사구문",
+    "과거완료",
+    "의문사+to부정사",
+    "놀람·제안 표현"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호 별책14) 중1~3학년군 성취기준. 학기 배분은 검정 교과서의 일반적 문법·의사소통 순서를 따른 임의 배분",
+  "questions": [
+    {
+      "t": "가정법 과거",
+      "q": "빈칸에 알맞은 말은?\nIf I ___ a bird, I could fly to you.",
+      "c": [
+        "were",
+        "am",
+        "will be",
+        "be"
+      ],
+      "a": 0,
+      "e": "가정법 과거의 if절에는 be동사로 were를 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가정법 주절",
+      "q": "빈칸에 알맞은 말은?\nIf I had more time, I ___ travel around the world.",
+      "c": [
+        "will",
+        "am",
+        "would",
+        "have"
+      ],
+      "a": 2,
+      "e": "가정법 과거의 주절에는 would+동사원형을 쓴다.",
+      "std": "[9영02-06]"
+    },
+    {
+      "t": "가정법 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nIf I knew her number, I would call her.",
+      "c": [
+        "그녀의 번호를 알아서 전화한다.",
+        "그녀의 번호를 몰라서 전화할 수 없다.",
+        "어제 그녀에게 전화했다.",
+        "내일 그녀에게 꼭 전화할 것이다."
+      ],
+      "a": 1,
+      "e": "가정법 과거는 현재 사실의 반대를 나타낸다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "I wish",
+      "q": "빈칸에 알맞은 말은?\nI wish I ___ a little sister.",
+      "c": [
+        "have",
+        "has",
+        "having",
+        "had"
+      ],
+      "a": 3,
+      "e": "I wish+가정법 과거는 이루기 힘든 현재의 소망이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "관계부사 where",
+      "q": "빈칸에 알맞은 말은?\nThis is the house ___ I was born.",
+      "c": [
+        "where",
+        "when",
+        "why",
+        "which"
+      ],
+      "a": 0,
+      "e": "장소 선행사 뒤에는 관계부사 where를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계부사 when",
+      "q": "빈칸에 알맞은 말은?\nI remember the day ___ we first met.",
+      "c": [
+        "where",
+        "how",
+        "when",
+        "what"
+      ],
+      "a": 2,
+      "e": "시간 선행사 뒤에는 관계부사 when을 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "관계부사 how",
+      "q": "다음 중 어법상 옳지 않은 문장은?",
+      "c": [
+        "Tell me how you solved it.",
+        "Tell me the way how you solved it.",
+        "Tell me the way you solved it.",
+        "Tell me why you were late."
+      ],
+      "a": 1,
+      "e": "the way와 how는 함께 쓰지 않는다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "사역동사 make",
+      "q": "빈칸에 알맞은 말은?\nMy mom made me ___ my room.",
+      "c": [
+        "to clean",
+        "cleaning",
+        "clean",
+        "cleaned"
+      ],
+      "a": 2,
+      "e": "사역동사 make의 목적격보어로 동사원형을 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "사역동사 let",
+      "q": "빈칸에 알맞은 말은?\nLet me ___ myself.",
+      "c": [
+        "introduce",
+        "to introduce",
+        "introducing",
+        "introduces"
+      ],
+      "a": 0,
+      "e": "let+목적어+동사원형 구조이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "지각동사",
+      "q": "빈칸에 알맞은 말은?\nI saw him ___ across the street.",
+      "c": [
+        "to run",
+        "runs",
+        "run",
+        "ran"
+      ],
+      "a": 2,
+      "e": "지각동사 see의 목적격보어로 동사원형이나 -ing를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "분사구문 의미",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nWalking down the street, I met Jake.",
+      "c": [
+        "길을 걸어가다가 나는 Jake를 만났다.",
+        "Jake가 길을 걸어가고 있었다.",
+        "나는 길을 걷다가 Jake를 피했다.",
+        "나는 Jake와 함께 길을 걸었다."
+      ],
+      "a": 0,
+      "e": "Walking ~은 '~하다가'라는 뜻의 분사구문이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "분사구문 만들기",
+      "q": "'Because she was sick, she stayed home.'을 분사구문으로 바꾼 것은?",
+      "c": [
+        "Be sick, she stayed home.",
+        "Being sick, she stayed home.",
+        "Was sick, she stayed home.",
+        "To being sick, she stayed home."
+      ],
+      "a": 1,
+      "e": "접속사와 주어를 빼고 동사를 -ing로 바꾼다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "과거완료",
+      "q": "빈칸에 알맞은 말은?\nWhen I arrived, the movie ___ already started.",
+      "c": [
+        "had",
+        "has",
+        "have",
+        "was"
+      ],
+      "a": 0,
+      "e": "도착한 때보다 먼저 일어난 일은 과거완료로 쓴다.",
+      "std": "[9영02-05]"
+    },
+    {
+      "t": "의문사+to부정사",
+      "q": "빈칸에 알맞은 말은?\nI don't know what ___ next.",
+      "c": [
+        "do",
+        "doing",
+        "done",
+        "to do"
+      ],
+      "a": 3,
+      "e": "what to do는 '무엇을 해야 할지'라는 뜻이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "how to 바꿔쓰기",
+      "q": "다음 문장과 뜻이 같은 것은?\nCan you tell me how to get to the station?",
+      "c": [
+        "Can you tell me how can I get to the station?",
+        "Can you tell me how I can get to the station?",
+        "Can you tell me how I got to the station?",
+        "Can you tell me why I should get to the station?"
+      ],
+      "a": 1,
+      "e": "how to ~는 how+주어+can+동사원형으로 바꿀 수 있다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "해결책 제안",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I forgot my friend's birthday.\nB: ___",
+      "c": [
+        "Why don't you call her and say sorry?",
+        "Happy birthday to you!",
+        "You must be very proud.",
+        "Great! I forgot it, too."
+      ],
+      "a": 0,
+      "e": "실수한 친구에게 해결 방법을 제안하고 있다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "놀람 표현",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I won the speech contest!\nB: ___",
+      "c": [
+        "That's too bad.",
+        "I'm sorry to hear that.",
+        "Really? That's amazing!",
+        "Cheer up!"
+      ],
+      "a": 2,
+      "e": "좋은 소식에는 놀람과 기쁨을 표현한다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "어휘: 뜻풀이",
+      "q": "'to make something new for the first time'에 해당하는 단어는?",
+      "c": [
+        "invent",
+        "borrow",
+        "repeat",
+        "destroy"
+      ],
+      "a": 0,
+      "e": "invent는 '발명하다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "연결어",
+      "q": "빈칸에 알맞은 연결어는?\nKevin practiced every day. ___, he didn't win the race.",
+      "c": [
+        "Therefore",
+        "For example",
+        "However",
+        "In addition"
+      ],
+      "a": 2,
+      "e": "앞뒤 내용이 반대이므로 However를 쓴다.",
+      "std": "[9영01-04]"
+    },
+    {
+      "t": "글의 주제",
+      "q": "글의 주제로 알맞은 것은?\nBees carry pollen from flower to flower. Without them, many fruits and vegetables could not grow.",
+      "c": [
+        "벌에 쏘였을 때 대처법",
+        "과일을 고르는 방법",
+        "꽃의 다양한 색깔",
+        "작물 재배에서 벌의 역할"
+      ],
+      "a": 3,
+      "e": "벌이 꽃가루를 옮겨 작물이 자란다는 내용이다.",
+      "std": "[9영01-03]"
+    }
+  ]
+}

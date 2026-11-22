@@ -1,0 +1,277 @@
+{
+  "grade": "중2",
+  "semester": 2,
+  "subject": "영어",
+  "units": [
+    "수여동사",
+    "목적격보어(make·want)",
+    "수동태",
+    "현재완료(경험)",
+    "주격 관계대명사",
+    "have to·should",
+    "제안·충고하기"
+  ],
+  "source": "2022 개정 영어과 교육과정(교육부 고시 제2022-33호 별책14) 중1~3학년군 성취기준. 학기 배분은 검정 교과서의 일반적 문법·의사소통 순서를 따른 임의 배분",
+  "questions": [
+    {
+      "t": "수여동사",
+      "q": "다음 중 어법상 옳은 문장은?",
+      "c": [
+        "My dad bought me a new bike.",
+        "My dad bought a new bike me.",
+        "My dad bought to me a new bike.",
+        "My dad bought me to a new bike."
+      ],
+      "a": 0,
+      "e": "수여동사 뒤에는 '사람+사물' 순서로 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3형식 전환 to",
+      "q": "빈칸에 알맞은 말은?\nShe showed her photos ___ me.",
+      "c": [
+        "for",
+        "of",
+        "at",
+        "to"
+      ],
+      "a": 3,
+      "e": "show는 3형식으로 바꿀 때 to를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "3형식 전환 for",
+      "q": "빈칸에 알맞은 말은?\nMom made a cake ___ me.",
+      "c": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "a": 1,
+      "e": "make는 3형식으로 바꿀 때 for를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "make+목적어+형용사",
+      "q": "빈칸에 알맞은 말은?\nThe news made us ___.",
+      "c": [
+        "happily",
+        "happiness",
+        "happy",
+        "to happy"
+      ],
+      "a": 2,
+      "e": "make+목적어+형용사는 '~을 …하게 만들다'이다.",
+      "std": "[9영02-02]"
+    },
+    {
+      "t": "want+목적어+to",
+      "q": "빈칸에 알맞은 말은?\nMy teacher wants me ___ harder.",
+      "c": [
+        "study",
+        "studying",
+        "to study",
+        "studied"
+      ],
+      "a": 2,
+      "e": "want+목적어+to부정사 구조이다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "수동태 현재",
+      "q": "빈칸에 알맞은 말은?\nThis book ___ by many students.",
+      "c": [
+        "is read",
+        "reads",
+        "is reading",
+        "read"
+      ],
+      "a": 0,
+      "e": "책이 읽히는 것이므로 be+과거분사를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "수동태 과거",
+      "q": "빈칸에 알맞은 말은?\nThe window was ___ by Tom yesterday.",
+      "c": [
+        "broke",
+        "broken",
+        "break",
+        "breaking"
+      ],
+      "a": 1,
+      "e": "수동태는 be+과거분사이며 break의 과거분사는 broken이다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "능동→수동",
+      "q": "'Many people love the song.'을 수동태로 바르게 바꾼 것은?",
+      "c": [
+        "The song loves by many people.",
+        "The song is loving by many people.",
+        "The song was love by many people.",
+        "The song is loved by many people."
+      ],
+      "a": 3,
+      "e": "목적어를 주어로 하고 동사를 be+과거분사로 바꾼다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "현재완료 경험",
+      "q": "빈칸에 알맞은 말은?\nI have ___ to Jeju Island twice.",
+      "c": [
+        "be",
+        "been",
+        "went",
+        "being"
+      ],
+      "a": 1,
+      "e": "'~에 가 본 적 있다'는 have been to로 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "경험 묻기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Have you ever eaten Mexican food?\nB: ___",
+      "c": [
+        "Yes, I did.",
+        "Yes, I do.",
+        "Yes, I am.",
+        "Yes, I have."
+      ],
+      "a": 3,
+      "e": "Have you ~?로 물으면 have로 답한다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "never",
+      "q": "빈칸에 알맞은 말은?\nI have ___ seen snow. I want to see it someday.",
+      "c": [
+        "ever",
+        "never",
+        "already",
+        "just"
+      ],
+      "a": 1,
+      "e": "한 번도 본 적이 없으므로 never를 쓴다.",
+      "std": "[9영02-04]"
+    },
+    {
+      "t": "관계대명사 who",
+      "q": "빈칸에 알맞은 말은?\nI have a friend ___ lives in Canada.",
+      "c": [
+        "which",
+        "who",
+        "what",
+        "where"
+      ],
+      "a": 1,
+      "e": "선행사가 사람이면 주격 관계대명사 who를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "관계대명사 which",
+      "q": "빈칸에 알맞은 말은?\nThis is the bus ___ goes to the zoo.",
+      "c": [
+        "which",
+        "who",
+        "whom",
+        "what"
+      ],
+      "a": 0,
+      "e": "선행사가 사물이면 which를 쓴다.",
+      "std": "[9영02-03]"
+    },
+    {
+      "t": "have to",
+      "q": "'너는 일찍 일어나야 한다.'를 바르게 옮긴 것은?",
+      "c": [
+        "You have get up early.",
+        "You has to get up early.",
+        "You have to getting up early.",
+        "You have to get up early."
+      ],
+      "a": 3,
+      "e": "have to+동사원형은 '~해야 한다'이다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "불필요 표현",
+      "q": "다음 문장의 뜻으로 알맞은 것은?\nYou don't have to bring lunch.",
+      "c": [
+        "점심을 가져오면 안 된다.",
+        "점심을 꼭 가져와야 한다.",
+        "점심을 가져올 필요가 없다.",
+        "점심을 가져와도 된다."
+      ],
+      "a": 2,
+      "e": "don't have to는 '~할 필요가 없다'는 뜻이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "충고하기",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: I have a terrible headache.\nB: ___",
+      "c": [
+        "You should eat more candy.",
+        "You should see a doctor.",
+        "I don't have a headache.",
+        "That's a good idea."
+      ],
+      "a": 1,
+      "e": "아픈 친구에게 should로 알맞은 충고를 한다.",
+      "std": "[9영02-11]"
+    },
+    {
+      "t": "제안 거절",
+      "q": "대화의 빈칸에 알맞은 말은?\nA: Why don't we go swimming?\nB: ___ It's too cold today.",
+      "c": [
+        "Sounds great!",
+        "Sure, let's go.",
+        "Sorry, I can't.",
+        "Of course."
+      ],
+      "a": 2,
+      "e": "추운 날씨를 이유로 제안을 거절하고 있다.",
+      "std": "[9영02-10]"
+    },
+    {
+      "t": "어휘: 직업",
+      "q": "'a person who designs buildings'에 해당하는 단어는?",
+      "c": [
+        "firefighter",
+        "reporter",
+        "farmer",
+        "architect"
+      ],
+      "a": 3,
+      "e": "건물을 설계하는 사람은 architect(건축가)이다.",
+      "std": "[9영01-07]"
+    },
+    {
+      "t": "편지의 목적",
+      "q": "Lily가 글을 쓴 목적은?\nHi Sam, Thank you for the birthday present. I really love the cap! – Lily",
+      "c": [
+        "생일 파티에 초대하려고",
+        "모자를 주문하려고",
+        "선물에 감사하려고",
+        "약속을 취소하려고"
+      ],
+      "a": 2,
+      "e": "생일 선물에 고마움을 표현하는 글이다.",
+      "std": "[9영02-08]"
+    },
+    {
+      "t": "표현 의미",
+      "q": "[ ] 안 표현의 의미로 알맞은 것은?\nA: I can't solve this puzzle.\nB: Don't [give up]! You can do it.",
+      "c": [
+        "포기하다",
+        "시작하다",
+        "도와주다",
+        "기다리다"
+      ],
+      "a": 0,
+      "e": "give up은 '포기하다'라는 뜻이다.",
+      "std": "[9영01-07]"
+    }
+  ]
+}

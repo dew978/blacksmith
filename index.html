@@ -24,7 +24,7 @@
 
 <div id="hud" class="hidden">
   <div class="hud-tl">
-    <div class="brand">지식의 대장간</div>
+    <div class="brand">지식의 대장간 <small id="hud-course"></small></div>
     <div class="dayline"><b id="hud-day">1</b><span>/ <i id="hud-maxday">7</i>일째</span></div>
     <div class="candles" id="hud-candles" title="서고지기의 인내심"></div>
     <div class="req">오늘의 요구 가치 <b id="hud-req">0 G</b></div>
@@ -70,29 +70,42 @@
 <div id="modal" class="hidden"><div class="panel" id="panel"></div></div>
 
 <div id="title-screen">
-  <div class="title-inner">
+  <!-- 1단계: 타이틀 -->
+  <div class="title-inner" id="title-home">
     <div class="sigil">⚒</div>
     <h1>지식의 대장간</h1>
     <p class="tagline">아는 만큼 단단해지는 검</p>
-    <p class="story">
-      시험 전날 밤, 도서관에서 잠든 당신은 <b>망각의 서고</b>에서 눈을 떴다.<br>
-      잊어버린 지식이 가라앉는 곳. 문은 잠겼고, 서고지기는 대가를 원한다.<br>
-      7일 동안 매일, 잊힌 지식을 두드려 벼린 <b>지식의 검</b>을 바쳐라.<br>
-      제단의 촛불 세 개가 모두 꺼지면 당신도 이곳에 잊힌다.
-    </p>
+    <p class="story">시험 전날 밤, 잠든 당신은 <b>망각의 서고</b>에서 눈을 떴다.<br>잊힌 지식을 두드려 <b>지식의 검</b>을 벼려라.</p>
     <div class="title-btns">
-      <button id="btn-start" class="primary big">대장간 문 열기</button>
+      <button id="btn-start" class="primary big">시작하기</button>
       <div class="row">
-        <button id="btn-qset" class="ghost">문제 세트</button>
-        <button id="btn-notes2" class="ghost">오답 노트</button>
-        <button id="btn-howto" class="ghost">플레이 방법</button>
-        <button id="btn-intro" class="ghost">프롤로그</button>
+        <button id="btn-notes2" class="ghost small">오답 노트</button>
+        <button id="btn-howto" class="ghost small">플레이 방법</button>
+        <button id="btn-intro" class="ghost small">프롤로그</button>
       </div>
-      <label class="opt"><input type="checkbox" id="opt-timer"> 문제마다 20초 제한 시간</label>
+    </div>
+  </div>
+  <!-- 2단계: 학년·학기·과목 -->
+  <div class="title-inner select hidden" id="title-select">
+    <h2>무엇을 복습할까?</h2>
+    <div class="pick"><div class="lbl">학년</div><div class="seg" id="sel-grade"></div></div>
+    <div class="pick"><div class="lbl">학기</div><div class="seg" id="sel-sem"></div></div>
+    <div class="pick"><div class="lbl">과목</div><div class="seg" id="sel-subj"></div></div>
+    <div class="sel-info" id="sel-info"></div>
+    <label class="opt"><input type="checkbox" id="opt-timer"> 문제마다 20초 제한</label>
+    <div class="title-btns">
+      <button id="btn-go" class="primary big">대장간 문 열기</button>
+      <div class="row">
+        <button id="btn-back" class="ghost small">← 뒤로</button>
+        <button id="btn-qset" class="ghost small">내 문제 세트</button>
+      </div>
     </div>
     <p class="qinfo" id="qinfo"></p>
   </div>
+  <div class="credit">삼대710 제작</div>
 </div>
+
+<button id="btn-fs" class="ghost small" title="전체화면 (F11)">⛶ 전체화면</button>
 
 <div id="cutscene" class="hidden">
   <div class="cs-bar top"></div><div class="cs-bar bottom"></div>
