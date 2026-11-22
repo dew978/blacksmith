@@ -11,6 +11,9 @@ const MAX_LV = 100;
 const REQ = [1000, 2500, 6000, 15000, 40000, 100000, 250000];
 // 상점 가격은 날마다 커지는 수입에 맞춰 함께 오른다
 const RELIC_SLOTS = 5;
+// 오답 페널티: 틀릴 때마다 검이 식고(CHILL_MAX번이면 화로에 다시 달궈야 두드릴 수 있다), 수업료로 골드가 줄어든다
+const CHILL_MAX = 3;
+const fineOf = () => Math.round(req() * 0.05 / 10) * 10;
 // 골드로 사는 것은 그날 요구 가치에 비례
 const priceOf = (k) => Math.max(100, Math.round(REQ[S.day - 1] * ITEMS[k].price / 10) * 10);
 // 융합: 짝이 되는 두 유물을 함께 가지면 하나로 합쳐진다(칸 하나가 빈다).
@@ -216,6 +219,12 @@ const pct = (v) => (v >= 10 || v === 0 ? Math.round(v) : v.toFixed(1)) + '%';
 
 // ───────── 전광판 / 달력 ─────────
 const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+// 전광판 둘째 줄: 검의 열기
+function chillNote(c) {
+  const ch = c.chill || 0;
+  if (ch >= CHILL_MAX) return '검이 식었다 · R로 화로에 다시 달구기';
+  return `열기 ${'●'.repeat(CHILL_MAX - ch)}${'○'.repeat(ch)} · 맞혀야 망치를 든다 · 틀리면 식는다`;
+}
 function drawBoard() {
   const g = world.boardCtx, W = 1024, H = 512, now = performance.now();
   const bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#120c08'); bg.addColorStop(1, '#070504');
@@ -281,7 +290,7 @@ function drawBoard() {
   };
   const maxed = c.level >= MAX_LV;
   row('확률', probs(c.level, fever), ['brk', 'dmg', 'keep', 'succ', 'great'], 262, maxed ? '최대 강화 · 더는 오르지 않는다' : null);
-  row('', null, [], 362, maxed ? '검 완성(F)으로 걸어 두자' : fever ? '영감! 문제 없이 연타 · 파괴 0%' : '문제를 맞혀야 망치를 들 수 있다');
+  row('', null, [], 362, maxed ? '검 완성(F)으로 걸어 두자' : fever ? '영감! 문제 없이 연타 · 파괴 0%' : chillNote(c));
   world.boardTex.needsUpdate = true;
 }
 
@@ -352,7 +361,9 @@ function refresh() {
   if (walk) {
     const goal = S.cur ? '모루에 벼리던 검이 있어요' : S.blanks > 0 ? '원석 상자에서 원석을 꺼내세요' : '원석을 다 썼어요 · 검을 제단에 바치세요';
     hint = (IS_TOUCH ? '조이스틱 이동 · 끌어서 둘러보기 · 톡 상호작용' : 'WASD 이동 · 마우스로 둘러보기 · E/클릭 상호작용') + ` — ${goal}`;
-  } else if (atAnvil) hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : '맞히면 한 번 두드립니다 · 위험해지면 검 완성으로 멈추세요';
+  } else if (atAnvil) hint = feverOn() ? '영감! 문제 없이 마구 두드리세요' : (S.cur.chill || 0) >= CHILL_MAX ? '검이 식었어요 · R로 화로에 다시 달구세요' : '맞히면 한 번 두드립니다 · 틀리면 검이 식고 수업료를 냅니다';
+  $('#act-reheat').classList.toggle('hidden', !(atAnvil && (S.cur.chill || 0) > 0));
+  $('#act-strike').classList.toggle('dimmed', !!(atAnvil && (S.cur.chill || 0) >= CHILL_MAX && !feverOn()));
   $('#hud-hint').textContent = hint;
   $('#hud-hint').classList.toggle('hidden', !(walk || atAnvil));
   $('#crosshair').classList.toggle('hidden', !walk);
@@ -458,9 +469,16 @@ function answer(i) {
     const w = WRONGS[q.id] || { count: 0, q: q.q, ans: q.c[q.a], e: q.e || '', t: q.t || '' };
     w.count++; w.streak = 0; w.last = Date.now(); WRONGS[q.id] = w; store.set('jf_wrongs', WRONGS);
     S.gauge = Math.max(0, S.gauge - 3);
+    const fine = Math.min(S.gold, fineOf());
+    if (fine > 0) { S.gold -= fine; setTimeout(() => popup(`수업료 −${fmt(fine)} G`, world.toScreen(world.impactPoint.clone().add(new THREE.Vector3(0, 0.55, 0))), 'sm gold'), 200); }
+    let chillMsg = '';
+    if (S.cur) {
+      S.cur.chill = Math.min(CHILL_MAX, (S.cur.chill || 0) + 1);
+      chillMsg = S.cur.chill >= CHILL_MAX ? ' 검이 완전히 식었다. 화로에 다시 달궈야 두드릴 수 있다.' : ` 검이 식어 간다(${CHILL_MAX - S.cur.chill}번 더 틀리면 다시 달궈야 한다).`;
+    }
     sfx.play('wrong');
     ex.className = 'q-explain';
-    ex.innerHTML = `${i < 0 ? '<b>시간 초과!</b> ' : ''}정답은 <b>${esc(q.c[q.a])}</b>${q.e ? ` — ${esc(q.e)}` : ''}<br><small>오답 노트에 적어 두었다. 이번엔 망치를 들지 못했다.</small>`;
+    ex.innerHTML = `${i < 0 ? '<b>시간 초과!</b> ' : ''}정답은 <b>${esc(q.c[q.a])}</b>${q.e ? ` — ${esc(q.e)}` : ''}<br><small>오답 노트에 적어 두었다. 이번엔 망치를 들지 못했다.${fine > 0 ? ` 수업료 ${fmt(fine)} G.` : ''}${chillMsg}</small>`;
     $('#q-go').classList.remove('hidden');
     Q.pendingWrong = true;
     drawBoard(); refresh();
@@ -511,6 +529,7 @@ function strike() {
   if (S.mode !== 'anvil' || !S.cur) return;
   sfx.init();
   if (S.cur.level >= MAX_LV) { popup('최대 강화! 검 완성(F)', world.impactPoint.clone().add(new THREE.Vector3(0, 0.4, 0)), 'mid gold'); sfx.play('ui'); return; }
+  if ((S.cur.chill || 0) >= CHILL_MAX && !feverOn()) { popup('검이 식었다! 다시 달구기(R)', world.impactPoint.clone().add(new THREE.Vector3(0, 0.4, 0)), 'mid keep'); sfx.play('dull'); return; }
   if (feverOn()) doStrike(true, true);
   else openQuestion();
 }
@@ -995,7 +1014,7 @@ function openHowTo(back) {
     <li><b>걸어 다니기</b> — WASD(또는 방향키)로 걷고, 마우스를 움직이는 만큼 시점이 돈다. Esc로 마우스를 풀 수 있다. Shift는 달리기. 휴대폰은 왼쪽 조이스틱과 화면 끌기.</li>
     <li><b>상호작용 (E)</b> — 원석 상자·화로·모루·제단·책장을 바라보면 안내가 뜬다. E나 클릭(휴대폰은 톡)으로 실행한다.</li>
     <li><b>원석 꺼내기</b> — 상자에서 원석을 꺼내면 화로에 달군 뒤 모루로 옮긴다. 모루 앞에 서면 시점이 고정된다. Esc나 이동 키로 자리를 뜰 수 있다.</li>
-    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. 문제를 <b>맞혀야</b> 망치를 한 번 두드릴 수 있다. 틀리면 헛손질. 두드린 결과는 전광판의 확률표대로 파괴·손상(−1)·유지·성공(+1)·대성공(+2) 중 하나. 가치는 1강마다 1.5배. 최대 +100.</li>
+    <li><b>망치질 (Space)</b> — 내리칠 때마다 문제가 나온다. 문제를 <b>맞혀야</b> 망치를 한 번 두드릴 수 있다. 틀리면 헛손질이고, 검이 식고(3번 틀리면 R로 화로에 다시 달궈야 한다) 그날 요구 가치의 5%를 수업료로 낸다. 두드린 결과는 전광판의 확률표대로 파괴·손상(−1)·유지·성공(+1)·대성공(+2) 중 하나. 가치는 1강마다 1.5배. 최대 +100.</li>
     <li><b>검의 모양</b> — 초반엔 2강마다 새 모양으로 바뀌고, +62부터는 최종형이 되어 점점 더 빛난다. +25·50·75에선 번개가 친다.</li>
     <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
     <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
@@ -1155,6 +1174,22 @@ function interact() {
 }
 $('#prompt').onclick = (e) => { e.stopPropagation(); interact(); };
 $('#act-leave').onclick = leaveAnvil;
+$('#act-reheat').onclick = reheat;
+// 식은 검을 화로에 다시 달군다 (시간만 든다)
+async function reheat() {
+  if (S.mode !== 'anvil' || !S.cur || !(S.cur.chill > 0)) return;
+  const c = S.cur, car = c.car; S.mode = 'moving'; view = 'cine'; refresh();
+  world.goStation('furnace', 3.2); sfx.play('whoosh');
+  const a = car.position.clone(), b = new THREE.Vector3(-2.78, 0.74, -2.4);
+  await wait(0.7, k => { const e = easeInOut(k); car.position.lerpVectors(a, b, e); car.position.y += Math.sin(k * Math.PI) * 0.45; car.rotation.y = Math.PI * e; });
+  sfx.play('heat');
+  await wait(1.1, k => { c.heat = k * 1.4; car.position.x = b.x + Math.sin(k * 30) * 0.006; if (Math.random() < 0.3) world.spawnSparks(b, 1, 0xff8a3d, { speed: 1, up: 1.5, life: 0.6 }); });
+  c.chill = 0;
+  world.goStation('anvil', 2.8);
+  await wait(0.75, k => { const e = easeInOut(k); car.position.lerpVectors(b, a, e); car.position.y += Math.sin(k * Math.PI) * 0.4; car.rotation.y = Math.PI * (1 - e); });
+  sfx.play('place'); world.spawnSparks(a, 12, 0xff9a40, { speed: 1.4, up: 1 });
+  S.mode = 'anvil'; view = 'anvil'; drawBoard(); refresh();
+}
 
 // 마우스: 클릭하면 포인터 잠금, 잠기지 않는 환경에서는 끌어서 둘러보기
 let dragging = null;
@@ -1346,6 +1381,7 @@ window.addEventListener('keydown', (e) => {
     if (k === ' ') { strike(); e.preventDefault(); }
     else if (kl === 'f') finishBlade();
     else if (k === 'Escape' || kl === 'e') leaveAnvil();
+    else if (kl === 'r') reheat();
   }
 });
 window.addEventListener('keyup', (e) => keys.delete(e.key.toLowerCase()));
