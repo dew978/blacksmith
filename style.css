@@ -382,3 +382,22 @@ body.touch #title-screen:not(.hidden) ~ #btn-fs { display: inline-flex; top: 14p
   #title-select .seg:not(.subj) button { min-width: 0; padding: 7px 9px; font-size: 13.5px; }
   #title-screen:has(#title-home.hidden) { background: rgba(8, 6, 5, .74); place-items: start; }
 }
+
+/* 오늘의 요구 가치: 위 가운데 */
+.reqbox { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: min(340px, 40vw); padding: 9px 16px 10px; border-radius: 12px; text-align: center; pointer-events: none !important;
+  background: linear-gradient(rgba(24,15,9,.86), rgba(24,15,9,.66)); border: 1px solid rgba(196,86,30,.55); box-shadow: 0 6px 22px rgba(0,0,0,.5), inset 0 -2px 0 rgba(255,106,26,.25); }
+.reqbox .rq-top { display: flex; align-items: baseline; justify-content: center; gap: 10px; }
+.reqbox .rq-l { font-size: 13px; color: var(--ink-dim); }
+.reqbox b { font-family: 'Hahmlet', serif; font-weight: 900; font-size: 30px; line-height: 1.05; color: #ffd27a; text-shadow: 0 0 14px rgba(255,140,40,.55), 0 2px 0 #000; font-variant-numeric: tabular-nums; }
+.reqbox .rq-bar { height: 7px; margin: 7px 0 5px; border-radius: 4px; background: rgba(255,255,255,.08); overflow: hidden; }
+.reqbox .rq-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #a5481a, #ff8a3d); transition: width .4s ease; }
+.reqbox .rq-sub { font-size: 12.5px; color: rgba(233,220,196,.75); }
+.reqbox.full { border-color: rgba(111,220,140,.7); }
+.reqbox.full .rq-bar i { background: linear-gradient(90deg, #3aa86a, #86e6ff); }
+.reqbox.full .rq-sub { color: #9fe8b8; }
+/* 위쪽 HUD와 겹치는 너비에서는 한 줄 아래로 */
+@media (max-width: 1180px) { .reqbox { top: 92px; } }
+@media (max-width: 720px) {
+  .reqbox { top: 152px; width: min(300px, 80vw); padding: 7px 12px 8px; }
+  .reqbox b { font-size: 24px; }
+}

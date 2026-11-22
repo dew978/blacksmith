@@ -346,7 +346,15 @@ function flashRed() {
 
 function refresh() {
   $('#hud-day').textContent = S.day; $('#hud-maxday').textContent = MAX_DAY;
-  $('#hud-req').textContent = `${fmt(req())} G`;
+  // 오늘의 요구: 걸어 둔 검(+고철)으로 얼마나 채웠는지
+  const need = req(), have = S.finished.reduce((t, b) => t + value(b.level), 0) + (S.scrap || 0), full = have >= need;
+  $('#hud-req').textContent = `${fmt(need)} G`;
+  $('#hud-reqbar').style.width = Math.min(100, have / need * 100) + '%';
+  $('#hud-reqsub').textContent = full ? `걸어 둔 검 ${fmt(have)} G · 채웠다! 제단으로` : `걸어 둔 검 ${fmt(have)} G · ${fmt(need - have)} G 더`;
+  if (full && !$('#reqbox').classList.contains('full')) { $('#reqbox').classList.add('full'); }
+  else if (!full) $('#reqbox').classList.remove('full');
+  // 모루 앞에서는 전광판이 이 자리를 쓰므로 걸어 다닐 때만 보인다
+  $('#reqbox').classList.toggle('hidden', view !== 'walk' || !(S.mode === 'idle' || S.mode === 'anvil' || S.mode === 'menu'));
   $('#hud-candles').innerHTML = [0, 1, 2].map(i => `<div class="candle-ico ${i < S.candles ? '' : 'out'}"></div>`).join('');
   $('#hud-gold').textContent = fmt(S.gold);
   $('#hud-blanks').textContent = S.blanks;
