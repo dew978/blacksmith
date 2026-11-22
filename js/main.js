@@ -10,24 +10,39 @@ const MAX_DAY = 7;
 const MAX_LV = 100;
 const REQ = [1000, 2500, 6000, 15000, 40000, 100000, 250000];
 // 상점 가격은 날마다 커지는 수입에 맞춰 함께 오른다
-const priceMul = () => Math.pow(2, S.day - 1);
-const priceOf = (k) => Math.round(ITEMS[k].price * priceMul() / 10) * 10;
+const RELIC_SLOTS = 5;
+// 골드로 사는 것은 그날 요구 가치에 비례
+const priceOf = (k) => Math.max(100, Math.round(REQ[S.day - 1] * ITEMS[k].price / 10) * 10);
+const descOf = (k) => k === 'coin' ? ITEMS[k].desc + ` (오늘은 ${S.day % 2 ? '대성공' : '파괴'})` : ITEMS[k].desc;
 const NAMES = ['녹슨 깃펜칼', '갈아 낸 연필검', '다듬은 잉크검', '공책 철검', '쓸 만한 문법검', '단단한 공식검', '빛나는 개념검', '원리의 장검',
   '통찰의 검', '학자의 대검', '현자의 빛검', '진리의 쌍날검', '만물박사의 검', '별을 읽는 검', '지혜의 성검', '전설의 지식검'];
 const BASE_BLANKS = 3;
 const FEVER_MS = 6000;
+// 원작 ForgeTax 영상에서 읽은 유물·상점 효과를 그대로 옮기고, 이름만 공부 테마로 바꿨다.
+// relic: 유물 칸을 차지(검 조각으로 산다) · instant: 사는 즉시 쓰고 칸을 차지하지 않음 · gold: 골드로 사는 것
 const ITEMS = {
-  anvil: { name: '단단한 모루', kind: 'relic', price: 2200, icon: '모', desc: '오답일 때 파괴 확률이 35% 줄어든다.' },
-  glove: { name: '대장장이의 장갑', kind: 'relic', price: 1800, icon: '장', desc: '정답일 때 대성공 확률 +8%p.' },
-  incense: { name: '집중의 향로', kind: 'relic', price: 1600, icon: '향', desc: '정답마다 영감 게이지가 2칸씩 찬다.' },
-  whetstone: { name: '오래된 숫돌', kind: 'relic', price: 2600, icon: '숫', desc: '모든 검의 가치 +20%.' },
-  glasses: { name: '지혜의 안경', kind: 'relic', price: 1400, icon: '안', desc: '문제마다 오답 보기 하나가 흐려진다.' },
-  scrap: { name: '고철 수집함', kind: 'relic', price: 1500, icon: '고', desc: '검이 파괴되면 최고 가치의 30%를 고철로 모아 제단에 바칠 수 있다.' },
-  pouch: { name: '원석 주머니', kind: 'relic', price: 2000, icon: '원', desc: '매일 아침 원석을 1개 더 받는다.' },
-  charm: { name: '수호 부적', kind: 'item', price: 700, icon: '부', desc: '다음 파괴 1회를 유지로 바꾼다.' },
-  hint: { name: '힌트 두루마리', kind: 'item', price: 400, icon: '두', desc: '문제 하나에서 오답 보기 2개를 지운다.' },
-  ore: { name: '원석 한 덩이', kind: 'item', price: 450, icon: '석', desc: '다음 날 아침 원석 +1.' },
-  candle: { name: '새 양초', kind: 'item', price: 2400, icon: '초', desc: '꺼진 촛불 하나를 다시 켠다.' },
+  pad: { name: '손때 묻은 연습장', kind: 'relic', cost: 1, icon: '연', desc: '유지 표 2장을 성공 표로 바꾼다.' },
+  sharp: { name: '무딘 연필깎이', kind: 'relic', cost: 1, icon: '깎', desc: '손상 표 1장을 성공 표로 바꾼다.' },
+  redpen: { name: '가시 돋친 빨간펜', kind: 'relic', cost: 2, icon: '펜', desc: '유지 표 2장을 손상 표로 바꾼다. 손상과 엮이는 유물과 함께 쓴다.' },
+  sealnote: { name: '봉인된 복습 노트', kind: 'relic', cost: 1, icon: '봉', desc: '유지 표 +2장. 유지 2연속마다 +1강.' },
+  crack: { name: '금 간 책받침', kind: 'relic', cost: 2, icon: '받', desc: '손상마다 이 검의 파괴 확률 15% 감소, 최대 60%.' },
+  echo: { name: '메아리 치는 종', kind: 'relic', cost: 2, icon: '종', desc: '성공·대성공마다 30% 확률로 추가 +1강.' },
+  worm: { name: '굶주린 책벌레', kind: 'relic', cost: 1, icon: '벌', desc: '+4강 이상 검이 파괴되면 다음 +0강 검에 성공 표 +6장. 그 검에 계속 적용.' },
+  dict: { name: '묵직한 사전', kind: 'relic', cost: 1, icon: '사', desc: '유지하면 다음 타격의 파괴 확률 35% 감소.' },
+  sheet: { name: '세 번 고친 답안지', kind: 'relic', cost: 2, icon: '답', desc: '대성공 후 파괴 확률 40% 감소. 연속 대성공마다 10% 추가 감소, 최대 60%. 다른 결과가 나오면 초기화.' },
+  stamp: { name: '패자의 오답 도장', kind: 'relic', cost: 2, icon: '도', desc: '손상마다 다음 대성공의 추가 강화 +1. 모인 추가 강화가 10 이상이면 이 검의 대성공 표 +4장.' },
+  coin: { name: '양면 동전', kind: 'relic', cost: 1, icon: '동', desc: '이 유물을 버리면 다음 타격이 정해진다. 홀수 날은 대성공, 짝수 날은 파괴.' },
+  bellows: { name: '들뜬 풀무', kind: 'relic', cost: 2, icon: '풀', desc: '영감 시간 +25%.' },
+  ink: { name: '마르지 않는 잉크병', kind: 'relic', cost: 4, icon: '잉', desc: '유지 표 +2장. 유지 5회마다 다음 파괴 1회를 유지로 바꾸는 보호가 생긴다(이 검에 2회까지 저장).' },
+  contract: { name: '평생 학습 계약서', kind: 'relic', cost: 5, icon: '계', desc: '파괴 표 −1장. 서고지기의 요구 가치 30% 감소.' },
+  cocoon: { name: '부화 직전의 원석 알', kind: 'relic', cost: 1, icon: '알', desc: '2일 뒤 원석 3개를 주고 사라진다.' },
+  bookmark: { name: '세 겹 책갈피', kind: 'relic', cost: 3, icon: '갈', desc: '검이 파괴되면 그 강화의 40%를 다음 +0강 검이 물려받고, 영감 4칸이 찬다.' },
+  glasses: { name: '지혜의 안경', kind: 'relic', cost: 2, icon: '안', desc: '문제마다 오답 보기 하나가 흐려진다.' },
+  tape: { name: '운명을 고치는 수정테이프', kind: 'instant', cost: 2, icon: '테', desc: '사는 즉시 이번 판의 손상 표 1장을 없앤다. 유물 칸을 차지하지 않는다.' },
+  ticket: { name: '합격 추첨표', kind: 'gold', price: 0.6, icon: '추', desc: '이번 판의 성공 표 +1장. 유물 칸을 차지하지 않는다. 상인 방문마다 한 번만 살 수 있다.' },
+  hint: { name: '힌트 두루마리', kind: 'gold', price: 0.25, icon: '두', desc: '문제 하나에서 오답 보기 2개를 지운다.' },
+  candle: { name: '새 양초', kind: 'gold', price: 1.5, icon: '초', desc: '꺼진 촛불 하나를 다시 켠다.' },
+
 };
 const OUT = {
   great: { label: '대성공', color: '#a86bff', hex: 0xc48bff },
@@ -94,6 +109,7 @@ function freshState() {
   return {
     day: 1, candles: 3, gold: 0, blanks: 0, bonusBlanks: 0, finished: [], scrap: 0, cur: null,
     gauge: 0, feverUntil: 0, feverPending: false, relics: new Set(), items: { charm: 0, hint: 1 },
+    tokens: 0, deck: { succ: 0, great: 0, keep: 0, dmg: 0, brk: 0 }, rs: {}, ticketBought: false, feverDur: FEVER_MS,
     stats: { answered: 0, correct: 0, best: 0, broken: 0, made: 0, offered: 0 },
     sessionWrong: new Set(), recent: [], history: {}, mode: 'title', boardMsg: null,
     offers: [], rerollCost: 200,
@@ -102,23 +118,53 @@ function freshState() {
 S = freshState();
 
 const feverOn = () => S.feverUntil > performance.now();
-const value = (lv) => Math.round(100 * Math.pow(1.5, Math.min(lv, MAX_LV)) * (S.relics.has('whetstone') ? 1.2 : 1) / 10) * 10;
+const value = (lv) => Math.round(100 * Math.pow(1.5, Math.min(lv, MAX_LV)) / 10) * 10;
 const bladeName = (lv) => NAMES[formOf(lv)];
-const req = () => REQ[S.day - 1];
+const req = () => Math.round(REQ[S.day - 1] * (S.relics.has('contract') ? 0.7 : 1) / 10) * 10;
 
 // 원작 영상에서 읽은 값: +2 파괴 4.1·손상 3.7·성공 55.3·대성공 7.4 / +3 7.0·3.4·55.1·6.9 / +4 14.1·3.2·50.9·6.4
 // +6 21.3·3.0·45.4·6.1 / +21 파괴 14.7 / +28 11.5 / +76 6.8 / +218 6.5. 손상은 +10 이후 15% 안팎, 유지는 25% 안팎.
-const BRK_LOW = [0, 2, 4.1, 7, 14.1, 18, 21.3];
-function probs(level, fever) {
-  if (level >= MAX_LV) return { great: 0, succ: 0, keep: 100, dmg: 0, brk: 0 };
-  if (fever) return { brk: 0, dmg: 3, keep: 22, succ: 68, great: 7 }; // 영감(원작의 신들림): 파괴 없음
-  let brk = level <= 6 ? BRK_LOW[level] : Math.max(6.5, 21.3 - (level - 6) * 0.42);
-  if (S.relics.has('anvil')) brk *= 0.65;
-  const dmg = level === 0 ? 0 : level <= 6 ? 4 - level * 0.15 : level >= 10 ? 15 : 3 + (level - 6) * 3;
-  let great = level <= 6 ? 7.5 - level * 0.25 : level <= 40 ? 12 : Math.max(4, 12 - (level - 40) * 0.15);
-  if (S.relics.has('glove')) great += 8;
-  const keep = 25;
-  return { brk, dmg, keep, succ: 100 - brk - dmg - keep - great, great };
+// 원작은 결과를 '표' 더미에서 뽑는다. 기본 더미는 위 확률이 나오도록 정했다(성공 15·대성공 2·유지 7·손상 1·파괴 단계별).
+const ZERO = { great: 0, succ: 0, keep: 0, dmg: 0, brk: 0 };
+function deckOf(level, fever, c) {
+  const lv = level;
+  const d = {
+    brk: lv <= 6 ? [0, 1, 1, 2, 4, 5, 6][lv] : Math.max(2, 6 - Math.floor((lv - 6) / 8)),
+    dmg: lv === 0 ? 0 : lv <= 6 ? 1 : lv <= 9 ? [2, 3, 3][lv - 7] : 5,
+    keep: 7, succ: 15,
+    great: lv <= 6 ? 2 : lv <= 40 ? 4 : lv <= 70 ? 3 : 2,
+  };
+  const move = (from, to, n) => { const m = Math.min(n, d[from]); d[from] -= m; d[to] += m; };
+  const R = (k) => S.relics.has(k);
+  if (R('pad')) move('keep', 'succ', 2);
+  if (R('sharp')) move('dmg', 'succ', 1);
+  if (R('redpen')) move('keep', 'dmg', 2);
+  if (R('sealnote')) d.keep += 2;
+  if (R('ink')) d.keep += 2;
+  if (R('contract')) d.brk = Math.max(0, d.brk - 1);
+  for (const k in S.deck) d[k] = Math.max(0, d[k] + S.deck[k]);   // 이번 판 표
+  if (c && c.deck) for (const k in c.deck) d[k] = Math.max(0, d[k] + c.deck[k]); // 이 검 표
+  if (lv === 0) { d.keep += d.dmg; d.dmg = 0; }
+  if (fever) d.brk = 0; // 영감(원작의 신들림): 파괴 없음
+  return d;
+}
+// 파괴 확률을 비율로 줄이는 효과 (줄어든 몫은 유지로)
+function brkCut(c) {
+  if (!c) return 0;
+  let k = 1;
+  if (c.crack) k *= 1 - c.crack;
+  if (c.dictNext) k *= 0.65;
+  if (c.crown) k *= 1 - c.crown;
+  if (c.inheritCut) k *= 1 - c.inheritCut;
+  return 1 - k;
+}
+function probs(level, fever, c = S.cur) {
+  if (level >= MAX_LV) return { ...ZERO, keep: 100 };
+  if (c && c.forced) return { ...ZERO, [c.forced]: 100 };
+  const d = deckOf(level, fever, c), tot = d.brk + d.dmg + d.keep + d.succ + d.great;
+  const p = {}; for (const k in d) p[k] = d[k] / tot * 100;
+  const cut = p.brk * brkCut(c); p.brk -= cut; p.keep += cut;
+  return p;
 }
 function roll(p) {
   let r = Math.random() * 100;
@@ -251,9 +297,11 @@ function refresh() {
   $('#hud-acc').textContent = S.stats.answered ? Math.round(S.stats.correct / S.stats.answered * 100) + '%' : '-';
   // 유물/소모품
   const rel = [...S.relics].map(k => badge(k));
-  for (const k of ['charm', 'hint']) if (S.items[k] > 0) rel.push(badge(k, S.items[k]));
+  if (S.items.hint > 0) rel.push(badge('hint', S.items.hint));
+  if (S.deck.succ || S.deck.dmg) rel.push(`<div class="relic item">표<div class="tip"><b>이번 판 표</b>${S.deck.succ ? `성공 표 +${S.deck.succ}장 ` : ''}${S.deck.dmg ? `손상 표 ${S.deck.dmg}장` : ''}</div></div>`);
   if (S.scrap > 0) rel.push(`<div class="relic item">철<span class="cnt">${fmt(S.scrap)}</span><div class="tip"><b>모아 둔 고철</b>제단에 함께 바칠 수 있다.</div></div>`);
   $('#hud-relics').innerHTML = rel.join('');
+  document.querySelectorAll('#hud-relics [data-relic]').forEach(el => el.onclick = () => discardRelic(el.dataset.relic));
   // 행동 버튼
   const m = S.mode, canAct = m === 'idle' || m === 'anvil';
   const atAnvil = view === 'anvil' && m === 'anvil' && !!S.cur, walk = view === 'walk' && canAct;
@@ -272,8 +320,15 @@ function refresh() {
   world.setOreCount(Math.min(8, S.blanks));
 }
 function badge(k, cnt) {
-  const it = ITEMS[k];
-  return `<div class="relic ${it.kind === 'item' ? 'item' : ''}">${it.icon}${cnt ? `<span class="cnt">${cnt}</span>` : ''}<div class="tip"><b>${it.name}</b>${it.desc}</div></div>`;
+  const it = ITEMS[k], relic = it.kind === 'relic';
+  return `<div class="relic ${relic ? '' : 'item'}" ${relic ? `data-relic="${k}"` : ''}>${it.icon}${cnt ? `<span class="cnt">${cnt}</span>` : ''}<div class="tip"><b>${it.name}</b>${descOf(k)}${relic ? '<br><small>눌러서 버리기</small>' : ''}</div></div>`;
+}
+function discardRelic(k) {
+  if (!S.relics.has(k) || !(S.mode === 'idle' || S.mode === 'anvil' || S.mode === 'shop')) return;
+  if (!confirm(`${ITEMS[k].name}을(를) 버릴까요?${k === 'coin' ? ` 다음 타격이 ${S.day % 2 ? '대성공' : '파괴'}으로 정해집니다.` : ''}`)) return;
+  S.relics.delete(k); sfx.play('ui');
+  if (k === 'coin') { const r = S.day % 2 ? 'great' : 'brk'; if (S.cur) S.cur.forced = r; else S.rs.forced = r; }
+  drawBoard(); refresh(); if (S.mode === 'shop') renderShop();
 }
 
 // ───────── 문제 ─────────
@@ -350,7 +405,7 @@ function answer(i) {
   if (ok) {
     S.stats.correct++;
     if (WRONGS[q.id]) { WRONGS[q.id].streak = (WRONGS[q.id].streak || 0) + 1; store.set('jf_wrongs', WRONGS); }
-    S.gauge = Math.min(10, S.gauge + (S.relics.has('incense') ? 2 : 1));
+    S.gauge = Math.min(10, S.gauge + 1);
     if (S.gauge >= 10) S.feverPending = true;
     sfx.play('correct');
     if (q.e) { ex.className = 'q-explain ok'; ex.innerHTML = `<b>정답!</b> ${esc(q.e)}`; }
@@ -382,10 +437,14 @@ function closeCard() { $('#qcard').classList.add('hidden'); }
 async function takeBlank() {
   if (S.mode !== 'idle' || S.cur || S.blanks <= 0) return;
   sfx.init(); S.blanks--; S.mode = 'moving'; view = 'cine'; refresh();
-  const holder = makeLyingBlade(0);
+  const startLv = Math.min(MAX_LV, S.rs.inherit || 0);
+  const holder = makeLyingBlade(startLv);
   const car = new THREE.Group(); car.add(holder); car.position.copy(world.cratePos);
   world.scene.add(car);
-  S.cur = { level: 0, holder, car, heat: 0, flash: 0, maxValue: value(0) };
+  S.cur = { level: startLv, holder, car, heat: 0, flash: 0, maxValue: value(startLv), deck: { ...ZERO } };
+  if (S.rs.worm) { S.cur.deck.succ += 6; S.rs.worm = false; banner('굶주린 책벌레', '이 검의 성공 표 +6장'); }
+  if (S.rs.inherit) { S.rs.inherit = 0; S.gauge = Math.min(10, S.gauge + 4); if (S.gauge >= 10) S.feverPending = true; banner('세 겹 책갈피', `부서진 검의 강화를 물려받아 +${startLv}에서 시작`); }
+  if (S.rs.forced) { S.cur.forced = S.rs.forced; S.rs.forced = null; }
   drawBoard();
   world.goStation('furnace', 3.2);
   sfx.play('whoosh');
@@ -399,6 +458,7 @@ async function takeBlank() {
   sfx.play('place'); world.shake(0.012);
   world.spawnSparks(c, 12, 0xff9a40, { speed: 1.4, up: 1 });
   S.mode = 'anvil'; view = 'anvil'; drawBoard(); refresh();
+  if (S.feverPending) { S.feverPending = false; startFever(); }
 }
 
 function strike() {
@@ -427,12 +487,34 @@ async function doStrike(correct, fever) {
 function resolveStrike(correct, fever) {
   const c = S.cur;
   let out = roll(probs(c.level, fever));
-  let charm = false;
+  c.forced = null; c.dictNext = false;
+  let charm = false; const notes = [];
+  if (out === 'brk' && c.guard > 0) { c.guard--; out = 'keep'; charm = true; }
   if (out === 'brk' && S.items.charm > 0) { S.items.charm--; out = 'keep'; charm = true; }
   const before = c.level, beforeVal = value(before);
-  if (out === 'great') c.level = Math.min(MAX_LV, c.level + 2);
-  else if (out === 'succ') c.level = Math.min(MAX_LV, c.level + 1);
+  const R = (k) => S.relics.has(k);
+  let extra = 0;
+  if (out === 'great' && c.loser) { extra += c.loser; notes.push(`오답 도장 +${c.loser}`); c.loser = 0; }
+  if ((out === 'succ' || out === 'great') && R('echo') && Math.random() < 0.3) { extra += 1; notes.push('메아리 +1'); }
+  if (out === 'great') c.level = Math.min(MAX_LV, c.level + 2 + extra);
+  else if (out === 'succ') c.level = Math.min(MAX_LV, c.level + 1 + extra);
   else if (out === 'dmg') c.level = Math.max(0, c.level - 1);
+  if (out === 'keep') {
+    c.keepRun = (c.keepRun || 0) + 1;
+    if (R('sealnote') && c.keepRun % 2 === 0 && c.level < MAX_LV) { c.level++; notes.push('복습 노트 +1'); }
+    if (R('dict')) c.dictNext = true;
+    if (R('ink')) { c.inkKeeps = (c.inkKeeps || 0) + 1; if (c.inkKeeps % 5 === 0 && (c.guard || 0) < 2) { c.guard = (c.guard || 0) + 1; notes.push('보호 +1'); } }
+  } else c.keepRun = 0;
+  if (R('sheet')) c.crown = out === 'great' ? (c.crown ? Math.min(0.6, c.crown + 0.1) : 0.4) : 0;
+  if (out === 'dmg') {
+    if (R('crack')) c.crack = Math.min(0.6, (c.crack || 0) + 0.15);
+    if (R('stamp')) { c.loser = (c.loser || 0) + 1; if (c.loser >= 10 && !c.stampDone) { c.stampDone = true; c.deck.great += 4; notes.push('대성공 표 +4'); } }
+  }
+  if (out === 'brk') {
+    if (R('worm') && before >= 4) { S.rs.worm = true; notes.push('책벌레가 다음 검을 기다린다'); }
+    if (R('bookmark') && before > 0) { S.rs.inherit = Math.floor(before * 0.4); notes.push(`책갈피: 다음 검 +${S.rs.inherit}`); }
+  }
+  if (notes.length) setTimeout(() => popup(notes.join(' · '), world.toScreen(world.impactPoint.clone().add(new THREE.Vector3(0, -0.18, 0))), 'sm cyan'), 260);
   const ip = world.impactPoint, fx = fever ? FX.fever : FX[out];
   hitstop(fx.stop);
   world.shake(fx.shake);
@@ -442,7 +524,6 @@ function resolveStrike(correct, fever) {
     world.spawnShards(c.holder, OUT.brk.hex);
     world.scene.remove(c.car);
     const lost = Math.max(c.maxValue, beforeVal);
-    if (S.relics.has('scrap')) { const s = Math.round(lost * 0.3 / 10) * 10; S.scrap += s; setTimeout(() => popup(`고철 +${fmt(s)} G`, world.toScreen(above.clone().add(new THREE.Vector3(0, -0.25, 0))), 'sm cyan'), 500); }
     S.stats.broken++;
     S.cur = null; S.feverUntil = 0; S.feverPending = false;
     S.boardMsg = { text: `${bladeName(before)} +${before} · 검 소실`, until: performance.now() + 1700 };
@@ -476,7 +557,7 @@ function resolveStrike(correct, fever) {
       world.spawnSparks(ip, fx.sparks, OUT[out].hex, { speed: out === 'great' ? 4.5 : 3, up: out === 'great' ? 3 : 2 });
     }
     if (out === 'great') world.spawnSparks(ip, 40, 0xffffff, { speed: 2, up: 3.5, life: 1.2, mul: 2 });
-    const label = charm ? '부적이 막았다!' : OUT[out].label + (out === 'succ' || out === 'great' ? ` +${c.level - before}` : out === 'dmg' && before > 0 ? ` −${before - c.level}` : '');
+    const label = charm ? '보호가 막았다!' : OUT[out].label + (out === 'succ' || out === 'great' ? ` +${c.level - before}` : out === 'dmg' && before > 0 ? ` −${before - c.level}` : '');
     popup(fever ? `+${c.level - before}` : label, above, `${fever ? 'mid' : fx.size} ${charm ? 'cyan' : out}`);
     const dv = value(c.level) - beforeVal;
     if (dv !== 0) {
@@ -529,7 +610,8 @@ function breakthrough(lv, tier, newForm) {
 
 function startFever() {
   S.gauge = 0;
-  S.feverUntil = performance.now() + FEVER_MS;
+  S.feverDur = FEVER_MS * (S.relics.has('bellows') ? 1.25 : 1);
+  S.feverUntil = performance.now() + S.feverDur;
   sfx.play('fever'); world.shake(0.03);
   popup('영감!', world.impactPoint.clone().add(new THREE.Vector3(0, 0.55, 0)), 'big cyan');
   world.spawnSparks(world.impactPoint, 80, 0x86e6ff, { speed: 3, up: 3.5, life: 1.2 });
@@ -646,46 +728,69 @@ async function ring(sel, useScrap) {
 
 // ───────── 상인 ─────────
 function rollOffers() {
-  const relics = shuffle(Object.keys(ITEMS).filter(k => ITEMS[k].kind === 'relic' && !S.relics.has(k)));
-  const items = shuffle(Object.keys(ITEMS).filter(k => ITEMS[k].kind === 'item' && !(k === 'candle' && S.candles >= 3)));
-  const picks = [];
-  if (relics.length) picks.push(relics.shift());
-  if (relics.length && Math.random() < 0.6) picks.push(relics.shift());
-  while (picks.length < 3 && items.length) picks.push(items.shift());
-  while (picks.length < 3 && relics.length) picks.push(relics.shift());
-  S.offers = shuffle(picks).map(k => ({ k, sold: false }));
+  const pool = shuffle(Object.keys(ITEMS).filter(k => (ITEMS[k].kind === 'relic' && !S.relics.has(k)) || ITEMS[k].kind === 'instant'));
+  S.offers = pool.slice(0, 3).map(k => ({ k, sold: false }));
 }
 function openShop() {
   S.mode = 'shop'; refresh();
   world.goStation('shop', 2.4);
-  S.rerollCost = Math.round(200 * priceMul() / 10) * 10; rollOffers();
+  S.rerollCost = Math.max(100, Math.round(req() * 0.3 / 10) * 10); S.ticketBought = false; rollOffers();
   renderShop();
 }
 function renderShop() {
+  const used = S.relics.size;
+  const goldRow = ['ticket', 'hint', 'candle'].filter(k => !(k === 'candle' && S.candles >= 3)).map(k => {
+    const it = ITEMS[k], p = priceOf(k), done = k === 'ticket' && S.ticketBought;
+    return `<div class="card item"><div class="ico">${it.icon}</div><div class="body"><div class="kind">골드</div><div class="nm">${it.name}</div><div class="ds">${it.desc}</div></div>
+      <button class="${done ? 'ghost' : 'primary'} small" data-gold="${k}" ${done || S.gold < p ? 'disabled' : ''}>${done ? '구매함' : fmt(p) + ' G'}</button></div>`;
+  }).join('');
   openPanel(`
     <h2>떠돌이 사서 등불</h2>
-    <p class="sub">책장 날개를 파닥이는 등불이 진열장을 열어 보인다. "골드만 있다면야, 지식의 도구를 나눠 드리지요."</p>
-    <div class="meter" style="margin:0 0 14px"><div class="line"><span>가진 골드</span><b style="color:var(--gold)">${fmt(S.gold)} G</b></div></div>
+    <p class="sub">"유물 값은 검으로 받지요. 투입구에 완성한 검을 넣으면 한 자루에 검 조각 하나." 진열장 옆에는 골드로 파는 추첨표도 있다.</p>
+    <div class="meter" style="margin:0 0 12px">
+      <div class="line"><span>가진 골드</span><b style="color:var(--gold)">${fmt(S.gold)} G</b></div>
+      <div class="line"><span>검 조각</span><b>${S.tokens}개</b></div>
+      <div class="line"><span>유물 칸</span><b>${used} / ${RELIC_SLOTS}</b></div></div>
+    <h3 class="shop-h">투입구에 검 넣기</h3>
+    <div class="offer-list">${S.finished.length ? S.finished.map((b, i) => `<div class="offer"><span class="nm">${esc(bladeName(b.level))} <b>+${b.level}</b><small>${fmt(value(b.level))} G어치</small></span><button class="ghost small" data-feed="${i}">넣기 · 조각 +1</button></div>`).join('') : '<div class="empty">넣을 검이 없다. 제단에 바치지 않고 남긴 검만 넣을 수 있다.</div>'}</div>
+    <h3 class="shop-h">진열장 (검 조각)</h3>
     <div class="shop-grid">
-      ${S.offers.map((o, i) => { const it = ITEMS[o.k]; return `<div class="card ${it.kind === 'item' ? 'item' : ''} ${o.sold ? 'sold' : ''}">
+      ${S.offers.map((o, i) => { const it = ITEMS[o.k], full = it.kind === 'relic' && used >= RELIC_SLOTS; return `<div class="card ${o.sold ? 'sold' : ''}">
         <div class="ico">${it.icon}</div>
-        <div class="body"><div class="kind">${it.kind === 'relic' ? '유물 · 영구' : '소모품'}</div><div class="nm">${it.name}</div><div class="ds">${it.desc}</div></div>
-        <button class="${o.sold ? 'ghost' : 'primary'} small" data-buy="${i}" ${o.sold || S.gold < priceOf(o.k) ? 'disabled' : ''}>${o.sold ? '구매함' : fmt(priceOf(o.k)) + ' G'}</button></div>`; }).join('')}
+        <div class="body"><div class="kind">${it.kind === 'relic' ? '유물 · 칸 차지' : '즉시 사용'}</div><div class="nm">${it.name}</div><div class="ds">${descOf(o.k)}</div></div>
+        <button class="${o.sold ? 'ghost' : 'primary'} small" data-buy="${i}" ${o.sold || S.tokens < it.cost || full ? 'disabled' : ''}>${o.sold ? '구매함' : full ? '칸 부족' : '조각 ' + it.cost}</button></div>`; }).join('')}
     </div>
-    <div class="btnrow"><button id="sh-reroll" class="ghost" ${S.gold < S.rerollCost ? 'disabled' : ''}>새로 진열 (${fmt(S.rerollCost)} G)</button>
+    <h3 class="shop-h">골드</h3>
+    <div class="shop-grid">${goldRow}</div>
+    <div class="btnrow"><button id="sh-reroll" class="ghost" ${S.gold < S.rerollCost ? 'disabled' : ''}>진열장 새로 고침 (${fmt(S.rerollCost)} G)</button>
     <button id="sh-next" class="primary">다음 날 아침으로</button></div>`, true);
   document.querySelectorAll('[data-buy]').forEach(b => b.onclick = () => buy(+b.dataset.buy));
-  $('#sh-reroll').onclick = () => { if (S.gold < S.rerollCost) return; S.gold -= S.rerollCost; S.rerollCost = Math.round(S.rerollCost * 1.6 / 10) * 10; rollOffers(); sfx.play('coin'); refresh(); renderShop(); };
+  document.querySelectorAll('[data-gold]').forEach(b => b.onclick = () => buyGold(b.dataset.gold));
+  document.querySelectorAll('[data-feed]').forEach(b => b.onclick = () => feedSword(+b.dataset.feed));
+  $('#sh-reroll').onclick = () => { if (S.gold < S.rerollCost) return; S.gold -= S.rerollCost; S.rerollCost = Math.round(S.rerollCost * 1.5 / 10) * 10; rollOffers(); sfx.play('coin'); refresh(); renderShop(); };
   $('#sh-next').onclick = () => { closeModal(); S.day++; startDay(); };
+}
+function feedSword(i) {
+  if (!S.finished[i]) return;
+  S.finished.splice(i, 1); S.tokens++; world.setRack(S.finished); sfx.play('place');
+  refresh(); renderShop();
 }
 function buy(i) {
   const o = S.offers[i], it = ITEMS[o.k];
-  if (o.sold || S.gold < priceOf(o.k)) return;
-  S.gold -= priceOf(o.k); o.sold = true; sfx.play('coin');
-  if (it.kind === 'relic') S.relics.add(o.k);
-  else if (o.k === 'ore') S.bonusBlanks++;
-  else if (o.k === 'candle') { if (S.candles < 3) { world.setCandle(S.candles, true); S.candles++; } }
-  else S.items[o.k]++;
+  if (o.sold || S.tokens < it.cost) return;
+  if (it.kind === 'relic' && S.relics.size >= RELIC_SLOTS) return;
+  S.tokens -= it.cost; o.sold = true; sfx.play('coin');
+  if (it.kind === 'relic') { S.relics.add(o.k); if (o.k === 'cocoon') S.rs.cocoonDay = S.day + 2; }
+  else if (o.k === 'tape') S.deck.dmg -= 1;
+  refresh(); renderShop();
+}
+function buyGold(k) {
+  const p = priceOf(k);
+  if (S.gold < p || (k === 'ticket' && S.ticketBought)) return;
+  S.gold -= p; sfx.play('coin');
+  if (k === 'ticket') { S.deck.succ += 1; S.ticketBought = true; }
+  else if (k === 'hint') S.items.hint++;
+  else if (k === 'candle' && S.candles < 3) { world.setCandle(S.candles, true); S.candles++; }
   refresh(); renderShop();
 }
 
@@ -700,12 +805,14 @@ function newGame() {
   startDay();
 }
 function startDay() {
-  S.blanks += BASE_BLANKS + (S.relics.has('pouch') ? 1 : 0) + S.bonusBlanks;
+  S.blanks += BASE_BLANKS + S.bonusBlanks;
   S.bonusBlanks = 0;
+  let hatch = '';
+  if (S.relics.has('cocoon') && S.day >= (S.rs.cocoonDay || 0)) { S.relics.delete('cocoon'); S.blanks += 3; hatch = ' · 원석 알이 깨어 원석 +3'; }
   S.mode = S.cur ? 'anvil' : 'idle';
   placePlayer(0, 3.4, 0, -0.12); enterWalk();
   drawCalendar(); drawBoard(); refresh();
-  banner(`${S.day}일째`, `서고지기의 요구 · ${fmt(req())} G`);
+  banner(`${S.day}일째`, `서고지기의 요구 · ${fmt(req())} G${hatch}`);
 }
 function summaryHTML() {
   const acc = S.stats.answered ? Math.round(S.stats.correct / S.stats.answered * 100) : 0;
@@ -799,7 +906,7 @@ function openHowTo(back) {
     <li><b>영감</b> — 정답마다 게이지가 찬다. 10칸이 차면 6초 동안 문제 없이 연타할 수 있고 파괴되지 않는다. 틀리면 게이지가 3칸 줄어든다.</li>
     <li><b>검 완성 (F)</b> — 위험해지기 전에 멈추고 걸이에 건다.</li>
     <li><b>제단</b> — 철창 앞 제단으로 걸어가 완성한 검을 바쳐 오늘의 요구 가치를 채우면 골드를 받는다. 모자라면 촛불이 꺼지고, 셋 다 꺼지면 끝.</li>
-    <li><b>떠돌이 사서 등불</b> — 매일 밤 골드로 유물과 소모품을 산다.</li>
+    <li><b>떠돌이 사서 등불</b> — 매일 밤 온다. 유물은 <b>검 조각</b>으로 산다(제단에 바치지 않고 남긴 검을 투입구에 넣으면 한 자루에 조각 하나). 유물은 칸 5개까지, 표 더미를 바꾸거나 특별한 효과를 준다. 골드로는 합격 추첨표(성공 표 +1, 방문마다 한 번)·힌트·양초를 산다. HUD의 유물을 누르면 버릴 수 있다.</li>
     <li><b>오답 노트</b> — 틀린 문제와 해설이 저장되고, 다음 판에 더 자주 나온다.</li></ol>
     <div class="btnrow"><button id="ht-close" class="primary">알겠다</button></div>`);
   $('#ht-close').onclick = () => { closeModal(); if (back) back(); };
@@ -1064,7 +1171,7 @@ function frame(now) {
   // 영감
   const f = feverOn();
   if (f) {
-    const left = (S.feverUntil - now) / FEVER_MS;
+    const left = (S.feverUntil - now) / S.feverDur;
     $('#fever-bar .fill').style.width = (left * 100) + '%';
     document.documentElement.style.setProperty('--hue', String((now / 6) % 360 | 0));
     if (now - lastBoard > 110) { drawBoard(); lastBoard = now; }
