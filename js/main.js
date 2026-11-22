@@ -115,7 +115,11 @@ const GRADES = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', 
 const SUBJ = { kor: '국어', math: '수학', soc: '사회', sci: '과학', eng: '영어' };
 const subjectsOf = (g) => g.startsWith('중') ? ['soc', 'sci', 'eng'] : (g === '초1' || g === '초2') ? ['kor', 'math'] : ['kor', 'math', 'soc', 'sci', 'eng'];
 const bankCode = (g, sem, sub) => `${g.startsWith('중') ? 'm' : 'e'}${g.slice(1)}-${sem}-${sub}`;
-const SEL = Object.assign({ grade: '초5', sem: 1, subj: 'sci', custom: false }, store.get('jf_sel', {}));
+const SEL = Object.assign({ grade: '초5', sem: 1, subjs: ['sci'], custom: false }, store.get('jf_sel', {}));
+// 예전 저장값(과목 하나)도 이어 쓴다
+if (!Array.isArray(SEL.subjs)) SEL.subjs = SEL.subj ? [SEL.subj] : ['sci'];
+delete SEL.subj;
+const subjLabel = () => SEL.subjs.map((k) => SUBJ[k]).join('·');
 let COURSE = '';
 let WRONGS = store.get('jf_wrongs', {});
 const settings = store.get('jf_settings', { timer: false, reviewOnly: false });
@@ -1358,14 +1362,25 @@ function showSelect() {
   renderSelect();
 }
 function renderSelect() {
-  if (!subjectsOf(SEL.grade).includes(SEL.subj)) SEL.subj = subjectsOf(SEL.grade)[0];
+  // 학년에 없는 과목은 빼고, 하나도 안 남으면 첫 과목
+  const avail = subjectsOf(SEL.grade);
+  SEL.subjs = SEL.subjs.filter((k) => avail.includes(k));
+  if (!SEL.subjs.length) SEL.subjs = [avail[0]];
   $('#sel-grade').innerHTML = GRADES.map((g) => `${g === '중1' ? '<span class="br"></span>' : ''}<button data-g="${g}" class="${g === SEL.grade && !SEL.custom ? 'on' : ''}">${g}</button>`).join('');
   $('#sel-sem').innerHTML = [1, 2].map((n) => `<button data-s="${n}" class="${n === SEL.sem && !SEL.custom ? 'on' : ''}">${n}학기</button>`).join('');
-  $('#sel-subj').innerHTML = subjectsOf(SEL.grade).map((k) => `<button data-k="${k}" class="${k === SEL.subj && !SEL.custom ? 'on' : ''}">${SUBJ[k]}</button>`).join('')
+  $('#sel-subj').innerHTML = subjectsOf(SEL.grade).map((k) => `<button data-k="${k}" aria-pressed="${SEL.subjs.includes(k) && !SEL.custom}" class="${SEL.subjs.includes(k) && !SEL.custom ? 'on' : ''}">${SUBJ[k]}</button>`).join('')
     + `<button data-k="custom" class="gap ${SEL.custom ? 'on' : ''}">내 문제</button>`;
   document.querySelectorAll('#sel-grade [data-g]').forEach((b) => b.onclick = () => { SEL.grade = b.dataset.g; SEL.custom = false; sfx.play('ui'); renderSelect(); });
   document.querySelectorAll('#sel-sem [data-s]').forEach((b) => b.onclick = () => { SEL.sem = +b.dataset.s; SEL.custom = false; sfx.play('ui'); renderSelect(); });
-  document.querySelectorAll('#sel-subj [data-k]').forEach((b) => b.onclick = () => { if (b.dataset.k === 'custom') SEL.custom = true; else { SEL.subj = b.dataset.k; SEL.custom = false; } sfx.play('ui'); renderSelect(); });
+  // 과목은 여러 개 고를 수 있다(누를 때마다 넣고 뺌, 하나는 남김). '내 문제'는 따로.
+  document.querySelectorAll('#sel-subj [data-k]').forEach((b) => b.onclick = () => {
+    const k = b.dataset.k;
+    if (k === 'custom') SEL.custom = !SEL.custom;
+    else if (SEL.custom) { SEL.custom = false; SEL.subjs = [k]; }
+    else if (SEL.subjs.includes(k)) { if (SEL.subjs.length > 1) SEL.subjs = SEL.subjs.filter((x) => x !== k); }
+    else SEL.subjs = subjectsOf(SEL.grade).filter((x) => x === k || SEL.subjs.includes(x));
+    sfx.play('ui'); renderSelect();
+  });
   store.set('jf_sel', SEL);
   previewBank();
 }
@@ -1389,14 +1404,19 @@ async function previewBank() {
     const n = (store.get('jf_questions', null) || SAMPLE_QUESTIONS).length;
     info.innerHTML = `<b>내 문제 세트</b> · ${n}문제 · "내 문제 세트"에서 붙여 넣어 바꿀 수 있다`; return;
   }
-  const code = bankCode(SEL.grade, SEL.sem, SEL.subj);
+  const key = SEL.grade + SEL.sem + SEL.subjs.join();
   info.textContent = '불러오는 중…';
   try {
-    const b = await fetchBank(code);
-    if (bankCode(SEL.grade, SEL.sem, SEL.subj) !== code) return;
-    info.innerHTML = `<b>${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}</b> · ${SEL.subj === 'math' ? '문제 생성기 + ' + b.questions.length : b.questions.length}문제 · 2022 개정<br>${(b.units || []).slice(0, 6).map(esc).join(' · ')}`;
+    const banks = await Promise.all(SEL.subjs.map((k) => fetchBank(bankCode(SEL.grade, SEL.sem, k))));
+    if (SEL.grade + SEL.sem + SEL.subjs.join() !== key) return;
+    const fixed = banks.reduce((t, b) => t + b.questions.length, 0), hasMath = SEL.subjs.includes('math');
+    const head = `<b>${SEL.grade} ${SEL.sem}학기 ${subjLabel()}</b> · ${hasMath ? '문제 생성기 + ' : ''}${fixed}문제 · 2022 개정`;
+    // 과목이 하나면 단원 목록, 여러 개면 과목별 문제 수
+    const detail = banks.length === 1 ? (banks[0].units || []).slice(0, 6).map(esc).join(' · ')
+      : SEL.subjs.map((k, i) => `${SUBJ[k]} ${k === 'math' ? '생성기+' : ''}${banks[i].questions.length}`).join(' · ');
+    info.innerHTML = `${head}<br>${detail}`;
   } catch (e) {
-    if (bankCode(SEL.grade, SEL.sem, SEL.subj) === code) info.innerHTML = '<span class="err">이 과목 문제는 아직 준비 중이다</span>';
+    if (SEL.grade + SEL.sem + SEL.subjs.join() === key) info.innerHTML = '<span class="err">고른 과목 중 아직 준비 중인 문제가 있다</span>';
   }
 }
 async function loadBank() {
@@ -1404,15 +1424,21 @@ async function loadBank() {
     QUESTIONS = withIds(store.get('jf_questions', null) || SAMPLE_QUESTIONS); COURSE = '내 문제';
   } else {
     try {
-      const code = bankCode(SEL.grade, SEL.sem, SEL.subj);
-      const b = await fetchBank(code);
       // 데이터에 문자 그대로의 "\n"(역슬래시+n)이 남아 있어도 실제 줄바꿈으로 보여 준다
       const nl = (x) => String(x).replace(/\\+n/g, '\n');
-      let list = b.questions.map((q) => ({ t: q.t, q: nl(q.q), c: q.c, a: q.a, e: nl(q.e) }));
-      // 수학은 문제 생성기로 판마다 새 문제를 넉넉히 섞는다
-      if (SEL.subj === 'math') list = list.concat(await mathExtra(code.replace(/-math$/, ''), 150));
+      const multi = SEL.subjs.length > 1;
+      let list = [];
+      for (const k of SEL.subjs) {
+        const code = bankCode(SEL.grade, SEL.sem, k);
+        const b = await fetchBank(code);
+        // 여러 과목을 섞으면 문제 머리에 과목 이름을 붙인다
+        const tag = (t) => multi ? `${SUBJ[k]} · ${t}` : t;
+        list = list.concat(b.questions.map((q) => ({ t: tag(q.t), q: nl(q.q), c: q.c, a: q.a, e: nl(q.e) })));
+        // 수학은 문제 생성기로 판마다 새 문제를 섞는다 (다른 과목과 섞을 땐 비슷한 양으로)
+        if (k === 'math') list = list.concat((await mathExtra(code.replace(/-math$/, ''), multi ? 90 : 150)).map((q) => ({ ...q, t: tag(q.t) })));
+      }
       QUESTIONS = withIds(list);
-      COURSE = `${SEL.grade} ${SEL.sem}학기 ${SUBJ[SEL.subj]}`;
+      COURSE = `${SEL.grade} ${SEL.sem}학기 ${subjLabel()}`;
     } catch (e) { $('#sel-info').innerHTML = '<span class="err">이 과목 문제는 아직 준비 중이다</span>'; return false; }
   }
   $('#hud-course').textContent = COURSE;
