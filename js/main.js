@@ -187,7 +187,10 @@ const easeInOut = (k) => k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) /
 const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-const world = new World($('#scene'));
+// 그래픽 설정: auto(기기·프레임을 보고 정함) / high / low
+const GFX = { pref: store.get('jf_gfx', 'auto') };
+const weakDevice = matchMedia('(pointer: coarse)').matches || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+const world = new World($('#scene'), { quality: GFX.pref === 'auto' ? (weakDevice ? 'low' : 'high') : GFX.pref });
 const sfx = new Sfx();
 world.resize();
 
@@ -1355,6 +1358,7 @@ function openPause() {
       <button id="pz-howto" class="ghost">플레이 방법</button>
       <button id="pz-notes" class="ghost">오답 노트</button>
       <button id="pz-sound" class="ghost">소리 ${sfx.muted ? '켜기' : '끄기'}</button>
+      <button id="pz-gfx" class="ghost">${gfxLabel()}</button>
       ${(document.fullscreenEnabled || document.webkitFullscreenEnabled) ? `<button id="pz-fs" class="ghost">${fsOn ? '창 모드로' : '전체화면'}</button>` : ''}
       <button id="pz-title" class="ghost danger">처음 화면으로</button>
     </div>
@@ -1363,6 +1367,7 @@ function openPause() {
   $('#pz-howto').onclick = () => openHowTo(() => { S.mode = 'paused'; openPause.reopen(); });
   $('#pz-notes').onclick = () => openNotes(() => { openPause.reopen(); });
   $('#pz-sound').onclick = () => { $('#btn-sound').onclick(); openPause.reopen(); };
+  $('#pz-gfx').onclick = () => { cycleGfx(); openPause.reopen(); };
   const fz = $('#pz-fs'); if (fz) fz.onclick = () => { $('#btn-fs').click(); setTimeout(openPause.reopen, 150); };
   $('#pz-title').onclick = () => { if (confirm('지금 판을 그만두고 처음 화면으로 갈까요? 지금까지의 진행은 자동 저장되어, 처음 화면의 「이어하기」로 돌아올 수 있습니다.')) goTitle(); };
 }
@@ -1789,6 +1794,7 @@ function frame(now) {
   }
   updateWalk(dt, now);
   world.update(dt, gdt);
+  watchFps(now);
   requestAnimationFrame(frame);
 }
 drawBoard(); drawCalendar(); updateQInfo();
@@ -1883,3 +1889,32 @@ function keeperSay(day) {
 }
 function hideKeeper() { clearTimeout(keeperTimer); const el = $('#keeper'); el.classList.remove('show'); el.classList.add('hidden'); }
 $('#keeper').onclick = hideKeeper;
+
+// ───────── 그래픽 품질 ─────────
+// 자동이면 3초마다 평균 프레임을 재서, 계속 느리면 낮음 → 더 낮은 해상도로 내려간다
+const FPSW = { t0: 0, n: 0, slow: 0 };
+function watchFps(now) {
+  if (GFX.pref !== 'auto' || document.hidden) { FPSW.t0 = 0; return; }
+  if (!FPSW.t0) { FPSW.t0 = now; FPSW.n = 0; return; }
+  FPSW.n++;
+  const el = now - FPSW.t0; if (el < 3000) return;
+  const fps = FPSW.n * 1000 / el; FPSW.t0 = now; FPSW.n = 0;
+  FPSW.slow = fps < 40 ? FPSW.slow + 1 : 0;
+  if (FPSW.slow < 2) return;
+  FPSW.slow = 0;
+  if (world.quality !== 'low') world.setQuality('low');
+  else if (world.lowScale > 0.6) world.setQuality('low', 0.6);
+}
+function gfxLabel() {
+  const cur = world.quality === 'low' ? '낮음' : '높음';
+  return GFX.pref === 'auto' ? `그래픽: 자동 (${cur})` : `그래픽: ${cur}`;
+}
+function cycleGfx() {
+  GFX.pref = { auto: 'high', high: 'low', low: 'auto' }[GFX.pref] || 'auto';
+  store.set('jf_gfx', GFX.pref);
+  if (GFX.pref === 'high') world.setQuality('high');
+  else if (GFX.pref === 'low') world.setQuality('low', 0.85);
+  else world.setQuality(weakDevice ? 'low' : 'high', 0.85);
+  FPSW.t0 = 0; FPSW.slow = 0;
+}
+window.__forge.gfx = { GFX, cycleGfx, get q() { return world.quality; }, get scale() { return world.lowScale; } };

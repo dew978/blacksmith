@@ -414,12 +414,14 @@ export function setLyingBladeLevel(holder, level) {
 
 // ───────── 월드 ─────────
 export class World {
-  constructor(canvas) {
+  constructor(canvas, opt = {}) {
+    // 그래픽 품질: high(그림자·번짐 효과·작은 조명들) / low(저사양 태블릿용)
+    this.quality = opt.quality || 'high'; this.lowScale = 0.85; this.lowLights = [];
     this.canvas = canvas;
-    const r = this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-    r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const r = this.renderer = new THREE.WebGLRenderer({ canvas, antialias: this.quality !== 'low', powerPreference: 'high-performance' });
+    r.setPixelRatio(this.pixelRatio());
     r.setSize(window.innerWidth, window.innerHeight);
-    r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+    r.shadowMap.enabled = this.quality !== 'low'; r.shadowMap.type = THREE.PCFSoftShadowMap;
     r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.4;
     r.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -459,9 +461,28 @@ export class World {
     this.dotTex = softDot();
 
     this.build();
+    this.applyQuality();
     window.addEventListener('resize', () => this.resize());
   }
 
+  pixelRatio() {
+    const d = window.devicePixelRatio || 1;
+    return this.quality === 'low' ? Math.min(1, d) * this.lowScale : Math.min(d, 2);
+  }
+  // 저사양: 해상도↓, 그림자·번짐 효과 끄기, 작은 점광원들을 끄고 은은한 하늘빛으로 대신 채운다
+  setQuality(q, scale) {
+    if (scale) this.lowScale = scale;
+    this.quality = q; this.applyQuality();
+  }
+  applyQuality() {
+    const low = this.quality === 'low';
+    this.renderer.shadowMap.enabled = !low; this.spot.castShadow = !low;
+    this.lowLights.forEach((l) => { l.visible = !low; });
+    this.hemi.intensity = low ? 2.1 : 0.75;
+    this.scene.traverse((o) => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach((mt) => { mt.needsUpdate = true; }); });
+    this.renderer.setPixelRatio(this.pixelRatio());
+    this.resize();
+  }
   resize() {
     const w = window.innerWidth, h = window.innerHeight;
     this.renderer.setSize(w, h); this.composer.setSize(w, h);
@@ -529,7 +550,7 @@ export class World {
       const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 10), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 1.2, 0.45) }));
       lamp.position.set(sx, 2.12, 4.27); S.add(lamp);
     }
-    const doorLight = new THREE.PointLight(0xffa860, 3.2, 6, 1.6); doorLight.position.set(0, 2.2, 3.95); S.add(doorLight);
+    const doorLight = new THREE.PointLight(0xffa860, 3.2, 6, 1.6); doorLight.position.set(0, 2.2, 3.95); S.add(doorLight); this.lowLights.push(doorLight);
     const ceil = new THREE.Mesh(new THREE.PlaneGeometry(9, 9.5), new THREE.MeshStandardMaterial({ color: 0x15100c, roughness: 1 }));
     ceil.rotation.x = Math.PI / 2; ceil.position.set(0, H, -0.25); S.add(ceil);
     for (let z = -4.2; z <= 3.5; z += 1.9) { // 들보
@@ -540,11 +561,11 @@ export class World {
     }
 
     // 조명
-    S.add(new THREE.HemisphereLight(0x5a6a88, 0x3a2614, 0.75));
+    this.hemi = new THREE.HemisphereLight(0x5a6a88, 0x3a2614, 0.75); S.add(this.hemi);
     // 방 전체를 은은하게 채우는 따뜻한 빛 (그림자 없음)
     this.fills = [];
     for (const [x, z] of [[-2.2, -2.2], [2.2, -2.2], [-2.2, 2.0], [2.2, 2.0]]) {
-      const fill = new THREE.PointLight(0xffc48a, 2.6, 7.5, 1.3); fill.position.set(x, 3.7, z); S.add(fill); this.fills.push(fill);
+      const fill = new THREE.PointLight(0xffc48a, 2.6, 7.5, 1.3); fill.position.set(x, 3.7, z); S.add(fill); this.fills.push(fill); this.lowLights.push(fill);
     }
     const spot = new THREE.SpotLight(0xffe0b0, 38, 10, 0.6, 0.6, 1.3);
     spot.position.set(0.6, 4.3, 1.4); spot.target.position.set(0, 0.9, 0);
@@ -655,7 +676,7 @@ export class World {
       const dish = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.12, 0.025, 16), this.mats.iron); dish.position.set(x, 1.065, z);
       const flame = new THREE.Sprite(new THREE.SpriteMaterial({ map: flameTex, color: new THREE.Color(3, 1.8, 0.7), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
       flame.position.set(x, 1.05 + h + 0.07, z); flame.scale.set(0.09, 0.17, 1);
-      const light = new THREE.PointLight(0xffa04a, 1.1, 3.2, 1.6); light.position.copy(flame.position);
+      const light = new THREE.PointLight(0xffa04a, 1.1, 3.2, 1.6); light.position.copy(flame.position); this.lowLights.push(light);
       this.scene.add(c, dish, flame, light);
       this.candles.push({ flame, light, lit: true, k: 1, ph: Math.random() * 10 });
     });
@@ -710,7 +731,7 @@ export class World {
     }
     this.scene.add(g); this.spirit = g;
     this.spiritLight = new THREE.PointLight(0x5fd6ff, 4, 7, 1.4); this.spiritLight.position.set(0, 2.6, -5.7); this.scene.add(this.spiritLight);
-    const rim = new THREE.PointLight(0x3a6cff, 2, 5, 2); rim.position.set(0, 3.6, -8.6); this.scene.add(rim);
+    const rim = new THREE.PointLight(0x3a6cff, 2, 5, 2); rim.position.set(0, 3.6, -8.6); this.scene.add(rim); this.lowLights.push(rim);
   }
   setSpiritMood(kind) {
     const c = { calm: [1.2, 4, 5], happy: [2.5, 5.5, 5], angry: [6, 0.8, 0.4], doom: [6, 0.3, 0.2], sleep: [0.08, 0.25, 0.3] }[kind];
@@ -773,7 +794,7 @@ export class World {
       pair.userData = { th: Math.random() * 0.8, ph: Math.random() * 9 };
       pair.visible = false; this.scene.add(pair); this.darkEyes.push(pair);
     }
-    this.mawLight = new THREE.PointLight(0x5fd6ff, 0, 6, 1.6); this.mawLight.position.set(0, 3.2, -6.2); this.scene.add(this.mawLight);
+    this.mawLight = new THREE.PointLight(0x5fd6ff, 0, 6, 1.6); this.mawLight.position.set(0, 3.2, -6.2); this.scene.add(this.mawLight); this.lowLights.push(this.mawLight);
   }
   // 손바닥 아래, 검을 쥐는 자리 (월드 좌표)
   mawGrip() { this.hand.updateMatrixWorld(); return new THREE.Vector3(0, -0.36, 0.7).applyMatrix4(this.hand.matrixWorld); }
@@ -876,7 +897,7 @@ export class World {
       const w = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.2), wingMat); w.position.x = sx * 0.15; piv.add(w); piv.userData.sx = sx;
       m.add(piv); this.wings.push(piv);
     }
-    const ml = new THREE.PointLight(0xffb060, 1.2, 3.5, 1.6); m.add(ml);
+    const ml = new THREE.PointLight(0xffb060, 1.2, 3.5, 1.6); m.add(ml); this.lowLights.push(ml);
     // 상인에게 작은 눈 두 개
     for (const sx of [-1, 1]) { const e = new THREE.Mesh(new THREE.SphereGeometry(0.014, 8, 6), new THREE.MeshBasicMaterial({ color: 0x1a0d04 })); e.position.set(sx * 0.03, 0.02, 0.075); m.add(e); }
     this.scene.add(m); this.merchant = m; this.merchantBaseY = 1.75;
@@ -1240,6 +1261,7 @@ export class World {
       if (u.life <= 0) { this.scene.remove(sm); this.smokes.splice(i, 1); }
     }
 
-    this.composer.render();
+    if (this.quality === 'low') this.renderer.render(this.scene, this.camera);
+    else this.composer.render();
   }
 }
