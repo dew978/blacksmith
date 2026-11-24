@@ -130,7 +130,7 @@ const ITEMS = {
   encyclo: { name: '봉인된 백과사전', short: '유지 확률↑ · 유지 직후 파괴 60%↓ · 2연속 유지 +1강', kind: 'relic', fused: true, cost: 0, icon: '백', desc: '유지 표 +2장. 유지하면 다음 타격의 파괴 확률 60% 감소. 유지 2연속마다 +1강.' },
   glasses: { name: '지혜의 안경', short: '문제마다 틀린 보기 1개를 흐리게', kind: 'relic', cost: 2, icon: '안', desc: '문제마다 오답 보기 하나가 흐려진다.' },
   tape: { name: '운명을 고치는 수정테이프', short: '사자마자 손상 확률↓ (칸 안 차지)', kind: 'instant', cost: 2, icon: '테', desc: '사는 즉시 이번 판의 손상 표 1장을 없앤다. 유물 칸을 차지하지 않는다.' },
-  ticket: { name: '합격 추첨표', short: '이번 판 성공 확률↑ · 들를 때마다 1번', kind: 'gold', price: 0.6, icon: '추', desc: '이번 판의 성공 표 +1장. 유물 칸을 차지하지 않는다. 상인 방문마다 한 번만 살 수 있다.' },
+  ticket: { name: '합격 추첨표', short: '사면 바로 적용 · 게임 끝까지 성공 확률↑', kind: 'gold', price: 0.6, icon: '추', desc: '따로 쓸 필요 없이 사는 순간 적용된다. 강화 결과를 뽑는 표 묶음에 성공 표가 1장 더해져, 이 게임이 끝날 때까지 모든 강화의 성공 확률이 조금 오른다. 유물 칸을 차지하지 않고, 상인을 만날 때마다 1장씩 살 수 있어 모을수록 쌓인다.' },
   hint: { name: '힌트 두루마리', short: '문제 하나에서 틀린 보기 2개를 지움', kind: 'gold', price: 0.25, icon: '두', desc: '문제 하나에서 오답 보기 2개를 지운다.' },
   candle: { name: '새 양초', short: '꺼진 촛불 1개를 다시 켬', kind: 'gold', price: 1.5, icon: '초', desc: '꺼진 촛불 하나를 다시 켠다.' },
 
@@ -433,7 +433,7 @@ function refresh() {
   // 유물/소모품
   const rel = [...S.relics].map(k => badge(k));
   if (S.items.hint > 0) rel.push(badge('hint', S.items.hint));
-  if (S.deck.succ || S.deck.dmg) rel.push(`<div class="relic item">표<div class="tip"><b>이번 판 표</b>${S.deck.succ ? `성공 표 +${S.deck.succ}장 ` : ''}${S.deck.dmg ? `손상 표 ${S.deck.dmg}장` : ''}</div></div>`);
+  if (S.deck.succ || S.deck.dmg) rel.push(`<div class="relic item">표<div class="tip"><b>모은 표</b>${S.deck.succ ? `성공 표 +${S.deck.succ}장 (게임 끝까지) ` : ''}${S.deck.dmg ? `손상 표 ${S.deck.dmg}장` : ''}</div></div>`);
   if (S.scrap > 0) rel.push(`<div class="relic item">철<span class="cnt">${fmt(S.scrap)}</span><div class="tip"><b>모아 둔 고철</b>제단에 함께 바칠 수 있다.</div></div>`);
   $('#hud-relics').innerHTML = rel.join('');
   document.querySelectorAll('#hud-relics [data-relic]').forEach(el => el.onclick = () => discardRelic(el.dataset.relic));
